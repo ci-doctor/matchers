@@ -1,0 +1,11 @@
+… [22 lines elided] …
+> tsc -p tsconfig.build.json && vite build
+src/services/report.ts:88:23 - error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+88   return normalizeUrl(config.apiBase);
+                         ~~~~~~~~~~~~~~
+src/services/report.ts:132:7 - error TS2739: Type '{ id: string; }' is missing the following properties from type 'Report': summary, phase
+132       report,
+          ~~~~~~
+Found 2 errors in the same file, starting at src/services/report.ts:88
+… [10 lines elided] …

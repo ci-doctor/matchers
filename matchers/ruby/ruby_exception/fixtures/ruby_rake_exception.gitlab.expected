@@ -1,0 +1,14 @@
+… [18 lines elided] …
+StandardError: An error has occurred, all later migrations canceled:
+undefined method `default_tier' for nil (NoMethodError)
+/builds/team/shop/db/migrate/20240612093000_add_loyalty_tier_to_customers.rb:8:in `up': undefined method `default_tier' for nil (NoMethodError)
+/builds/team/shop/lib/tasks/migrate.rake:12:in `block (2 levels) in <top (required)>'
+/builds/team/shop/vendor/bundle/ruby/3.3.0/gems/rake-13.2.1/lib/rake/task.rb:281:in `block in execute'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+Running after_script
+$ echo "migration failed, rolling back deploy"
+migration failed, rolling back deploy
+Uploading artifacts for failed job
+WARNING: log/migrate.log: no matching files. Ensure that the artifact path is relative to the working directory
+ERROR: Job failed: exit code 1

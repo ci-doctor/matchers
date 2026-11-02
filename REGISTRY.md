@@ -7,7 +7,7 @@ offline mirror of this repo.
 ```
 index.yaml
 matchers/<ecosystem>/<id>/matcher.yaml
-matchers/<ecosystem>/<id>/fixtures/<case>.log + <case>.expected
+matchers/<ecosystem>/<id>/fixtures/<case>.<github|gitlab>.log + .expected
 bundles/<id>.yaml
 ```
 

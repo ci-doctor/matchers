@@ -74,7 +74,10 @@ Everything runs through `ci-doctor matchers …` (pulled by `uvx`, no install ne
 
 ## 4. Fixtures
 
-Each fixture is a `<case>.log` plus a generated `<case>.expected`.
+Each fixture is a `<case>.<provider>.log` plus a generated `<case>.<provider>.expected`, where
+`<provider>` is `github` or `gitlab`: the same failure as each runner frames it (the
+playground's provider toggle shows the matching one). Add both when you can; a plain
+`<case>.log` is fine for output that no runner framed.
 
 - **Positive** (non-empty `.expected`): the lines the matcher must catch, exactly. Cover
   *different shapes* of the tool's output — one failure, several, another version or flag
