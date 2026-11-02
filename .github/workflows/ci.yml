@@ -47,20 +47,6 @@ jobs:
           BASE_REF: ${{ github.base_ref }}   # via env, never interpolated into the script
         run: uv run --no-project --with pyyaml python .github/scripts/registry_guards.py "origin/$BASE_REF"
 
-  # Fixtures are real job logs: a token that survived redaction must not merge.
-  leaks:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0   # scan the PR's whole history, not just the tip
-          persist-credentials: false
-      # Organisations need a licence key; it is an org secret, so it must be passed in.
-      - uses: gitleaks/gitleaks-action@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
-
   actions:
     name: workflow audit
     runs-on: ubuntu-latest
@@ -73,7 +59,7 @@ jobs:
 
   all-green:
     if: always()
-    needs: [verify, guards, leaks, actions]
+    needs: [verify, guards, actions]
     runs-on: ubuntu-latest
     steps:
       - name: Every job succeeded

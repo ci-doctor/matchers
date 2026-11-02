@@ -8,7 +8,7 @@ mostly enforced by CI.
 ## 1. Setup
 
 ```sh
-mise install    # uv and gitleaks
+mise install    # uv
 ```
 
 Everything runs through `ci-doctor matchers …` (pulled by `uvx`, no install needed).
@@ -87,7 +87,7 @@ Each fixture is a `<case>.log` plus a generated `<case>.expected`.
   Plain tool output works too.
 - **Redact** tokens, hostnames, emails and internal URLs. Logs come from public projects
   or are synthetic; link the source in the PR. Keep each under 200 KB and trim unrelated
-  steps. CI runs gitleaks over every PR.
+  steps.
 - A log that contains two tools (`npm run build` running `tsc`) can be a fixture of both,
   each with its own `.expected`.
 
@@ -113,5 +113,5 @@ ecosystem's bundle in the same PR.
 - Branch `<type>/<slug>` (`feat/hypothesis-matcher`); the PR title is a Conventional
   Commit — `feat(python): add the hypothesis matcher`. One matcher per PR.
 - Fill in the template's checklist. A maintainer reviews the `.expected` diffs above all.
-- `all-green` must pass: verify + index, the base-branch guards, gitleaks, and the
-  workflow audit.
+- `all-green` must pass: verify + index, the base-branch guards, and the workflow
+  audit.

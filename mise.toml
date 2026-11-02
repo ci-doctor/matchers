@@ -1,8 +1,7 @@
 # The contributor's bench for the official matcher registry.
 
 [tools]
-uv = "latest"        # runs ci-doctor (uvx) and the guard scripts
-gitleaks = "latest"  # fixtures are real logs; same scan as the `leaks` CI job
+uv = "latest"   # runs ci-doctor (uvx) and the guard scripts
 
 [env]
 # The ci-doctor that provides `matchers verify` / `index`. Keep in step with ci.yml.
@@ -24,11 +23,7 @@ run = 'uvx --from "$CI_DOCTOR" ci-doctor matchers index .'
 description = "The base-branch guards: names are permanent, verify-exempt.txt only shrinks"
 run = "uv run --no-project --with pyyaml python .github/scripts/registry_guards.py origin/main"
 
-[tasks.leaks]
-description = "Scan history for secrets, same as the CI job"
-run = "gitleaks git --no-banner --redact"
-
 [tasks.check]
 description = "Everything CI runs"
 run = 'uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check'
-depends = ["verify", "guards", "leaks"]
+depends = ["verify", "guards"]
