@@ -3,7 +3,7 @@ name: ci
 # `all-green` is the one check a main ruleset should require.
 on:
   pull_request:
-    branches: [main]
+    branches: [main, "feat/**"]
   push:
     branches: [main]
 

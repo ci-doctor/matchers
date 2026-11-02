@@ -29,20 +29,15 @@ function re2(rx: string): RE2JS {
 const hits = (rx: string, line: string) => re2(rx).matcher(line).find();
 
 // ---------- provider framing ----------
-// ci-doctor's segmenters split a log into a tree of sections and the extractor reads
-// the tree depth-first, so matchers see lines in *section* order, not log order (a
-// GitHub step's trailing output can land before its header block). We mirror that
-// order so a window selects the same lines; the page maps them back to log positions.
+// Log order is kept: strip the runner's framing, then the light denoise ci-doctor
+// always applies (`core/denoise.py`, default config): ANSI codes and blank lines.
 
 // github/segmenter.py: exactly one space after the timestamp; more is the tool's indent.
 const GH_TS = /^\d{4}-\d{2}-\d{2}T[\d:.]+Z? /;
-const GH_GROUP = /^##\[group\](.*)$/;
-const GH_ENDGROUP = /^##\[endgroup\]\s*$/;
-const GH_STEP_DONE = /^##\[error\]Process completed with exit code|^Post job cleanup\.|^Cleaning up orphan processes/;
-const GH_STEPS = new Set(['checkout', 'restore_cache', 'download_artifacts', 'setup_job', 'setup', 'post', 'complete_job', 'run']);
+const GH_STRUCT = /^##\[(?:group\].*|endgroup\]\s*)$/;
 // gitlab/segmenter.py: _LOG_META and _MARKER.
 const GL_META = /^\d{4}-\d{2}-\d{2}T[\d:.]+Z [0-9A-Fa-f]{2}[OE]\+? ?/gm;
-const GL_MARKER = /(?:\x1b\[0K)?section_(start|end):\d+:([A-Za-z0-9_.-]+)(?:\[[^\]]*\])?(?:\r(?:\x1b\[0K)?)?\n?/g;
+const GL_MARKER = /(?:\x1b\[0K)?section_(?:start|end):\d+:[A-Za-z0-9_.-]+(?:\[[^\]]*\])?(?:\r(?:\x1b\[0K)?)?\n?/g;
 const ANSI = /\x1b\[[0-9;?]*[ -/]*[@-~]/g;
 
 export interface Line {
@@ -51,122 +46,25 @@ export interface Line {
   pos: number;
 }
 export interface Prepared {
-  /** The log as the provider shows it: framing stripped, in log order. */
+  /** The log as the provider shows it: framing stripped. `structure` lines are never matched. */
   display: { text: string; structure: boolean }[];
-  /** What matchers see, in ci-doctor's section order. */
+  /** What matchers see: the non-blank content lines of `display`. */
   lines: Line[];
 }
 
-interface Section {
-  lines: Line[];
-  children: Section[];
-}
-const sec = (): Section => ({ lines: [], children: [] });
-const walk = (secs: Section[]): Line[] => secs.flatMap((s) => [...s.lines, ...walk(s.children)]);
-
-function canonical(name: string): string {
-  const n = name.trim().toLowerCase();
-  if (n.includes('checkout')) return 'checkout';
-  if (n.includes('cache')) return 'restore_cache';
-  if (n.includes('download') && n.includes('artifact')) return 'download_artifacts';
-  if (n.startsWith('set up job')) return 'setup_job';
-  if (n.startsWith('set up ') || n.includes('setup-')) return 'setup';
-  if (n.startsWith('post ')) return 'post';
-  if (n.startsWith('complete job')) return 'complete_job';
-  if (n.startsWith('run ')) return 'run';
-  return name.trim();
-}
-
-function segmentGithub(text: string, display: Prepared['display']): Section[] {
-  const top: Section[] = [];
-  const outside: Record<string, Section> = {};
-  let nested: Section[] = [];
-  let current: Section | null = null;
-  let seenGroup = false;
-  const lines = text.split('\n');
-  if (lines.at(-1) === '') lines.pop();
-  for (const physical of lines) {
-    const t = physical.replace(GH_TS, '').replace(ANSI, '');
-    const pos = display.length;
-    const group = GH_GROUP.exec(t);
-    display.push({ text: t, structure: !!group || GH_ENDGROUP.test(t) });
-    if (group) {
-      seenGroup = true;
-      const s = sec();
-      if (GH_STEPS.has(canonical(group[1]))) {
-        nested = [];
-        current = s;
-        top.push(s);
-      } else if (current) {
-        (nested.at(-1) ?? current).children.push(s);
-        nested.push(s);
-      } else {
-        top.push(s);
-        nested.push(s);
-      }
-    } else if (GH_ENDGROUP.test(t)) {
-      nested.pop();
-    } else {
-      if (GH_STEP_DONE.test(t) && current && !nested.length) current = null;
-      const name = seenGroup ? 'trailer' : 'preamble';
-      if (!outside[name] && !nested.length && !current) top.push((outside[name] = sec()));
-      (nested.at(-1) ?? current ?? outside[name]).lines.push({ text: t, pos });
-    }
-  }
-  return top;
-}
-
-function segmentGitlab(raw: string, display: Prepared['display']): Section[] {
-  const top: Section[] = [];
-  const outside: Record<string, Section> = {};
-  const stack: Section[] = [];
-  const named = new Map<Section, string>();
-  let seenStart = false;
-  const emit = (run: string) => {
-    const parts = run.split('\n');
-    if (parts.at(-1) === '') parts.pop();
-    let target = stack.at(-1);
-    if (!target) {
-      const name = seenStart ? 'trailer' : 'preamble';
-      if (!outside[name]) top.push((outside[name] = sec()));
-      target = outside[name];
-    }
-    for (const part of parts) {
-      const t = part.replace(/\r+$/, '').replace(ANSI, '');
-      target.lines.push({ text: t, pos: display.length });
-      display.push({ text: t, structure: false });
-    }
-  };
-  let pos = 0;
-  for (const m of raw.matchAll(GL_MARKER)) {
-    if (m.index > pos) emit(raw.slice(pos, m.index));
-    if (m[1] === 'start') {
-      seenStart = true;
-      const s = sec();
-      (stack.at(-1)?.children ?? top).push(s);
-      named.set(s, m[2]);
-      stack.push(s);
-    } else {
-      const i = stack.findLastIndex((s) => named.get(s) === m[2]);
-      if (i >= 0) stack.length = i; // also drops unclosed sections nested above it
-    }
-    pos = m.index + m[0].length;
-  }
-  if (pos < raw.length) emit(raw.slice(pos));
-  return top;
-}
-
-/**
- * Strip a provider's framing and order the lines the way ci-doctor does, then apply
- * the denoise ci-doctor always runs (`core/denoise.py`, default config): ANSI codes
- * stripped, blank lines dropped (`noise_patterns: ['^\s*$']`). Repeat folding and
- * `\r` collapsing are not ported.
- */
 export function prepare(raw: string, provider: Provider): Prepared {
   const text = raw.replace(/\r\n/g, '\n'); // a lone \r is GitLab's marker terminator
-  const display: Prepared['display'] = [];
-  const tree = provider === 'github' ? segmentGithub(text, display) : segmentGitlab(text.replace(GL_META, ''), display);
-  return { display, lines: walk(tree).filter((l) => /\S/.test(l.text)) };
+  const parts =
+    provider === 'github'
+      ? text.split('\n').map((l) => l.replace(GH_TS, ''))
+      : text.replace(GL_META, '').replace(GL_MARKER, '').split('\n').map((l) => l.replace(/\r+$/, ''));
+  if (parts.at(-1) === '') parts.pop();
+  const display = parts.map((l) => {
+    const t = l.replace(ANSI, '');
+    return { text: t, structure: provider === 'github' && GH_STRUCT.test(t) };
+  });
+  const lines = display.flatMap((l, pos) => (!l.structure && /\S/.test(l.text) ? [{ text: l.text, pos }] : []));
+  return { display, lines };
 }
 
 // ---------- matching ----------
