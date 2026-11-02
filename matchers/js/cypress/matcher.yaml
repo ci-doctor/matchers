@@ -1,0 +1,7 @@
+id: cypress
+role: tool
+classification: [js, e2e]
+description: A `CypressError` or a retry timeout, with the command log leading up to it.
+pattern: CypressError|Timed out retrying after \d+ms
+before: 3
+after: 12

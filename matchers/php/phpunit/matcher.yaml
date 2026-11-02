@@ -1,0 +1,6 @@
+id: phpunit
+role: tool
+classification: [php, test]
+description: PHPUnit's `There were N failures` block through to its `FAILURES`/`ERRORS`/`OK` footer.
+start: ^There (was|were) \d+ (failure|error)
+end: ^(FAILURES|ERRORS|OK)

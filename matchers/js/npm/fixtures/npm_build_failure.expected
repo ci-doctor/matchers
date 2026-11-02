@@ -1,0 +1,11 @@
+… [40 lines elided] …
+          ~~~~~~
+Found 2 errors in the same file, starting at src/services/report.ts:88
+npm ERR! Lifecycle script `build` failed with error:
+npm ERR! code 2
+npm ERR! path /builds/team/web-dashboard
+npm ERR! workspace web-dashboard@2.3.0
+/usr/bin/git version
+git version 2.54.0
+Artifact upload complete.
+##[warning]dist/: no matching files. Ensure that the artifact path is relative to the working directory

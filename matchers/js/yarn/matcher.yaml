@@ -1,0 +1,7 @@
+id: yarn
+role: tool
+classification: [js, deps]
+description: Yarn Classic's `error <Capital>` lines and Berry's `YN0000:` diagnostic codes.
+pattern: ^error [A-Z]|➤ YN\d{4}
+before: 1
+after: 8

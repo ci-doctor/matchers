@@ -1,0 +1,7 @@
+id: bazel
+role: wrapper
+classification: [any, build]
+description: Bazel reporting that an action or target failed. A wrapper - the compiler or test output it relays is the cause.
+pattern: '^ERROR: \S+:\d+:\d+: .*(failed|FAILED)|^FAILED: Build did NOT complete|^//\S+\s+FAILED in \d'
+before: 2
+after: 10

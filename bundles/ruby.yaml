@@ -1,0 +1,3 @@
+id: ruby
+description: Ruby test failures, exceptions and Bundler errors.
+include: [rspec, minitest, ruby_exception, bundler]

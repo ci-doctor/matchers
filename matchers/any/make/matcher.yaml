@@ -1,0 +1,7 @@
+id: make
+role: wrapper
+classification: [any, build]
+description: '`make: ***` - make reporting that a recipe it ran failed. The recipe''s own output above it is the cause.'
+pattern: 'make(\[\d+\])?: \*\*\* '
+before: 3
+after: 8

@@ -1,0 +1,7 @@
+id: cc_cpp
+role: tool
+classification: [c, build]
+description: C/C++ builds - CMake configure errors and linker `undefined reference` / `collect2` failures.
+pattern: 'CMake Error|undefined reference to|collect2: error'
+before: 3
+after: 8

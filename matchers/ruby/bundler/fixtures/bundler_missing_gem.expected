@@ -1,0 +1,10 @@
+… [30 lines elided] …
+Resolving dependencies...
+Could not find gem 'sidekiq-pro (~> 7.2)' in rubygems repository https://rubygems.org/ or installed locally.
+The source contains the following gems matching 'sidekiq-pro':
+  * sidekiq-pro-5.5.1
+  * sidekiq-pro-6.0.2
+Run `bundle install` to install missing gems.
+/usr/bin/git version
+git version 2.54.0
+… [2 lines elided] …

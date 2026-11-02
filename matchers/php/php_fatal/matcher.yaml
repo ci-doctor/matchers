@@ -1,0 +1,7 @@
+id: php_fatal
+role: tool
+classification: [php, runtime]
+description: A PHP fatal or parse error and the stack trace after it.
+pattern: 'PHP (Fatal|Parse) error|^Fatal error:'
+before: 1
+after: 8

@@ -1,0 +1,7 @@
+id: composer
+role: tool
+classification: [php, deps]
+description: Composer's resolver refusing the requirements, with the explanation it prints underneath.
+pattern: Your requirements could not be resolved
+before: 1
+after: 12

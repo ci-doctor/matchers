@@ -1,0 +1,7 @@
+id: terraform
+role: tool
+classification: [iac]
+description: Terraform's boxed `Error:` and the `on main.tf line 12` it points at.
+pattern: '^\s*│\s*Error: |on .+\.tf line \d+'
+before: 1
+after: 12

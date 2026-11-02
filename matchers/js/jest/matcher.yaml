@@ -1,0 +1,6 @@
+id: jest
+role: tool
+classification: [js, test]
+description: A jest test failure - the bullet header names the test, and the diff below it shows expected against received.
+start: ^\s*●|^FAIL\s+\S+\.(test|spec)\.[jt]sx?\b
+end: '^Tests:'

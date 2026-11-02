@@ -1,0 +1,6 @@
+id: gradle
+role: wrapper
+classification: [jvm, build]
+description: Gradle's `* What went wrong:` block, stopping before the `* Try:` boilerplate advice. A wrapper - it names the failed task, the compiler output above it is the cause.
+start: '^\* What went wrong:'
+end: ^\* (Try|Get more help)

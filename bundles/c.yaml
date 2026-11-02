@@ -1,0 +1,3 @@
+id: c
+description: C and C++ compile and link errors.
+include: [cc_cpp]

@@ -1,0 +1,18 @@
+… [34 lines elided] …
+  symbol:   variable PENDING
+  location: class OrderStatus
+1 error
+FAILURE: Build failed with an exception.
+* What went wrong:
+Execution failed for task ':app:compileJava'.
+> Compilation failed; see the compiler error output for details.
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+BUILD FAILED in 34s
+2 actionable tasks: 1 executed, 1 up-to-date
+/usr/bin/git version
+git version 2.54.0
+Artifact upload complete.
+##[warning]app/build/libs/: no matching files. Ensure that the artifact path is relative to the working directory

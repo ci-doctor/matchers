@@ -1,0 +1,6 @@
+id: minitest
+role: tool
+classification: [ruby, test]
+description: Minitest's numbered `1) Failure:` entries and the assertion beneath each one.
+pattern: '^\s*\d+\) (Failure|Error):'
+after: 10

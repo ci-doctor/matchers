@@ -1,0 +1,19 @@
+… [33 lines elided] …
+2026-01-05 09:14:04 INFO  etl.transform: applying fx conversion
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/runpy.py", line 198, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/builds/team/etl/etl/run.py", line 61, in <module>
+    main()
+  File "/builds/team/etl/etl/run.py", line 44, in main
+    totals = transform(rows, rate=cfg["fx"]["rate"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/builds/team/etl/etl/transform.py", line 88, in transform
+    return [r.amount / rate for r in rows]
+            ~~~~~~~~~^~~~~~
+ZeroDivisionError: float division by zero
+/usr/bin/git version
+git version 2.54.0
+Artifact upload complete.
+##[warning]out/totals.parquet: no matching files. Ensure that the artifact path is relative to the working directory

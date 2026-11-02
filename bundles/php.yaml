@@ -1,0 +1,3 @@
+id: php
+description: PHP test failures, fatal errors and Composer conflicts.
+include: [phpunit, php_fatal, composer]

@@ -1,0 +1,7 @@
+id: node_runtime
+role: tool
+classification: [js, runtime]
+description: An uncaught Node error. The message above the stack is the cause; an ESM/CJS resolution error means a missing or mis-declared module.
+pattern: ^\s*at .+\(node:internal|^Node\.js v\d+\.|ERR_MODULE_NOT_FOUND|ERR_REQUIRE_ESM|UnhandledPromiseRejection
+before: 12
+after: 6

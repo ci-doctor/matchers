@@ -1,0 +1,3 @@
+id: go
+description: Go test failures and panics.
+include: [go_test, go_panic]
