@@ -1,0 +1,17 @@
+… [24 lines elided] …
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:01.42]     Billing.Tests.InvoiceTests.AppliesVatToNetTotal [FAIL]
+  Failed Billing.Tests.InvoiceTests.AppliesVatToNetTotal [12 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 12000
+Actual:   11999
+  Stack Trace:
+     at Billing.Tests.InvoiceTests.AppliesVatToNetTotal() in /builds/team/billing/tests/Billing.Tests/InvoiceTests.cs:line 64
+Failed!  - Failed:     1, Passed:    87, Skipped:     0, Total:    88, Duration: 940 ms
+Running after_script
+$ echo "tests failed, skipping publish"
+tests failed, skipping publish
+Uploading artifacts for failed job
+Uploading artifacts as "archive" to coordinator... 201 Created
+ERROR: Job failed: exit code 1

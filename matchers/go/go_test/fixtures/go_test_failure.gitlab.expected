@@ -1,0 +1,19 @@
+… [20 lines elided] …
+ok   example.com/svc/internal/queue     0.190s
+ok   example.com/svc/internal/auth      0.077s
+--- FAIL: TestReconcile_DetectsDrift (0.00s)
+    reconcile_test.go:112: drift not detected
+        expected: []string{"replicas"}
+        actual:   []string{}
+--- FAIL: TestReconcile_IgnoresManaged (0.00s)
+    reconcile_test.go:145: unexpected change for managed field "annotations"
+FAIL
+FAIL example.com/svc/internal/reconcile   0.038s
+ok   example.com/svc/internal/api       0.101s
+FAIL
+Running after_script
+$ go tool cover -func=cover.out | tail -1
+total:  (statements)   74.3%
+Uploading artifacts for failed job
+Uploading artifacts as "archive" to coordinator... 201 Created
+ERROR: Job failed: exit code 1

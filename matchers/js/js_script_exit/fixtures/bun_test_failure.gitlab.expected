@@ -1,0 +1,8 @@
+… [32 lines elided] …
+Ran 3 tests across 1 files. [24.00ms]
+error: script "test" exited with code 1
+Running after_script
+$ echo "bun tests failed"
+bun tests failed
+Uploading artifacts for failed job
+… [2 lines elided] …
