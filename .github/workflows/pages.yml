@@ -1,0 +1,43 @@
+name: pages
+
+# Publishes the raw registry at matchers.cidoc.dev: what `ci-doctor` fetches. The
+# catalogue and playground join this artifact later (E11 phase 7). The custom domain
+# is set in the repo's Pages settings; an Actions deploy ignores a CNAME file.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false   # never cut a deploy off half-way
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      # Only the registry: index, matchers (fixtures included) and bundles. Repo
+      # plumbing stays out of the published tree.
+      - run: mkdir _site && cp -r index.yaml matchers bundles _site/
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v5

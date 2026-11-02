@@ -1,0 +1,7 @@
+# Tags, not hashes — the same policy as ci-doctor: hash-pinning only pays off with a
+# bot bumping the hashes; without one it freezes actions at whatever shipped that day.
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        "*": ref-pin

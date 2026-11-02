@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: A bug in ci-doctor itself (not a matcher)
+    url: https://github.com/ci-doctor/ci-doctor/issues
+    about: Attribution, reports, providers, the CLI.
