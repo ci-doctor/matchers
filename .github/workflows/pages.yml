@@ -1,8 +1,9 @@
 name: pages
 
-# Publishes the raw registry at matchers.cidoc.dev: what `ci-doctor` fetches. The
-# catalogue and playground join this artifact later (E11 phase 7). The custom domain
-# is set in the repo's Pages settings; an Actions deploy ignores a CNAME file.
+# Publishes matchers.cidoc.dev: the catalogue and playground (built from site/) plus the
+# raw registry (index.yaml, matchers/, bundles/) that `ci-doctor` fetches from the same
+# domain. The site creates no page at those three paths. The custom domain is set in the
+# repo's Pages settings; an Actions deploy ignores a CNAME file.
 on:
   push:
     branches: [main]
@@ -22,12 +23,19 @@ jobs:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
-      # Only the registry: index, matchers (fixtures included) and bundles. Repo
-      # plumbing stays out of the published tree.
-      - run: mkdir _site && cp -r index.yaml matchers bundles _site/
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci && npm run build
+        working-directory: site
+      # Only the registry joins the site: index, matchers (fixtures included) and
+      # bundles. Repo plumbing stays out of the published tree.
+      - run: cp -r index.yaml matchers bundles site/dist/
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: _site
+          path: site/dist
 
   deploy:
     needs: build

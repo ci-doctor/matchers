@@ -57,9 +57,29 @@ jobs:
       - uses: astral-sh/setup-uv@v10.3.3
       - run: uvx zizmor --config .github/zizmor.yml .github/workflows
 
+  site:
+    name: site build + parity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci
+        working-directory: site
+      - run: npm run build
+        working-directory: site
+      # The playground engine must select exactly what ci-doctor's `.expected` files say.
+      - run: npm test
+        working-directory: site
+
   all-green:
     if: always()
-    needs: [verify, guards, actions]
+    needs: [verify, guards, actions, site]
     runs-on: ubuntu-latest
     steps:
       - name: Every job succeeded
