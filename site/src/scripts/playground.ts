@@ -1,9 +1,12 @@
 import { parseAllDocuments } from 'yaml';
+import { highlight } from './yamlhl.ts';
+import { combo, type Item } from './combo.ts';
 import { prepare, run, highlighted, validate, type Matcher, type Provider } from '../lib/engine.ts';
 
 interface Data {
-  matchers: Record<string, { yaml: string; fixtures: { name: string; log: string }[] }>;
+  matchers: Record<string, { yaml: string; eco: string; description: string; fixtures: { name: string; log: string }[] }>;
   bundles: Record<string, string[]>;
+  bundleDesc: Record<string, string>;
 }
 const data: Data = JSON.parse(document.getElementById('data')!.textContent!);
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -13,30 +16,64 @@ const esc = (s: string) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt
 const HUES = [48, 200, 130, 330, 20, 270, 170, 90];
 const color = (i: number) => `hsl(${HUES[i % HUES.length]} 85% 55%)`;
 
-function parseRules(src: string): { rules: { m: Matcher; name: string }[]; errors: string[] } {
+/** Where each validation message points: the line of the key it names. */
+function parseRules(src: string): { rules: { m: Matcher; name: string }[]; errors: string[]; bad: Set<number> } {
   const rules: { m: Matcher; name: string }[] = [];
   const errors: string[] = [];
+  const bad = new Set<number>();
+  const lineAt = (off: number) => src.slice(0, off).split('\n').length - 1;
   const docs = parseAllDocuments(src).filter((d) => d.contents !== null || d.errors.length);
   for (const d of docs) {
     const pre = docs.length > 1 ? `rule ${rules.length + 1}: ` : '';
-    if (d.errors.length) { errors.push(...d.errors.map((e) => pre + e.message.split('\n')[0])); continue; }
+    if (d.errors.length) {
+      for (const e of d.errors) {
+        errors.push(pre + e.message.split('\n')[0]);
+        bad.add(e.linePos ? e.linePos[0].line - 1 : lineAt(e.pos[0]));
+      }
+      continue;
+    }
     const m = d.toJS() as Matcher;
-    if (!m || typeof m !== 'object' || Array.isArray(m)) { errors.push(pre + 'a rule must be a YAML mapping'); continue; }
+    const top = lineAt(d.range[0]);
+    if (!m || typeof m !== 'object' || Array.isArray(m)) { errors.push(pre + 'a rule must be a YAML mapping'); bad.add(top); continue; }
+    const keyLine = new Map<string, number>();
+    const map = d.contents as { items?: { key?: { value?: unknown; range?: number[] } }[] };
+    for (const it of map.items ?? []) if (it.key?.range) keyLine.set(String(it.key.value), lineAt(it.key.range[0]));
     const errs = validate(m);
-    if (errs.length) errors.push(...errs.map((e) => `${m.id ? m.id + ': ' : pre}${e}`));
-    else rules.push({ m, name: m.id in data.matchers ? `official/${m.id}` : m.id });
+    for (const e of errs) {
+      errors.push(`${m.id ? m.id + ': ' : pre}${e}`);
+      const k = /^`?(\w+)/.exec(e)?.[1] ?? '';
+      if (/^use exactly one form/.test(e)) {
+        const ks = ['pattern', 'start', 'end'].filter((x) => keyLine.has(x));
+        (ks.length ? ks.map((x) => keyLine.get(x)!) : [top]).forEach((l) => bad.add(l));
+      } else bad.add(keyLine.get(k) ?? top);
+    }
+    if (!errs.length) rules.push({ m, name: m.id in data.matchers ? `official/${m.id}` : m.id });
   }
-  return { rules, errors };
+  return { rules, errors, bad };
+}
+
+const hl = $('hl');
+function paint(bad: Set<number>) {
+  hl.innerHTML = highlight(rule.value, bad);
+  hl.scrollTop = rule.scrollTop;
+  hl.scrollLeft = rule.scrollLeft;
 }
 
 let scrollToFirst = false;
 function render() {
-  const { rules, errors } = parseRules(rule.value);
+  const { rules, errors, bad } = parseRules(rule.value);
+  paint(bad);
   $('status').innerHTML = errors.length
     ? `<ul class="errs">${errors.map((e) => `<li>${esc(e)}</li>`).join('')}</ul>`
     : rules.length ? `<p class="ok">Valid.</p>` : '';
 
   const raw = log.value;
+  if (!raw) {
+    out.innerHTML = '<p class="empty">Paste a log, drop a file or load a fixture to see matches.</p>';
+    $('stats').textContent = '';
+    $('results').innerHTML = '';
+    return;
+  }
   if (radio('view') === 'raw') {
     out.innerHTML = raw.split('\n').map((l, i) => `<div class="ln" id="L${i + 1}"><i>${i + 1}</i>${esc(l)}</div>`).join('');
     $('stats').textContent = '';
@@ -63,7 +100,7 @@ function render() {
       results.push(`<li><span class="sw" style="--hl:${color(ri)}"></span><a data-l="${lo}">${esc(name)} · lines ${lo}–${hi}</a></li>`);
     }
   });
-  $('results').innerHTML = results.join('') || (rules.length && raw ? '<li class="legend">No matches.</li>' : '');
+  $('results').innerHTML = results.join('') || (rules.length ? '<li class="legend">No matches.</li>' : '<li class="legend">Fix the rule to see matches.</li>');
   $('stats').textContent = raw ? `${style.size} of ${prep.lines.length} lines highlighted` : '';
   out.innerHTML = prep.display.map((l, i) => {
     const s = style.get(i);
@@ -80,6 +117,7 @@ function render() {
 
 let timer: number;
 const soon = () => { clearTimeout(timer); timer = setTimeout(render, 200); };
+const typing = () => { paint(new Set()); soon(); }; // keep the overlay in step; marks come with the debounced run
 
 function pickRule(v: string) {
   if (v.startsWith('m:')) rule.value = data.matchers[v.slice(2)].yaml;
@@ -97,17 +135,30 @@ function loadFixture(key: string) {
   $('notice').textContent = '';
   log.value = fx.log;
   scrollToFirst = true;
-  $<HTMLSelectElement>('fixture').value = key;
+  fixtureBox.set(key);
 }
 
-$('pick').addEventListener('change', (e) => { pickRule((e.target as HTMLSelectElement).value); render(); });
-$('fixture').addEventListener('change', (e) => { loadFixture((e.target as HTMLSelectElement).value); render(); });
-rule.addEventListener('input', soon);
+rule.addEventListener('input', typing);
+rule.addEventListener('scroll', () => { hl.scrollTop = rule.scrollTop; hl.scrollLeft = rule.scrollLeft; });
 log.addEventListener('input', () => { $('notice').textContent = ''; soon(); });
 document.querySelectorAll('input[name=prov],input[name=view]').forEach((r) => r.addEventListener('change', () => {
   $('notice').textContent = '';
   render();
 }));
+const ruleItems: Item[] = [
+  { value: '', label: 'New rule', group: '', hay: 'new rule blank' },
+  ...Object.entries(data.bundleDesc).map(([n, d]) => ({ value: 'b:' + n, label: n, group: 'Bundles', sub: d, hay: `${n} bundle ${d}`.toLowerCase() })),
+  ...Object.entries(data.matchers)
+    .sort((a, b) => a[1].eco.localeCompare(b[1].eco) || a[0].localeCompare(b[0]))
+    .map(([n, m]) => ({ value: 'm:' + n, label: n, group: `Matchers · ${m.eco}`, sub: m.description, hay: `${n} ${m.eco} ${m.description}`.toLowerCase() })),
+];
+const fixtureItems: Item[] = Object.entries(data.matchers)
+  .sort((a, b) => a[1].eco.localeCompare(b[1].eco) || a[0].localeCompare(b[0]))
+  .flatMap(([n, m]) => m.fixtures.map((f) => ({ value: `${n}/${f.name}`, label: f.name, group: n, sub: m.eco, hay: `${n} ${m.eco} ${f.name}`.toLowerCase() })));
+const ruleBox = combo($('pick'), ruleItems, (v) => { pickRule(v); render(); });
+const fixtureBox = combo($('fixture'), fixtureItems, (v) => { loadFixture(v); render(); });
+ruleBox.set('');
+
 $('results').addEventListener('click', (e) => {
   const a = (e.target as HTMLElement).closest('a[data-l]') as HTMLElement | null;
   const el = a && document.getElementById('L' + a.dataset.l);
@@ -117,16 +168,20 @@ $('results').addEventListener('click', (e) => {
   setTimeout(() => el.classList.remove('flash'), 1200);
 });
 
+const dz = $('dz');
 async function readFile(f: File | undefined) {
   if (!f) return;
   log.value = await f.text();
   $('notice').textContent = '';
+  $('dzt').innerHTML = `<b>${esc(f.name)}</b> · drop or browse to replace`;
   render();
 }
 $<HTMLInputElement>('file').addEventListener('change', (e) => readFile((e.target as HTMLInputElement).files?.[0]));
-log.addEventListener('dragover', (e) => { e.preventDefault(); log.classList.add('drop'); });
-log.addEventListener('dragleave', () => log.classList.remove('drop'));
-log.addEventListener('drop', (e) => { e.preventDefault(); log.classList.remove('drop'); readFile(e.dataTransfer?.files[0]); });
+for (const el of [dz, log]) {
+  el.addEventListener('dragover', (e) => { e.preventDefault(); el.classList.add('drop'); });
+  el.addEventListener('dragleave', () => el.classList.remove('drop'));
+  el.addEventListener('drop', (e) => { e.preventDefault(); el.classList.remove('drop'); readFile((e as DragEvent).dataTransfer?.files[0]); });
+}
 
 // ?m=<name|bundle>&f=<fixture>: preload a rule and one of its fixtures.
 const q = new URLSearchParams(location.search);
@@ -134,7 +189,7 @@ const name = q.get('m');
 if (name && (name in data.matchers || name in data.bundles)) {
   const isM = name in data.matchers;
   pickRule((isM ? 'm:' : 'b:') + name);
-  $<HTMLSelectElement>('pick').value = (isM ? 'm:' : 'b:') + name;
+  ruleBox.set((isM ? 'm:' : 'b:') + name);
   const owner = isM ? name : data.bundles[name].find((n) => data.matchers[n].fixtures.length);
   const fx = q.get('f') ?? data.matchers[owner!]?.fixtures[0]?.name;
   if (owner && fx) loadFixture(`${owner}/${fx}`);
