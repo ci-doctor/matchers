@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import { entries } from '../lib/registry.ts';
+
+const ecos = [...new Set(entries.map((e) => e.eco))].sort();
+const nm = entries.filter((e) => e.kind === 'matcher').length;
+---
+
+<Base title="Catalogue" description="Every official ci-doctor matcher and bundle.">
+  <h1>Official <em>matchers</em></h1>
+  <p class="lead">
+    {nm} matchers and {entries.length - nm} bundles. A matcher tells ci-doctor which lines of a failed job's log are
+    the evidence. Pick one, read its fixtures, or <a href="/playground/">try it on your own log</a>.
+  </p>
+
+  <div class="filters">
+    <input type="search" id="q" placeholder="Filter by name or description" aria-label="Filter matchers" />
+    <select id="eco" aria-label="Ecosystem">
+      <option value="">All ecosystems</option>
+      {ecos.map((e) => <option value={e}>{e}</option>)}
+    </select>
+  </div>
+
+  <table id="table">
+    <thead><tr><th>Name</th><th>Ecosystem</th><th>Role</th><th>Description</th><th></th></tr></thead>
+    <tbody>
+      {entries.map((e) => (
+        <tr data-eco={e.eco} data-text={`${e.name} ${e.description} ${e.tags.join(' ')}`.toLowerCase()}>
+          <td class="name"><a href={`/m/${e.name}/`}>{e.name}</a></td>
+          <td>
+            <span class="chip eco">{e.eco}</span>
+            {e.tags.map((t) => <span class="chip">{t}</span>)}
+          </td>
+          <td>{e.role || '–'}</td>
+          <td>{e.description}</td>
+          <td><button class="copy" data-cmd={`ci-doctor matchers add official/${e.name}`} title="Copy the install command">Copy</button></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <p id="none" class="legend" hidden>Nothing matches.</p>
+
+  <script is:inline>
+    const q = document.getElementById('q'), eco = document.getElementById('eco');
+    const rows = [...document.querySelectorAll('#table tbody tr')];
+    const apply = () => {
+      const t = q.value.trim().toLowerCase();
+      let n = 0;
+      for (const r of rows) {
+        const show = (!eco.value || r.dataset.eco === eco.value) && (!t || r.dataset.text.includes(t));
+        r.hidden = !show;
+        n += show;
+      }
+      document.getElementById('none').hidden = n > 0;
+    };
+    q.addEventListener('input', apply);
+    eco.addEventListener('change', apply);
+    document.getElementById('table').addEventListener('click', async (e) => {
+      const b = e.target.closest('.copy');
+      if (!b) return;
+      try { await navigator.clipboard.writeText(b.dataset.cmd); b.textContent = 'Copied'; }
+      catch { b.textContent = 'Press Ctrl+C'; }
+      setTimeout(() => (b.textContent = 'Copy'), 1500);
+    });
+  </script>
+</Base>

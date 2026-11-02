@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import { entries } from '../lib/registry.ts';
+
+// Everything the playground needs, embedded: pasted logs never leave the page.
+const data = {
+  matchers: Object.fromEntries(entries.filter((e) => e.kind === 'matcher').map((e) => [e.name, { yaml: e.yaml, fixtures: e.fixtures.map((f) => ({ name: f.name, log: f.log })) }])),
+  bundles: Object.fromEntries(entries.filter((e) => e.kind === 'bundle').map((e) => [e.name, e.members])),
+};
+const matchers = entries.filter((e) => e.kind === 'matcher');
+const bundles = entries.filter((e) => e.kind === 'bundle');
+---
+
+<Base title="Playground" description="Run a matcher, or your own draft, against a CI log in the browser." wide>
+  <script type="application/json" id="data" set:html={JSON.stringify(data)} />
+  <div class="pg">
+    <section>
+      <h2>Rule</h2>
+      <div class="row">
+        <select id="pick" aria-label="Rule to load">
+          <option value="">New rule</option>
+          <optgroup label="Bundles">{bundles.map((b) => <option value={`b:${b.name}`}>{b.name}</option>)}</optgroup>
+          <optgroup label="Matchers">{matchers.map((m) => <option value={`m:${m.name}`}>{m.name}</option>)}</optgroup>
+        </select>
+        <span class="legend">Several rules: separate YAML documents with <code>---</code>.</span>
+      </div>
+      <textarea id="rule" rows="22" spellcheck="false" aria-label="Rule source"></textarea>
+      <div id="status"></div>
+      <h2>Matches</h2>
+      <ul class="results" id="results"></ul>
+    </section>
+
+    <section>
+      <h2>Log</h2>
+      <div class="row">
+        <span role="radiogroup" aria-label="Provider">
+          <label><input type="radio" name="prov" value="github" checked /> GitHub Actions</label>
+          <label><input type="radio" name="prov" value="gitlab" /> GitLab CI</label>
+        </span>
+        <select id="fixture" aria-label="Load a fixture">
+          <option value="">Load a fixture…</option>
+          {matchers.filter((m) => m.fixtures.length).map((m) => (
+            <optgroup label={m.name}>{m.fixtures.map((f) => <option value={`${m.name}/${f.name}`}>{f.name}</option>)}</optgroup>
+          ))}
+        </select>
+        <label>or <input type="file" id="file" accept=".log,.txt,text/plain" /></label>
+      </div>
+      <textarea id="log" rows="8" spellcheck="false" placeholder="Paste a job log here, or drop a .log file. It never leaves this page." aria-label="Log"></textarea>
+      <div id="notice" class="notice"></div>
+      <div class="row">
+        <span role="radiogroup" aria-label="View">
+          <label><input type="radio" name="view" value="matches" checked /> Matches</label>
+          <label><input type="radio" name="view" value="raw" /> Raw</label>
+        </span>
+        <span class="legend" id="stats"></span>
+      </div>
+      <div class="log" id="out" aria-live="polite"></div>
+    </section>
+  </div>
+  <script>
+    import '../scripts/playground.ts';
+  </script>
+</Base>

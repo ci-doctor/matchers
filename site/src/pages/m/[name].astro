@@ -1,0 +1,78 @@
+---
+import Base from '../../layouts/Base.astro';
+import { entries, byName, GITHUB } from '../../lib/registry.ts';
+
+export const getStaticPaths = () => entries.map((e) => ({ params: { name: e.name } }));
+const e = byName(Astro.params.name!);
+const first = e.kind === 'matcher' ? e : byName(e.members[0]);
+const pg = (extra = '') => `/playground/?m=${e.name}${extra}`;
+---
+
+<Base title={e.name} description={e.description}>
+  <p class="legend"><a href="/">← Catalogue</a></p>
+  <h1>{e.name}</h1>
+  <p class="lead">{e.description}</p>
+  <p>
+    <span class="chip eco">{e.eco}</span>
+    {e.tags.map((t) => <span class="chip">{t}</span>)}
+    {e.role && <span class="chip">{e.role}</span>}
+    <span class="chip">{e.kind}</span>
+  </p>
+  <div class="btn-row">
+    <a class="btn primary" href={pg()}>Open in playground</a>
+    <a class="btn" href={`${GITHUB}/blob/main/${e.path}`}>File on GitHub</a>
+    <a class="btn" href={`${GITHUB}/commits/main/${e.path}`}>History</a>
+  </div>
+  <p>Install: <code>ci-doctor matchers add official/{e.name}</code></p>
+
+  <h2>{e.path}</h2>
+  <pre class="src">{e.yaml}</pre>
+
+  {e.kind === 'bundle' && (
+    <>
+      <h2>Contains</h2>
+      <p>{e.members.length} matchers, bundles flattened:</p>
+      <ul class="tight">
+        {e.members.map((m) => <li><a href={`/m/${m}/`}>{m}</a> <span class="legend">{byName(m).description}</span></li>)}
+      </ul>
+    </>
+  )}
+
+  {e.containedIn.length > 0 && (
+    <>
+      <h2>In bundles</h2>
+      <p>{e.containedIn.map((b) => <a class="chip" href={`/m/${b}/`}>{b}</a>)}</p>
+    </>
+  )}
+
+  {e.kind === 'matcher' && (
+    <>
+      <h2>Fixtures</h2>
+      <p class="legend">
+        GitHub Actions logs, framing stripped. Highlighted lines are what this matcher selects; the marked line
+        is the anchor. There are no GitLab logs for these fixtures yet.
+      </p>
+      {e.fixtures.map((f) => (
+        <section class="fixture">
+          <h3>
+            <code>{f.name}</code>
+            {f.mustNotFire && <span class="chip warn">must not fire</span>}
+            <a class="legend" href={pg(`&f=${f.name}`)}>Open in playground</a>
+          </h3>
+          <div class="log" style="--hl: #f2cc60">
+            {f.display.map((l, i) => (
+              <div class={`ln${l.structure ? ' structure' : ''}${f.hit.has(i) ? ' hit' : ''}${f.anchors.has(i) ? ' anchor' : ''}`}><i>{i + 1}</i>{l.text}</div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </>
+  )}
+  <script is:inline>
+    // Start each fixture at its first match, not the runner preamble.
+    for (const log of document.querySelectorAll('.fixture .log')) {
+      const hit = log.querySelector('.hit');
+      if (hit) log.scrollTop = hit.offsetTop - log.offsetTop - 40;
+    }
+  </script>
+</Base>
