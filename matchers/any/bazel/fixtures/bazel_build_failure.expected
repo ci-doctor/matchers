@@ -1,4 +1,4 @@
-… [31 lines elided] …
+… [28 lines elided] …
 INFO: Analyzed 42 targets (128 packages loaded, 4213 targets configured).
 INFO: Found 42 targets...
 ERROR: /builds/team/svc/src/render/BUILD.bazel:12:11: Compiling src/render/shader.cc failed: (Exit 1): gcc failed: error executing command
@@ -12,7 +12,10 @@ Use --verbose_failures to see the command lines of failed build steps.
 INFO: Elapsed time: 41.882s, Critical Path: 12.44s
 INFO: 217 processes: 96 internal, 121 linux-sandbox.
 FAILED: Build did NOT complete successfully
+##[error]Process completed with exit code 1.
 /usr/bin/git version
 git version 2.54.0
 Artifact upload complete.
 ##[warning]bazel-bin/: no matching files. Ensure that the artifact path is relative to the working directory
+Post job cleanup.
+Cleaning up orphan processes

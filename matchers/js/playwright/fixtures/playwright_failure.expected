@@ -1,4 +1,4 @@
-… [34 lines elided] …
+… [31 lines elided] …
   1) [chromium] › tests/checkout.spec.ts:24:1 › applies a promo code ═══════════
     Error: expect(locator).toHaveText(expected)
     Locator: locator('[data-test=order-total]')
@@ -9,6 +9,9 @@
   1 failed
     [chromium] › tests/checkout.spec.ts:24:1 › applies a promo code
   17 passed (23.1s)
+##[error]Process completed with exit code 1.
 /usr/bin/git version
 git version 2.54.0
 Artifact upload complete.
+Post job cleanup.
+Cleaning up orphan processes

@@ -1,4 +1,4 @@
-… [25 lines elided] …
+… [22 lines elided] …
 Cache restored from key: Linux-deps-8ad41f02
 npm ci --no-audit --no-fund
 npm run build --silent
@@ -17,7 +17,10 @@ Error: missing DATABASE_URL in production
     at Module._load (node:internal/modules/cjs/loader:1013:12)
     at node:internal/main/run_main_module:28:49
 Node.js v20.11.1
+##[error]Process completed with exit code 1.
 /usr/bin/git version
 git version 2.54.0
 Artifact upload complete.
 ##[warning]smoke.log: no matching files. Ensure that the artifact path is relative to the working directory
+Post job cleanup.
+… [1 lines elided] …

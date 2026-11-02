@@ -1,4 +1,4 @@
-… [32 lines elided] …
+… [29 lines elided] …
 2026/01/05 09:20:11 loaded 512 documents
 2026/01/05 09:20:11 rebuilding shard index
 panic: runtime error: index out of range [512] with length 512
@@ -10,7 +10,10 @@ example.com/svc/internal/index.(*Shard).Rebuild(0xc0000b4000)
 main.main()
 	/builds/team/svc/cmd/indexer/main.go:38 +0x94
 exit status 2
+##[error]Process completed with exit code 1.
 /usr/bin/git version
 git version 2.54.0
 Artifact upload complete.
 ##[warning]index/: no matching files. Ensure that the artifact path is relative to the working directory
+Post job cleanup.
+Cleaning up orphan processes

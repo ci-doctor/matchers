@@ -1,13 +1,4 @@
-… [3 lines elided] …
-LTS
-Secret source: Actions
-Prepare workflow directory
-Prepare all required actions
-Complete job name: docker_build_oom
-##[error]Process completed with exit code 137.
-Post job cleanup.
-Cleaning up orphan processes
-… [21 lines elided] …
+… [29 lines elided] …
 #7 9.1 -- Generating done
 #7 DONE 9.3s
 #9 [build 6/7] RUN cmake --build build --parallel 16
@@ -22,4 +13,8 @@ Cleaning up orphan processes
 133.0 c++: fatal error: Killed signal terminated program cc1plus
 ------
 Dockerfile:19
-… [3 lines elided] …
+ERROR: failed to solve: process "/bin/sh -c cmake --build build --parallel 16" did not complete successfully: exit code: 137
+##[error]Process completed with exit code 137.
+/usr/bin/git version
+git version 2.54.0
+… [2 lines elided] …
