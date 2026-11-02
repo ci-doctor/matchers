@@ -1,4 +1,4 @@
-… [29 lines elided] …
+… [26 lines elided] …
 added 1284 packages in 19s
 /builds/team/web/src/checkout/total.js
    14:9   error    'discount' is assigned a value but never used  no-unused-vars
@@ -8,7 +8,9 @@ added 1284 packages in 19s
    31:18  warning  Missing return type on function                @typescript-eslint/explicit-module-boundary-types
 ✖ 4 problems (3 errors, 1 warning)
   2 errors and 0 warnings potentially fixable with the `--fix` option.
+##[error]Process completed with exit code 1.
 /usr/bin/git version
 git version 2.54.0
 Artifact upload complete.
 ##[warning]eslint-report.json: no matching files. Ensure that the artifact path is relative to the working directory
+… [2 lines elided] …

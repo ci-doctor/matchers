@@ -1,4 +1,4 @@
-… [34 lines elided] …
+… [31 lines elided] …
   symbol:   variable PENDING
   location: class OrderStatus
 1 error
@@ -12,7 +12,10 @@ Execution failed for task ':app:compileJava'.
 > Run with --scan to get full insights.
 BUILD FAILED in 34s
 2 actionable tasks: 1 executed, 1 up-to-date
+##[error]Process completed with exit code 1.
 /usr/bin/git version
 git version 2.54.0
 Artifact upload complete.
 ##[warning]app/build/libs/: no matching files. Ensure that the artifact path is relative to the working directory
+Post job cleanup.
+… [1 lines elided] …

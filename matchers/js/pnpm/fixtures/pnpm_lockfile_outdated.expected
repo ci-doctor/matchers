@@ -1,10 +1,13 @@
-… [32 lines elided] …
+… [29 lines elided] …
 Lockfile is up to date, resolution step is skipped
  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with packages/web/package.json
 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
     Failure reason:
     specifiers in the lockfile ({"react":"^18.2.0","zod":"^3.22.4"}) don't match specs in package.json ({"react":"^18.3.1","zod":"^3.23.8"})
+##[error]Process completed with exit code 1.
 /usr/bin/git version
 git version 2.54.0
 Artifact upload complete.
 ##[warning]dist/: no matching files. Ensure that the artifact path is relative to the working directory
+Post job cleanup.
+Cleaning up orphan processes

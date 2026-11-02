@@ -1,4 +1,4 @@
-… [34 lines elided] …
+… [31 lines elided] …
 [INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ ledger-service ---
 [INFO] Compiling 84 source files with javac [debug release 21] to target/classes
 [INFO] -------------------------------------------------------------
@@ -19,6 +19,9 @@
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project ledger-service: Compilation failure
 [ERROR] -> [Help 1]
 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+##[error]Process completed with exit code 1.
 /usr/bin/git version
 git version 2.54.0
 Artifact upload complete.
+Post job cleanup.
+Cleaning up orphan processes
