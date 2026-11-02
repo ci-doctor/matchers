@@ -4,7 +4,7 @@ import { entries } from '../lib/registry.ts';
 
 // Everything the playground needs, embedded: pasted logs never leave the page.
 const data = {
-  matchers: Object.fromEntries(entries.filter((e) => e.kind === 'matcher').map((e) => [e.name, { yaml: e.yaml, eco: e.eco, description: e.description, fixtures: e.fixtures.map((f) => ({ name: f.name, log: f.log })) }])),
+  matchers: Object.fromEntries(entries.filter((e) => e.kind === 'matcher').map((e) => [e.name, { yaml: e.yaml, eco: e.eco, description: e.description, fixtures: e.fixtures.map((f) => ({ name: f.name, logs: f.logs })) }])),
   bundles: Object.fromEntries(entries.filter((e) => e.kind === 'bundle').map((e) => [e.name, e.members])),
   bundleDesc: Object.fromEntries(entries.filter((e) => e.kind === 'bundle').map((e) => [e.name, e.description])),
 };
@@ -35,13 +35,13 @@ const data = {
     <section class="pane pane-log">
       <header class="pane-h">
         <h2>Log</h2>
-        <div class="combo" id="fixture" data-label="Load a fixture" data-placeholder="Load a fixture… (search)"></div>
       </header>
-      <div class="row">
+      <div class="row ctl">
         <span class="seg" role="radiogroup" aria-label="Provider">
-          <label><input type="radio" name="prov" value="github" checked /><span>GitHub Actions</span></label>
-          <label><input type="radio" name="prov" value="gitlab" /><span>GitLab CI</span></label>
+          <label id="lab-github"><input type="radio" name="prov" value="github" checked /><span>GitHub Actions</span></label>
+          <label id="lab-gitlab"><input type="radio" name="prov" value="gitlab" /><span>GitLab CI</span></label>
         </span>
+        <div class="combo" id="fixture" data-label="Load a fixture" data-placeholder="Load a fixture… (search)"></div>
       </div>
       <label class="dz" id="dz">
         <input type="file" class="sr" id="file" accept=".log,.txt,text/plain" />

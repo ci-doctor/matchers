@@ -4,7 +4,7 @@ import { combo, type Item } from './combo.ts';
 import { prepare, run, highlighted, validate, type Matcher, type Provider } from '../lib/engine.ts';
 
 interface Data {
-  matchers: Record<string, { yaml: string; eco: string; description: string; fixtures: { name: string; log: string }[] }>;
+  matchers: Record<string, { yaml: string; eco: string; description: string; fixtures: { name: string; logs: Partial<Record<'github' | 'gitlab' | 'any', string>> }[] }>;
   bundles: Record<string, string[]>;
   bundleDesc: Record<string, string>;
 }
@@ -124,25 +124,48 @@ function pickRule(v: string) {
   else if (v.startsWith('b:')) rule.value = data.bundles[v.slice(2)].map((n) => data.matchers[n].yaml.trimEnd()).join('\n---\n') + '\n';
   else rule.value = 'id: my_rule\nrole: tool\nclassification: [any]\ndescription: Describe what this rule catches in a sentence or two.\npattern: ^ERROR\nbefore: 0\nafter: 3\n';
 }
+type Fx = Data['matchers'][string]['fixtures'][number];
+const NAMES = { github: 'GitHub Actions', gitlab: 'GitLab CI' } as const;
+const logFor = (fx: Fx, p: Provider) => fx.logs[p] ?? fx.logs.any;
+let curFx: Fx | null = null; // the fixture whose log is in the box, until the user changes it
+
+/** Enable only the providers the loaded fixture has a log for; pasted or dropped logs enable both. */
+function setAvail() {
+  for (const p of ['github', 'gitlab'] as const) {
+    const ok = !curFx || !!logFor(curFx, p);
+    const lab = $('lab-' + p), input = lab.querySelector('input')!;
+    input.disabled = !ok;
+    input.setAttribute('aria-disabled', String(!ok));
+    lab.title = ok ? '' : `No ${p === 'github' ? 'GitHub' : 'GitLab'} log for this fixture`;
+  }
+}
+const provider = () => radio('prov') as Provider;
 function loadFixture(key: string) {
   const [m, f] = key.split('/');
   const fx = data.matchers[m]?.fixtures.find((x) => x.name === f);
   if (!fx) return;
-  if (radio('prov') !== 'github') {
-    $('notice').textContent = 'No GitLab log for this fixture yet. Switch to GitHub Actions to load it.';
-    return;
-  }
+  curFx = fx;
+  const p = logFor(fx, provider()) ? provider() : provider() === 'github' ? 'gitlab' : 'github';
+  (document.querySelector(`input[name=prov][value=${p}]`) as HTMLInputElement).checked = true;
+  setAvail();
   $('notice').textContent = '';
-  log.value = fx.log;
+  log.value = logFor(fx, p)!;
   scrollToFirst = true;
   fixtureBox.set(key);
+}
+function detach() { // the user's own text: both providers make sense again
+  curFx = null;
+  fixtureBox.set('');
+  setAvail();
 }
 
 rule.addEventListener('input', typing);
 rule.addEventListener('scroll', () => { hl.scrollTop = rule.scrollTop; hl.scrollLeft = rule.scrollLeft; });
-log.addEventListener('input', () => { $('notice').textContent = ''; soon(); });
+log.addEventListener('input', () => { $('notice').textContent = ''; detach(); soon(); });
 document.querySelectorAll('input[name=prov],input[name=view]').forEach((r) => r.addEventListener('change', () => {
   $('notice').textContent = '';
+  const fx = curFx && logFor(curFx, provider());
+  if (fx && (r as HTMLInputElement).name === 'prov') { log.value = fx; scrollToFirst = true; }
   render();
 }));
 const ruleItems: Item[] = [
@@ -155,7 +178,7 @@ const ruleItems: Item[] = [
 const fixtureItems: Item[] = Object.entries(data.matchers)
   .sort((a, b) => a[1].eco.localeCompare(b[1].eco) || a[0].localeCompare(b[0]))
   .flatMap(([n, m]) => m.fixtures.map((f) => ({ value: `${n}/${f.name}`, label: f.name, group: n, sub: m.eco, hay: `${n} ${m.eco} ${f.name}`.toLowerCase() })));
-const ruleBox = combo($('pick'), ruleItems, (v) => { pickRule(v); render(); });
+const ruleBox = combo($('pick'), ruleItems, (v) => { pickRule(v); setAvail(); render(); });
 const fixtureBox = combo($('fixture'), fixtureItems, (v) => { loadFixture(v); render(); });
 ruleBox.set('');
 
@@ -172,6 +195,7 @@ const dz = $('dz');
 async function readFile(f: File | undefined) {
   if (!f) return;
   log.value = await f.text();
+  detach();
   $('notice').textContent = '';
   $('dzt').innerHTML = `<b>${esc(f.name)}</b> · drop or browse to replace`;
   render();

@@ -8,14 +8,20 @@ const root = resolve(process.cwd(), '..'); // `npm run build` runs in site/
 
 export const GITHUB = 'https://github.com/ci-doctor/matchers';
 
-export interface Fixture {
-  name: string;
-  log: string;
-  /** Lines the matcher selects, as a set of display positions. */
+export type P = 'github' | 'gitlab';
+export interface Variant {
+  display: { text: string; structure: boolean }[];
+  /** Highlighted / anchor lines, as display positions. */
   hit: Set<number>;
   anchors: Set<number>;
-  display: { text: string; structure: boolean }[];
   mustNotFire: boolean;
+}
+/** One case: up to two provider logs. A provider-less `<case>.log` serves both. */
+export interface Fixture {
+  name: string;
+  /** Raw logs by file tag; `any` is a provider-less log. */
+  logs: Partial<Record<P | 'any', string>>;
+  variants: Partial<Record<P, Variant>>;
 }
 export interface Entry {
   name: string;
@@ -54,21 +60,27 @@ function load(): Entry[] {
     const spec = parse(yaml) as Matcher;
     const dir = dirname(m.path);
     const fx = join(root, dir, 'fixtures');
-    const fixtures = existsSync(fx)
-      ? readdirSync(fx).filter((f) => f.endsWith('.log')).sort().map((f): Fixture => {
-          const log = readFileSync(join(fx, f), 'utf8');
-          const prep = prepare(log, 'github');
-          const r = run(prep.lines.map((l) => l.text), spec);
-          return {
-            name: f.replace(/\.log$/, ''),
-            log,
-            display: prep.display,
-            hit: new Set(highlighted(r).map((i) => prep.lines[i].pos)),
-            anchors: new Set(r.anchors.map((i) => prep.lines[i].pos)),
-            mustNotFire: readFileSync(join(fx, f.replace(/\.log$/, '.expected')), 'utf8') === '',
-          };
-        })
-      : [];
+    const cases = new Map<string, Fixture>();
+    for (const f of existsSync(fx) ? readdirSync(fx).filter((f) => f.endsWith('.log')).sort() : []) {
+      const tag = /\.(github|gitlab)\.log$/.exec(f)?.[1] as P | undefined;
+      const name = f.replace(/\.(github|gitlab)\.log$|\.log$/, '');
+      const c = cases.get(name) ?? { name, logs: {}, variants: {} };
+      cases.set(name, c);
+      const log = readFileSync(join(fx, f), 'utf8');
+      c.logs[tag ?? 'any'] = log;
+      const mustNotFire = readFileSync(join(fx, f.replace(/\.log$/, '.expected')), 'utf8') === '';
+      for (const p of tag ? [tag] : (['github', 'gitlab'] as P[])) {
+        const prep = prepare(log, p);
+        const r = run(prep.lines.map((l) => l.text), spec);
+        c.variants[p] = {
+          display: prep.display,
+          hit: new Set(highlighted(r).map((i) => prep.lines[i].pos)),
+          anchors: new Set(r.anchors.map((i) => prep.lines[i].pos)),
+          mustNotFire,
+        };
+      }
+    }
+    const fixtures = [...cases.values()];
     return {
       name, kind: 'matcher', path: m.path, yaml, eco: m.classification[0], tags: m.classification.slice(1),
       role: spec.role ?? '', description: m.description, members: [], containedIn: [], fixtures,

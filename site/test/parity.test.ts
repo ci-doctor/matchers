@@ -1,5 +1,5 @@
-// Every fixture in the registry: the TS engine must select exactly the lines the
-// Python (`.expected`) selected. GitHub logs, since all fixtures are GitHub logs.
+// Every fixture file in the registry: the TS engine must select exactly the lines the
+// Python (`.expected`) selected, each file run with the provider its name carries.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
@@ -16,11 +16,12 @@ for (const eco of readdirSync(root)) {
     for (const f of readdirSync(new URL('fixtures/', dir)).filter((f) => f.endsWith('.log'))) {
       n++;
       test(`${id}/${f}`, () => {
-        const lines = prepare(readFileSync(new URL(`fixtures/${f}`, dir), 'utf8'), 'github').lines.map((l) => l.text);
+        const provider = /\.gitlab\.log$/.test(f) ? 'gitlab' : 'github'; // untagged: framing-free, either works
+        const lines = prepare(readFileSync(new URL(`fixtures/${f}`, dir), 'utf8'), provider).lines.map((l) => l.text);
         const want = expectedLines(readFileSync(new URL(`fixtures/${f.replace(/\.log$/, '.expected')}`, dir), 'utf8'));
         assert.deepEqual(highlighted(run(lines, m)).map((i) => lines[i]), want);
       });
     }
   }
 }
-test('fixtures found', () => assert.ok(n >= 38, `only ${n} fixtures`));
+test('fixtures found', () => assert.ok(n >= 76, `only ${n} fixtures`));

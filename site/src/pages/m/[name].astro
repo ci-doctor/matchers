@@ -49,30 +49,50 @@ const pg = (extra = '') => `/playground/?m=${e.name}${extra}`;
     <>
       <h2>Fixtures</h2>
       <p class="legend">
-        GitHub Actions logs, framing stripped. Highlighted lines are what this matcher selects; the marked line
-        is the anchor. There are no GitLab logs for these fixtures yet.
+        Framing stripped per provider. Highlighted lines are what this matcher selects; the marked line is the anchor.
       </p>
-      {e.fixtures.map((f) => (
-        <section class="fixture">
-          <h3>
-            <code>{f.name}</code>
-            {f.mustNotFire && <span class="chip warn">must not fire</span>}
-            <a class="legend" href={pg(`&f=${f.name}`)}>Open in playground</a>
-          </h3>
-          <div class="log" style="--hl: #f2cc60">
-            {f.display.map((l, i) => (
-              <div class={`ln${l.structure ? ' structure' : ''}${f.hit.has(i) ? ' hit' : ''}${f.anchors.has(i) ? ' anchor' : ''}`}><i>{i + 1}</i>{l.text}</div>
+      {e.fixtures.map((f) => {
+        const has = (p: 'github' | 'gitlab') => !!f.variants[p];
+        const first = has('github') ? 'github' : 'gitlab';
+        const label = { github: 'GitHub Actions', gitlab: 'GitLab CI' } as const;
+        return (
+          <section class="fixture">
+            <h3>
+              <code>{f.name}</code>
+              {Object.values(f.variants)[0]!.mustNotFire && <span class="chip warn">must not fire</span>}
+              <a class="legend" href={pg(`&f=${f.name}`)}>Open in playground</a>
+            </h3>
+            <span class="seg" role="radiogroup" aria-label={`Provider for ${f.name}`}>
+              {(['github', 'gitlab'] as const).map((p) => (
+                <label title={has(p) ? undefined : `No ${p === 'github' ? 'GitHub' : 'GitLab'} log for this fixture`}>
+                  <input type="radio" name={`p-${f.name}`} value={p} checked={p === first} disabled={!has(p)} aria-disabled={!has(p)} />
+                  <span>{label[p]}</span>
+                </label>
+              ))}
+            </span>
+            {(['github', 'gitlab'] as const).filter(has).map((p) => (
+              <div class="log" data-p={p} hidden={p !== first} style="--hl: #f2cc60">
+                {f.variants[p]!.display.map((l, i) => (
+                  <div class={`ln${l.structure ? ' structure' : ''}${f.variants[p]!.hit.has(i) ? ' hit' : ''}${f.variants[p]!.anchors.has(i) ? ' anchor' : ''}`}><i>{i + 1}</i>{l.text}</div>
+                ))}
+              </div>
             ))}
-          </div>
-        </section>
-      ))}
+          </section>
+        );
+      })}
     </>
   )}
   <script is:inline>
-    // Start each fixture at its first match, not the runner preamble.
-    for (const log of document.querySelectorAll('.fixture .log')) {
+    // Start each log at its first match, not the runner preamble; also when a provider is switched to.
+    const reveal = (log) => {
       const hit = log.querySelector('.hit');
       if (hit) log.scrollTop = hit.offsetTop - log.offsetTop - 40;
-    }
+    };
+    document.querySelectorAll('.fixture .log:not([hidden])').forEach(reveal);
+    document.querySelectorAll('.fixture .seg input').forEach((r) => r.addEventListener('change', () => {
+      const fx = r.closest('.fixture');
+      fx.querySelectorAll('.log').forEach((l) => (l.hidden = l.dataset.p !== r.value));
+      reveal(fx.querySelector(`.log[data-p="${r.value}"]`));
+    }));
   </script>
 </Base>
