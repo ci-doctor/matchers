@@ -206,6 +206,14 @@ a:hover { text-decoration: underline; }
 
 .nav-spacer { margin-left: auto; }
 
+/* Phone width: the links drop to a second row, so the bar never scrolls sideways
+   and the icon buttons stay in view. */
+@media (max-width: 560px) {
+  .nav { flex-wrap: wrap; row-gap: 0.35rem; }
+  .nav::after { content: ''; order: 2; flex-basis: 100%; }
+  .navlink { order: 3; }
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -484,6 +492,17 @@ th {
   white-space: nowrap;
 }
 tbody tr:last-child td { border-bottom: none; }
+
+/* Phone width: each catalogue row becomes a card instead of a sideways-scrolling table. */
+@media (max-width: 560px) {
+  #table, #table tbody, #table tr, #table td { display: block; }
+  #table thead { display: none; }
+  #table tr { position: relative; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+  #table td { border: none; padding: 0.15rem 0; }
+  #table td.name { padding-right: 4.5rem; font-weight: 600; }
+  #table td:nth-child(3)::before { content: 'role: '; color: var(--muted); }
+  #table td:last-child { position: absolute; top: 0.7rem; right: 0; padding: 0; }
+}
 
 ul.tight { padding-left: 1.15rem; margin: 1rem 0; }
 ul.tight li { margin: 0.4rem 0; max-width: 72ch; }
