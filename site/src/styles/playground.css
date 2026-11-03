@@ -39,7 +39,7 @@
 .results-wrap { margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--border); }
 .pg .results { list-style: none; padding: 0; margin: 0.6rem 0 0; font-size: 0.86rem; max-height: 12rem; overflow: auto; }
 .pg .results li { display: flex; gap: 0.5rem; align-items: baseline; padding: 0.2rem 0; }
-.pg .results .sw { width: 0.7rem; height: 0.7rem; border-radius: 3px; flex: none; background: var(--hl); }
+.pg .results .sw { width: 0.7rem; height: 0.7rem; border-radius: 3px; flex: none; background: var(--hl); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.2); }
 .pg .results a { cursor: pointer; font-family: var(--mono); }
 
 /* ---------- log input: drop zone + textarea ---------- */
