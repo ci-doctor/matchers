@@ -164,8 +164,9 @@ export function validate(m: Matcher): string[] {
     if (v !== undefined && !(Number.isInteger(v) && v >= 0 && v <= 100)) errs.push(`${k} must be an integer 0-100`);
   }
   if (m.exclude !== undefined && !Array.isArray(m.exclude)) errs.push('exclude must be a list of regexes');
-  else (m.exclude ?? []).forEach((x, i) => {
-    try { re2(x); } catch (e) { errs.push(`exclude[${i}] does not compile in RE2: ${(e as Error).message}`); }
+  else (m.exclude ?? []).forEach((x: unknown, i) => {
+    if (typeof x !== 'string' || !x) errs.push(`exclude[${i}] must be a non-empty string`);
+    else try { re2(x); } catch (e) { errs.push(`exclude[${i}] does not compile in RE2: ${(e as Error).message}`); }
   });
   const d = m.description;
   if (typeof d !== 'string' || !/^[\x20-\x7e]{20,250}$/.test(d)) errs.push('description must be printable ASCII, 20-250 characters');
