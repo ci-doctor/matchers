@@ -51,8 +51,8 @@ export function findMatches(prep: Prepared, rules: Matcher[], nameOf: (m: Matche
       }
     }
     for (const [start, end] of result.windows) {
-      const positions = prep.lines.slice(start, end).map((l) => l.pos);
-      windows.push({ rule: name, colour, first: Math.min(...positions) + 1, last: Math.max(...positions) + 1 });
+      // Positions ascend with the line index; no spread, which overflows the stack on a huge window.
+      windows.push({ rule: name, colour, first: posOf(start) + 1, last: posOf(end - 1) + 1 });
     }
   }
   return { marks, windows };

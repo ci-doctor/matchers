@@ -21,3 +21,9 @@ test('more matchers than colours: the palette cycles', () => {
   assert.equal(colourOf(windows).get(`r${n - 1}`), PALETTE[0]);
   assert.equal(new Set(windows.slice(0, PALETTE.length).map((w) => w.colour)).size, PALETTE.length);
 });
+
+test('a window of 200k lines does not overflow the stack', () => {
+  const prep = prepare(['START', ...Array.from({ length: 200_000 }, (_, i) => `x${i}`)].join('\n'), 'github');
+  const { windows } = findMatches(prep, [{ id: 'b', start: '^START', end: '^never' }], (m) => m.id);
+  assert.deepEqual(windows.map((w) => [w.first, w.last]), [[1, 200_001]]);
+});
