@@ -1,0 +1,53 @@
+/* Design tokens. Each colour is light-dark(light, dark), resolved by color-scheme:
+   the OS preference by default, or an explicit [data-theme] on <html> (the header toggle). */
+
+:root {
+  color-scheme: light dark;
+
+  --bg: light-dark(#ffffff, #0b0f14);
+  --bg-subtle: light-dark(#f7f9fc, #10161d);
+  --fg: light-dark(#10151c, #e6edf3);
+  --muted: light-dark(#59636e, #94a2b3);
+  --border: light-dark(#dbe1e8, #222c37);
+  --border-strong: light-dark(#c2cbd6, #33404e);
+  --card: light-dark(#ffffff, #10161d);
+  --code-bg: light-dark(#10151c, #060a0e);
+  --code-fg: #e6edf3;
+
+  --accent: light-dark(#2563eb, #6098ff);
+  --accent-fg: light-dark(#ffffff, #071019);
+  --accent-soft: light-dark(#eff4ff, #131e30);
+  --good: light-dark(#087443, #3fb950);
+  --warn: light-dark(#9a5b00, #d29922);
+  --err: light-dark(#c0392b, #ff6b6b);
+  --err-bg: light-dark(rgb(192 57 43 / 0.13), rgb(255 107 107 / 0.17));
+
+  /* YAML highlighting */
+  --tok-key: light-dark(#1d4ed8, #7cb2ff);
+  --tok-str: light-dark(#0a7a4b, #7ee2a8);
+  --tok-num: light-dark(#9a5b00, #e3b341);
+  --tok-p: light-dark(#59636e, #8b98a8);
+  --tok-c: light-dark(#6b7684, #6f7d8c);
+  --tok-rx: light-dark(#b4237a, #f08fd0);
+
+  --shadow-sm: 0 1px 2px light-dark(rgb(16 21 28 / 0.05), rgb(0 0 0 / 0.4)),
+    0 1px 3px light-dark(rgb(16 21 28 / 0.06), transparent);
+  --shadow-md: 0 4px 12px light-dark(rgb(16 21 28 / 0.07), rgb(0 0 0 / 0.45)),
+    0 2px 4px light-dark(rgb(16 21 28 / 0.05), transparent);
+
+  --radius: 12px;
+  --radius-sm: 7px;
+  /* Reading measure for the content column; the header and footer are full-bleed. */
+  --maxw: 1040px;
+  --gutter: 1rem;
+  /* The sticky header's height; the playground panes fit the viewport under it. */
+  --header-h: 3.6rem;
+  /* Height of inputs, comboboxes and segmented controls. */
+  --ctl-h: 2.25rem;
+
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+:root[data-theme='light'] { color-scheme: light; }
+:root[data-theme='dark'] { color-scheme: dark; }

@@ -6,6 +6,8 @@ pytest `FAILURES` block, the `tsc` error, the Go panic. This repo holds them, ea
 proven against real job logs, and publishes them at
 **[matchers.cidoc.dev](https://matchers.cidoc.dev)**.
 
+Browse every matcher and try one against your own log in the [catalogue and playground](https://matchers.cidoc.dev).
+
 ## Use it
 
 ```yaml
