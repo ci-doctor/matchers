@@ -2,7 +2,9 @@
 import Base from '../../layouts/Base.astro';
 import Seg from '../../components/Seg.astro';
 import { entries, byName, GITHUB, type P } from '../../lib/registry.ts';
+import { highlight } from '../../lib/yaml-highlight.ts';
 import '../../styles/log.css';
+import '../../styles/yaml.css';
 
 export const getStaticPaths = () => entries.map((e) => ({ params: { name: e.name } }));
 const e = byName(Astro.params.name!);
@@ -32,7 +34,7 @@ const lineClass = (v: { hit: Set<number>; anchors: Set<number> }, i: number, str
   <p>Install: <code>ci-doctor matchers add official/{e.name}</code></p>
 
   <h2>{e.path}</h2>
-  <pre class="src">{e.yaml}</pre>
+  <pre class="src hl" set:html={highlight(e.yaml.trimEnd())} />
 
   {e.kind === 'bundle' && (
     <>
@@ -102,8 +104,9 @@ const lineClass = (v: { hit: Set<number>; anchors: Set<number> }, i: number, str
 <style>
   .fixture h3 { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
   .fixture :global(.seg) { margin: 0 0 0.6rem; }
+  /* Looks like the playground's rule editor. */
   pre.src {
-    background: var(--code-bg); color: var(--code-fg); border-radius: var(--radius);
-    padding: 1rem 1.2rem; overflow-x: auto; font-size: 0.85rem; line-height: 1.55; font-family: var(--mono);
+    background: var(--card); color: var(--fg); border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+    padding: 0.85rem; overflow-x: auto; font: 0.82rem/1.55 var(--mono); tab-size: 2;
   }
 </style>
