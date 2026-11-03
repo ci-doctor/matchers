@@ -1,5 +1,6 @@
 // The TS engine must produce exactly what ci-doctor's `matchers verify` writes to a
-// `.expected` file, for every registry fixture.
+// `.expected` file: every registry fixture, plus inline cases for the denoise and
+// framing edge cases no fixture carries.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
@@ -49,3 +50,14 @@ for (const eco of readdirSync(root)) {
 }
 test('fixtures found', () => assert.ok(n >= 76, `only ${n} fixtures`));
 
+// Expected outputs taken from ci-doctor (`verify.matcher_output` over the provider's segmenter).
+const cases: [string, Provider, string, Matcher, string][] = [
+  ['lone \\r keeps the last segment', 'github', 'progress 10%\rprogress 100%\rERROR: real\n', { id: 't', pattern: '^ERROR' }, 'ERROR: real\n'],
+  ['lone \\r mid-line on gitlab', 'gitlab', 'a\rERROR g\n', { id: 't', pattern: '^ERROR' }, 'ERROR g\n'],
+  ['\\r\\n is a line ending', 'github', 'x\r\nERROR y\r\n', { id: 't', pattern: '^ERROR y$' }, '… [1 lines elided] …\nERROR y\n'],
+  ['consecutive duplicates fold', 'github', 'FAIL x\nFAIL x\nFAIL x\nok', { id: 't', pattern: '^FAIL x$' }, ''],
+  ['folded line, counted once', 'github', 'FAIL x\nFAIL x\nok\n', { id: 't', pattern: '^FAIL', after: 1 }, 'FAIL x  (×2)\nok\n'],
+  ['duplicates fold across a blank line', 'github', 'E a\n\nE a\n', { id: 't', pattern: '^E' }, 'E a  (×2)\n'],
+  ['gitlab marker mid-line splits the run', 'gitlab', 'foo\x1b[0Ksection_start:1:step\r\x1b[0KERROR here\n', { id: 't', pattern: '^ERROR' }, '… [1 lines elided] …\nERROR here\n'],
+];
+for (const [name, p, raw, m, want] of cases) test(`engine: ${name}`, () => assert.equal(output(raw, p, m), want));

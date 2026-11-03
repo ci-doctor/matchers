@@ -29,43 +29,75 @@ function re2(rx: string): RE2JS {
 const hits = (rx: string, line: string) => re2(rx).matcher(line).find();
 
 // ---------- provider framing ----------
-// Log order is kept: strip the runner's framing, then the light denoise ci-doctor
-// always applies (`core/denoise.py`, default config): ANSI codes and blank lines.
+// Log order is kept: split into the provider's lines with its framing stripped, then
+// the denoise ci-doctor always applies (`core/denoise.py`, default config): strip ANSI,
+// keep the last `\r` segment, drop blank lines, fold consecutive duplicates.
 
 // github/segmenter.py: exactly one space after the timestamp; more is the tool's indent.
 const GH_TS = /^\d{4}-\d{2}-\d{2}T[\d:.]+Z? /;
 const GH_STRUCT = /^##\[(?:group\].*|endgroup\]\s*)$/;
-// gitlab/segmenter.py: _LOG_META and _MARKER.
-const GL_META = /^\d{4}-\d{2}-\d{2}T[\d:.]+Z [0-9A-Fa-f]{2}[OE]\+? ?/gm;
-const GL_MARKER = /(?:\x1b\[0K)?section_(?:start|end):\d+:[A-Za-z0-9_.-]+(?:\[[^\]]*\])?(?:\r(?:\x1b\[0K)?)?\n?/g;
+// gitlab/segmenter.py: _LOG_META and _MARKER. `(?<![^\n])` is Python's `^` under
+// re.MULTILINE: JS's `m` flag would also match after a lone `\r`.
+const GL_META = /(?<![^\n])\d{4}-\d{2}-\d{2}T[\d:.]+Z [0-9A-Fa-f]{2}[OE]\+? ?/g;
+const GL_MARKER = /(?:\x1b\[0K)?section_(?:start|end):\d+:[A-Za-z0-9_.-]+(?:\[[^\]]*\])?(?:\r(?:\x1b\[0K)?)?\n?/;
 const ANSI = /\x1b\[[0-9;?]*[ -/]*[@-~]/g;
+/** The default noise pattern `^\s*$`, with RE2's `\s`. */
+const BLANK = /^[\t\n\f\r ]*$/;
+
+/** A content run's lines, the empty tail after a trailing newline dropped. */
+function splitLines(text: string): string[] {
+  const parts = text.split('\n');
+  if (parts.at(-1) === '') parts.pop();
+  return parts;
+}
 
 export interface Line {
   text: string;
-  /** Index into `Prepared.display`. */
+  /** Index into `Prepared.display`; a folded run points at its first line. */
   pos: number;
 }
+export type DisplayLine = { text: string; structure: boolean };
 export interface Prepared {
   /** The log as the provider shows it: framing stripped. `structure` lines are never matched. */
-  display: { text: string; structure: boolean }[];
-  /** What matchers see: the non-blank content lines of `display`. */
+  display: DisplayLine[];
+  /** What matchers see: the non-blank content lines of `display`, duplicate runs folded. */
   lines: Line[];
 }
 
 export function prepare(raw: string, provider: Provider): Prepared {
-  const text = raw.replace(/\r\n/g, '\n'); // a lone \r is GitLab's marker terminator
-  const parts =
+  // `\r\n` ends a line (ci-doctor reads fixtures with universal newlines); a lone `\r` is a rewrite.
+  const text = raw.replace(/\r\n/g, '\n');
+  const display: DisplayLine[] =
     provider === 'github'
-      ? text.split('\n').map((l) => l.replace(GH_TS, ''))
-      : text.replace(GL_META, '').replace(GL_MARKER, '').split('\n').map((l) => l.replace(/\r+$/, ''));
-  if (parts.at(-1) === '') parts.pop();
-  const display = parts.map((l) => {
-    const t = l.replace(ANSI, '');
-    return { text: t, structure: provider === 'github' && GH_STRUCT.test(t) };
+      ? splitLines(text).map((l) => {
+          const t = l.replace(GH_TS, '');
+          return { text: denoise(t), structure: GH_STRUCT.test(t) };
+        })
+      : text
+          .replace(GL_META, '')
+          .split(GL_MARKER) // _tokenize: each content run between markers is split on its own
+          .flatMap(splitLines)
+          .map((l) => ({ text: denoise(l.replace(/\r+$/, '')), structure: false }));
+  const lines: Line[] = [];
+  let prev = '';
+  let count = 0;
+  display.forEach((l, pos) => {
+    if (l.structure || BLANK.test(l.text)) return;
+    if (count && l.text === prev) lines.at(-1)!.text = `${prev}  (×${++count})`; // _dedupe_consecutive
+    else {
+      lines.push({ text: l.text, pos });
+      prev = l.text;
+      count = 1;
+    }
   });
-  const lines = display.flatMap((l, pos) => (!l.structure && /\S/.test(l.text) ? [{ text: l.text, pos }] : []));
   return { display, lines };
 }
+
+/** `strip_ansi`, then `_collapse_cr`: a `\r` rewrite shows its last segment. */
+const denoise = (l: string) => {
+  const t = l.replace(ANSI, '');
+  return t.slice(t.lastIndexOf('\r') + 1);
+};
 
 // ---------- matching ----------
 
@@ -140,12 +172,4 @@ export function validate(m: Matcher): string[] {
   if (!m.id) errs.push('id is required');
   if (!['tool', 'wrapper', 'fallback'].includes(m.role as string)) errs.push('role must be tool, wrapper or fallback');
   return errs.filter((e): e is string => !!e);
-}
-
-// ---------- fixtures ----------
-
-/** Lines of a `.expected` file with the `… [N lines elided] …` gap markers removed. */
-export function expectedLines(text: string): string[] {
-  if (!text) return [];
-  return text.replace(/\r\n?/g, '\n').replace(/\n$/, '').split('\n').filter((l) => !/^… \[\d+ lines? elided\] …$/.test(l));
 }
