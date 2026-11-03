@@ -12,6 +12,10 @@ on:
 permissions:
   contents: read
 
+env:
+  # Keep in step with ci.yml and mise.toml.
+  CI_DOCTOR: git+https://github.com/ci-doctor/ci-doctor@feat/E11
+
 concurrency:
   group: pages
   cancel-in-progress: false   # never cut a deploy off half-way
@@ -23,12 +27,18 @@ jobs:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
+      # ci.yml's checks again, so a push that breaks them never deploys. Here rather than
+      # a workflow_run of ci: that trigger runs main's copy of this file in a privileged
+      # context, and the checks are cheap.
+      - uses: astral-sh/setup-uv@v10.3.3
+      - run: uvx --from "$CI_DOCTOR" ci-doctor matchers verify .
+      - run: uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check
       - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
           cache-dependency-path: site/package-lock.json
-      - run: npm ci && npm run build
+      - run: npm ci && npm run build && npm test
         working-directory: site
       # Only the registry joins the site: index, matchers (fixtures included) and
       # bundles. Repo plumbing stays out of the published tree.
