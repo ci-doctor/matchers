@@ -19,19 +19,21 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TYPES: feat|fix|docs|test|chore|refactor|perf|ci|build|style|revert
+      # Dependabot is exempt by who opened the PR: a fork can name its branch dependabot/*.
+      AUTHOR: ${{ github.event.pull_request.user.login }}
     steps:
       - name: Branch name is <type>/<slug>
         env:
           BRANCH: ${{ github.head_ref }}   # via env, never interpolated into the script
         run: |
-          [[ "$BRANCH" == dependabot/* ]] && { echo "branch '$BRANCH' ok (dependabot)"; exit 0; }
+          [[ "$AUTHOR" == "dependabot[bot]" ]] && { echo "branch '$BRANCH' ok (dependabot)"; exit 0; }
           if [[ ! "$BRANCH" =~ ^($TYPES)/[A-Za-z0-9][A-Za-z0-9._/-]*$ ]]; then
             echo "::error::branch '$BRANCH' is not <type>/<slug>. Types: ${TYPES//|/, }"
             exit 1
           fi
           echo "branch '$BRANCH' ok"
       - name: PR title is a Conventional Commit
-        if: ${{ !startsWith(github.head_ref, 'dependabot/') }}
+        if: ${{ env.AUTHOR != 'dependabot[bot]' }}
         env:
           TITLE: ${{ github.event.pull_request.title }}
         run: |
