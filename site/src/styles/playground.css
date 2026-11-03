@@ -1,16 +1,12 @@
 /* The playground page: two panes, rule (left) and log (right). */
 
-.pg-title { margin-bottom: 0.3rem; }
-.pg-lead { margin-bottom: 1.25rem; }
-
-/* Layout. Wide screens: two panes of one fixed height that fill the viewport under the
-   sticky header; the page scrolls only far enough to tuck the title away (no footer), so
-   the panes end up pinned. Every sub-window (editor, matches, raw log, marked log) scrolls
+/* Layout. Wide screens: the page doesn't scroll; two panes fill the viewport under the
+   header (no title, no footer). Every sub-window (editor, matches, raw log, marked log) scrolls
    on its own. Split by importance: the log 60%, rule + matches 40%; inside, the marked
    log gets 3/4 of its pane, the editor 3/5 of its pane.
    Narrow screens: one column, each sub-window a fixed height of its own. */
 
-main:has(> .pg) { --pg-gap: 1rem; padding-bottom: var(--pg-gap); }
+main:has(> .pg) { --pg-gap: 1rem; }
 
 .pg { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--pg-gap); }
 .pane { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-subtle); padding: 0.9rem 1.1rem 1rem; min-width: 0; }
@@ -21,10 +17,9 @@ main:has(> .pg) { --pg-gap: 1rem; padding-bottom: var(--pg-gap); }
 .pg .log { height: 70dvh; }
 
 @media (min-width: 1001px) {
-  .pg {
-    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-    height: calc(100dvh - var(--header-h) - 2 * var(--pg-gap));
-  }
+  body:has(.pg) { display: flex; flex-direction: column; height: 100dvh; overflow: hidden; }
+  main:has(> .pg) { flex: 1; min-height: 0; width: 100%; box-sizing: border-box; padding: var(--pg-gap) var(--gutter); }
+  .pg { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); height: 100%; }
   .pane { display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
   .pane > * { flex: none; }
   .pane > .editor { flex: 3 1 0; min-height: 6rem; height: auto; }
