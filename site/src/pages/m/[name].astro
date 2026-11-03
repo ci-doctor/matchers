@@ -1,11 +1,17 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { entries, byName, GITHUB } from '../../lib/registry.ts';
+import Seg from '../../components/Seg.astro';
+import { entries, byName, GITHUB, type P } from '../../lib/registry.ts';
+import '../../styles/log.css';
 
 export const getStaticPaths = () => entries.map((e) => ({ params: { name: e.name } }));
 const e = byName(Astro.params.name!);
-const first = e.kind === 'matcher' ? e : byName(e.members[0]);
 const pg = (extra = '') => `/playground/?m=${e.name}${extra}`;
+const PROVIDERS = ['github', 'gitlab'] as const;
+const PROVIDER_LABEL = { github: 'GitHub Actions', gitlab: 'GitLab CI' } as const;
+const PROVIDER_NAME = { github: 'GitHub', gitlab: 'GitLab' } as const;
+const lineClass = (v: { hit: Set<number>; anchors: Set<number> }, i: number, structure: boolean) =>
+  ['ln', structure && 'structure', v.hit.has(i) && 'hit', v.anchors.has(i) && 'anchor'].filter(Boolean).join(' ');
 ---
 
 <Base title={e.name} description={e.description}>
@@ -52,9 +58,8 @@ const pg = (extra = '') => `/playground/?m=${e.name}${extra}`;
         Framing stripped per provider. Highlighted lines are what this matcher selects; the marked line is the anchor.
       </p>
       {e.fixtures.map((f) => {
-        const has = (p: 'github' | 'gitlab') => !!f.variants[p];
-        const first = has('github') ? 'github' : 'gitlab';
-        const label = { github: 'GitHub Actions', gitlab: 'GitLab CI' } as const;
+        const has = (p: P) => !!f.variants[p];
+        const shown: P = has('github') ? 'github' : 'gitlab';
         return (
           <section class="fixture">
             <h3>
@@ -62,21 +67,18 @@ const pg = (extra = '') => `/playground/?m=${e.name}${extra}`;
               {Object.values(f.variants)[0]!.mustNotFire && <span class="chip warn">must not fire</span>}
               <a class="legend" href={pg(`&f=${f.name}`)}>Open in playground</a>
             </h3>
-            <span class="seg" role="radiogroup" aria-label={`Provider for ${f.name}`}>
-              {(['github', 'gitlab'] as const).map((p) => (
-                <label title={has(p) ? undefined : `No ${p === 'github' ? 'GitHub' : 'GitLab'} log for this fixture`}>
-                  <input type="radio" name={`p-${f.name}`} value={p} checked={p === first} disabled={!has(p)} aria-disabled={!has(p)} />
-                  <span>{label[p]}</span>
-                </label>
-              ))}
-            </span>
-            {(['github', 'gitlab'] as const).filter(has).map((p) => (
-              <div class="log" data-p={p} hidden={p !== first} style="--hl: #f2cc60">
-                {f.variants[p]!.display.map((l, i) => (
-                  <div class={`ln${l.structure ? ' structure' : ''}${f.variants[p]!.hit.has(i) ? ' hit' : ''}${f.variants[p]!.anchors.has(i) ? ' anchor' : ''}`}><i>{i + 1}</i>{l.text}</div>
-                ))}
-              </div>
-            ))}
+            <Seg name={`p-${f.name}`} label={`Provider for ${f.name}`} options={PROVIDERS.map((p) => ({
+              value: p, label: PROVIDER_LABEL[p], checked: p === shown, disabled: !has(p),
+              title: has(p) ? undefined : `No ${PROVIDER_NAME[p]} log for this fixture`,
+            }))} />
+            {PROVIDERS.filter(has).map((p) => {
+              const v = f.variants[p]!;
+              return (
+                <div class="log" data-p={p} hidden={p !== shown}>
+                  {v.display.map((l, i) => <div class={lineClass(v, i, l.structure)}><i>{i + 1}</i>{l.text}</div>)}
+                </div>
+              );
+            })}
           </section>
         );
       })}
@@ -96,3 +98,12 @@ const pg = (extra = '') => `/playground/?m=${e.name}${extra}`;
     }));
   </script>
 </Base>
+
+<style>
+  .fixture h3 { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+  .fixture :global(.seg) { margin: 0 0 0.6rem; }
+  pre.src {
+    background: var(--code-bg); color: var(--code-fg); border-radius: var(--radius);
+    padding: 1rem 1.2rem; overflow-x: auto; font-size: 0.85rem; line-height: 1.55; font-family: var(--mono);
+  }
+</style>

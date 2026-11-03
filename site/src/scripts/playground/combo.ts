@@ -9,7 +9,8 @@ export interface Item {
   sub?: string;
 }
 
-const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+import { escapeHtml as esc } from '../../lib/html.ts';
+
 let uid = 0;
 
 export function combo(root: HTMLElement, items: Item[], onPick: (value: string) => void) {

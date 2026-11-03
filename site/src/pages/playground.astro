@@ -1,13 +1,22 @@
 ---
 import Base from '../layouts/Base.astro';
+import Seg from '../components/Seg.astro';
 import { entries } from '../lib/registry.ts';
+import type { PlaygroundData } from '../scripts/playground/data.ts';
+import '../styles/log.css';
+import '../styles/yaml.css';
+import '../styles/playground.css';
 
 // Everything the playground needs, embedded: pasted logs never leave the page.
-const data = {
-  matchers: Object.fromEntries(entries.filter((e) => e.kind === 'matcher').map((e) => [e.name, { yaml: e.yaml, eco: e.eco, description: e.description, fixtures: e.fixtures.map((f) => ({ name: f.name, logs: f.logs })) }])),
-  bundles: Object.fromEntries(entries.filter((e) => e.kind === 'bundle').map((e) => [e.name, e.members])),
-  bundleDesc: Object.fromEntries(entries.filter((e) => e.kind === 'bundle').map((e) => [e.name, e.description])),
-};
+const data: PlaygroundData = { matchers: {}, bundles: {} };
+for (const e of entries) {
+  if (e.kind === 'matcher') {
+    const fixtures = e.fixtures.map((f) => ({ name: f.name, logs: f.logs }));
+    data.matchers[e.name] = { yaml: e.yaml, eco: e.eco, description: e.description, fixtures };
+  } else {
+    data.bundles[e.name] = { description: e.description, members: e.members };
+  }
+}
 ---
 
 <Base title="Playground" description="Run a matcher, or your own draft, against a CI log in the browser." wide>
@@ -37,10 +46,10 @@ const data = {
         <h2>Log</h2>
       </header>
       <div class="row ctl">
-        <span class="seg" role="radiogroup" aria-label="Provider">
-          <label id="lab-github"><input type="radio" name="prov" value="github" checked /><span>GitHub Actions</span></label>
-          <label id="lab-gitlab"><input type="radio" name="prov" value="gitlab" /><span>GitLab CI</span></label>
-        </span>
+        <Seg name="prov" label="Provider" options={[
+          { value: 'github', label: 'GitHub Actions', checked: true },
+          { value: 'gitlab', label: 'GitLab CI' },
+        ]} />
         <div class="combo" id="fixture" data-label="Load a fixture" data-placeholder="Load a fixture… (search)"></div>
       </div>
       <label class="dz" id="dz">
@@ -48,19 +57,18 @@ const data = {
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
         <span id="dzt">Drop a .log file or <u>browse</u></span>
       </label>
-      <textarea id="log" class="plain" rows="7" spellcheck="false" placeholder="…or paste a job log here." aria-label="Log"></textarea>
-      <div id="notice" class="notice"></div>
+      <textarea id="log" rows="7" spellcheck="false" placeholder="…or paste a job log here." aria-label="Log"></textarea>
       <div class="row">
-        <span class="seg" role="radiogroup" aria-label="View">
-          <label><input type="radio" name="view" value="matches" checked /><span>Matches</span></label>
-          <label><input type="radio" name="view" value="raw" /><span>Raw</span></label>
-        </span>
+        <Seg name="view" label="View" options={[
+          { value: 'matches', label: 'Matches', checked: true },
+          { value: 'raw', label: 'Raw' },
+        ]} />
         <span class="legend" id="stats"></span>
       </div>
       <div class="log" id="out" aria-live="polite"></div>
     </section>
   </div>
   <script>
-    import '../scripts/playground.ts';
+    import '../scripts/playground/main.ts';
   </script>
 </Base>

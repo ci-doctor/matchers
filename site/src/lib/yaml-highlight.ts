@@ -1,7 +1,9 @@
 // A hand-rolled highlighter for matcher YAML (small, flat): keys, strings, numbers,
 // list dashes, comments, and regex values (pattern/start/end/exclude items).
+// Used by the playground editor (in the browser) and the matcher page (at build time).
 
-const esc = (s: string) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]!);
+import { escapeHtml as esc } from './html.ts';
+
 const span = (cls: string, s: string) => (s ? `<i class="t-${cls}">${esc(s)}</i>` : '');
 const RX_KEYS = new Set(['pattern', 'start', 'end']);
 
@@ -49,7 +51,7 @@ export function highlightLine(line: string, st: { ex: boolean }): string {
 }
 
 /** The whole source as one block per line; `bad` lines (0-based) get the error mark. */
-export function highlight(src: string, bad: Set<number>): string {
+export function highlight(src: string, bad: ReadonlySet<number> = new Set()): string {
   const st = { ex: false };
   return src
     .split('\n')

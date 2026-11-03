@@ -64,3 +64,52 @@ const nm = entries.filter((e) => e.kind === 'matcher').length;
     });
   </script>
 </Base>
+
+<style>
+  .filters { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 1.5rem 0 1rem; }
+  .filters input { flex: 1 1 16rem; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+    font-size: 0.9rem;
+    display: block;
+    overflow-x: auto;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tr[hidden] { display: none; }
+  td.name { white-space: nowrap; font-weight: 600; }
+
+  .copy {
+    font: inherit; font-size: 0.78rem; cursor: pointer; color: var(--fg);
+    background: var(--card); border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+    padding: 0.25rem 0.6rem; white-space: nowrap;
+  }
+  .copy:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Phone width: each row becomes a card instead of a sideways-scrolling table. */
+  @media (max-width: 560px) {
+    table, tbody, tr, td { display: block; }
+    thead { display: none; }
+    tr { position: relative; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    td { border: none; padding: 0.15rem 0; }
+    td.name { padding-right: 4.5rem; }
+    td:nth-child(3)::before { content: 'role: '; color: var(--muted); }
+    td:last-child { position: absolute; top: 0.7rem; right: 0; padding: 0; }
+  }
+</style>
