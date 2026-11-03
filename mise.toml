@@ -2,6 +2,7 @@
 
 [tools]
 uv = "latest"   # runs ci-doctor (uvx) and the guard scripts
+node = "lts"    # builds and serves the site
 
 [env]
 # The ci-doctor that provides `matchers verify` / `index`. Keep in step with ci.yml.
@@ -27,3 +28,8 @@ run = "uv run --no-project --with pyyaml python .github/scripts/registry_guards.
 description = "Everything CI runs"
 run = 'uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check'
 depends = ["verify", "guards"]
+
+[tasks.docs]
+description = "Serve the registry site locally with live reload (http://localhost:4321)"
+dir = "site"
+run = "npm ci && npm run dev"
