@@ -29,8 +29,12 @@ export const data: PlaygroundData = JSON.parse(document.getElementById('data')!.
 export const NEW_RULE_YAML =
   'id: my_rule\nrole: tool\nclassification: [any]\ndescription: Describe what this rule catches in a sentence or two.\npattern: ^ERROR\nbefore: 0\nafter: 3\n';
 
+// Own keys only: names come from the URL and the editor, and `in` would accept `constructor`.
+export const isMatcher = (name: string) => Object.hasOwn(data.matchers, name);
+export const isBundle = (name: string) => Object.hasOwn(data.bundles, name);
+
 /** Rule-picker values: `m:<matcher>`, `b:<bundle>`, or '' for a new rule. */
-export const ruleValue = (name: string) => (name in data.matchers ? 'm:' : 'b:') + name;
+export const ruleValue = (name: string) => (isMatcher(name) ? 'm:' : 'b:') + name;
 
 /** The editor source for a rule-picker value; a bundle is its members as YAML documents. */
 export function ruleSource(value: string): string {
@@ -45,7 +49,7 @@ export const logFor = (fx: Fixture, p: Provider) => fx.logs[p] ?? fx.logs.any;
 /** `<matcher>/<fixture>`, the fixture-picker value. */
 export function findFixture(key: string): Fixture | undefined {
   const [matcher, name] = key.split('/');
-  return data.matchers[matcher]?.fixtures.find((f) => f.name === name);
+  return isMatcher(matcher) ? data.matchers[matcher].fixtures.find((f) => f.name === name) : undefined;
 }
 
 const byEcoThenName = ([a, ma]: [string, MatcherInfo], [b, mb]: [string, MatcherInfo]) =>

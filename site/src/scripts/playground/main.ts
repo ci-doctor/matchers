@@ -1,7 +1,7 @@
 // Playground wiring: rule editor + log input -> matches, rendered into the log view and match list.
 import { prepare, type Matcher } from '../../lib/engine.ts';
 import { combo } from './combo.ts';
-import { data, ruleItems, ruleSource, ruleValue } from './data.ts';
+import { data, isBundle, isMatcher, ruleItems, ruleSource, ruleValue } from './data.ts';
 import { createEditor } from './editor.ts';
 import { createLogInput } from './log-input.ts';
 import { findMatches } from './matches.ts';
@@ -22,7 +22,7 @@ const ruleBox = combo(el('pick'), ruleItems, (value) => {
   render();
 });
 
-const nameOf = (m: Matcher) => (m.id in data.matchers ? `official/${m.id}` : m.id);
+const nameOf = (m: Matcher) => (isMatcher(m.id) ? `official/${m.id}` : m.id);
 const view = () => document.querySelector<HTMLInputElement>('input[name=view]:checked')!.value as 'matches' | 'raw';
 
 function render({ scrollToFirst = false } = {}) {
@@ -61,12 +61,12 @@ onMatchClick(matchList, revealLine);
 function preloadFromUrl(): boolean {
   const q = new URLSearchParams(location.search);
   const name = q.get('m');
-  if (!name || !(name in data.matchers || name in data.bundles)) return false;
+  if (!name || !(isMatcher(name) || isBundle(name))) return false;
   editor.source = ruleSource(ruleValue(name));
   ruleBox.set(ruleValue(name));
   const wanted = q.get('f');
   const hasWanted = (n: string) => (wanted ? data.matchers[n].fixtures.some((f) => f.name === wanted) : data.matchers[n].fixtures.length > 0);
-  const owner = name in data.matchers ? name : data.bundles[name].members.find(hasWanted);
+  const owner = isMatcher(name) ? name : data.bundles[name].members.find(hasWanted);
   const fixture = wanted ?? (owner && data.matchers[owner].fixtures[0]?.name);
   if (owner && fixture) logInput.loadFixture(`${owner}/${fixture}`);
   return true;
