@@ -56,6 +56,11 @@ def _read(path: str) -> str:
 
 
 def main(base_ref: str) -> int:
+    # Fail closed: with a bad ref every `git show` misses and the guards would pass.
+    verify = ["git", "rev-parse", "--verify", "--quiet", f"{base_ref}^{{commit}}"]
+    if subprocess.run(verify, capture_output=True).returncode != 0:
+        print(f"::error::{base_ref!r} is not a commit; fetch the base branch first.")
+        return 1
     errors = []
     if (base_index := _at(base_ref, INDEX)) is not None:
         errors += [

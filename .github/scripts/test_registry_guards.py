@@ -1,4 +1,4 @@
-from registry_guards import added_exemptions, removed_names
+from registry_guards import added_exemptions, main, removed_names
 
 BASE = """
 schema: 1
@@ -23,3 +23,8 @@ def test_a_deprecated_name_may_go():
 def test_exemptions_only_shrink():
     assert added_exemptions("a\nb\n", "a\n") == []
     assert added_exemptions("a\n", "a\n# note\nnew\n") == ["new"]
+
+
+def test_a_bad_base_ref_fails_closed(capsys):
+    assert main("origin/does-not-exist") == 1
+    assert "is not a commit" in capsys.readouterr().out
