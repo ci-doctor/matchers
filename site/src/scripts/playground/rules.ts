@@ -16,8 +16,8 @@ export function parseRules(src: string): ParsedRules {
   const lineAt = (offset: number) => src.slice(0, offset).split('\n').length - 1;
   const docs = parseAllDocuments(src).filter((d) => d.contents !== null || d.errors.length);
 
-  for (const doc of docs) {
-    const prefix = docs.length > 1 ? `rule ${out.rules.length + 1}: ` : '';
+  for (const [i, doc] of docs.entries()) {
+    const prefix = docs.length > 1 ? `rule ${i + 1}: ` : '';
     if (doc.errors.length) {
       for (const e of doc.errors) {
         out.errors.push(prefix + e.message.split('\n')[0]);
