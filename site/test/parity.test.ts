@@ -5,7 +5,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { parse } from 'yaml';
-import { prepare, run, validate, type Matcher, type Provider } from '../src/lib/engine.ts';
+import { prepare, run, validate, PROVIDERS, type Matcher, type Provider } from '../src/lib/engine.ts';
 
 /** Port of `verify.matcher_output`: `extract._merge` + `_render`, "" when nothing fired. */
 function output(raw: string, provider: Provider, m: Matcher): string {
@@ -41,7 +41,7 @@ for (const eco of readdirSync(root)) {
       const raw = readFileSync(new URL(`fixtures/${f}`, dir), 'utf8');
       const want = readFileSync(new URL(`fixtures/${f.replace(/\.log$/, '.expected')}`, dir), 'utf8');
       // An untagged log is shown under both providers (registry.ts), so it must hold under both.
-      for (const p of tag ? [tag] : (['github', 'gitlab'] as const)) {
+      for (const p of tag ? [tag] : PROVIDERS) {
         n++;
         test(`${id}/${f} (${p})`, () => assert.equal(output(raw, p, m), want));
       }

@@ -2,12 +2,10 @@
 // A loaded fixture stays "attached" until the user edits the text, so switching provider
 // swaps in that fixture's other log; only providers it has a log for are enabled.
 import { escapeHtml } from '../../lib/html.ts';
-import type { Provider } from '../../lib/engine.ts';
+import { PROVIDERS, PROVIDER_NAME, type Provider } from '../../lib/engine.ts';
 import { combo } from './combo.ts';
 import { fixtureItems, findFixture, logFor, type Fixture } from './data.ts';
 
-const PROVIDERS = ['github', 'gitlab'] as const;
-const PROVIDER_NAME = { github: 'GitHub', gitlab: 'GitLab' } as const;
 const other = (p: Provider): Provider => (p === 'github' ? 'gitlab' : 'github');
 const providerRadio = (p: Provider) => document.querySelector<HTMLInputElement>(`input[name=prov][value=${p}]`)!;
 

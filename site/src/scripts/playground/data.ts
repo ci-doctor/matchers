@@ -1,13 +1,11 @@
 // The registry slice the playground page embeds as JSON (see playground.astro),
 // and the combobox items built from it.
 import type { Provider } from '../../lib/engine.ts';
+import type { Fixture as RegistryFixture } from '../../lib/registry.ts';
 import type { Item } from './combo.ts';
 
-export interface Fixture {
-  name: string;
-  /** Raw logs by file tag; `any` is a provider-less log that serves both providers. */
-  logs: Partial<Record<Provider | 'any', string>>;
-}
+/** A registry fixture's raw logs; the page renders nothing else. */
+export type Fixture = Pick<RegistryFixture, 'name' | 'logs'>;
 export interface MatcherInfo {
   yaml: string;
   eco: string;

@@ -4,7 +4,9 @@
 
 import { RE2JS } from 're2js';
 
-export type Provider = 'github' | 'gitlab';
+export const PROVIDERS = ['github', 'gitlab'] as const;
+export type Provider = (typeof PROVIDERS)[number];
+export const PROVIDER_NAME: Record<Provider, string> = { github: 'GitHub', gitlab: 'GitLab' };
 
 export interface Matcher {
   id: string;
