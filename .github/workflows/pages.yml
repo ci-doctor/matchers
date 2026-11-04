@@ -12,10 +12,6 @@ on:
 permissions:
   contents: read
 
-env:
-  # Keep in step with ci.yml and mise.toml.
-  CI_DOCTOR: git+https://github.com/ci-doctor/ci-doctor@feat/E11
-
 concurrency:
   group: pages
   cancel-in-progress: false   # never cut a deploy off half-way
@@ -31,6 +27,10 @@ jobs:
       # a workflow_run of ci: that trigger runs main's copy of this file in a privileged
       # context, and the checks are cheap.
       - uses: astral-sh/setup-uv@v10.3.3
+      # ci-doctor at its latest release tag, looked up on every run.
+      - run: echo "CI_DOCTOR=git+https://github.com/ci-doctor/ci-doctor@$(gh release view --repo ci-doctor/ci-doctor --json tagName -q .tagName)" >> "$GITHUB_ENV"
+        env:
+          GH_TOKEN: ${{ github.token }}
       - run: uvx --from "$CI_DOCTOR" ci-doctor matchers verify .
       - run: uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check
       - uses: actions/setup-node@v7

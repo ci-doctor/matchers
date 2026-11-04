@@ -3,10 +3,11 @@
 [tools]
 uv = "latest"   # runs ci-doctor (uvx) and the guard scripts
 node = "lts"    # builds and serves the site
+gh = "latest"   # looks up the ci-doctor release to run
 
 [env]
-# The ci-doctor that provides `matchers verify` / `index`. Keep in step with ci.yml.
-CI_DOCTOR = "git+https://github.com/ci-doctor/ci-doctor@feat/E11"
+# The ci-doctor that provides `matchers verify` / `index`: its latest release tag, as in CI.
+CI_DOCTOR = "git+https://github.com/ci-doctor/ci-doctor@{{ exec(command='gh release view --repo ci-doctor/ci-doctor --json tagName -q .tagName') }}"
 
 [tasks.verify]
 description = "Golden fixtures, fixture counts and every validation rule"
