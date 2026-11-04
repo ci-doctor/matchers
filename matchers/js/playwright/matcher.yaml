@@ -1,0 +1,6 @@
+id: playwright
+role: tool
+classification: [js, e2e]
+description: A Playwright test failure - the `1) suite > test` header names the test; its trace and diff follow.
+pattern: '^\s*\d+\) .+ › '
+after: 20

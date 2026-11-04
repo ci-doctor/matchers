@@ -1,0 +1,7 @@
+id: python_traceback
+role: tool
+classification: [python, runtime]
+description: An uncaught Python exception. The exception type and message are on the traceback's last line; the frames above show where it was raised.
+pattern: '^\s*Traceback \(most recent call last\):'
+before: 1
+after: 25

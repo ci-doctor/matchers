@@ -1,0 +1,61 @@
+name: pages
+
+# Publishes matchers.cidoc.dev: the catalogue and playground (built from site/) plus the
+# raw registry (index.yaml, matchers/, bundles/) that `ci-doctor` fetches from the same
+# domain. The site creates no page at those three paths. The custom domain is set in the
+# repo's Pages settings; an Actions deploy ignores a CNAME file.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  # Keep in step with ci.yml and mise.toml.
+  CI_DOCTOR: git+https://github.com/ci-doctor/ci-doctor@feat/E11
+
+concurrency:
+  group: pages
+  cancel-in-progress: false   # never cut a deploy off half-way
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      # ci.yml's checks again, so a push that breaks them never deploys. Here rather than
+      # a workflow_run of ci: that trigger runs main's copy of this file in a privileged
+      # context, and the checks are cheap.
+      - uses: astral-sh/setup-uv@v10.3.3
+      - run: uvx --from "$CI_DOCTOR" ci-doctor matchers verify .
+      - run: uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci && npm run build && npm test
+        working-directory: site
+      # Only the registry joins the site: index, matchers (fixtures included) and
+      # bundles. Repo plumbing stays out of the published tree.
+      - run: cp -r index.yaml matchers bundles site/dist/
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v5

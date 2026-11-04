@@ -1,0 +1,63 @@
+// The TS engine must produce exactly what ci-doctor's `matchers verify` writes to a
+// `.expected` file: every registry fixture, plus inline cases for the denoise and
+// framing edge cases no fixture carries.
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync, readdirSync } from 'node:fs';
+import { parse } from 'yaml';
+import { prepare, run, validate, PROVIDERS, type Matcher, type Provider } from '../src/lib/engine.ts';
+
+/** Port of `verify.matcher_output`: `extract._merge` + `_render`, "" when nothing fired. */
+function output(raw: string, provider: Provider, m: Matcher): string {
+  const lines = prepare(raw, provider).lines.map((l) => l.text);
+  const wins = run(lines, m).windows.toSorted((a, b) => a[0] - b[0]);
+  if (!wins.length) return '';
+  const merged: [number, number][] = [];
+  for (const [s, e] of wins) {
+    const last = merged.at(-1);
+    if (last && s <= last[1]) last[1] = Math.max(last[1], e);
+    else merged.push([s, e]);
+  }
+  const out: string[] = [];
+  let prev = 0;
+  for (const [s, e] of merged) {
+    if (s > prev) out.push(`… [${s - prev} lines elided] …`);
+    out.push(...lines.slice(s, e));
+    prev = e;
+  }
+  if (prev < lines.length) out.push(`… [${lines.length - prev} lines elided] …`);
+  return out.join('\n') + '\n';
+}
+
+const root = new URL('../../matchers/', import.meta.url);
+let n = 0;
+for (const eco of readdirSync(root)) {
+  for (const id of readdirSync(new URL(`${eco}/`, root))) {
+    const dir = new URL(`${eco}/${id}/`, root);
+    const m = parse(readFileSync(new URL('matcher.yaml', dir), 'utf8')) as Matcher;
+    test(`${id}: valid`, () => assert.deepEqual(validate(m), []));
+    for (const f of readdirSync(new URL('fixtures/', dir)).filter((f) => f.endsWith('.log'))) {
+      const tag = /\.(github|gitlab)\.log$/.exec(f)?.[1] as Provider | undefined;
+      const raw = readFileSync(new URL(`fixtures/${f}`, dir), 'utf8');
+      const want = readFileSync(new URL(`fixtures/${f.replace(/\.log$/, '.expected')}`, dir), 'utf8');
+      // An untagged log is shown under both providers (registry.ts), so it must hold under both.
+      for (const p of tag ? [tag] : PROVIDERS) {
+        n++;
+        test(`${id}/${f} (${p})`, () => assert.equal(output(raw, p, m), want));
+      }
+    }
+  }
+}
+test('fixtures found', () => assert.ok(n >= 76, `only ${n} fixtures`));
+
+// Expected outputs taken from ci-doctor (`verify.matcher_output` over the provider's segmenter).
+const cases: [string, Provider, string, Matcher, string][] = [
+  ['lone \\r keeps the last segment', 'github', 'progress 10%\rprogress 100%\rERROR: real\n', { id: 't', pattern: '^ERROR' }, 'ERROR: real\n'],
+  ['lone \\r mid-line on gitlab', 'gitlab', 'a\rERROR g\n', { id: 't', pattern: '^ERROR' }, 'ERROR g\n'],
+  ['\\r\\n is a line ending', 'github', 'x\r\nERROR y\r\n', { id: 't', pattern: '^ERROR y$' }, '… [1 lines elided] …\nERROR y\n'],
+  ['consecutive duplicates fold', 'github', 'FAIL x\nFAIL x\nFAIL x\nok', { id: 't', pattern: '^FAIL x$' }, ''],
+  ['folded line, counted once', 'github', 'FAIL x\nFAIL x\nok\n', { id: 't', pattern: '^FAIL', after: 1 }, 'FAIL x  (×2)\nok\n'],
+  ['duplicates fold across a blank line', 'github', 'E a\n\nE a\n', { id: 't', pattern: '^E' }, 'E a  (×2)\n'],
+  ['gitlab marker mid-line splits the run', 'gitlab', 'foo\x1b[0Ksection_start:1:step\r\x1b[0KERROR here\n', { id: 't', pattern: '^ERROR' }, '… [1 lines elided] …\nERROR here\n'],
+];
+for (const [name, p, raw, m, want] of cases) test(`engine: ${name}`, () => assert.equal(output(raw, p, m), want));

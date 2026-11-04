@@ -1,0 +1,36 @@
+name: New matcher
+description: A tool whose failures ci-doctor does not pick out yet
+title: "matcher request: <tool>"
+labels: [new-matcher]
+body:
+  - type: input
+    id: tool
+    attributes:
+      label: Tool
+      description: The program that fails, and the version if it matters.
+      placeholder: hypothesis 6.100
+    validations:
+      required: true
+  - type: input
+    id: ecosystem
+    attributes:
+      label: Ecosystem
+      description: The first classification tag — reuse an existing one when it fits.
+      placeholder: python
+  - type: textarea
+    id: log
+    attributes:
+      label: A failing log
+      description: >-
+        Redact tokens, hostnames, emails and internal URLs first. Trim unrelated steps;
+        keep the tool's own failure output intact.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: cause
+    attributes:
+      label: The line that explains the failure
+      description: Which line(s) in that log should end up in the evidence.
+    validations:
+      required: true

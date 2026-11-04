@@ -1,0 +1,15 @@
+… [19 lines elided] …
+╷
+│ Error: creating S3 Bucket (team-artifacts-prod): BucketAlreadyOwnedByYou: Your previous request to create the named bucket succeeded and you already own it
+│
+│   with aws_s3_bucket.artifacts,
+│   on s3.tf line 12, in resource "aws_s3_bucket" "artifacts":
+│   12: resource "aws_s3_bucket" "artifacts" {
+│
+╵
+Running after_script
+$ echo "apply failed, state unchanged"
+apply failed, state unchanged
+Uploading artifacts for failed job
+Uploading artifacts as "archive" to coordinator... 201 Created
+ERROR: Job failed: exit code 1

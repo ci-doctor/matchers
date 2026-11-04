@@ -1,0 +1,7 @@
+id: eslint
+role: tool
+classification: [js, lint]
+description: ESLint's `line:col error rule-name` entries and its `N problems` summary footer.
+pattern: ^\s*\d+:\d+\s+error\s+|✖ \d+ problems?
+before: 2
+after: 6

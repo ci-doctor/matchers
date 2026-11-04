@@ -1,0 +1,245 @@
+schema: 1
+matchers:
+  bazel:
+    path: matchers/any/bazel/matcher.yaml
+    sha256: 47b3f772ac72a4206a7b87f1887cfd3e346afb8c1bb76155b5fdbe00b0ab9cfc
+    description: Bazel reporting that an action or target failed. A wrapper - the compiler or test output it relays is the cause.
+    classification: [any, build]
+  build_failure_banner:
+    path: matchers/jvm/build_failure_banner/matcher.yaml
+    sha256: 92880340cccb3d7fb95e67fbf4281134ebd9e4263c9fd424488c0feeeb317e86
+    description: 'The `BUILD FAILURE` / `FAILURE: Build failed` banner Maven and Gradle print once the build gave up.'
+    classification: [jvm, build]
+  bun:
+    path: matchers/js/bun/matcher.yaml
+    sha256: eafe02bb721ad7d71a9bc1e511a0a7f939d7352c9ca108324702d8c6ed1ba911
+    description: A failed `bun test` (the crossed-out test and its assertion), or a `bun install` that found no matching version.
+    classification: [js, test, deps]
+  bundler:
+    path: matchers/ruby/bundler/matcher.yaml
+    sha256: 6cb85ae45f27dcc14db8b3fe9ef3a1419298162c6a6ee7834dc7da11c9e63c58
+    description: Bundler failing to resolve - a missing gem, or a version conflict it prints the tree for.
+    classification: [ruby, deps]
+  cc_cpp:
+    path: matchers/c/cc_cpp/matcher.yaml
+    sha256: 3cd8cb13c53e806bae24e62698759dbd8f5b6733ba2fde19ac9191e0ab9d74d0
+    description: C/C++ builds - CMake configure errors and linker `undefined reference` / `collect2` failures.
+    classification: [c, build]
+  composer:
+    path: matchers/php/composer/matcher.yaml
+    sha256: 26d606c90008a38e17e423bb63074ec8efeef24fc2ccf4f4fdc84837bc62f7f4
+    description: Composer's resolver refusing the requirements, with the explanation it prints underneath.
+    classification: [php, deps]
+  cypress:
+    path: matchers/js/cypress/matcher.yaml
+    sha256: 7d0baed1a484897e7373e766e5d81e32200e6199c4fad82923a86af94782514c
+    description: A `CypressError` or a retry timeout, with the command log leading up to it.
+    classification: [js, e2e]
+  docker_build:
+    path: matchers/container/docker_build/matcher.yaml
+    sha256: 95ba5989563eac96680a06e17ae9d0e09e5fe659a6709aed00f95e8e45f047b6
+    description: 'BuildKit giving up - `failed to solve` / `executor failed running` - around the Dockerfile step that failed. A wrapper: the `RUN` step''s own output is the cause.'
+    classification: [container, build]
+  dotnet_build:
+    path: matchers/dotnet/dotnet_build/matcher.yaml
+    sha256: f347f7ee354cae9f8605d6136c59c8e44b177368fb609baa20c6ea50f9588935
+    description: MSBuild, Roslyn and NuGet error codes - `error CS0103`, `error NU1101`, `error MSB3073`.
+    classification: [dotnet, build]
+  dotnet_test:
+    path: matchers/dotnet/dotnet_test/matcher.yaml
+    sha256: 37fcf162e348a10dc26ba23bb8fabe58a014bf3e9643fe860194c24da4192d6c
+    description: '`dotnet test`: xunit/nunit `[FAIL]` markers and the `Failed!` summary line.'
+    classification: [dotnet, test]
+  eslint:
+    path: matchers/js/eslint/matcher.yaml
+    sha256: 0fd1670a0deab1fa35429a2b50b53398b89789e82ba1ace922cc2ff598e54ed2
+    description: ESLint's `line:col error rule-name` entries and its `N problems` summary footer.
+    classification: [js, lint]
+  generic_error:
+    path: matchers/any/generic_error/matcher.yaml
+    sha256: a756205a6e3f39f6db2561dc7fd64963b5987761098d4b6f4290e781a1dfb442
+    description: A line starting `ERROR` or `FATAL` from a tool with no pack of its own - the weakest signal; read it in context.
+    classification: [any]
+  go_panic:
+    path: matchers/go/go_panic/matcher.yaml
+    sha256: 1d0ad496e7e0612a6143399c4b54d9a5ced532aa9765cb2947886a4ec2b5731c
+    description: A Go `panic:` or runtime `fatal error:` with the goroutine dump beneath it.
+    classification: [go, runtime]
+  go_test:
+    path: matchers/go/go_test/matcher.yaml
+    sha256: 6d2662a75a915efe5833d9fd39c8d2f6855015c9586d71254f512d5b989e5fd8
+    description: '`go test`''s per-test `--- FAIL` marker, plus the assertion output printed under it.'
+    classification: [go, test]
+  gradle:
+    path: matchers/jvm/gradle/matcher.yaml
+    sha256: 60fae2e0d18a47c4921a5edb49f0d361a9e51df110388f027ebbcfd02e9043b4
+    description: Gradle's `* What went wrong:` block, stopping before the `* Try:` boilerplate advice. A wrapper - it names the failed task, the compiler output above it is the cause.
+    classification: [jvm, build]
+  jest:
+    path: matchers/js/jest/matcher.yaml
+    sha256: a36823a27f9ce26149c1c133f4a1b56a8499adf2c15ff2a3fc741dfef2d71192
+    description: A jest test failure - the bullet header names the test, and the diff below it shows expected against received.
+    classification: [js, test]
+  js_script_exit:
+    path: matchers/js/js_script_exit/matcher.yaml
+    sha256: a20867f172455baf566c9abe4b460b67bf7d78f0ea49fbacebcbacd58cb8a6fd
+    description: 'A JS package manager announcing that a lifecycle script exited non-zero - pnpm''s `ELIFECYCLE`, bun''s `error: script "x" exited with code N`.'
+    classification: [js]
+  make:
+    path: matchers/any/make/matcher.yaml
+    sha256: e3ff19f700b6a895692c5270a9bdb235e05d3a7af3b030e706d0480e3337ff88
+    description: '`make: ***` - make reporting that a recipe it ran failed. The recipe''s own output above it is the cause.'
+    classification: [any, build]
+  maven_gradle:
+    path: matchers/jvm/maven_gradle/matcher.yaml
+    sha256: f97465dd52e6dc8c1bff261a58699fd63bc3b1c3abef01cd483ba891cfd296b7
+    description: Maven's `[ERROR]` lines - the compiler and test diagnostics Maven relays.
+    classification: [jvm, build]
+  minitest:
+    path: matchers/ruby/minitest/matcher.yaml
+    sha256: 3fa6bf0d732344d6b72608c355bdc1e7471a02e8525904c8111fb2f20a45fab2
+    description: Minitest's numbered `1) Failure:` entries and the assertion beneath each one.
+    classification: [ruby, test]
+  node_runtime:
+    path: matchers/js/node_runtime/matcher.yaml
+    sha256: aa30fc1405c769ce808afdeef200f0ae62040ec7e57bd8a4f5d775dbf3d7f5e0
+    description: An uncaught Node error. The message above the stack is the cause; an ESM/CJS resolution error means a missing or mis-declared module.
+    classification: [js, runtime]
+  npm:
+    path: matchers/js/npm/matcher.yaml
+    sha256: b0cf581259a27108c0edda158c2577aa5304f0a6c23c1ac556d404f3d37f88cc
+    description: '`npm ERR!` lines. A wrapper: npm reports the failure of the script it ran, never the cause.'
+    classification: [js, deps]
+  oom:
+    path: matchers/any/oom/matcher.yaml
+    sha256: 2ce70d0bd84384355e7c333095962925dcb1ec781999fcba008e0109ccfae7ab
+    description: The job being killed - exit code 137, `Killed`, `Out of memory`. Nothing else in the log explains a SIGKILL.
+    classification: [any, infra]
+  php_fatal:
+    path: matchers/php/php_fatal/matcher.yaml
+    sha256: 5f1e02888e79a2b41d1394d104bc26d87ff29dc11a6e1a91dbe1578085857c5b
+    description: A PHP fatal or parse error and the stack trace after it.
+    classification: [php, runtime]
+  phpunit:
+    path: matchers/php/phpunit/matcher.yaml
+    sha256: 25c6454b93fb3db54979a970caf64d74ebc858b8e749f47d4bfc5208a59ea92a
+    description: PHPUnit's `There were N failures` block through to its `FAILURES`/`ERRORS`/`OK` footer.
+    classification: [php, test]
+  playwright:
+    path: matchers/js/playwright/matcher.yaml
+    sha256: 46271aa9106e544ba48ce3ebcaeebda7e7c66b85b4ed2a9daea8fac0a396e6c6
+    description: A Playwright test failure - the `1) suite > test` header names the test; its trace and diff follow.
+    classification: [js, e2e]
+  pnpm:
+    path: matchers/js/pnpm/matcher.yaml
+    sha256: f5d79bb953fa2ba7cca429403050555e7bd2425add7889dd5b0b71a2438423a5
+    description: pnpm's `ERR_PNPM_*` codes - the resolver or lockfile refusing, which is the cause itself.
+    classification: [js, deps]
+  pytest:
+    path: matchers/python/pytest/matcher.yaml
+    sha256: a0a6d5bb24b956043840f2267d229a8aa944c5a664fed96a2afb6c8af855e3e7
+    description: pytest's `=== FAILURES ===` block, from the first failing test through to the short summary.
+    classification: [python, test]
+  python_lint:
+    path: matchers/python/python_lint/matcher.yaml
+    sha256: f70906dd602da33ff186e65e5a14373bfa1df7bf219ad88c320bef5f05bea395
+    description: 'A `file.py:12: error` diagnostic from mypy, ruff, flake8 or pylint.'
+    classification: [python, lint]
+  python_traceback:
+    path: matchers/python/python_traceback/matcher.yaml
+    sha256: 15543da1a36eb8dc9c57fcd14e05a7ac3ed076489f4cc491149c2cc86d4e5bb1
+    description: An uncaught Python exception. The exception type and message are on the traceback's last line; the frames above show where it was raised.
+    classification: [python, runtime]
+  rspec:
+    path: matchers/ruby/rspec/matcher.yaml
+    sha256: be988f29d1bd8a7637989746fbd3d4f7d0eda26299277819e7d5e39538c18e33
+    description: RSpec's `Failures:` block through to the `N examples, N failures` tally.
+    classification: [ruby, test]
+  ruby_exception:
+    path: matchers/ruby/ruby_exception/matcher.yaml
+    sha256: 546936b9da0a8d0657590d18a5956dd9a34d02f893173bbad9c0e2f41ce24af1
+    description: An unhandled Ruby exception - a backtrace frame naming the error class.
+    classification: [ruby, runtime]
+  rust_compile:
+    path: matchers/rust/rust_compile/matcher.yaml
+    sha256: 3eaa1cae9b08fccf0823c95d3598b2bb1d5b10b3be38930e2536fe7082350fbe
+    description: rustc refusing to compile (`error[E0308]`). The first error is usually the cause; later ones often follow from it.
+    classification: [rust, build]
+  rust_panic:
+    path: matchers/rust/rust_panic/matcher.yaml
+    sha256: af20eab7d3333226abde5052c3eec4264251badbbb30663b09e71ac6a94b7fd9
+    description: A Rust panic, with the message and the frames that follow it.
+    classification: [rust, runtime]
+  rust_test:
+    path: matchers/rust/rust_test/matcher.yaml
+    sha256: 7b5334c8e965d6f74309f2b666d47c75be733c11e76d7a6320d217bbbe98324a
+    description: '`cargo test`''s `failures:` block through to the `test result:` line.'
+    classification: [rust, test]
+  terraform:
+    path: matchers/iac/terraform/matcher.yaml
+    sha256: 588ae413de5eec2b01c34fddb558ef74eb50b32b2177978f96756bcf7e674ab0
+    description: Terraform's boxed `Error:` and the `on main.tf line 12` it points at.
+    classification: [iac]
+  tsc:
+    path: matchers/js/tsc/matcher.yaml
+    sha256: fedc52a2a14806bead1783bc6d852d6f17c4c243962936e8d59ee56359af510f
+    description: A TypeScript compile error (`error TS2345:`) with the source excerpt around it.
+    classification: [js, build]
+  yarn:
+    path: matchers/js/yarn/matcher.yaml
+    sha256: 60eba70596db6ede9bda617441ddc11c01d01e4aac445609c5b81a0659edc3a4
+    description: Yarn Classic's `error <Capital>` lines and Berry's `YN0000:` diagnostic codes.
+    classification: [js, deps]
+bundles:
+  all:
+    path: bundles/all.yaml
+    sha256: 19afbf828ce6184c1f1a8451552b6408fd3f72000cd6b56df26301d471b33cd9
+    description: Every official matcher, one bundle per ecosystem.
+  any:
+    path: bundles/any.yaml
+    sha256: d2657f44c5635afa2523b1d74b824310ed5314f5577f5fc03f5ceed5a853c832
+    description: 'Language-agnostic matchers: generic fatal errors, OOM kills and build banners.'
+  c:
+    path: bundles/c.yaml
+    sha256: 433d505faa8bdecc49423d0a7201ff0fd2c38c8ff650eaa8cebf174e28cafc43
+    description: C and C++ compile and link errors.
+  container:
+    path: bundles/container.yaml
+    sha256: 8f296240bbed791570c2d8de576ee59e58fe77c770a133c6d4e49ce09c4e3667
+    description: Container image build failures.
+  dotnet:
+    path: bundles/dotnet.yaml
+    sha256: 95c4a57d2510cb77cd91345d36f008221d6744fa80d5f1dac3d2f4337aea76aa
+    description: .NET build errors and test failures.
+  go:
+    path: bundles/go.yaml
+    sha256: deb2a72180dc3c95c46a1d929d640a33ccb1f15bf3dfc77145290bcd297bd645
+    description: Go test failures and panics.
+  iac:
+    path: bundles/iac.yaml
+    sha256: 649e1120d27ac0763edb0d69c79402c3f21647b5d245cfdf9efb9a8c866a6115
+    description: Infrastructure-as-code apply and plan errors.
+  js:
+    path: bundles/js.yaml
+    sha256: 99b11ee0cbd8b6f65079aed215328fa91a087e61d0d54f600abfb42283938785
+    description: JavaScript and TypeScript build, test, package-manager and runtime failures.
+  jvm:
+    path: bundles/jvm.yaml
+    sha256: c34c43ba834a14e03474c4bf6eec1402275930fbf75afa3eb815a05900527393
+    description: 'JVM build failures: Maven and Gradle.'
+  php:
+    path: bundles/php.yaml
+    sha256: 654d5f8b3ff51bbd25a6134501eec9c6fd00ebee8a0e1b06cf368092090ed6d3
+    description: PHP test failures, fatal errors and Composer conflicts.
+  python:
+    path: bundles/python.yaml
+    sha256: b2e653b23d9b546aa51d4ad50abaaf3c1f2579b16f5a8211ea08e11630f8447d
+    description: Python test, lint and runtime failures.
+  ruby:
+    path: bundles/ruby.yaml
+    sha256: 8b77fa49dbc4ba2515e69bf99cab302352f0d56a7d3bf1236037aefe13dc4cff
+    description: Ruby test failures, exceptions and Bundler errors.
+  rust:
+    path: bundles/rust.yaml
+    sha256: 46f12c8f652e63563729bc99d90f04386c8642562608ed1e8396134478d1f00f
+    description: Rust compile errors, test failures and panics.

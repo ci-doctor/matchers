@@ -1,0 +1,3 @@
+id: js
+description: JavaScript and TypeScript build, test, package-manager and runtime failures.
+include: [jest, tsc, eslint, pnpm, yarn, bun, node_runtime, playwright, cypress, npm, js_script_exit]

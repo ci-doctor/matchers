@@ -1,0 +1,14 @@
+… [28 lines elided] …
+Updating dependencies
+Your requirements could not be resolved to an installable set of packages.
+  Problem 1
+    - Root composer.json requires symfony/http-kernel ^7.1 -> satisfiable by symfony/http-kernel[v7.1.0].
+    - symfony/http-kernel v7.1.0 requires php >=8.2 -> your php version (8.1.27) does not satisfy that requirement.
+To enable extensions, verify that they are enabled in your .ini files.
+##[error]Process completed with exit code 2.
+/usr/bin/git version
+git version 2.54.0
+Artifact upload complete.
+##[warning]vendor/: no matching files. Ensure that the artifact path is relative to the working directory
+Post job cleanup.
+Cleaning up orphan processes

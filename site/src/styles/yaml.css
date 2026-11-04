@@ -1,0 +1,11 @@
+/* Highlighted YAML from lib/yaml-highlight.ts: one `.l` block per line, `.t-*` tokens. */
+
+.hl .l { display: block; }
+.hl .l.err { background: var(--err-bg); box-shadow: inset 3px 0 var(--err); }
+.hl i { font-style: normal; }
+.t-key { color: var(--tok-key); font-weight: 600; }
+.t-str { color: var(--tok-str); }
+.t-num, .t-kw { color: var(--tok-num); }
+.t-p { color: var(--tok-p); }
+.t-c { color: var(--tok-c); font-style: italic; }
+.t-rx { color: var(--tok-rx); }

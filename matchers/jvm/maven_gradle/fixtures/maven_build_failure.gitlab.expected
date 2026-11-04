@@ -1,0 +1,27 @@
+… [19 lines elided] …
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ ledger-service ---
+[INFO] Compiling 84 source files with javac [debug release 21] to target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR :
+[INFO] -------------------------------------------------------------
+[ERROR] /builds/team/ledger/src/main/java/com/acme/ledger/PostingService.java:[62,38] incompatible types: java.util.Optional<java.math.BigDecimal> cannot be converted to java.math.BigDecimal
+[ERROR] /builds/team/ledger/src/main/java/com/acme/ledger/PostingService.java:[71,9] cannot find symbol
+[ERROR]   symbol:   method recordAudit(java.lang.String)
+[ERROR]   location: class com.acme.ledger.PostingService
+[INFO] 3 errors
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  24.881 s
+[INFO] Finished at: 2026-01-09T11:20:38Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project ledger-service: Compilation failure
+[ERROR] -> [Help 1]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+Running after_script
+$ echo "build failed, skipping deploy"
+build failed, skipping deploy
+Uploading artifacts for failed job
+WARNING: target/*.jar: no matching files. Ensure that the artifact path is relative to the working directory
+ERROR: Job failed: exit code 1

@@ -1,0 +1,35 @@
+# The contributor's bench for the official matcher registry.
+
+[tools]
+uv = "latest"   # runs ci-doctor (uvx) and the guard scripts
+node = "lts"    # builds and serves the site
+
+[env]
+# The ci-doctor that provides `matchers verify` / `index`. Keep in step with ci.yml.
+CI_DOCTOR = "git+https://github.com/ci-doctor/ci-doctor@feat/E11"
+
+[tasks.verify]
+description = "Golden fixtures, fixture counts and every validation rule"
+run = 'uvx --from "$CI_DOCTOR" ci-doctor matchers verify .'
+
+[tasks.update]
+description = "Regenerate every .expected file — then read the diff before committing"
+run = 'uvx --from "$CI_DOCTOR" ci-doctor matchers verify --update .'
+
+[tasks.index]
+description = "Regenerate index.yaml"
+run = 'uvx --from "$CI_DOCTOR" ci-doctor matchers index .'
+
+[tasks.guards]
+description = "The base-branch guards: names are permanent, verify-exempt.txt only shrinks"
+run = "uv run --no-project --with pyyaml python .github/scripts/registry_guards.py origin/main"
+
+[tasks.check]
+description = "Everything CI runs"
+run = 'uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check'
+depends = ["verify", "guards"]
+
+[tasks.docs]
+description = "Serve the registry site locally with live reload (http://localhost:4321)"
+dir = "site"
+run = "npm ci && npm run dev"

@@ -1,0 +1,11 @@
+… [28 lines elided] …
+[1/4] Resolving packages...
+error Couldn't find package "@acme/design-tokens@^3.1.0" required by "web@1.0.0" on the "npm" registry.
+info Visit https://yarnpkg.com/en/docs/cli/install for documentation about this command.
+##[error]Process completed with exit code 1.
+/usr/bin/git version
+git version 2.54.0
+Artifact upload complete.
+##[warning]node_modules/: no matching files. Ensure that the artifact path is relative to the working directory
+Post job cleanup.
+Cleaning up orphan processes

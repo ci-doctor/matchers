@@ -1,0 +1,3 @@
+id: rust
+description: Rust compile errors, test failures and panics.
+include: [rust_test, rust_panic, rust_compile]

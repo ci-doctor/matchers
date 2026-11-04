@@ -1,0 +1,3 @@
+id: container
+description: Container image build failures.
+include: [docker_build]

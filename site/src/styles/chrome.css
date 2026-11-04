@@ -1,0 +1,99 @@
+/* Site chrome: skip link, sticky header, footer, and the light/dark artwork swap. */
+
+.skip-link {
+  position: absolute;
+  left: -9999px; /* invisible until focused */
+  top: 0.5rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+.skip-link:focus { left: 0.75rem; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  padding: 0.7rem var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.nav-spacer { margin-left: auto; }
+/* Phone width: the links drop to a second row, so the bar never scrolls sideways. */
+@media (max-width: 560px) {
+  .nav { flex-wrap: wrap; row-gap: 0.35rem; }
+  .nav::after { content: ''; order: 2; flex-basis: 100%; }
+  .navlink { order: 3; }
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+  flex-shrink: 0;
+}
+.brand:hover { text-decoration: none; }
+.brand img { width: 26px; height: 26px; }
+
+.navlink { font-size: 0.92rem; font-weight: 550; color: var(--muted); margin-left: 0.6rem; }
+.navlink:hover { color: var(--fg); text-decoration: none; }
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0;
+}
+.icon-btn:hover {
+  color: var(--fg);
+  border-color: var(--border-strong);
+  text-decoration: none; /* it is sometimes an <a> */
+}
+.icon-btn svg { width: 17px; height: 17px; }
+
+/* Artwork with a light and a dark version: the brand icon, and the toggle's sun/moon. */
+.brand .dark, .icon-btn .moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) :is(.brand .light, .icon-btn .sun) { display: none; }
+  :root:not([data-theme='light']) :is(.brand .dark, .icon-btn .moon) { display: block; }
+}
+:root[data-theme='dark'] :is(.brand .light, .icon-btn .sun) { display: none; }
+:root[data-theme='dark'] :is(.brand .dark, .icon-btn .moon) { display: block; }
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-subtle);
+  color: var(--muted);
+  font-size: 0.87rem;
+}
+.site-footer .inner {
+  padding: 2rem var(--gutter);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.site-footer a { color: var(--muted); text-decoration: underline; }
+.site-footer a:hover { color: var(--fg); }

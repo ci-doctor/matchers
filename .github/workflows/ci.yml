@@ -1,0 +1,90 @@
+name: ci
+
+# `all-green` is the one check a main ruleset should require.
+on:
+  pull_request:
+    branches: [main, "feat/**"]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  # The ci-doctor that runs `matchers verify` / `index`. Keep in step with mise.toml.
+  # ponytail: tracks the E11 branch until the matchers commands ship; pin `ci-doctorr==<alpha>` then.
+  CI_DOCTOR: git+https://github.com/ci-doctor/ci-doctor@feat/E11
+
+jobs:
+  verify:
+    name: verify + index
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v10.3.3
+      # Golden fixtures, fixture counts, and every §1b rule on every file.
+      - run: uvx --from "$CI_DOCTOR" ci-doctor matchers verify .
+      - run: uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check
+
+  # Rules that need the base branch, which `verify` cannot see.
+  guards:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v10.3.3
+      - run: uv run --no-project --with pyyaml --with pytest pytest -q -p no:cacheprovider .github/scripts
+      - env:
+          BASE_REF: ${{ github.base_ref }}   # via env, never interpolated into the script
+        run: uv run --no-project --with pyyaml python .github/scripts/registry_guards.py "origin/$BASE_REF"
+
+  actions:
+    name: workflow audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v10.3.3
+      - run: uvx zizmor --config .github/zizmor.yml .github/workflows
+
+  site:
+    name: site build + parity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci
+        working-directory: site
+      - run: npm run build
+        working-directory: site
+      # The playground engine must select exactly what ci-doctor's `.expected` files say.
+      - run: npm test
+        working-directory: site
+
+  all-green:
+    if: always()
+    needs: [verify, guards, actions, site]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every job succeeded
+        env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          echo "$NEEDS" | jq -r 'to_entries[] | "\(.key): \(.value.result)"'
+          echo "$NEEDS" | jq -e 'all(.[]; .result == "success" or .result == "skipped")' >/dev/null

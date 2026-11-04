@@ -1,0 +1,6 @@
+id: rspec
+role: tool
+classification: [ruby, test]
+description: RSpec's `Failures:` block through to the `N examples, N failures` tally.
+start: ^Failures:$
+end: ^\d+ examples?, \d+ failures?

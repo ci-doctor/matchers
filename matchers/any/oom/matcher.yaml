@@ -1,0 +1,7 @@
+id: oom
+role: tool
+classification: [any, infra]
+description: The job being killed - exit code 137, `Killed`, `Out of memory`. Nothing else in the log explains a SIGKILL.
+pattern: exit code 137|Killed|Out of memory
+before: 5
+after: 2

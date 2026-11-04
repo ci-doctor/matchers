@@ -1,0 +1,14 @@
+/* Log view: one row per line, line-number gutter + text. A `.hit` line is washed in
+   its rule's colour (`--hl`); the `.anchor` line gets a stronger wash and an edge. */
+
+.log {
+  background: var(--code-bg); color: var(--code-fg); border-radius: var(--radius);
+  font-family: var(--mono); font-size: 0.8rem; line-height: 1.5;
+  overflow: auto; max-height: 34rem; padding: 0.5rem 0;
+}
+.log .ln { display: flex; white-space: pre; border-left: 3px solid transparent; }
+.log .ln > i { flex: none; width: 3.4rem; padding-right: 0.8rem; text-align: right; color: #6f7d8c; font-style: normal; user-select: none; }
+.log .ln.structure { opacity: 0.45; }
+.log .ln.hit { background: color-mix(in srgb, var(--hl, #f2cc60) 22%, transparent); }
+.log .ln.anchor { border-left-color: var(--hl, #f2cc60); background: color-mix(in srgb, var(--hl, #f2cc60) 38%, transparent); }
+.log .ln.flash { outline: 2px solid var(--accent); outline-offset: -2px; }

@@ -1,0 +1,10 @@
+… [29 lines elided] …
+  Billing -> Compiling...
+/builds/team/billing/src/Billing/InvoiceService.cs(112,31): error CS1061: 'Invoice' does not contain a definition for 'NetTotal' and no accessible extension method 'NetTotal' accepting a first argument of type 'Invoice' could be found (are you missing a using directive or an assembly reference?) [/builds/team/billing/src/Billing/Billing.csproj]
+/builds/team/billing/src/Billing/InvoiceService.cs(118,13): error CS0165: Use of unassigned local variable 'vat' [/builds/team/billing/src/Billing/Billing.csproj]
+Build FAILED.
+/builds/team/billing/src/Billing/InvoiceService.cs(112,31): error CS1061: 'Invoice' does not contain a definition for 'NetTotal' [/builds/team/billing/src/Billing/Billing.csproj]
+    0 Warning(s)
+    2 Error(s)
+Time Elapsed 00:00:11.63
+… [7 lines elided] …

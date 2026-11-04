@@ -1,0 +1,3 @@
+id: any
+description: 'Language-agnostic matchers: generic fatal errors, OOM kills and build banners.'
+include: [make, bazel, oom, generic_error]

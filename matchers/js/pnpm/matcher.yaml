@@ -1,0 +1,7 @@
+id: pnpm
+role: tool
+classification: [js, deps]
+description: pnpm's `ERR_PNPM_*` codes - the resolver or lockfile refusing, which is the cause itself.
+pattern: ERR_PNPM_\w+
+before: 1
+after: 10

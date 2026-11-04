@@ -1,0 +1,7 @@
+id: bun
+role: tool
+classification: [js, test, deps]
+description: A failed `bun test` (the crossed-out test and its assertion), or a `bun install` that found no matching version.
+pattern: 'error: No version matching|^\s*✗ |^\s*\d+ fail\b'
+before: 2
+after: 12

@@ -1,0 +1,7 @@
+id: rust_panic
+role: tool
+classification: [rust, runtime]
+description: A Rust panic, with the message and the frames that follow it.
+pattern: ^thread '.*' panicked at
+before: 2
+after: 8

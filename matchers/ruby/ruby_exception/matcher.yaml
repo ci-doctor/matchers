@@ -1,0 +1,7 @@
+id: ruby_exception
+role: tool
+classification: [ruby, runtime]
+description: An unhandled Ruby exception - a backtrace frame naming the error class.
+pattern: \.rb:\d+:in .+\(\w*(Error|Exception)\)
+before: 2
+after: 10

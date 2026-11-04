@@ -1,0 +1,10 @@
+… [40 lines elided] …
+133.0 c++: fatal error: Killed signal terminated program cc1plus
+------
+Dockerfile:19
+ERROR: failed to solve: process "/bin/sh -c cmake --build build --parallel 16" did not complete successfully: exit code: 137
+##[error]Process completed with exit code 137.
+/usr/bin/git version
+git version 2.54.0
+Post job cleanup.
+Cleaning up orphan processes

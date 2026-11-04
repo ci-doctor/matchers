@@ -1,0 +1,7 @@
+id: tsc
+role: tool
+classification: [js, build]
+description: A TypeScript compile error (`error TS2345:`) with the source excerpt around it.
+pattern: 'error TS\d+:'
+before: 1
+after: 3

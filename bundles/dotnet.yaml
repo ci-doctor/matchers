@@ -1,0 +1,3 @@
+id: dotnet
+description: .NET build errors and test failures.
+include: [dotnet_test, dotnet_build]
