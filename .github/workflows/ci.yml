@@ -14,11 +14,6 @@ concurrency:
 permissions:
   contents: read
 
-env:
-  # The ci-doctor that runs `matchers verify` / `index`. Keep in step with mise.toml.
-  # ponytail: tracks the E11 branch until the matchers commands ship; pin `ci-doctorr==<alpha>` then.
-  CI_DOCTOR: git+https://github.com/ci-doctor/ci-doctor@feat/E11
-
 jobs:
   verify:
     name: verify + index
@@ -28,6 +23,10 @@ jobs:
         with:
           persist-credentials: false
       - uses: astral-sh/setup-uv@v10.3.3
+      # ci-doctor at its latest release tag, looked up on every run.
+      - run: echo "CI_DOCTOR=git+https://github.com/ci-doctor/ci-doctor@$(gh release view --repo ci-doctor/ci-doctor --json tagName -q .tagName)" >> "$GITHUB_ENV"
+        env:
+          GH_TOKEN: ${{ github.token }}
       # Golden fixtures, fixture counts, and every §1b rule on every file.
       - run: uvx --from "$CI_DOCTOR" ci-doctor matchers verify .
       - run: uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check
