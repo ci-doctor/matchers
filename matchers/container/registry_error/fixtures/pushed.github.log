@@ -1,0 +1,11 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run docker push ghcr.io/acme/api:1.4.2 && ./deploy.sh
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z The push refers to repository [ghcr.io/acme/api]
+2026-07-24T20:04:05.0000000Z 5f70bf18a086: Pushed
+2026-07-24T20:04:06.0000000Z 1.4.2: digest: sha256:4c1f0b2d9e8a7f6e5d4c3b2a1908f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5 size: 1789
+2026-07-24T20:04:07.0000000Z Error: helm upgrade timed out waiting for the rollout
+2026-07-24T20:04:08.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:09.0000000Z Post job cleanup.
+2026-07-24T20:04:10.0000000Z Cleaning up orphan processes

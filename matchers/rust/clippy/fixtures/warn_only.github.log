@@ -1,0 +1,13 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run cargo clippy && cargo test
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z warning: this `if` has identical blocks
+2026-07-24T20:04:05.0000000Z   --> src/money.rs:22:5
+2026-07-24T20:04:06.0000000Z    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#if_same_then_else
+2026-07-24T20:04:07.0000000Z warning: `ledger` (lib) generated 1 warning
+2026-07-24T20:04:08.0000000Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.10s
+2026-07-24T20:04:09.0000000Z test result: FAILED. 11 passed; 1 failed; 0 ignored
+2026-07-24T20:04:10.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:11.0000000Z Post job cleanup.
+2026-07-24T20:04:12.0000000Z Cleaning up orphan processes

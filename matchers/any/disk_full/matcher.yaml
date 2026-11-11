@@ -1,0 +1,12 @@
+schema: 1
+id: disk_full
+role: issue
+description: >-
+  The runner out of disk - No space left on device / ENOSPC. The step that hit it is a victim,
+  not the cause; free space or a bigger runner fixes it. Not the inotify watcher limit.
+tags: [any, infra]
+match:
+  all:
+    - regex: '(?i)no space left on device|\bENOSPC\b|You are running out of disk space'
+    - not: {regex: 'file watchers'}
+window: {before: 3, after: 2}

@@ -1,0 +1,11 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ node --test && npm run lint
+✔ starts empty (0.4ms)
+✔ sums the items (0.6ms)
+ℹ tests 9
+ℹ pass 9
+ℹ fail 0
+Error: lint step failed
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

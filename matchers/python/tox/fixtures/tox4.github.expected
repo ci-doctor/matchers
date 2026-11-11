@@ -1,0 +1,5 @@
+… [3 lines elided] …
+1 failed, 40 passed in 2.31s
+py312: exit 1 (2.90 seconds) /home/runner/work/ledger/ledger> pytest -q pid=2411
+  py312: FAIL code 1 (9.41=setup[6.51]+cmd[2.90] seconds)
+  evaluation failed :( (9.52 seconds)

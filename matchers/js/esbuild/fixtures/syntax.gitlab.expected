@@ -1,0 +1,8 @@
+… [1 lines elided] …
+✘ [ERROR] Expected ";" but found "total"
+    src/cart.ts:14:8:
+      14 │   const total = items.reduce((a, b) => a + b, 0)
+         │         ^
+         ╵         ;
+1 error
+error: Build failed

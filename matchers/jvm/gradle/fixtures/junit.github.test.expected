@@ -1,0 +1,8 @@
+… [3 lines elided] …
+CartTest > sumsItems() FAILED
+    org.opentest4j.AssertionFailedError: expected: <3> but was: <2>
+        at app//org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:151)
+        at app//com.acme.CartTest.sumsItems(CartTest.java:12)
+12 tests completed, 1 failed
+FAILURE: Build failed with an exception.
+… [4 lines elided] …

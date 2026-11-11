@@ -1,0 +1,9 @@
+… [1 lines elided] …
+WARNING: DATA RACE
+Write at 0x00c0001a2000 by goroutine 21:
+  runtime.mapassign_faststr()
+==================
+WARNING: DATA RACE
+Read at 0x00c0001a2008 by goroutine 22:
+==================
+… [2 lines elided] …

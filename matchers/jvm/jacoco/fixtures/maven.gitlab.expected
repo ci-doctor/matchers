@@ -1,0 +1,4 @@
+… [2 lines elided] …
+[INFO] Loading execution data file /builds/team/ledger/target/jacoco.exec
+[WARNING] Rule violated for bundle ledger: lines covered ratio is 0.71, but expected minimum is 0.80
+[ERROR] Failed to execute goal org.jacoco:jacoco-maven-plugin:0.8.12:check (check) on project ledger: Coverage checks have not been met. See log for details.

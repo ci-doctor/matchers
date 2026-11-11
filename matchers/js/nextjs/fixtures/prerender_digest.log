@@ -1,0 +1,9 @@
+$ npx next build
+   ▲ Next.js 15.1.0
+   Generating static pages (0/9)  ...
+Error occurred prerendering page "/". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: fetch failed
+    at node:internal/deps/undici/undici:13502:13 {
+  digest: '2841105239'
+}
+Export encountered an error on /page: /, exiting the build.

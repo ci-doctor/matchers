@@ -1,0 +1,20 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run cargo nextest run
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z     Starting 12 tests across 2 binaries
+2026-07-24T20:04:05.0000000Z         PASS [   0.002s] ledger money::rounds_half_even
+2026-07-24T20:04:06.0000000Z         FAIL [   0.004s] ledger parse::rejects_empty
+2026-07-24T20:04:07.0000000Z --- STDOUT:              ledger parse::rejects_empty ---
+2026-07-24T20:04:08.0000000Z 
+2026-07-24T20:04:09.0000000Z running 1 test
+2026-07-24T20:04:10.0000000Z --- STDERR:              ledger parse::rejects_empty ---
+2026-07-24T20:04:11.0000000Z thread 'parse::rejects_empty' panicked at src/parse.rs:44:9:
+2026-07-24T20:04:12.0000000Z assertion failed: result.is_err()
+2026-07-24T20:04:13.0000000Z ------------
+2026-07-24T20:04:14.0000000Z      Summary [   0.312s] 12 tests run: 11 passed, 1 failed, 0 skipped
+2026-07-24T20:04:15.0000000Z         FAIL [   0.004s] ledger parse::rejects_empty
+2026-07-24T20:04:16.0000000Z error: test run failed
+2026-07-24T20:04:17.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:18.0000000Z Post job cleanup.
+2026-07-24T20:04:19.0000000Z Cleaning up orphan processes

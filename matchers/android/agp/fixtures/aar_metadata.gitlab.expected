@@ -1,0 +1,6 @@
+… [4 lines elided] …
+   > 1 issue was found when checking AAR metadata:
+       1.  Dependency 'androidx.core:core:1.15.0' requires libraries and applications that
+           depend on it to compile against version 35 or later of the
+           Android APIs.
+           :app is currently compiled against android-34.

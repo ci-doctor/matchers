@@ -1,0 +1,4 @@
+… [1 lines elided] …
+# github.com/acme/ledger/report
+# [github.com/acme/ledger/report]
+report/csv.go:31:2: fmt.Sprintf format %d has arg name of wrong type string

@@ -1,0 +1,8 @@
+schema: 1
+id: rollup
+description: >-
+  A standalone Rollup build failing - [!] RollupError, from Rollup or a plugin it names, with
+  the file it was processing. Under Vite, vite.build catches it instead.
+tags: [js, build]
+match: {regex: '^\[!\] (\(plugin [^)]+\) )?(RollupError|Error): '}
+window: {after: 4}

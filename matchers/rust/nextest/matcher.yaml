@@ -1,0 +1,8 @@
+schema: 1
+id: nextest
+description: >-
+  cargo-nextest's FAIL, TIMEOUT or SIGSEGV [time] crate test lines, with the captured output
+  under each. The Summary repeats them.
+tags: [rust, test]
+match: {regex: '^\s*(FAIL|TIMEOUT|SIGSEGV|SIGABRT|SIGKILL) \[\s*\d+\.\d+s\] '}
+window: {after: 8}

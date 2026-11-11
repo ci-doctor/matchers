@@ -1,0 +1,4 @@
+… [1 lines elided] …
+> Task :app:jacocoTestCoverageVerification FAILED
+[ant:jacocoReport] Rule violated for bundle app: lines covered ratio is 0.71, but expected minimum is 0.80
+FAILURE: Build failed with an exception.

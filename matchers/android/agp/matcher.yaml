@@ -1,0 +1,8 @@
+schema: 1
+id: agp
+description: >-
+  An Android Gradle Plugin error - a manifest merger conflict with its suggestion, a dependency
+  that needs a newer compileSdk, or no Android SDK found.
+tags: [android, build]
+match: {regex: '^\S+AndroidManifest\.xml:\d+:\d+-\d+ Error:$|issues? (was|were) found when checking AAR metadata|SDK location not found\.|Failed to find target with hash string'}
+window: {after: 6}

@@ -1,0 +1,18 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run npx next build
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z    ▲ Next.js 15.0.3
+2026-07-24T20:04:05.0000000Z 
+2026-07-24T20:04:06.0000000Z    Creating an optimized production build ...
+2026-07-24T20:04:07.0000000Z Failed to compile.
+2026-07-24T20:04:08.0000000Z 
+2026-07-24T20:04:09.0000000Z ./app/cart/page.tsx
+2026-07-24T20:04:10.0000000Z Module not found: Can't resolve '@/lib/money'
+2026-07-24T20:04:11.0000000Z 
+2026-07-24T20:04:12.0000000Z https://nextjs.org/docs/messages/module-not-found
+2026-07-24T20:04:13.0000000Z 
+2026-07-24T20:04:14.0000000Z > Build failed because of webpack errors
+2026-07-24T20:04:15.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:16.0000000Z Post job cleanup.
+2026-07-24T20:04:17.0000000Z Cleaning up orphan processes

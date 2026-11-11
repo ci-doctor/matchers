@@ -1,0 +1,6 @@
+… [1 lines elided] …
+[error] /work/src/main/scala/com/acme/Money.scala:30:9: type mismatch;
+[error]  found   : String
+[error]  required: Int
+[error]     raw
+[error]     ^

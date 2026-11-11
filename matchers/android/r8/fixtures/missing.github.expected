@@ -1,0 +1,4 @@
+… [2 lines elided] …
+ERROR: Missing classes detected while running R8. Please add the missing classes or apply additional keep rules that are generated in /home/runner/work/app/app/app/build/outputs/mapping/release/missing_rules.txt.
+ERROR: R8: Missing class com.google.errorprone.annotations.Immutable (referenced from: com.google.crypto.tink.KeysetHandle)
+Missing class javax.annotation.Nullable (referenced from: com.acme.sdk.Client)

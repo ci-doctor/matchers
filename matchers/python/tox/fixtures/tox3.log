@@ -1,0 +1,7 @@
+$ tox -e py38,lint
+py38 run-test: commands[0] | pytest -q
+FAILED tests/test_api.py::test_round - assert 2 == 3
+ERROR: InvocationError for command /work/.tox/py38/bin/pytest -q (exited with code 1)
+___________________________________ summary ____________________________________
+ERROR:   py38: commands failed
+  lint: commands succeeded

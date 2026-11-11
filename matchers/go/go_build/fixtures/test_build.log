@@ -1,0 +1,6 @@
+$ go test ./...
+ok  	github.com/acme/ledger/money	0.009s
+# github.com/acme/ledger/api [github.com/acme/ledger/api.test]
+api/handler_test.go:12:2: undefined: newServer
+FAIL	github.com/acme/ledger/api [build failed]
+FAIL

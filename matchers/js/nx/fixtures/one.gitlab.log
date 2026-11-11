@@ -1,0 +1,15 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx nx test api
+> nx run api:test
+
+FAIL src/orders.test.ts
+Tests:       1 failed, 40 passed, 41 total
+
+ NX   Running target test for project api failed
+
+   Failed tasks:
+
+   - api:test
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

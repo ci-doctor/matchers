@@ -1,0 +1,18 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run bin/rails test
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Run options: --seed 31337
+2026-07-24T20:04:05.0000000Z 
+2026-07-24T20:04:06.0000000Z E
+2026-07-24T20:04:07.0000000Z 
+2026-07-24T20:04:08.0000000Z   1) Error:
+2026-07-24T20:04:09.0000000Z CartTest#test_total:
+2026-07-24T20:04:10.0000000Z NoMethodError: undefined method 'sum' for nil
+2026-07-24T20:04:11.0000000Z     app/models/cart.rb:14:in 'Cart#total'
+2026-07-24T20:04:12.0000000Z     test/models/cart_test.rb:9:in 'block in <class:CartTest>'
+2026-07-24T20:04:13.0000000Z 
+2026-07-24T20:04:14.0000000Z 12 runs, 30 assertions, 0 failures, 1 errors, 0 skips
+2026-07-24T20:04:15.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:16.0000000Z Post job cleanup.
+2026-07-24T20:04:17.0000000Z Cleaning up orphan processes

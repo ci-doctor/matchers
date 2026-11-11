@@ -1,0 +1,13 @@
+schema: 1
+id: tox
+role: wrapper
+description: >-
+  tox naming the environments that failed (env: FAIL code N). A wrapper - that environment's
+  own test or lint output above it is the cause.
+tags: [python, test]
+variants:
+  tox4:
+    match: {regex: '^\s*\S+: FAIL code \d+ '}
+  tox3:
+    match: {regex: '^ERROR:\s+\S+: commands failed$'}
+window: {before: 2, after: 2}

@@ -1,0 +1,6 @@
+$ tox
+  lint: OK (4.10 seconds)
+  py311: FAIL code 1 (12.30=setup[3.10]+cmd[9.20] seconds)
+  py312: FAIL code 1 (11.80=setup[2.90]+cmd[8.90] seconds)
+  type: OK (7.41 seconds)
+  evaluation failed :( (36.02 seconds)

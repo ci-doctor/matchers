@@ -1,0 +1,8 @@
+schema: 1
+id: node_gyp
+description: >-
+  node-gyp failing to build a native addon - usually a Node version with no prebuilt binary, or
+  a missing compiler or Python. The compiler error above gyp ERR! is the cause.
+tags: [js, build]
+match: {regex: 'gyp ERR! (build|configure) error'}
+window: {before: 12, after: 2}

@@ -1,0 +1,7 @@
+… [3 lines elided] …
+APPLICATION FAILED TO START
+***************************
+Description:
+Parameter 0 of constructor in com.acme.ledger.OrderService required a bean of type 'com.acme.ledger.PaymentClient' that could not be found.
+Action:
+Consider defining a bean of type 'com.acme.ledger.PaymentClient' in your configuration.

@@ -1,0 +1,2 @@
+shell: /usr/bin/bash -e {0}
+Error response from daemon: manifest for registry.gitlab.com/team/api:1.4.2 not found: manifest unknown: manifest unknown

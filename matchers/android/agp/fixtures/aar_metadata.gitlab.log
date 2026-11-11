@@ -1,0 +1,15 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ ./gradlew assembleDebug
+* What went wrong:
+Execution failed for task ':app:checkDebugAarMetadata'.
+> A failure occurred while executing com.android.build.gradle.internal.tasks.CheckAarMetadataWorkAction
+   > 1 issue was found when checking AAR metadata:
+
+       1.  Dependency 'androidx.core:core:1.15.0' requires libraries and applications that
+           depend on it to compile against version 35 or later of the
+           Android APIs.
+
+           :app is currently compiled against android-34.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

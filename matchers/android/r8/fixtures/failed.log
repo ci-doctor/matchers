@@ -1,0 +1,3 @@
+$ ./gradlew assembleRelease
+> Task :app:minifyReleaseWithR8 FAILED
+ERROR: R8: com.android.tools.r8.CompilationFailedException: Compilation failed to complete, origin: /work/app/build/tmp/kotlin-classes/release/com/acme/Cart.class

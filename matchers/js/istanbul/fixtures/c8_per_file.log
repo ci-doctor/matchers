@@ -1,0 +1,3 @@
+$ npx c8 --check-coverage --per-file npm test
+ERROR: Coverage for branches (61%) does not meet threshold (70%) for src/cart.ts
+ERROR: Coverage for functions (50%) does not meet threshold (80%) for src/money.ts

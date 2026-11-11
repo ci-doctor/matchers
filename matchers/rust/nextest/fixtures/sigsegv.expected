@@ -1,0 +1,5 @@
+… [1 lines elided] …
+    SIGSEGV [   0.120s] ledger-ffi ffi::decode_large
+--- STDERR:              ledger-ffi ffi::decode_large ---
+     Summary [   0.900s] 8 tests run: 7 passed, 1 failed, 0 skipped
+error: test run failed

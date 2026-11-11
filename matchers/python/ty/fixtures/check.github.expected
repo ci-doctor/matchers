@@ -1,0 +1,8 @@
+… [1 lines elided] …
+error[invalid-argument-type]: Argument to function `round_to` is incorrect
+  --> src/ledger/api.py:12:18
+   |
+12 |     return round_to(value, "2")
+   |                            ^^^ Expected `int`, found `Literal["2"]`
+   |
+… [2 lines elided] …

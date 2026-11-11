@@ -1,0 +1,9 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ ./deploy.sh production
+Resolving release 2026.11.3
+Uploading bundle (14.2 MiB)
+FATAL: could not acquire deploy lock /var/lib/deploy/lock (held by pid 4121)
+Release aborted; nothing was changed
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

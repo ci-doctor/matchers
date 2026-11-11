@@ -1,0 +1,8 @@
+… [3 lines elided] …
+ERROR: tests.test_export (unittest.loader._FailedTest.tests.test_export)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: tests.test_export
+ModuleNotFoundError: No module named 'openpyxl'
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+FAILED (errors=1)

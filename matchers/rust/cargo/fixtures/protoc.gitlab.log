@@ -1,0 +1,11 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ cargo build --release
+error: failed to run custom build command for `ledger-proto v0.1.0 (/builds/team/ledger/proto)`
+
+Caused by:
+  process didn't exit successfully: `/builds/team/ledger/target/release/build/ledger-proto-9a/build-script-build` (exit status: 1)
+  --- stderr
+  Error: Custom { kind: NotFound, error: "Could not find `protoc`. If `protoc` is installed, try setting the `PROTOC` environment variable." }
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

@@ -1,0 +1,6 @@
+shell: /usr/bin/bash -e {0}
+Backfilling 1,204 invoices
+/app/lib/billing.rb:42:in 'Billing#charge': undefined method 'amount' for nil (NoMethodError)
+	from /app/scripts/backfill.rb:8:in 'block in <main>'
+	from /app/scripts/backfill.rb:6:in 'Array#each'
+	from /app/scripts/backfill.rb:6:in '<main>'

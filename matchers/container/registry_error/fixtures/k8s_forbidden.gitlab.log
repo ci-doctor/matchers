@@ -1,0 +1,7 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ kubectl -n prod get pods
+kubectl -n prod get pods
+Error from server (Forbidden): pods is forbidden: User "system:serviceaccount:ci:deployer" cannot list resource "pods" in API group "" in the namespace "prod"
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

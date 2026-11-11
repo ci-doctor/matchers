@@ -1,0 +1,6 @@
+shell: /usr/bin/bash -e {0}
+npm error code ENOSPC
+npm error syscall write
+npm error errno -28
+npm error nospc ENOSPC: no space left on device, write
+npm error nospc There appears to be insufficient space on your system to finish.

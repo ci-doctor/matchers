@@ -1,0 +1,4 @@
+$ make install
+Resolved 112 packages in 31ms
+error: The lockfile at `uv.lock` needs to be updated, but `--locked` was provided. To update the lockfile, run `uv lock`.
+make: *** [Makefile:12: install] Error 2

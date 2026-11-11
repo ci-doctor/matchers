@@ -1,0 +1,4 @@
+shell: /usr/bin/bash -e {0}
+mkdir -p build
+esbuild src/main.ts --bundle --outfile=build/app.js
+make: *** No rule to make target 'assets/logo.svg', needed by 'dist/index.html'.  Stop.
