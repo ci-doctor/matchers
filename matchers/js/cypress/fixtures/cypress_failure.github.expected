@@ -1,4 +1,4 @@
-… [32 lines elided] …
+… [9 lines elided] …
   1 failing
   1) Checkout
        applies a promo code:
@@ -10,9 +10,3 @@
   │ Passing:      1                                │
   │ Failing:      1                                │
   └────────────────────────────────────────────────┘
-##[error]Process completed with exit code 1.
-/usr/bin/git version
-git version 2.54.0
-Artifact upload complete.
-Post job cleanup.
-… [1 lines elided] …

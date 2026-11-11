@@ -1,4 +1,4 @@
-… [3 lines elided] …
+… [2 lines elided] …
 │ Error: Unsupported argument
 │ 
 │   on variables.tf line 9, in variable "region":
@@ -6,4 +6,3 @@
 │ 
 │ An argument named "defalt" is not expected here. Did you mean "default"?
 ╵
-ERROR: Job failed: exit code 1

@@ -1,4 +1,4 @@
-… [4 lines elided] …
+… [3 lines elided] …
 CMake Error at CMakeLists.txt:18 (find_package):
   By not providing "FindOpenSSL.cmake" in CMAKE_MODULE_PATH this project has
   asked CMake to find a package configuration file provided by "OpenSSL", but
@@ -8,4 +8,3 @@ CMake Error at CMakeLists.txt:18 (find_package):
     OpenSSLConfig.cmake
     openssl-config.cmake
 -- Configuring incomplete, errors occurred!
-… [1 lines elided] …

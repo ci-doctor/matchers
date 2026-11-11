@@ -1,4 +1,4 @@
-… [29 lines elided] …
+… [6 lines elided] …
 error[E0308]: mismatched types
    --> src/posting.rs:88:31
     |
@@ -17,10 +17,3 @@ error[E0599]: no method named `to_minor_units` found for struct `Money` in the c
 Some errors have detailed explanations: E0308, E0599.
 For more information about an error, try `rustc --explain E0308`.
 error: could not compile `ledger` (lib) due to 2 previous errors
-##[error]Process completed with exit code 101.
-/usr/bin/git version
-git version 2.54.0
-Artifact upload complete.
-##[warning]target/release/ledger: no matching files. Ensure that the artifact path is relative to the working directory
-Post job cleanup.
-Cleaning up orphan processes

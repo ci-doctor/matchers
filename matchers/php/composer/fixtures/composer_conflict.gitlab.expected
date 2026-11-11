@@ -1,13 +1,7 @@
-… [17 lines elided] …
+… [4 lines elided] …
 Updating dependencies
 Your requirements could not be resolved to an installable set of packages.
   Problem 1
     - Root composer.json requires symfony/http-kernel ^7.1 -> satisfiable by symfony/http-kernel[v7.1.0].
     - symfony/http-kernel v7.1.0 requires php >=8.2 -> your php version (8.1.27) does not satisfy that requirement.
 To enable extensions, verify that they are enabled in your .ini files.
-Running after_script
-$ echo "composer install failed"
-composer install failed
-Uploading artifacts for failed job
-WARNING: vendor/: no matching files. Ensure that the artifact path is relative to the working directory
-ERROR: Job failed: exit code 2

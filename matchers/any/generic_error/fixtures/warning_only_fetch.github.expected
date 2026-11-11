@@ -1,10 +1,4 @@
-… [7 lines elided] …
-Cache not found for input keys: Linux-deps-8ad41f02
-##[warning]Failed to restore cache: ERROR 404: entry not found
-##[warning]Cache extraction failed: ERROR reading tar archive
   with:
     mode: strict
 ERROR: custom tool reported a fatal problem and stopped
 ##[error]The custom tool step failed. See the log above.
-Post job cleanup.
-Cleaning up orphan processes

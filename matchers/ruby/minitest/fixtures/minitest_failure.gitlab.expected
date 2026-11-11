@@ -1,4 +1,4 @@
-… [16 lines elided] …
+… [4 lines elided] …
   1) Failure:
 CartTest#test_discount_is_applied_before_tax [test/cart_test.rb:52]:
 Expected: 2700
@@ -6,8 +6,3 @@ Expected: 2700
 rails test test/cart_test.rb:49
 Finished in 0.482913s, 22.7787 runs/s, 45.5575 assertions/s.
 11 runs, 22 assertions, 1 failures, 0 errors, 0 skips
-Running after_script
-$ echo "tests failed"
-tests failed
-Uploading artifacts for failed job
-… [2 lines elided] …
