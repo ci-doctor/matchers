@@ -1,0 +1,8 @@
+schema: 1
+id: golangci_lint
+description: >-
+  golangci-lint's file.go:12:3: message (linter) entries - the linter in brackets says which
+  check fired, and the source line and caret follow.
+tags: [go, lint]
+match: {regex: '^\S+\.go:\d+:\d+: .+ \([a-z0-9]+\)$'}
+window: {after: 2}

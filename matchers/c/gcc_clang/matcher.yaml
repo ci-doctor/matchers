@@ -1,0 +1,8 @@
+schema: 1
+id: gcc_clang
+description: >-
+  A C or C++ compile error from GCC or Clang - file.c:12:5: error: or fatal error: header.h: No
+  such file, with the source excerpt. A missing header is usually a missing -dev package.
+tags: [c, build]
+match: {regex: '^\S+\.(c|cc|cpp|cxx|h|hh|hpp|m|mm):\d+:\d+: (fatal )?error: '}
+window: {before: 1, after: 3}

@@ -1,0 +1,5 @@
+$ java -Xmx2g -jar indexer.jar
+Indexing shard 7/12
+Exception in thread "pool-1-thread-3" java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.util.Arrays.copyOf(Arrays.java:3537)
+	at com.acme.search.Indexer.add(Indexer.java:91)

@@ -1,0 +1,12 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run ./gradlew build && ./publish.sh
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Note: Some input files use unchecked or unsafe operations.
+2026-07-24T20:04:05.0000000Z Note: Recompile with -Xlint:unchecked for details.
+2026-07-24T20:04:06.0000000Z src/main/java/com/acme/Legacy.java:9: warning: [deprecation] Date(String) in Date has been deprecated
+2026-07-24T20:04:07.0000000Z BUILD SUCCESSFUL in 12s
+2026-07-24T20:04:08.0000000Z Error: Process completed with exit code 1 in the publish step
+2026-07-24T20:04:09.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:10.0000000Z Post job cleanup.
+2026-07-24T20:04:11.0000000Z Cleaning up orphan processes

@@ -1,0 +1,6 @@
+$ golangci-lint run --enable staticcheck
+store/db.go:88:2: SA4006: this value of `err` is never used (staticcheck)
+	err = tx.Commit()
+	^
+1 issues:
+* staticcheck: 1

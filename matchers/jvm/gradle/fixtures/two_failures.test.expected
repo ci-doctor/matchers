@@ -1,0 +1,8 @@
+… [2 lines elided] …
+LedgerTest > postsBalance() FAILED
+    org.opentest4j.AssertionFailedError at LedgerTest.java:31
+> Task :api:compileKotlin FAILED
+e: file:///app/api/src/main/kotlin/Routes.kt:31:18 Unresolved reference: postings
+FAILURE: Build completed with 2 failures.
+1: Task failed with an exception.
+… [16 lines elided] …
