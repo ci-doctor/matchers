@@ -1,0 +1,11 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run cmake --build build && ./engine --selftest
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z /home/runner/work/engine/engine/src/graph.cpp:40:9: warning: unused variable 'n' [-Wunused-variable]
+2026-07-24T20:04:05.0000000Z [100%] Linking CXX executable engine
+2026-07-24T20:04:06.0000000Z [100%] Built target engine
+2026-07-24T20:04:07.0000000Z ./engine --selftest: 3 checks failed
+2026-07-24T20:04:08.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:09.0000000Z Post job cleanup.
+2026-07-24T20:04:10.0000000Z Cleaning up orphan processes

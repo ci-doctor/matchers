@@ -1,0 +1,10 @@
+$ vendor/bin/phpstan analyse --level=9
+Note: Using configuration file /work/phpstan.neon.
+ ------ ---------------------------------------------
+  Line   src/Import.php
+ ------ ---------------------------------------------
+  14     Variable $rows might not be defined.
+  22     Cannot access offset 'id' on mixed.
+  40     Method App\Import::run() has no return type specified.
+ ------ ---------------------------------------------
+ [ERROR] Found 3 errors

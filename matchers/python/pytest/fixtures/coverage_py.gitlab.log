@@ -1,0 +1,9 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ coverage report --fail-under=85
+Name                    Stmts   Miss  Cover
+-------------------------------------------
+TOTAL                     193     51    74%
+Coverage failure: total of 74 is less than fail-under=85
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

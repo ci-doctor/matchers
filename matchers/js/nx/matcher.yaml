@@ -1,0 +1,14 @@
+schema: 1
+id: nx
+role: wrapper
+description: >-
+  Nx reporting that a target failed, with the failed project:target list. A wrapper - the failed
+  project's output above it is the cause.
+tags: [js, build]
+variants:
+  current:
+    match: {regex: 'NX\s+Running target \S+ for .+ failed$'}
+    window: {before: 6, after: 5}
+  legacy:
+    match: {regex: '✖\s+\d+/\d+ targets? failed, including the following:'}
+    window: {before: 6, after: 3}

@@ -1,12 +1,21 @@
 schema: 1
 id: gradle
-role: wrapper
-description: >-
-  Gradle's `* What went wrong:` block, from the `FAILURE:` banner to the `* Try:` advice. A
-  wrapper - it names the failed task; the compiler or test output above it is the cause.
-tags: [jvm, build]
-match: {regex: '^\* What went wrong:'}
-window:
-  from: {regex: '^FAILURE: Build (failed|completed with)', within: 4}
-  until: {regex: '^\* (Try|Get more help)'}
-  max_lines: 500
+description: Gradle - the task that failed, and the failing tests it ran.
+tags: [jvm, build, test]
+outputs:
+  task:
+    role: wrapper
+    description: >-
+      Gradle's `* What went wrong:` block, from the `FAILURE:` banner to the `* Try:` advice. A
+      wrapper - it names the failed task; the compiler or test output above it is the cause.
+    match: {regex: '^\* What went wrong:'}
+    window:
+      from: {regex: '^FAILURE: Build (failed|completed with)', within: 4}
+      until: {regex: '^\* (Try|Get more help)'}
+      max_lines: 500
+  test:
+    description: >-
+      A failing test under Gradle's test task - Class > test() FAILED, with the assertion or
+      exception under it. The cause, where the task output is the relay.
+    match: {regex: '^[\w.$]+ > .+ FAILED$'}
+    window: {after: 5}

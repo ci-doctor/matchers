@@ -1,0 +1,3 @@
+$ nmake
+config.obj : error LNK2005: "class Config g_config" (?g_config@@3VConfig@@A) already defined in main.obj
+engine.exe : fatal error LNK1169: one or more multiply defined symbols found

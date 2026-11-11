@@ -1,0 +1,6 @@
+… [1 lines elided] …
+8 workers [1204 items]
+[gw5] node down: Not properly terminated
+replacing crashed worker gw5
+worker 'gw5' crashed while running 'tests/test_images.py::test_resize_large'
+FAILED tests/test_images.py::test_resize_large

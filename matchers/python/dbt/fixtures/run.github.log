@@ -1,0 +1,16 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run dbt run --target ci
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z 12:01:10  1 of 41 START sql table model marts.orders ..... [RUN]
+2026-07-24T20:04:05.0000000Z 12:01:12  1 of 41 ERROR creating sql table model marts.orders ..... [ERROR in 1.92s]
+2026-07-24T20:04:06.0000000Z 12:01:14  Completed with 1 error, 0 partial successes, and 0 warnings:
+2026-07-24T20:04:07.0000000Z 12:01:14  
+2026-07-24T20:04:08.0000000Z 12:01:14    Database Error in model orders (models/marts/orders.sql)
+2026-07-24T20:04:09.0000000Z   column "amount_usd" does not exist
+2026-07-24T20:04:10.0000000Z   LINE 12:     sum(amount_usd) as revenue
+2026-07-24T20:04:11.0000000Z                    ^
+2026-07-24T20:04:12.0000000Z   compiled code at target/run/shop/models/marts/orders.sql
+2026-07-24T20:04:13.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:14.0000000Z Post job cleanup.
+2026-07-24T20:04:15.0000000Z Cleaning up orphan processes

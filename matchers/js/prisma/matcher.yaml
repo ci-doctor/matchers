@@ -1,0 +1,8 @@
+schema: 1
+id: prisma
+description: >-
+  Prisma Migrate refusing - P3009 (a failed migration blocks new ones), P3018 (a migration
+  failed to apply, with the database error) or schema drift. Not P1001, the database unreachable.
+tags: [js, deps]
+match: {regex: '^Error: P30\d\d$|^Drift detected: '}
+window: {after: 10}

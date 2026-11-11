@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ bundle exec rubocop --parallel
+app/controllers/orders_controller.rb:8:5: C: Rails/ActionOrder: Action create should appear before show.
+    def create
+    ^^^^^^^^^^
+
+88 files inspected, 1 offense detected
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

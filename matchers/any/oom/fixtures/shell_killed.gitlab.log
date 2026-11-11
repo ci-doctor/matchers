@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ java -Xmx6g -jar build/indexer.jar --full
+Indexing 4,812,077 documents
+[gc] Pause Full (Allocation Failure) 5980M->5971M(6144M) 4.112s
+/usr/bin/bash: line 142:  4242 Killed                  java -Xmx6g -jar build/indexer.jar --full
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

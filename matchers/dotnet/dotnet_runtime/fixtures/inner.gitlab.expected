@@ -1,0 +1,7 @@
+… [1 lines elided] …
+Unhandled exception. System.AggregateException: One or more errors occurred. (Connection refused (db:5432))
+ ---> Npgsql.NpgsqlException (0x80004005): Failed to connect to db:5432
+ ---> System.Net.Sockets.SocketException (111): Connection refused
+   at Npgsql.Internal.NpgsqlConnector.Connect(NpgsqlTimeout timeout)
+   --- End of inner exception stack trace ---
+   at Ledger.Migrate.Run() in /builds/team/ledger/src/Ledger/Migrate.cs:line 41

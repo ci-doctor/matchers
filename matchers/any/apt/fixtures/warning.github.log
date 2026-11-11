@@ -1,0 +1,11 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run sudo apt-get update && sudo apt-get install -y jq && ./scripts/smoke.sh
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Hit:1 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-07-24T20:04:05.0000000Z W: https://packages.microsoft.com/repos/azure-cli/dists/noble/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+2026-07-24T20:04:06.0000000Z Setting up jq (1.7.1-3build1) ...
+2026-07-24T20:04:07.0000000Z ./scripts/smoke.sh: /health returned 503
+2026-07-24T20:04:08.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:09.0000000Z Post job cleanup.
+2026-07-24T20:04:10.0000000Z Cleaning up orphan processes

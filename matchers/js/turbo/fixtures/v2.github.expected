@@ -1,0 +1,13 @@
+… [2 lines elided] …
+• Running build in 3 packages
+ui:build: cache hit, replaying logs 5a1f
+web:build: cache miss, executing 9c02
+web:build: > web@0.1.0 build
+web:build: > next build
+web:build: Failed to compile.
+web:build: ./app/cart/page.tsx
+web:build: Module not found: Can't resolve '@/lib/money'
+web:build: ERROR: command finished with error: command (/home/runner/work/repo/repo/apps/web) /usr/local/bin/npm run build exited (1)
+web#build: command (/home/runner/work/repo/repo/apps/web) /usr/local/bin/npm run build exited (1)
+ Tasks:    2 successful, 3 total
+… [4 lines elided] …

@@ -1,0 +1,11 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run dotnet run --project src/Ledger
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Unhandled exception. System.InvalidOperationException: Sequence contains no elements
+2026-07-24T20:04:05.0000000Z    at System.Linq.ThrowHelper.ThrowNoElementsException()
+2026-07-24T20:04:06.0000000Z    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+2026-07-24T20:04:07.0000000Z    at Ledger.Program.Main(String[] args) in /home/runner/work/ledger/ledger/src/Ledger/Program.cs:line 22
+2026-07-24T20:04:08.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:09.0000000Z Post job cleanup.
+2026-07-24T20:04:10.0000000Z Cleaning up orphan processes

@@ -1,0 +1,8 @@
+schema: 1
+id: msvc
+description: >-
+  An MSVC compile error - file.cpp(12,5): error C2065: message, from cl.exe directly or under
+  MSBuild. fatal error C1083 is a missing header, usually a missing package or include path.
+tags: [c, build]
+match: {regex: '\(\d+(,\d+)?\): (fatal )?error C\d{4}: '}
+window: {before: 1, after: 1}

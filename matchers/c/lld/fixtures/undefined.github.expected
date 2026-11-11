@@ -1,0 +1,5 @@
+… [3 lines elided] …
+ld.lld: error: undefined symbol: Pipeline::flush()
+>>> referenced by render.cpp:41 (/home/runner/work/engine/engine/src/render.cpp:41)
+>>>               render.cpp.o:(Renderer::submit(Frame const&)) in archive libengine.a
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)

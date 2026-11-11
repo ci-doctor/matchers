@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ dbt run && ./deploy-docs.sh
+12:01:20  Finished running 41 table models in 0 hours 0 minutes and 18.20 seconds (18.20s).
+12:01:20  Completed successfully
+Error: docs deploy failed (HTTP 403)
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

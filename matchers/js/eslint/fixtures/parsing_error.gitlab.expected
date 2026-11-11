@@ -1,0 +1,6 @@
+$ npx eslint .
+/builds/team/web/src/api/client.ts
+  1:7  error  Parsing error: Unexpected token interface
+/builds/team/web/src/api/retry.ts
+  9:3  error  Unreachable code  no-unreachable
+✖ 2 problems (2 errors, 0 warnings)

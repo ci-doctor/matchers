@@ -1,0 +1,20 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run bundle exec rubocop
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Inspecting 41 files
+2026-07-24T20:04:05.0000000Z ..C......W..............................
+2026-07-24T20:04:06.0000000Z 
+2026-07-24T20:04:07.0000000Z Offenses:
+2026-07-24T20:04:08.0000000Z 
+2026-07-24T20:04:09.0000000Z app/models/cart.rb:12:5: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+2026-07-24T20:04:10.0000000Z     "total"
+2026-07-24T20:04:11.0000000Z     ^^^^^^^
+2026-07-24T20:04:12.0000000Z app/services/checkout.rb:30:7: W: Lint/UselessAssignment: Useless assignment to variable - fee.
+2026-07-24T20:04:13.0000000Z       fee = 0
+2026-07-24T20:04:14.0000000Z       ^^^
+2026-07-24T20:04:15.0000000Z 
+2026-07-24T20:04:16.0000000Z 41 files inspected, 2 offenses detected, 1 offense autocorrectable
+2026-07-24T20:04:17.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:18.0000000Z Post job cleanup.
+2026-07-24T20:04:19.0000000Z Cleaning up orphan processes

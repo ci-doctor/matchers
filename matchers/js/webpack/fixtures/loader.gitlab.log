@@ -1,0 +1,15 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx webpack --mode production
+ERROR in ./src/styles/app.scss
+Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+   ╷
+12 │   color: $brand-primary;
+   │          ^^^^^^^^^^^^^^
+   ╵
+  src/styles/app.scss 12:10  root stylesheet
+
+webpack 5.97.1 compiled with 1 error in 4120 ms
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

@@ -1,0 +1,9 @@
+$ npx next build --turbopack
+   ▲ Next.js 15.2.0 (Turbopack)
+   Creating an optimized production build ...
+Failed to compile.
+
+./app/layout.tsx:3:1
+Module not found: Can't resolve './globals.css'
+  1 | import type { Metadata } from 'next'
+> 3 | import './globals.css'

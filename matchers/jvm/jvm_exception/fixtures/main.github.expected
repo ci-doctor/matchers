@@ -1,0 +1,4 @@
+… [1 lines elided] …
+Exception in thread "main" java.lang.IllegalStateException: no ledger configured for region eu-west-3
+	at com.acme.ledger.Config.region(Config.java:41)
+	at com.acme.ledger.Main.main(Main.java:18)

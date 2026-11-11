@@ -1,0 +1,8 @@
+schema: 1
+id: r8
+description: >-
+  R8 or D8 failing a release build - missing classes R8 needs keep rules for, a dex over the
+  65536-method limit, or R8 compilation failing on a class it names.
+tags: [android, build]
+match: {regex: '^ERROR: (.+: )?(R8|D8): |^ERROR: Missing classes detected while running R8'}
+window: {after: 2}

@@ -1,0 +1,6 @@
+… [1 lines elided] …
+error: failed to run custom build command for `ring v0.17.8`
+Caused by:
+  process didn't exit successfully: `/work/target/debug/build/ring-2b/build-script-build` (exit status: 1)
+  --- stderr
+  error occurred: Failed to find tool. Is `cc` installed?

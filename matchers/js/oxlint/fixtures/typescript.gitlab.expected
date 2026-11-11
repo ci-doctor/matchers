@@ -1,0 +1,8 @@
+… [1 lines elided] …
+  × typescript-eslint(no-explicit-any): Unexpected any. Specify a different type.
+    ╭─[src/api/client.ts:9:20]
+  9 │ export function parse(raw: any) {
+    ·                            ───
+    ╰────
+  ⚠ eslint(no-console): Unexpected console statement.
+… [2 lines elided] …

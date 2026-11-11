@@ -1,0 +1,14 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ go test ./...
+ok  	github.com/acme/ledger/store	0.214s
+--- FAIL: TestParse (0.00s)
+    --- FAIL: TestParse/empty_input (0.00s)
+        parse_test.go:31: got err <nil>, want ErrEmpty
+    --- FAIL: TestParse/trailing_comma (0.00s)
+        parse_test.go:31: got 3 fields, want 2
+FAIL
+FAIL	github.com/acme/ledger/parse	0.011s
+FAIL
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

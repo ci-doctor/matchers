@@ -1,0 +1,7 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ bin/rails runner scripts/backfill.rb
+/app/lib/billing.rb:42:in 'Billing#charge': undefined method 'amount' for nil (NoMethodError)
+	from /app/scripts/backfill.rb:8:in 'block in <main>'
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

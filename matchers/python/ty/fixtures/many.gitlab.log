@@ -1,0 +1,15 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ uvx ty check etl
+error[unresolved-import]: Cannot resolve imported module `ledger.money`
+ --> etl/transform.py:3:6
+  |
+3 | from ledger.money import Round
+  |      ^^^^^^^^^^^^
+
+error[unresolved-attribute]: Type `Cart` has no attribute `sum`
+  --> etl/load.py:41:12
+
+Found 2 diagnostics
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

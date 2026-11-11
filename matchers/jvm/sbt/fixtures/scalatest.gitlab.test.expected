@@ -1,0 +1,4 @@
+… [3 lines elided] …
+[info] - should reject an empty cart *** FAILED ***
+[info]   Expected exception com.acme.EmptyCart to be thrown, but no exception was thrown (CheckoutSpec.scala:21)
+[error] Failed: Total 40, Failed 1, Errors 0, Passed 39

@@ -1,0 +1,4 @@
+… [2 lines elided] …
+error: no matching package named `serdee` found
+location searched: registry `crates-io`
+required by package `ledger v0.4.0 (/builds/team/ledger)`

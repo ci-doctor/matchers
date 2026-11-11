@@ -1,0 +1,25 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run npx turbo run build
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z • Packages in scope: api, ui, web
+2026-07-24T20:04:05.0000000Z • Running build in 3 packages
+2026-07-24T20:04:06.0000000Z ui:build: cache hit, replaying logs 5a1f
+2026-07-24T20:04:07.0000000Z web:build: cache miss, executing 9c02
+2026-07-24T20:04:08.0000000Z web:build: > web@0.1.0 build
+2026-07-24T20:04:09.0000000Z web:build: > next build
+2026-07-24T20:04:10.0000000Z web:build: Failed to compile.
+2026-07-24T20:04:11.0000000Z web:build: ./app/cart/page.tsx
+2026-07-24T20:04:12.0000000Z web:build: Module not found: Can't resolve '@/lib/money'
+2026-07-24T20:04:13.0000000Z web:build: ERROR: command finished with error: command (/home/runner/work/repo/repo/apps/web) /usr/local/bin/npm run build exited (1)
+2026-07-24T20:04:14.0000000Z web#build: command (/home/runner/work/repo/repo/apps/web) /usr/local/bin/npm run build exited (1)
+2026-07-24T20:04:15.0000000Z 
+2026-07-24T20:04:16.0000000Z  Tasks:    2 successful, 3 total
+2026-07-24T20:04:17.0000000Z Cached:    1 cached, 3 total
+2026-07-24T20:04:18.0000000Z   Time:    21.3s
+2026-07-24T20:04:19.0000000Z Failed:    web#build
+2026-07-24T20:04:20.0000000Z 
+2026-07-24T20:04:21.0000000Z  ERROR  run failed: command  exited (1)
+2026-07-24T20:04:22.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:23.0000000Z Post job cleanup.
+2026-07-24T20:04:24.0000000Z Cleaning up orphan processes

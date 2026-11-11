@@ -1,22 +1,2 @@
-# Migrated from ci-doctor before the 3 positive + 2 negative fixture bar existed.
-# Each needs only one positive fixture until backfilled. This list only shrinks.
-bundler
-composer
-cypress
-docker_build
-eslint
-generic_error
-go_panic
-go_test
-make
-minitest
-oom
-php_fatal
-phpunit
-python_traceback
-rspec
-ruby_exception
-rust_compile
-rust_panic
-rust_test
-tsc
+# Matchers allowed below the 3 positive + 2 negative fixture bar. Empty since every
+# official matcher meets it; the guard lets this list only shrink.

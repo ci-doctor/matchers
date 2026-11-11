@@ -1,0 +1,12 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ javac -d out $(find src -name '*.java')
+src/com/acme/Cart.java:3: error: package com.acme.money does not exist
+import com.acme.money.Round;
+                     ^
+src/com/acme/Cart.java:18: error: incompatible types: String cannot be converted to int
+        int total = row.amount();
+                              ^
+2 errors
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

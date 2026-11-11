@@ -1,0 +1,3 @@
+$ dbt seed
+Database Error in seed country_codes (seeds/country_codes.csv)
+  value too long for type character varying(2)

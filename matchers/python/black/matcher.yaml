@@ -1,0 +1,11 @@
+schema: 1
+id: black
+role: gate
+description: >-
+  black --check listing the files it would reformat. Formatting only - running black fixes
+  it; no code is wrong.
+tags: [python, lint, format]
+match: {regex: '^would reformat \S+\.pyi?$'}
+window:
+  until: {regex: '\d+ files? would be reformatted'}
+  max_lines: 200

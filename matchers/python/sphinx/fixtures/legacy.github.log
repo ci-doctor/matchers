@@ -1,0 +1,13 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run sphinx-build -W docs docs/_build/html
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Running Sphinx v7.4.7
+2026-07-24T20:04:05.0000000Z building [html]: targets for 41 source files that are out of date
+2026-07-24T20:04:06.0000000Z reading sources... [100%] reference/api
+2026-07-24T20:04:07.0000000Z 
+2026-07-24T20:04:08.0000000Z Warning, treated as error:
+2026-07-24T20:04:09.0000000Z /home/runner/work/ledger/ledger/docs/reference/api.rst:12:undefined label: 'ledger-config'
+2026-07-24T20:04:10.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:11.0000000Z Post job cleanup.
+2026-07-24T20:04:12.0000000Z Cleaning up orphan processes

@@ -1,0 +1,4 @@
+… [1 lines elided] …
+Collecting ledger-core==4.2.0 (from -r requirements.txt (line 1))
+ERROR: Could not find a version that satisfies the requirement ledger-core==4.2.0 (from versions: 3.9.0, 4.0.0, 4.1.1)
+ERROR: No matching distribution found for ledger-core==4.2.0

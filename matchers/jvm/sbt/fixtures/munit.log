@@ -1,0 +1,8 @@
+$ sbt test
+com.acme.MoneySuite:
+  + rounds half to even 0.004s
+==> X com.acme.MoneySuite.rounds up  0.012s munit.ComparisonFailException: /work/src/test/scala/MoneySuite.scala:14
+13:  test("rounds up") {
+14:    assertEquals(round(2.675), 2.68)
+values are not the same
+[error] Failed: Total 12, Failed 1, Errors 0, Passed 11

@@ -1,0 +1,10 @@
+schema: 1
+id: go_race
+description: >-
+  Go's race detector - WARNING: DATA RACE and the two goroutine stacks that touched the same
+  memory. The test that fails afterwards is a victim; the race is the cause.
+tags: [go, test]
+match: {regex: '^WARNING: DATA RACE$'}
+window:
+  until: {regex: '^==================$'}
+  max_lines: 80

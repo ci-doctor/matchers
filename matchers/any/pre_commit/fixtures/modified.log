@@ -1,0 +1,9 @@
+$ pre-commit run --all-files --show-diff-on-failure
+trim trailing whitespace.................................................Failed
+- hook id: trailing-whitespace
+- exit code: 1
+- files were modified by this hook
+
+Fixing docs/index.md
+
+end of file fixer........................................................Passed

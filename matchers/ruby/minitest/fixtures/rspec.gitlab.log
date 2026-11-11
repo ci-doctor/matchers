@@ -1,0 +1,13 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ bundle exec rspec
+Failures:
+
+  1) Cart#total sums the items
+     Failure/Error: expect(cart.total).to eq(3)
+       expected: 3
+            got: 2
+
+12 examples, 1 failure
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

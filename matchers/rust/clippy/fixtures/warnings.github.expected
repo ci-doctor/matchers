@@ -1,0 +1,11 @@
+… [2 lines elided] …
+error: this `if` has identical blocks
+  --> src/money.rs:22:5
+   |
+22 |     if neg { round_down(x) } else { round_down(x) }
+   |            ^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#if_same_then_else
+   = note: `-D clippy::if-same-then-else` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::if_same_then_else)]`
+error: could not compile `ledger` (lib) due to 1 previous error

@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ bazel build //...
+ERROR: /home/runner/work/engine/engine/src/BUILD.bazel:12:11: Compiling src/graph.cpp failed: (Exit 1): gcc failed: error executing CppCompile command
+src/graph.cpp:88:12: error: 'Edge' was not declared in this scope
+Target //src:engine failed to build
+INFO: Elapsed time: 12.401s, Critical Path: 9.20s
+FAILED: Build did NOT complete successfully
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

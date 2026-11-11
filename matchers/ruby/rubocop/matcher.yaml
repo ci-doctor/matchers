@@ -1,0 +1,8 @@
+schema: 1
+id: rubocop
+description: >-
+  RuboCop's file.rb:12:5: C: Cop/Name: message offenses, with the excerpt under each. The cop
+  says which rule fired; E and F are syntax errors, not style.
+tags: [ruby, lint]
+match: {regex: '^\S+\.(rb|rake|gemspec|ru):\d+:\d+: [CWERF]: '}
+window: {after: 2}

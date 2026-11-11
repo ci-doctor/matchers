@@ -1,0 +1,12 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run ./gradlew run && ./smoke.sh
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z WARN  c.a.l.Retry - attempt 1 failed, retrying in 2s
+2026-07-24T20:04:05.0000000Z java.net.SocketTimeoutException: Read timed out
+2026-07-24T20:04:06.0000000Z 	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:278)
+2026-07-24T20:04:07.0000000Z INFO  c.a.l.Retry - attempt 2 succeeded
+2026-07-24T20:04:08.0000000Z Error: smoke test /health returned 503
+2026-07-24T20:04:09.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:10.0000000Z Post job cleanup.
+2026-07-24T20:04:11.0000000Z Cleaning up orphan processes

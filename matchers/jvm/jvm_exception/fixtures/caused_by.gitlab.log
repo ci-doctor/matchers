@@ -1,0 +1,13 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ java -jar build/libs/ledger.jar migrate
+Exception in thread "main" java.lang.RuntimeException: migration V12 failed
+	at com.acme.ledger.Migrate.run(Migrate.java:58)
+	at com.acme.ledger.Main.main(Main.java:22)
+Caused by: org.postgresql.util.PSQLException: ERROR: column "currency" of relation "invoices" already exists
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	... 4 more
+Caused by: java.sql.SQLException: statement V12__add_currency.sql:3
+	... 6 more
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

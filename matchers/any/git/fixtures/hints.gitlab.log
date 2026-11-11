@@ -1,0 +1,9 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ git clone https://github.com/acme/billing && npm run build:ci
+warning: redirecting to https://github.com/acme/billing.git/
+hint: Using 'master' as the name for the initial branch. This default branch name
+HEAD is now at 8ad41f0 Merge pull request #412
+npm error Missing script: "build:ci"
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

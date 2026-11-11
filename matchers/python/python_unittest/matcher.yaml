@@ -1,0 +1,10 @@
+schema: 1
+id: python_unittest
+description: >-
+  unittest's FAIL: / ERROR: blocks, from Python's runner or Django's test runner, through to
+  FAILED (failures=N). ERROR means the test raised, or its module did not import.
+tags: [python, test]
+match: {regex: '^(FAIL|ERROR): \S+ \(.+\)$'}
+window:
+  until: {regex: '^FAILED \((failures|errors)='}
+  max_lines: 300
