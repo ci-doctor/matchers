@@ -1,0 +1,5 @@
+… [1 lines elided] …
+etl/transform.py:12:1: E302 expected 2 blank lines, found 1
+etl/transform.py:88:17: E711 comparison to None should be 'if cond is None:'
+etl/load.py:5:1: I001 isort found an import in the wrong position
+etl/load.py:23:5: C901 'load_batch' is too complex (14)

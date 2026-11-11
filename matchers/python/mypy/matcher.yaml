@@ -1,0 +1,8 @@
+schema: 1
+id: mypy
+description: >-
+  A mypy type error - `file.py:12: error: message  [code]`; the notes under it name the
+  types involved. The code disagrees with its own annotations.
+tags: [python, lint, types]
+match: {regex: '^\S+\.pyi?:\d+:(\d+:)? error: '}
+window: {after: 3}

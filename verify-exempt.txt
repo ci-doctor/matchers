@@ -27,8 +27,6 @@ php_fatal
 phpunit
 playwright
 pnpm
-pytest
-python_lint
 python_traceback
 rspec
 ruby_exception

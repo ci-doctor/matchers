@@ -1,0 +1,25 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ ruff check .
+F401 [*] `os` imported but unused
+ --> src/ledger/api.py:3:8
+  |
+1 | import json
+2 | import sys
+3 | import os
+  |        ^^
+  |
+help: Remove unused import: `os`
+
+E711 Comparison to `None` should be `cond is None`
+  --> src/ledger/report.py:58:17
+   |
+58 |     if total == None:
+   |                 ^^^^
+   |
+help: Replace with `cond is None`
+
+Found 2 errors.
+[*] 1 fixable with the `--fix` option.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

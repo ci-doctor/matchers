@@ -1,0 +1,10 @@
+… [1 lines elided] …
+UP006 [*] Use `list` instead of `List` for type annotation
+  --> etl/transform.py:12:22
+   |
+12 | def batch(rows: List[dict]) -> int:
+   |                 ^^^^
+   |
+help: Replace with `list`
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

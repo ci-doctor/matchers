@@ -1,9 +1,21 @@
 schema: 1
 id: pytest
-role: tool
-description: pytest's `=== FAILURES ===` block, from the first failing test through to the short summary.
+description: pytest - failing tests, and test modules that could not even be collected.
 tags: [python, test]
-match: {regex: ^=+ FAILURES =+}
-window:
-  until: {regex: ^=+ short test summary}
-  max_lines: 500
+outputs:
+  failures:
+    description: >-
+      pytest's `=== FAILURES ===` block, from the first failing test through to the short
+      summary. The assertion and traceback name the cause.
+    match: {regex: '^=+ FAILURES =+'}
+    window:
+      until: {regex: '^=+ short test summary'}
+      max_lines: 500
+  errors:
+    description: >-
+      pytest's `=== ERRORS ===` block - a test module that failed to import, or a fixture that
+      raised. Those tests never ran; the error is in setup, not in an assertion.
+    match: {regex: '^=+ ERRORS =+'}
+    window:
+      until: {regex: '^=+ short test summary'}
+      max_lines: 500

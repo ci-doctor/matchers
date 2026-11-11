@@ -1,0 +1,9 @@
+schema: 1
+id: pylint
+description: >-
+  A pylint message - `file.py:12:4: W0612: Unused variable 'x' (unused-variable)` under its
+  `***** Module` header. The symbol in brackets names the check.
+tags: [python, lint]
+match: {regex: '^\S+\.py:\d+:\d+: [CRWEFI]\d{4}: .* \([a-z0-9-]+\)$'}
+window:
+  from: {regex: '^\*{13} Module ', within: 200}

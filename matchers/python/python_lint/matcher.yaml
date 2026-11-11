@@ -1,7 +1,0 @@
-schema: 1
-id: python_lint
-role: tool
-description: 'A `file.py:12: error` diagnostic from mypy, ruff, flake8 or pylint.'
-tags: [python, lint]
-match: {regex: '^\S+\.py:\d+:(\d+:)? (error|[EFWCN]\d+)'}
-window: {after: 3}

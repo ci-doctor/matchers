@@ -1,0 +1,14 @@
+schema: 1
+id: flake8
+description: >-
+  A flake8 violation - `file.py:12:5: F401 ...`, a pyflakes (F), pycodestyle (E/W) or
+  plugin code with the file:line it fired on. The code breaks a lint rule.
+tags: [python, lint]
+define:
+  FILE: '[\w./-]+\.pyi?'
+  NUM: '\d+'
+  CODE: '[A-Z]+[0-9]+'
+match:
+  all:
+    - template: '$FILE:$NUM:$NUM: $CODE '
+    - not: {followed_by: {regex: '^Found \d+ errors?\.', within: 500}}  # ruff check prints the same lines, then this

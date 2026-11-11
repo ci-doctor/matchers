@@ -1,0 +1,25 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run pytest -q
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z ============================= test session starts ==============================
+2026-07-24T20:04:05.0000000Z platform linux -- Python 3.12.7, pytest-8.3.3, pluggy-1.5.0
+2026-07-24T20:04:06.0000000Z collected 41 items / 1 error
+2026-07-24T20:04:07.0000000Z 
+2026-07-24T20:04:08.0000000Z ==================================== ERRORS ====================================
+2026-07-24T20:04:09.0000000Z _____________________ ERROR collecting tests/test_api.py ______________________
+2026-07-24T20:04:10.0000000Z ImportError while importing test module '/app/tests/test_api.py'.
+2026-07-24T20:04:11.0000000Z Hint: make sure your test modules/packages have valid Python names.
+2026-07-24T20:04:12.0000000Z Traceback:
+2026-07-24T20:04:13.0000000Z /usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+2026-07-24T20:04:14.0000000Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-07-24T20:04:15.0000000Z tests/test_api.py:4: in <module>
+2026-07-24T20:04:16.0000000Z     import httpx
+2026-07-24T20:04:17.0000000Z E   ModuleNotFoundError: No module named 'httpx'
+2026-07-24T20:04:18.0000000Z =========================== short test summary info ============================
+2026-07-24T20:04:19.0000000Z ERROR tests/test_api.py
+2026-07-24T20:04:20.0000000Z !!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+2026-07-24T20:04:21.0000000Z =============================== 1 error in 0.41s ===============================
+2026-07-24T20:04:22.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:23.0000000Z Post job cleanup.
+2026-07-24T20:04:24.0000000Z Cleaning up orphan processes

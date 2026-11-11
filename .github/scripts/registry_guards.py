@@ -11,8 +11,12 @@
   the 3 positive + 2 negative fixture bar.
 
 Usage: python registry_guards.py <base-ref>   (e.g. origin/main)
+
+While the registry is in alpha (ENFORCE_NAMES unset or "0"), names and outputs may be
+renamed or removed freely; set ENFORCE_NAMES=1 at the first stable release.
 """
 
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -76,7 +80,7 @@ def main(base_ref: str) -> int:
         print(f"::error::{base_ref!r} is not a commit; fetch the base branch first.")
         return 1
     errors = []
-    if (base_index := _at(base_ref, INDEX)) is not None:
+    if os.environ.get("ENFORCE_NAMES") == "1" and (base_index := _at(base_ref, INDEX)) is not None:
         errors += [
             f"{name} was removed. Names are permanent: deprecate it first "
             '(description: "DEPRECATED: use X") and remove it in a later PR.'

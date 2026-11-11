@@ -77,6 +77,13 @@ matchers:
     schema: 1
     tags: [js, lint]
     ecosystem: js
+  flake8:
+    path: matchers/python/flake8/matcher.yaml
+    sha256: 226af6bb0c9154e75f93fbd930bd8e28d38798e6af9d2ec6f7bb1c42f8a6a9cd
+    description: 'A flake8 violation - `file.py:12:5: F401 ...`, a pyflakes (F), pycodestyle (E/W) or plugin code with the file:line it fired on. The code breaks a lint rule.'
+    schema: 1
+    tags: [python, lint]
+    ecosystem: python
   generic_error:
     path: matchers/any/generic_error/matcher.yaml
     sha256: 39ff646ca081eb18b600880b25782c943e5d128185e9cd04bbc032eafb6b79e4
@@ -140,6 +147,13 @@ matchers:
     schema: 1
     tags: [ruby, test]
     ecosystem: ruby
+  mypy:
+    path: matchers/python/mypy/matcher.yaml
+    sha256: 6daeeccd9f243ea8ad46657efb7f46c9b03ad6458993915b17a6345ad0cadc8e
+    description: 'A mypy type error - `file.py:12: error: message [code]`; the notes under it name the types involved. The code disagrees with its own annotations.'
+    schema: 1
+    tags: [python, lint, types]
+    ecosystem: python
   node_runtime:
     path: matchers/js/node_runtime/matcher.yaml
     sha256: 062f94daabc2633745dbe0ad0c6b2c1aa1a44ee2aaeabaa18609c4d707b8139d
@@ -189,20 +203,21 @@ matchers:
     schema: 1
     tags: [js, deps]
     ecosystem: js
-  pytest:
-    path: matchers/python/pytest/matcher.yaml
-    sha256: fc8df8aab95b8d9145007e85d4a9c929de8a134216ad7631d971d3216c54ea3a
-    description: pytest's `=== FAILURES ===` block, from the first failing test through to the short summary.
-    schema: 1
-    tags: [python, test]
-    ecosystem: python
-  python_lint:
-    path: matchers/python/python_lint/matcher.yaml
-    sha256: 5ae9f4b063478aed9524c97f8d337016df182ab80fc53e6dd9535213df33afd4
-    description: 'A `file.py:12: error` diagnostic from mypy, ruff, flake8 or pylint.'
+  pylint:
+    path: matchers/python/pylint/matcher.yaml
+    sha256: 4624985e3366cb0807ae67054ca7df8c8e5d35849d576b0ce7cf70017e1ffbf0
+    description: 'A pylint message - `file.py:12:4: W0612: Unused variable ''x'' (unused-variable)` under its `***** Module` header. The symbol in brackets names the check.'
     schema: 1
     tags: [python, lint]
     ecosystem: python
+  pytest:
+    path: matchers/python/pytest/matcher.yaml
+    sha256: b4311880bf6c0bd8a61964107950d45fb4fb14e77d7b1e962be4d4d7c7647cf4
+    description: pytest - failing tests, and test modules that could not even be collected.
+    schema: 1
+    tags: [python, test]
+    ecosystem: python
+    outputs: [failures, errors]
   python_traceback:
     path: matchers/python/python_traceback/matcher.yaml
     sha256: f25da395cb2f4307e02da6040e5c330fe644db79e40b982b02c28d1b5750e309
@@ -224,6 +239,14 @@ matchers:
     schema: 1
     tags: [ruby, runtime]
     ecosystem: ruby
+  ruff:
+    path: matchers/python/ruff/matcher.yaml
+    sha256: 7278e1487caf5e574fdc0da1a9b038e38acef230ee4fe4da74520a1aeb1f05d0
+    description: Ruff, the Python linter and formatter - lint violations from ruff check, and files ruff format would change.
+    schema: 1
+    tags: [python, lint, format]
+    ecosystem: python
+    outputs: [check, format]
   rust_compile:
     path: matchers/rust/rust_compile/matcher.yaml
     sha256: 5b6cff60d76cc3f959b0f1e73ddade5ecc2c602d2bab723378d1e4ea00807592
@@ -309,7 +332,7 @@ bundles:
     description: Every matcher in the php ecosystem.
   python:
     path: bundles/python.yaml
-    sha256: 6d38985f842b36968dba260ce5f564b65826487a3d57048325f3aa94e1ecf4c6
+    sha256: d36fa0ae0012f2a201ce468375e639e56bcc07d02ced75efd3b96dadade07108
     description: Every matcher in the python ecosystem.
   ruby:
     path: bundles/ruby.yaml

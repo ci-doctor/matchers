@@ -1,0 +1,12 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run ruff check --output-format concise .
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z src/ledger/api.py:3:8: F401 [*] `os` imported but unused
+2026-07-24T20:04:05.0000000Z src/ledger/api.py:41:89: E501 Line too long (104 > 88)
+2026-07-24T20:04:06.0000000Z src/ledger/models.py:17:5: B006 Do not use mutable data structures for argument defaults
+2026-07-24T20:04:07.0000000Z Found 3 errors.
+2026-07-24T20:04:08.0000000Z [*] 1 fixable with the `--fix` option.
+2026-07-24T20:04:09.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:10.0000000Z Post job cleanup.
+2026-07-24T20:04:11.0000000Z Cleaning up orphan processes

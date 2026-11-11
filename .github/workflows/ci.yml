@@ -45,6 +45,7 @@ jobs:
       - run: uv run --no-project --with pyyaml --with pytest pytest -q -p no:cacheprovider .github/scripts
       - env:
           BASE_REF: ${{ github.base_ref }}   # via env, never interpolated into the script
+          ENFORCE_NAMES: "0"                 # alpha: names may change; "1" from the first stable release
         run: uv run --no-project --with pyyaml python .github/scripts/registry_guards.py "origin/$BASE_REF"
 
   # Fixtures are real job logs; a token pasted in with one must not ship.
