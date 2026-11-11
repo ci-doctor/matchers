@@ -1,0 +1,11 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ sbt compile
+[info] compiling 12 Scala sources to /builds/team/ledger/target/scala-3.5.2/classes ...
+[error] -- [E008] Not Found Error: /builds/team/ledger/src/main/scala/com/acme/Cart.scala:12:22 
+[error] 12 |    items.sum
+[error]    |    ^^^^^^^^^
+[error]    |    value sum is not a member of List[com.acme.Item]
+[error] one error found
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

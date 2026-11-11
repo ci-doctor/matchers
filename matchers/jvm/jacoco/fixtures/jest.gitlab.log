@@ -1,0 +1,6 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx jest --coverage
+Jest: "global" coverage threshold for lines (80%) not met: 79.12%
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

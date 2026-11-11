@@ -1,0 +1,7 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ java -jar build/libs/ledger.jar
+Exception in thread "main" java.lang.IllegalStateException: no ledger configured for region eu-west-3
+	at com.acme.ledger.Config.region(Config.java:41)
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

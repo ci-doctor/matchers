@@ -1,0 +1,6 @@
+… [2 lines elided] …
+[error] /home/runner/work/ledger/ledger/src/main/scala/com/acme/Cart.scala:12:22: value sum is not a member of List[com.acme.Item]
+[error]     items.sum
+[error]           ^
+[error] one error found
+[error] (Compile / compileIncremental) Compilation failed

@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ sbt test
+[info] CheckoutSpec:
+[info] Checkout
+[info] - should reject an empty cart *** FAILED ***
+[info]   Expected exception com.acme.EmptyCart to be thrown, but no exception was thrown (CheckoutSpec.scala:21)
+[error] Failed: Total 40, Failed 1, Errors 0, Passed 39
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1
