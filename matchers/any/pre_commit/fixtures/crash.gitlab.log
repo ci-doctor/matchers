@@ -1,0 +1,9 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ pre-commit run --all-files
+[INFO] Installing environment for https://github.com/astral-sh/ruff-pre-commit.
+An unexpected error has occurred: CalledProcessError: command: ('/usr/bin/git', 'fetch', 'origin', '--tags')
+return code: 128
+Check the log at /home/runner/.cache/pre-commit/pre-commit.log
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

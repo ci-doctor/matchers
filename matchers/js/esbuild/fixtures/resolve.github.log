@@ -1,0 +1,17 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run node build.mjs
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z ✘ [ERROR] Could not resolve "lodash-es"
+2026-07-24T20:04:05.0000000Z 
+2026-07-24T20:04:06.0000000Z     src/cart.ts:1:22:
+2026-07-24T20:04:07.0000000Z       1 │ import { sum } from "lodash-es";
+2026-07-24T20:04:08.0000000Z         ╵                     ~~~~~~~~~~~
+2026-07-24T20:04:09.0000000Z 
+2026-07-24T20:04:10.0000000Z   You can mark the path "lodash-es" as external to exclude it from the bundle, which will remove
+2026-07-24T20:04:11.0000000Z   this error and leave the unresolved path in the bundle.
+2026-07-24T20:04:12.0000000Z 
+2026-07-24T20:04:13.0000000Z 1 error
+2026-07-24T20:04:14.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:15.0000000Z Post job cleanup.
+2026-07-24T20:04:16.0000000Z Cleaning up orphan processes

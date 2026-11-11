@@ -1,0 +1,8 @@
+$ npx webpack
+asset main.js 1.2 MiB [emitted] (name: main)
+ERROR in ./src/cart.ts 3:0-32
+Module not found: Error: Can't resolve 'lodash-es' in '/home/runner/work/web/web/src'
+resolve 'lodash-es' in '/home/runner/work/web/web/src'
+  Parsed request is a module
+
+webpack 5.97.1 compiled with 1 error in 2311 ms
