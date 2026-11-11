@@ -1,0 +1,10 @@
+$ npx nx run-many --target=build
+> nx run web:build:production
+Error: Module not found: Can't resolve '@/lib/money'
+
+ >  NX   Ran target build for 3 projects (31s)
+
+    ✔    2/3 succeeded [1 read from cache]
+
+    ✖    1/3 targets failed, including the following:
+         - web:build:production

@@ -10,7 +10,7 @@ matchers:
     outputs: [build, test]
   bun:
     path: matchers/js/bun/matcher.yaml
-    sha256: 9f5fde19d0d52ecc3c4ba2796d2b0d10623ddbd7c2aeba5e418693e958bfac75
+    sha256: 957cbf821670afa9fa261f3f532cfd91dbc017a7d112704eba4c0b829b125f5f
     description: Bun, the JavaScript runtime and toolkit - failing tests, install refusals, and scripts that exited non-zero.
     schema: 1
     tags: [js, test, deps]
@@ -58,6 +58,13 @@ matchers:
     schema: 1
     tags: [container, build]
     ecosystem: container
+  esbuild:
+    path: matchers/js/esbuild/matcher.yaml
+    sha256: 995ec86fae6f58214bd01529dda1f76efc8121c939ac833760f44f76f07e367f
+    description: esbuild's [ERROR] diagnostics - the message, then the file, line and source excerpt it points at. Printed under tsup, tsx and Vite's optimizer too; wrangler's own API errors are excluded.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
   eslint:
     path: matchers/js/eslint/matcher.yaml
     sha256: 7553ad9076e72cc0f5dacf92da90a89b00f757c6f9b2529603e8ac80187eadbf
@@ -151,6 +158,14 @@ matchers:
     schema: 1
     tags: [python, lint, types]
     ecosystem: python
+  nextjs:
+    path: matchers/js/nextjs/matcher.yaml
+    sha256: 534cd46025c570231081fda1c226771836281d03941363be924a7dd0807ffc39
+    description: Next.js - next build failing to compile the app.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
+    outputs: [build]
   node:
     path: matchers/js/node/matcher.yaml
     sha256: f34817e320b4291ccdbd43bcdbddb04f87b6cf0694f6c8a97f82cde439dcc025
@@ -159,6 +174,13 @@ matchers:
     tags: [js, runtime]
     ecosystem: js
     outputs: [error, oom]
+  node_gyp:
+    path: matchers/js/node_gyp/matcher.yaml
+    sha256: aa135028975e66a60368c23525da8e4877e7f5d4388214108c4dfb9ffebe4214
+    description: node-gyp failing to build a native addon - usually a Node version with no prebuilt binary, or a missing compiler or Python. The compiler error above gyp ERR! is the cause.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
   npm:
     path: matchers/js/npm/matcher.yaml
     sha256: ed893fa1a860cc2d3d27e8c54adc93655247ebe516bbeaa3a836ddff8f0e25e4
@@ -174,6 +196,13 @@ matchers:
     schema: 1
     tags: [dotnet, deps]
     ecosystem: dotnet
+  nx:
+    path: matchers/js/nx/matcher.yaml
+    sha256: 35d18ac92ea0ed62e76405d9641c08fabdb4560b25905a9a1c29f4e16b9fe71e
+    description: Nx reporting that a target failed, with the failed project:target list. A wrapper - the failed project's output above it is the cause.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
   oom:
     path: matchers/any/oom/matcher.yaml
     sha256: e694ed19c602dae16597d8dbab459d11f9831d2e6d917a7307f3148a908e3b94
@@ -211,6 +240,13 @@ matchers:
     tags: [js, node, deps]
     ecosystem: js
     outputs: [install, run]
+  prettier:
+    path: matchers/js/prettier/matcher.yaml
+    sha256: 3b7666fccda15ffea6761488a6b94ea38931a1e522b20eb74613a41da4bd43a2
+    description: prettier --check listing the files it would reformat. Formatting only - running prettier --write fixes it; no code is wrong.
+    schema: 1
+    tags: [js, lint, format]
+    ecosystem: js
   pylint:
     path: matchers/python/pylint/matcher.yaml
     sha256: 4624985e3366cb0807ae67054ca7df8c8e5d35849d576b0ce7cf70017e1ffbf0
@@ -290,6 +326,28 @@ matchers:
     schema: 1
     tags: [js, build]
     ecosystem: js
+  turbo:
+    path: matchers/js/turbo/matcher.yaml
+    sha256: 2a5691af6d0e47cf71cfc9782021f9e28145fdfcba70de6d6b7351624aa5b7de
+    description: 'Turborepo reporting a failed task (pkg#task: command exited). A wrapper - that package''s own output, prefixed pkg:task:, is the cause.'
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
+  vite:
+    path: matchers/js/vite/matcher.yaml
+    sha256: 710e8163098691d4a3b3f8bc8df2a45ed93dfc60f9e059751b7b880dab8aaff0
+    description: Vite, the JavaScript build tool and dev server - production builds that fail.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
+    outputs: [build]
+  vitest:
+    path: matchers/js/vitest/matcher.yaml
+    sha256: 81b4eeeb8998dc9b41873b7d9cd9d5782240063beb953b9cb9ed14d481b0c465
+    description: A Vitest failure - the FAIL file > suite > test header names the test, and the diff below it shows expected against received. A test file that failed to load prints FAIL file [ file ].
+    schema: 1
+    tags: [js, test]
+    ecosystem: js
   vstest:
     path: matchers/dotnet/vstest/matcher.yaml
     sha256: ee435f2416c702c4a9fd175aaa68dad3f16a8d43db97834f2a558e38b9f1450a
@@ -297,6 +355,13 @@ matchers:
     schema: 1
     tags: [dotnet, test]
     ecosystem: dotnet
+  webpack:
+    path: matchers/js/webpack/matcher.yaml
+    sha256: 3d856f8c878f0caf47bdd61edbd6b50e44fadc87208ae55ad1d5c38707a5c0b3
+    description: webpack's ERROR in ./src/file entries - a module it could not resolve or a loader that failed, with the detail under it. Also printed by rspack.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
   yarn:
     path: matchers/js/yarn/matcher.yaml
     sha256: 3e304051acee651095a1355c4b76a33e174a1892ec221236a2c77eb2ad31d368
@@ -336,7 +401,7 @@ bundles:
     description: Every matcher in the iac ecosystem.
   js:
     path: bundles/js.yaml
-    sha256: 03a581a7a36669f7813018cd8ef2966901e9df08dbf9a7fffca742b056534e04
+    sha256: faa42ddc906eddd520adbc9ec442c4c24f315a7f1d4aadaae74046359c120b82
     description: Every matcher in the js ecosystem.
   jvm:
     path: bundles/jvm.yaml

@@ -1,0 +1,15 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx vitest run
+ RUN  v2.1.8 /builds/team/web
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/api/client.test.ts [ src/api/client.test.ts ]
+Error: Failed to load url ./retry (resolved id: ./retry) in /builds/team/web/src/api/client.ts. Does the file exist?
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/dep-CB_7IfJ-.js:51920:17
+
+ Test Files  1 failed | 7 passed (8)
+      Tests  40 passed (40)
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1
