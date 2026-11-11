@@ -1,0 +1,9 @@
+… [1 lines elided] …
+[ RUN      ] CartTest.SumsItems
+/home/runner/work/engine/engine/tests/cart_test.cc:12: Failure
+Expected equality of these values:
+  cart.total()
+    Which is: 2
+  3
+[  FAILED  ] CartTest.SumsItems (0 ms)
+… [5 lines elided] …

@@ -1,0 +1,8 @@
+schema: 1
+id: googletest
+description: >-
+  A GoogleTest failure - [  FAILED  ] Suite.Test (N ms), with the expectation that failed
+  printed above it (file:line: Failure and the values compared).
+tags: [c, test]
+match: {regex: '^\[  FAILED  \] \S+\.\S+.* \(\d+ ms\)$'}
+window: {before: 6}

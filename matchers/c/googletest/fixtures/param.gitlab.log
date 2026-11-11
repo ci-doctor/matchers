@@ -1,0 +1,12 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ ./build/tests/money_test
+[ RUN      ] Money/RoundTest.Rounds/2
+/builds/team/engine/tests/money_test.cc:22: Failure
+Expected equality of these values:
+  round(GetParam())
+    Which is: 2.67
+  2.68
+[  FAILED  ] Money/RoundTest.Rounds/2, where GetParam() = 2.675 (0 ms)
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

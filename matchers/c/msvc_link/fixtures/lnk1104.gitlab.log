@@ -1,0 +1,6 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ msbuild tls.sln
+LINK : fatal error LNK1104: cannot open file 'libssl.lib' [D:\work\tls\build\tls.vcxproj]
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

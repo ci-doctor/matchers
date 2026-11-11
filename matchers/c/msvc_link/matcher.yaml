@@ -1,0 +1,8 @@
+schema: 1
+id: msvc_link
+description: >-
+  An MSVC link error - LNK2019 unresolved external symbol (and the object that referenced it),
+  LNK1104 a library it cannot open, LNK2005 a symbol defined twice.
+tags: [c, build]
+match: {regex: 'error LNK\d{4}: '}
+window: {after: 1}

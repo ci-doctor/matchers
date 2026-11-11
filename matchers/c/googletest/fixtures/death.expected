@@ -1,0 +1,8 @@
+… [1 lines elided] …
+[ RUN      ] ParseDeathTest.AbortsOnNull
+/work/tests/parse_test.cc:30: Failure
+Death test: parse(nullptr)
+    Result: failed to die.
+ Error msg:
+[  DEATH   ] 
+[  FAILED  ] ParseDeathTest.AbortsOnNull (12 ms)

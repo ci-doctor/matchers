@@ -1,0 +1,4 @@
+… [1 lines elided] …
+  graph.cpp
+C:\a\engine\engine\src\graph.cpp(88,12): error C2065: 'Edge': undeclared identifier [C:\a\engine\engine\build\engine.vcxproj]
+C:\a\engine\engine\src\graph.cpp(88,12): error C3861: 'Edge': identifier not found [C:\a\engine\engine\build\engine.vcxproj]

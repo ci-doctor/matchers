@@ -1,0 +1,5 @@
+… [2 lines elided] …
+FAILED: src/libparse.a.p/parse.c.o
+cc -Isrc/libparse.a.p -Isrc -fdiagnostics-color=always -Wall -Werror -O2 -c ../src/parse.c
+../src/parse.c:41:9: error: use of undeclared identifier 'buf_len'
+ninja: build stopped: subcommand failed.

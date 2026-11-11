@@ -93,6 +93,13 @@ matchers:
     schema: 1
     tags: [go, test]
     ecosystem: go
+  googletest:
+    path: matchers/c/googletest/matcher.yaml
+    sha256: cd84cf340013a22b89186042523e5250592a769350344ed7bc812d54cf2d516f
+    description: 'A GoogleTest failure - [ FAILED ] Suite.Test (N ms), with the expectation that failed printed above it (file:line: Failure and the values compared).'
+    schema: 1
+    tags: [c, test]
+    ecosystem: c
   gradle:
     path: matchers/jvm/gradle/matcher.yaml
     sha256: 43d1b99a594931ef5c8c761063deb84899312846629715f5a7798a82a17da64a
@@ -112,6 +119,13 @@ matchers:
     path: matchers/c/ld/matcher.yaml
     sha256: 4a4d6b4bf5a5a027cad368bb651a139128232c52323de3b8bb2586a7b1886b38
     description: GNU ld failing to link - an undefined reference (a library or object left out, or a symbol declared but never defined) or a library it cannot find (`cannot find -lssl`).
+    schema: 1
+    tags: [c, build]
+    ecosystem: c
+  lld:
+    path: matchers/c/lld/matcher.yaml
+    sha256: 757b674547072ec32ecf31c99df7bbe760d68f3c73dc7fe9d7b79a3a32d71bd8
+    description: 'LLVM''s lld refusing to link - ld.lld / rust-lld: error: undefined symbol or duplicate symbol, with the >>> referenced by / defined at lines naming the objects involved.'
     schema: 1
     tags: [c, build]
     ecosystem: c
@@ -144,6 +158,20 @@ matchers:
     schema: 1
     tags: [dotnet, build]
     ecosystem: dotnet
+  msvc:
+    path: matchers/c/msvc/matcher.yaml
+    sha256: 455c94f51774fe299267d4e0c32c1ff3cac56f132fbfd653e03fc44528109723
+    description: 'An MSVC compile error - file.cpp(12,5): error C2065: message, from cl.exe directly or under MSBuild. fatal error C1083 is a missing header, usually a missing package or include path.'
+    schema: 1
+    tags: [c, build]
+    ecosystem: c
+  msvc_link:
+    path: matchers/c/msvc_link/matcher.yaml
+    sha256: c1a60b2b3886a5218be8a82a532503846198128dfe8e38cec16cca8576fa6739
+    description: An MSVC link error - LNK2019 unresolved external symbol (and the object that referenced it), LNK1104 a library it cannot open, LNK2005 a symbol defined twice.
+    schema: 1
+    tags: [c, build]
+    ecosystem: c
   mypy:
     path: matchers/python/mypy/matcher.yaml
     sha256: 6daeeccd9f243ea8ad46657efb7f46c9b03ad6458993915b17a6345ad0cadc8e
@@ -151,6 +179,13 @@ matchers:
     schema: 1
     tags: [python, lint, types]
     ecosystem: python
+  ninja:
+    path: matchers/c/ninja/matcher.yaml
+    sha256: 1c704d1c57145578c9aab55d512074e7c1de27c281dc45b72cce729c0fc4ce1e
+    description: 'Ninja''s FAILED: target line, ahead of build stopped: subcommand failed. A wrapper - the compiler or linker output under the FAILED: line is the cause.'
+    schema: 1
+    tags: [c, build]
+    ecosystem: c
   node:
     path: matchers/js/node/matcher.yaml
     sha256: f34817e320b4291ccdbd43bcdbddb04f87b6cf0694f6c8a97f82cde439dcc025
@@ -316,7 +351,7 @@ bundles:
     description: Every matcher in the any ecosystem.
   c:
     path: bundles/c.yaml
-    sha256: 5609e9fa3d321f97e647b2e148b84b9edd028304e5e3d8ce2340b9183b2fe450
+    sha256: edc3a4775e6f89835ad0570ab9c47c3cd115b3e7b58c943afc732ef4498c050b
     description: Every matcher in the c ecosystem.
   container:
     path: bundles/container.yaml

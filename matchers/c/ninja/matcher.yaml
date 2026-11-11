@@ -1,0 +1,12 @@
+schema: 1
+id: ninja
+role: wrapper
+description: >-
+  Ninja's FAILED: target line, ahead of build stopped: subcommand failed. A wrapper - the
+  compiler or linker output under the FAILED: line is the cause.
+tags: [c, build]
+match:
+  all:
+    - regex: '^FAILED: \S'
+    - followed_by: {regex: '^ninja: build stopped: subcommand failed\.$', within: 200}
+window: {after: 3}
