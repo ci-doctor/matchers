@@ -1,0 +1,7 @@
+… [2 lines elided] …
+/home/runner/work/app/app/src/main/java/com/acme/Cart.java:12: error: cannot find symbol
+        return items.sum();
+                    ^
+  symbol:   method sum()
+  location: variable items of type List<Item>
+… [2 lines elided] …

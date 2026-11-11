@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ mvn -B package
+[INFO] --- compiler:3.13.0:compile (default-compile) @ ledger ---
+[ERROR] COMPILATION ERROR :
+[ERROR] /home/runner/work/ledger/ledger/src/main/java/com/acme/Cart.java:[12,20] cannot find symbol
+  symbol:   method sum()
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project ledger: Compilation failure
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

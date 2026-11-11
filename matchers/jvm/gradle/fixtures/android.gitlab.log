@@ -1,0 +1,16 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ ./gradlew testDebugUnitTest
+> Task :app:testDebugUnitTest
+
+com.acme.cart.CartViewModelTest > loads items on start FAILED
+    java.lang.NullPointerException at CartViewModelTest.kt:41
+
+com.acme.cart.CartViewModelTest > shows an empty state FAILED
+    kotlin.UninitializedPropertyAccessException at CartViewModelTest.kt:58
+
+34 tests completed, 2 failed
+
+> Task :app:testDebugUnitTest FAILED
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

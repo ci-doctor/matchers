@@ -1,0 +1,5 @@
+… [2 lines elided] …
+MoneyTest > rounds(String, String) > [3] 2.675, 2.68 FAILED
+    org.opentest4j.AssertionFailedError: expected: <2.68> but was: <2.67>
+        at app//com.acme.MoneyTest.rounds(MoneyTest.java:22)
+48 tests completed, 1 failed
