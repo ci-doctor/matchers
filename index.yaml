@@ -109,12 +109,12 @@ matchers:
     ecosystem: jvm
   helm:
     path: matchers/container/helm/matcher.yaml
-    sha256: 8781ad9a0fdeb7246122d331a5072131cebdeb93dbf56b4dbd51d27db09f05bc
-    description: Helm, the Kubernetes package manager - releases that fail to install, upgrade or roll back.
+    sha256: 4b71f99666341b09e31b37caa0c8c812087f14ad981b492fdabd663046218513
+    description: Helm, the Kubernetes package manager - releases that fail to install, upgrade or roll back, and charts that do not render.
     schema: 1
     tags: [container, deploy]
     ecosystem: container
-    outputs: [release]
+    outputs: [release, template]
   jest:
     path: matchers/js/jest/matcher.yaml
     sha256: de6d2603e64c142fa2df2bc6f092fb7d42342f049df2e689cd54b54bc3b11871

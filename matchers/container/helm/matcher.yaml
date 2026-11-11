@@ -1,11 +1,20 @@
 schema: 1
 id: helm
-description: Helm, the Kubernetes package manager - releases that fail to install, upgrade or roll back.
+description: Helm, the Kubernetes package manager - releases that fail to install, upgrade or roll back, and charts that do not render.
 tags: [container, deploy]
 outputs:
   release:
     description: >-
       Helm failing a release - UPGRADE FAILED or INSTALLATION FAILED, from a rollout that never
       became ready, a stuck pending release, or a name in use. The cluster, not the chart.
-    match: {regex: '^Error: (UPGRADE|INSTALLATION|ROLLBACK) FAILED: '}
+    match:
+      all:
+        - regex: '^Error: (UPGRADE|INSTALLATION|ROLLBACK) FAILED: '
+        - not: {regex: 'FAILED: (template: |YAML parse error on |parse error at )'}
     window: {before: 2, after: 2}
+  template:
+    description: >-
+      A chart that does not render - template: file:line: executing ... (a nil value, a bad
+      function call) or a YAML parse error in a template. A chart bug, not the cluster.
+    match: {regex: '^Error: ((UPGRADE|INSTALLATION) FAILED: )?(template: |YAML parse error on |parse error at )|^\[ERROR\] templates/\S+: '}
+    window: {after: 2}
