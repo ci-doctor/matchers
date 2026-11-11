@@ -6,6 +6,7 @@ import yaml
 
 WORKFLOWS = Path(__file__).resolve().parent.parent / "workflows"
 PUBLISH = "cp -r index.yaml matchers bundles site/dist/"
+SIGN = "uv run --no-project --with pynacl python .github/scripts/sign_index.py site/dist"
 
 
 def _runs(name: str) -> set[str]:
@@ -14,4 +15,4 @@ def _runs(name: str) -> set[str]:
 
 
 def test_pages_runs_only_what_ci_runs():
-    assert _runs("pages.yml") - {PUBLISH} <= _runs("ci.yml")
+    assert _runs("pages.yml") - {PUBLISH, SIGN} <= _runs("ci.yml")
