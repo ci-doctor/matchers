@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ ./deploy.sh
+aws ecs update-service --cluster prod --service api --force-new-deployment
+
+An error occurred (ExpiredTokenException) when calling the UpdateService operation: The security token included in the request is expired
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1
