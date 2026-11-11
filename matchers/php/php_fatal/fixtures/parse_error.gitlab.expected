@@ -1,0 +1,3 @@
+$ php bin/console cache:warmup
+PHP Parse error:  syntax error, unexpected token "}" in /builds/team/shop/src/Cart.php on line 41
+Parse error: syntax error, unexpected token "}" in /builds/team/shop/src/Cart.php on line 41

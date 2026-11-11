@@ -1,7 +1,7 @@
 schema: 1
 id: oom
 role: tool
-description: The job being killed - exit code 137, `Killed`, `Out of memory`. Nothing else in the log explains a SIGKILL.
+description: The job or a process in it killed for memory - exit code 137, the shell's `Killed`, the kernel OOM killer, `OOMKilled`. Nothing else in the log explains a SIGKILL.
 tags: [any, infra]
-match: {regex: exit code 137|Killed|Out of memory}
+match: {regex: 'exit code:? 137\b|\d+ Killed\s|^Killed$|Killed signal terminated|Out of memory: Killed process|signal: killed|OOMKilled'}
 window: {before: 5, after: 2}
