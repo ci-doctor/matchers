@@ -1,0 +1,14 @@
+schema: 1
+id: nextjs
+description: Next.js - next build failing to compile the app.
+tags: [js, build]
+outputs:
+  build:
+    description: >-
+      next build failing to compile - Failed to compile, then the file and a Module not found or
+      a Type error: with the excerpt. Its type errors carry no TS code, so tsc does not see them.
+    match:
+      all:
+        - regex: '^Failed to compile\.$'
+        - preceded_by: {regex: '▲ Next\.js \d', within: 200}
+    window: {after: 10}

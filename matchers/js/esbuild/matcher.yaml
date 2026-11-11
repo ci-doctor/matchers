@@ -1,0 +1,11 @@
+schema: 1
+id: esbuild
+description: >-
+  esbuild's [ERROR] diagnostics - the message, then the file, line and source excerpt it points
+  at. Printed under tsup, tsx and Vite's optimizer too; wrangler's own API errors are excluded.
+tags: [js, build]
+match:
+  all:
+    - regex: '✘ \[ERROR\] '
+    - not: {regex: 'A request to the Cloudflare API'}
+window: {after: 8}

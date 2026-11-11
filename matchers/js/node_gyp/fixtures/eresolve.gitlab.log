@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npm ci
+npm error code ERESOLVE
+npm error ERESOLVE unable to resolve dependency tree
+npm error Found: react@19.0.0
+npm error Could not resolve dependency:
+npm error peer react@"^18.2.0" from react-dom@18.3.1
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

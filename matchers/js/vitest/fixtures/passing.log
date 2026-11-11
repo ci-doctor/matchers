@@ -1,0 +1,6 @@
+$ npx vitest run && ./deploy-preview.sh
+ RUN  v3.0.4 /home/runner/work/web/web
+ ✓ src/cart.test.ts (3 tests) 6ms
+ Test Files  2 passed (2)
+      Tests  9 passed (9)
+Error: process completed with exit code 1 from the deploy preview step

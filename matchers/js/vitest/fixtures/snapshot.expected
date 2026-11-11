@@ -1,0 +1,9 @@
+… [1 lines elided] …
+ FAIL  src/components/Price.test.tsx > Price > renders the currency
+Error: Snapshot `Price > renders the currency 1` mismatched
+- Expected
++ Received
+-   <span>$3.00</span>
++   <span>3.00 USD</span>
+ ❯ src/components/Price.test.tsx:9:22
+ Test Files  1 failed | 11 passed (12)

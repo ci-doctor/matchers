@@ -1,0 +1,8 @@
+… [5 lines elided] …
+Failed to compile.
+./app/cart/page.tsx:14:7
+Type error: Type 'string' is not assignable to type 'number'.
+  12 |   const rows = await getRows()
+  13 |   let total: number = 0
+> 14 |   total = rows[0].amount
+     |   ^

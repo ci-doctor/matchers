@@ -1,0 +1,12 @@
+schema: 1
+id: turbo
+role: wrapper
+description: >-
+  Turborepo reporting a failed task (pkg#task: command exited). A wrapper - that package's own
+  output, prefixed pkg:task:, is the cause.
+tags: [js, build]
+match:
+  any:
+    - regex: '^\S+#\S+: command \(.+\) .+ exited \(\d+\)$'
+    - regex: '^\S+:\S+: ERROR: command finished with error: '
+window: {before: 8, after: 1}

@@ -1,0 +1,8 @@
+schema: 1
+id: webpack
+description: >-
+  webpack's ERROR in ./src/file entries - a module it could not resolve or a loader that failed,
+  with the detail under it. Also printed by rspack.
+tags: [js, build]
+match: {regex: '^ERROR in '}
+window: {after: 6}
