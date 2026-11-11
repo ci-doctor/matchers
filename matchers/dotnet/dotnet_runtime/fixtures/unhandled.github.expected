@@ -1,0 +1,5 @@
+… [1 lines elided] …
+Unhandled exception. System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.ThrowHelper.ThrowNoElementsException()
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Ledger.Program.Main(String[] args) in /home/runner/work/ledger/ledger/src/Ledger/Program.cs:line 22

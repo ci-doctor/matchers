@@ -1,0 +1,9 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ vendor/bin/psalm --no-progress
+ERROR: InvalidReturnType - src/Cart.php:12:12 - The declared return type 'int' for App\Cart::total is incorrect, got 'string' (see https://psalm.dev/011)
+------------------------------
+1 errors found
+------------------------------
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

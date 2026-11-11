@@ -1,0 +1,12 @@
+$ vendor/bin/phpstan analyse
+ ------ -------------------------------------------------------------
+  Line   src/Checkout.php
+ ------ -------------------------------------------------------------
+  30     Call to an undefined method App\Cart::sum().
+         🪪  method.notFound
+ ------ -------------------------------------------------------------  (×2)
+  Line   src/Price.php
+ ------ -------------------------------------------------------------
+  9      Parameter #1 $value of function round expects float, string given.
+ ------ -------------------------------------------------------------
+ [ERROR] Found 2 errors

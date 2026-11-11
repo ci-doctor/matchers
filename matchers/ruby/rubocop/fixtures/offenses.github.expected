@@ -1,0 +1,8 @@
+… [4 lines elided] …
+app/models/cart.rb:12:5: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    "total"
+    ^^^^^^^
+app/services/checkout.rb:30:7: W: Lint/UselessAssignment: Useless assignment to variable - fee.
+      fee = 0
+      ^^^
+… [1 lines elided] …

@@ -1,0 +1,7 @@
+$ bundle exec rubocop lib
+lib/importer.rb:41:3: E: Lint/Syntax: unexpected token kEND
+(Using Ruby 3.3 parser; configure using TargetRubyVersion parameter, under AllCops)
+  end
+  ^^^
+
+12 files inspected, 1 offense detected

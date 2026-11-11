@@ -1,0 +1,10 @@
+schema: 1
+id: dotnet_runtime
+description: >-
+  An unhandled .NET exception - Unhandled exception. System.X: message, the inner exceptions
+  (--->) and the at frames under it. The innermost exception is usually the root cause.
+tags: [dotnet, runtime]
+match: {regex: '^Unhandled exception\. [\w.]+(Exception|Error)\b'}
+window:
+  while: {regex: '^\s+at |^\s*---> |^\s+--- End of '}
+  max_lines: 80

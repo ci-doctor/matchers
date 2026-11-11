@@ -144,6 +144,13 @@ matchers:
     schema: 1
     tags: [container, build]
     ecosystem: container
+  dotnet_runtime:
+    path: matchers/dotnet/dotnet_runtime/matcher.yaml
+    sha256: 396cdf3f2950a105f6e65a80f0c11803a351675ae5c6ee5566d0ff99d779c56d
+    description: 'An unhandled .NET exception - Unhandled exception. System.X: message, the inner exceptions (--->) and the at frames under it. The innermost exception is usually the root cause.'
+    schema: 1
+    tags: [dotnet, runtime]
+    ecosystem: dotnet
   esbuild:
     path: matchers/js/esbuild/matcher.yaml
     sha256: 995ec86fae6f58214bd01529dda1f76efc8121c939ac833760f44f76f07e367f
@@ -452,6 +459,13 @@ matchers:
     schema: 1
     tags: [php, runtime]
     ecosystem: php
+  phpstan:
+    path: matchers/php/phpstan/matcher.yaml
+    sha256: 2875f5dd0c7bce7633535b713d91e6fbaab26e70fdc57d29478de49526d9af9e
+    description: PHPStan's error table - each file's Line / message rows - and its [ERROR] Found N errors footer. The message and the identifier under it say what PHPStan proved wrong.
+    schema: 1
+    tags: [php, lint]
+    ecosystem: php
   phpunit:
     path: matchers/php/phpunit/matcher.yaml
     sha256: 306fc21592f14008b2599f8d2a4b1d7d76744b6185fb80185c18a6e8f6796415
@@ -575,6 +589,13 @@ matchers:
     description: RSpec's `Failures:` block through to the `N examples, N failures` tally.
     schema: 1
     tags: [ruby, test]
+    ecosystem: ruby
+  rubocop:
+    path: matchers/ruby/rubocop/matcher.yaml
+    sha256: 5f5bcbb87f99a8440225947477eaa30a8b98449af8f910b210df58e848a8e27e
+    description: 'RuboCop''s file.rb:12:5: C: Cop/Name: message offenses, with the excerpt under each. The cop says which rule fired; E and F are syntax errors, not style.'
+    schema: 1
+    tags: [ruby, lint]
     ecosystem: ruby
   ruby_exception:
     path: matchers/ruby/ruby_exception/matcher.yaml
@@ -737,7 +758,7 @@ bundles:
     description: Every matcher in the container ecosystem.
   dotnet:
     path: bundles/dotnet.yaml
-    sha256: 6991cd1cb51ed4b6a5124b55a9b04cd49340f2d1e9fab1913cf828547fa9816c
+    sha256: e6d1481124860a8f06794eb05f69527498734aaeaea3a12716d6cede135fa0f3
     description: Every matcher in the dotnet ecosystem.
   go:
     path: bundles/go.yaml
@@ -757,7 +778,7 @@ bundles:
     description: Every matcher in the jvm ecosystem.
   php:
     path: bundles/php.yaml
-    sha256: 23c7f5520d7bf73be212dc2c29e33ff1e8b24c56f8f51587a82a25924446f01f
+    sha256: ff4afa3e8d622aebe3012805a0d621e3414c0fbf43e9059d0656f328a670cbc4
     description: Every matcher in the php ecosystem.
   python:
     path: bundles/python.yaml
@@ -765,7 +786,7 @@ bundles:
     description: Every matcher in the python ecosystem.
   ruby:
     path: bundles/ruby.yaml
-    sha256: b1e66f2ea433e80186a57beb9f737248b6a452c9019da75c37534dcb8fd143fe
+    sha256: 7066ebbf7a2511c2c1051e6074659fe29c25af11621a8b43ecff1e8e4f2e3fff
     description: Every matcher in the ruby ecosystem.
   rust:
     path: bundles/rust.yaml
