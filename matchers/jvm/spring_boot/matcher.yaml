@@ -1,0 +1,8 @@
+schema: 1
+id: spring_boot
+description: >-
+  Spring Boot's APPLICATION FAILED TO START report - its Description says what is wrong (a
+  missing bean, a port in use, no datasource) and its Action says how to fix it.
+tags: [jvm, runtime]
+match: {regex: '^APPLICATION FAILED TO START$'}
+window: {after: 11}

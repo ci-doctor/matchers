@@ -1,0 +1,15 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run sbt test
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z [info] CartSpec:
+2026-07-24T20:04:05.0000000Z [info] - starts empty
+2026-07-24T20:04:06.0000000Z [info] - sums the items *** FAILED ***
+2026-07-24T20:04:07.0000000Z [info]   2 did not equal 3 (CartSpec.scala:12)
+2026-07-24T20:04:08.0000000Z [info] Run completed in 412 milliseconds.
+2026-07-24T20:04:09.0000000Z [info] Tests: succeeded 11, failed 1, canceled 0, ignored 0, pending 0
+2026-07-24T20:04:10.0000000Z [error] Failed tests:
+2026-07-24T20:04:11.0000000Z [error] 	com.acme.CartSpec
+2026-07-24T20:04:12.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:13.0000000Z Post job cleanup.
+2026-07-24T20:04:14.0000000Z Cleaning up orphan processes

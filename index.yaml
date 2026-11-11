@@ -1,5 +1,12 @@
 schema: 1
 matchers:
+  agp:
+    path: matchers/android/agp/matcher.yaml
+    sha256: cb861681fd91b8b6f0f0ebee20a2f70d8ef7f9d769f47dd67e5492cfd6f96404
+    description: An Android Gradle Plugin error - a manifest merger conflict with its suggestion, a dependency that needs a newer compileSdk, or no Android SDK found.
+    schema: 1
+    tags: [android, build]
+    ecosystem: android
   bazel:
     path: matchers/any/bazel/matcher.yaml
     sha256: baffd71c161fd10cccf2595134aaf8e1b494b301dea2ca54a5f76c7318b7d971
@@ -99,6 +106,13 @@ matchers:
     description: Gradle's `* What went wrong:` block, from the `FAILURE:` banner to the `* Try:` advice. A wrapper - it names the failed task; the compiler or test output above it is the cause.
     schema: 1
     tags: [jvm, build]
+    ecosystem: jvm
+  jacoco:
+    path: matchers/jvm/jacoco/matcher.yaml
+    sha256: 4573870ebd6712390059275519e158e80cd02de0ef5759b95f715077eca31109
+    description: 'JaCoCo''s coverage check failing - Rule violated for bundle x: lines covered ratio is 0.7, but expected minimum is 0.8 - under Gradle or Maven. No test failed; coverage did.'
+    schema: 1
+    tags: [jvm, coverage]
     ecosystem: jvm
   jest:
     path: matchers/js/jest/matcher.yaml
@@ -233,6 +247,13 @@ matchers:
     schema: 1
     tags: [python, runtime]
     ecosystem: python
+  r8:
+    path: matchers/android/r8/matcher.yaml
+    sha256: f7ab10b7852994058ac512e9d95633f6d87fd928aa590aaf617a19168aa8a499
+    description: R8 or D8 failing a release build - missing classes R8 needs keep rules for, a dex over the 65536-method limit, or R8 compilation failing on a class it names.
+    schema: 1
+    tags: [android, build]
+    ecosystem: android
   rspec:
     path: matchers/ruby/rspec/matcher.yaml
     sha256: 9bb52a05f7ff60cd5187d5b45fb28c7f22323dd85884b4c5ed581ee6aa4307f3
@@ -276,6 +297,21 @@ matchers:
     schema: 1
     tags: [rust, test]
     ecosystem: rust
+  sbt:
+    path: matchers/jvm/sbt/matcher.yaml
+    sha256: 454840372ab770c173296a6d004b9eeb58314d23104e898c846e1a9670b76d2d
+    description: sbt, the Scala build tool - code that does not compile, and failing tests.
+    schema: 1
+    tags: [jvm, build, test]
+    ecosystem: jvm
+    outputs: [compile, test]
+  spring_boot:
+    path: matchers/jvm/spring_boot/matcher.yaml
+    sha256: 2a772d656ec65075fafabb5c33fdbc5b60ce5a46117514b23f82e66e4f42c4b2
+    description: Spring Boot's APPLICATION FAILED TO START report - its Description says what is wrong (a missing bean, a port in use, no datasource) and its Action says how to fix it.
+    schema: 1
+    tags: [jvm, runtime]
+    ecosystem: jvm
   terraform:
     path: matchers/iac/terraform/matcher.yaml
     sha256: 0301ef04047f520dc03e6c5b8b427f3616e7140f93435e019508f03e6bfe4643
@@ -308,8 +344,12 @@ matchers:
 bundles:
   all:
     path: bundles/all.yaml
-    sha256: 19afbf828ce6184c1f1a8451552b6408fd3f72000cd6b56df26301d471b33cd9
+    sha256: a4318a5a3aa8d66134fffe3fc26f95e702ca8f0208bb4a6222addccae7e8cf06
     description: Every official matcher, one bundle per ecosystem.
+  android:
+    path: bundles/android.yaml
+    sha256: 51a8dc80c0e298e9611a9786fba38c9ad285093361af8296ad9b4cecbf4365d2
+    description: Every matcher in the android ecosystem.
   any:
     path: bundles/any.yaml
     sha256: 9c991a26522f63d035ef54f666e8726c7ca31ff48ba7727137bf4d7518d06bd3
@@ -340,7 +380,7 @@ bundles:
     description: Every matcher in the js ecosystem.
   jvm:
     path: bundles/jvm.yaml
-    sha256: 5fca612ce4786d2cc82550caf090b731c9216a395b806e9c983986649c7a2964
+    sha256: ebcb2913072b1322b198b7f90208cabb280513a64c48715899467d3f9b1216af
     description: Every matcher in the jvm ecosystem.
   php:
     path: bundles/php.yaml
