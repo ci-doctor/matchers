@@ -1,0 +1,6 @@
+$ uvx ty check
+warning[possibly-unresolved-reference]: Name `batch` used when possibly not defined
+ --> etl/transform.py:9:12
+error[call-non-callable]: Object of type `int` is not callable
+ --> etl/transform.py:22:5
+Found 2 diagnostics

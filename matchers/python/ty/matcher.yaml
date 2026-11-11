@@ -1,0 +1,11 @@
+schema: 1
+id: ty
+description: >-
+  A ty type error - error[rule-name]: message, with the --> file.py:line:col excerpt under it.
+  Astral's type checker; it shares ruff's renderer but names rules in kebab-case.
+tags: [python, lint]
+match:
+  all:
+    - regex: '^error\[[a-z][a-z0-9-]*\]: '
+    - followed_by: {regex: '-->\s+\S+\.pyi?:\d+:\d+', within: 2}
+window: {after: 5}

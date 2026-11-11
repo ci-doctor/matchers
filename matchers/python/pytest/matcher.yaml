@@ -1,6 +1,6 @@
 schema: 1
 id: pytest
-description: pytest - failing tests, test modules that could not even be collected, and a coverage bar the run did not reach.
+description: pytest - failing tests, modules that could not be collected, crashed xdist workers, and a coverage bar the run did not reach.
 tags: [python, test]
 outputs:
   failures:
@@ -26,3 +26,9 @@ outputs:
       every test passing. No test failed; coverage fell below the bar.
     match: {regex: '^FAIL Required test coverage of \d+(\.\d+)?% not reached'}
     window: {before: 3}
+  workers:
+    description: >-
+      A pytest-xdist worker that died - node down, worker crashed while running a test. Usually
+      a crash or OOM in that test, not a failed assertion; it leaves no FAILURES entry of its own.
+    match: {regex: '\[gw\d+\] node down: |worker .gw\d+. crashed while running '}
+    window: {before: 1, after: 2}

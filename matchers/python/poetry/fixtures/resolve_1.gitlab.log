@@ -1,0 +1,13 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ poetry update
+Updating dependencies
+Resolving dependencies...
+
+  SolverProblemError
+
+  Because no versions of ledger-core match >4.1.1,<5.0.0
+   and ledger-core (4.1.1) depends on pydantic (<2), ledger-core (>=4.1.1,<5.0.0) requires pydantic (<2).
+  So, because ledger depends on both pydantic (^2.9) and ledger-core (^4.1.1), version solving failed.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

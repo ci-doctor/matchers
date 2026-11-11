@@ -1,0 +1,21 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ python manage.py test
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+.E...
+======================================================================
+ERROR: test_checkout (shop.tests.CheckoutTests.test_checkout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/builds/team/shop/shop/tests.py", line 41, in test_checkout
+    order = checkout(self.cart)
+AttributeError: 'NoneType' object has no attribute 'items'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.212s
+
+FAILED (errors=1)
+Destroying test database for alias 'default'...
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1
