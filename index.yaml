@@ -1,5 +1,12 @@
 schema: 1
 matchers:
+  apt:
+    path: matchers/any/apt/matcher.yaml
+    sha256: 3b924f69de88c9e14ca074e3823e682a4b91a4eb9892eb99857b8c64eda2cb1b
+    description: apt failing - a package it cannot locate or install, a missing repository, or a mirror caught mid-sync (Hash Sum mismatch, unexpected size), where a retry may pass.
+    schema: 1
+    tags: [any, deps]
+    ecosystem: any
   bazel:
     path: matchers/any/bazel/matcher.yaml
     sha256: baffd71c161fd10cccf2595134aaf8e1b494b301dea2ca54a5f76c7318b7d971
@@ -30,6 +37,13 @@ matchers:
     schema: 1
     tags: [c, build]
     ecosystem: c
+  command_not_found:
+    path: matchers/any/command_not_found/matcher.yaml
+    sha256: 6e4e54e84cbd9162d3d6ca72e9a4b807f669c5623ec6c5aa3593743062bc8529
+    description: The shell reporting a command it cannot find (exit code 127) - a tool missing from the image or not on PATH, or a script whose shebang names a missing interpreter.
+    schema: 1
+    tags: [any, infra]
+    ecosystem: any
   composer:
     path: matchers/php/composer/matcher.yaml
     sha256: 3eba57e429c98efadad0e0ce4adab1c6fc82815cb66555ed1f28e920e8018b04
@@ -51,6 +65,13 @@ matchers:
     schema: 1
     tags: [js, e2e]
     ecosystem: js
+  disk_full:
+    path: matchers/any/disk_full/matcher.yaml
+    sha256: f49c1eb0cd6ba1309a51a4f6fb7667dead8de4c95df7e7e9a1452c05cefd1010
+    description: The runner out of disk - No space left on device / ENOSPC. The step that hit it is a victim, not the cause; free space or a bigger runner fixes it. Not the inotify watcher limit.
+    schema: 1
+    tags: [any, infra]
+    ecosystem: any
   docker_build:
     path: matchers/container/docker_build/matcher.yaml
     sha256: e5aa7404ff234ad169ef44b65260729bccf719055c9eeff7b1532cb0d6a2e910
@@ -85,6 +106,13 @@ matchers:
     description: A line starting `ERROR` or `FATAL` from a tool with no pack of its own - the weakest signal; read it in context.
     schema: 1
     tags: [any]
+    ecosystem: any
+  git:
+    path: matchers/any/git/matcher.yaml
+    sha256: 5ce22dbe00476f197985815c029ee3bfa2a4adfb4de7778f4f81e422b4ff5478
+    description: 'git''s fatal: - credentials refused, a missing repository, ref or submodule, or a shallow-clone limit. The message after fatal: names the cause.'
+    schema: 1
+    tags: [any, infra]
     ecosystem: any
   go_panic:
     path: matchers/go/go_panic/matcher.yaml
@@ -158,6 +186,13 @@ matchers:
     schema: 1
     tags: [python, lint, types]
     ecosystem: python
+  network_error:
+    path: matchers/any/network_error/matcher.yaml
+    sha256: 7ecba79656d604da39bce46226a7a2f734b7699c17eb0d47d8415ddd3897af98
+    description: A transient network failure - a host that did not resolve, a connection reset or timed out. Nothing in the code changed; a retry may pass.
+    schema: 1
+    tags: [any, infra]
+    ecosystem: any
   nextjs:
     path: matchers/js/nextjs/matcher.yaml
     sha256: 534cd46025c570231081fda1c226771836281d03941363be924a7dd0807ffc39
@@ -248,6 +283,13 @@ matchers:
     tags: [js, node, deps]
     ecosystem: js
     outputs: [install, run]
+  pre_commit:
+    path: matchers/any/pre_commit/matcher.yaml
+    sha256: c75f33c24aa895faff23b7a616ccda3ce49b90b185854266e5aca7bfee41c5ea
+    description: pre-commit's hook-name....Failed line, with the hook id, its exit code or the files it changed. A wrapper - the hook's own output under it is the cause.
+    schema: 1
+    tags: [any, lint]
+    ecosystem: any
   prettier:
     path: matchers/js/prettier/matcher.yaml
     sha256: 3b7666fccda15ffea6761488a6b94ea38931a1e522b20eb74613a41da4bd43a2
@@ -393,7 +435,7 @@ bundles:
     description: Every official matcher, one bundle per ecosystem.
   any:
     path: bundles/any.yaml
-    sha256: 9c991a26522f63d035ef54f666e8726c7ca31ff48ba7727137bf4d7518d06bd3
+    sha256: 7a85070db307457e8e2643fa702c4d45e01b360b754f7731bf012e6c35e403b1
     description: Every matcher in the any ecosystem.
   c:
     path: bundles/c.yaml

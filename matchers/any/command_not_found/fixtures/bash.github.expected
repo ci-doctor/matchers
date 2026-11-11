@@ -1,0 +1,2 @@
+shell: /usr/bin/bash -e {0}
+/home/runner/work/_temp/9f1c.sh: line 1: pnpm: command not found
