@@ -1,0 +1,5 @@
+… [2 lines elided] …
+# github.com/acme/ledger/api [github.com/acme/ledger/api.test]
+api/handler_test.go:12:2: undefined: newServer
+FAIL	github.com/acme/ledger/api [build failed]
+FAIL

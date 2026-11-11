@@ -1,0 +1,7 @@
+… [2 lines elided] …
+ERROR in ./src/cart.ts
+  × Module not found: Can't resolve 'lodash-es' in '/builds/team/web/src'
+   ╭─[1:20]
+ 1 │ import { sum } from 'lodash-es';
+   ·                     ───────────
+   ╰────

@@ -1,0 +1,9 @@
+schema: 1
+id: pre_commit
+role: wrapper
+description: >-
+  pre-commit's hook-name....Failed line, with the hook id, its exit code or the files it
+  changed. A wrapper - the hook's own output under it is the cause.
+tags: [any, lint]
+match: {regex: '^\S.*\.{4,}Failed$'}
+window: {after: 10}

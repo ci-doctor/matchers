@@ -1,0 +1,8 @@
+schema: 1
+id: apt
+description: >-
+  apt failing - a package it cannot locate or install, a missing repository, or a mirror caught
+  mid-sync (Hash Sum mismatch, unexpected size), where a retry may pass.
+tags: [any, deps]
+match: {regex: '^E: (Unable to locate package|Package .+ has no installation candidate|Failed to fetch|Unable to fetch some archives|Version .+ was not found|The repository .+ (does not have a Release file|is not signed)|Unable to correct problems|Could not get lock)'}
+window: {before: 3, after: 2}

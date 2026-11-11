@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ go vet ./...
+# github.com/acme/ledger/report
+# [github.com/acme/ledger/report]
+report/csv.go:31:2: fmt.Sprintf format %d has arg name of wrong type string
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

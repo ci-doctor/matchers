@@ -1,0 +1,9 @@
+shell: /usr/bin/bash -e {0}
+   ✔  nx run ui:build  [existing outputs match the cache, left as is]
+   ✖  nx run web:build
+      > next build
+      Failed to compile.
+ NX   Running target build for 3 projects failed
+   Failed tasks:
+   - web:build
+   Hint: run the command with --verbose for more details.

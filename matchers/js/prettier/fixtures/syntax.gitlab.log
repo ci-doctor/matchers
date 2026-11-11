@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx prettier --check .
+Checking formatting...
+[error] src/cart.ts: SyntaxError: ',' expected. (14:8)
+[error]   12 |   const items = [
+[error] > 14 |     1 2
+All matched files use Prettier code style!
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

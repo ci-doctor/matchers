@@ -1,0 +1,8 @@
+$ pytest -n auto --cov=ledger
+[gw0] [100%] PASSED tests/test_report.py::test_totals
+
+---------- coverage: platform linux, python 3.11.10-final-0 ----------
+TOTAL                    1204    210    83%
+
+FAIL Required test coverage of 87.5% not reached. Total coverage: 82.56%
+============================== 318 passed in 9.40s ==============================

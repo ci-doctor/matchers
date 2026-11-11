@@ -1,0 +1,10 @@
+schema: 1
+id: jvm_exception
+description: >-
+  An uncaught JVM exception - Exception in thread and its stack, through every Caused by: in
+  the chain. The last Caused by: is usually the root cause.
+tags: [jvm, runtime]
+match: {regex: '^Exception in thread "[^"]+" '}
+window:
+  while: {regex: '^\s+at |^\s+\.\.\. \d+ more|^Caused by: '}
+  max_lines: 150

@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ uv pip install -r requirements.txt
+  × No solution found when resolving dependencies:
+  ╰─▶ Because there is no version of ledger-core==4.2.0 and you require ledger-core==4.2.0, we can
+      conclude that your requirements are unsatisfiable.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

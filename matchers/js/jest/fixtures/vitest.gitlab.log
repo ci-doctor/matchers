@@ -1,0 +1,32 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx vitest run
+ RUN  v3.0.4 /home/runner/work/web/web
+
+ ✓ src/money.test.ts (6 tests) 4ms
+ ❯ src/cart.test.ts (3 tests | 1 failed) 9ms
+   × Cart > sums the items 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/cart.test.ts > Cart > sums the items
+AssertionError: expected 2 to be 3 // Object.is equality
+
+- Expected
++ Received
+
+- 3
++ 2
+
+ ❯ src/cart.test.ts:12:24
+     10|   it('sums the items', () => {
+     11|     const cart = new Cart([1, 1])
+     12|     expect(cart.total()).toBe(3)
+       |                        ^
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 8 passed (9)
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

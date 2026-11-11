@@ -1,0 +1,27 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ bundle exec rspec
+..F.*F
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+
+  1) Price rounds half to even
+     # Not yet implemented
+
+Failures:
+
+  1) Cart#total sums the items
+     Failure/Error: expect(cart.total).to eq(3)
+     # ./spec/cart_spec.rb:12:in 'block (2 levels) in <top (required)>'
+
+  2) Checkout#submit raises on an empty cart
+     Failure/Error: expect { checkout.submit }.to raise_error(EmptyCart)
+       expected EmptyCart but nothing was raised
+
+6 examples, 2 failures, 1 pending
+
+Failed examples:
+rspec ./spec/cart_spec.rb:10
+rspec ./spec/checkout_spec.rb:21
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

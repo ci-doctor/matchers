@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ pytest --tb=short
+_________________________________ test_total __________________________________
+tests/test_cart.py:12: in test_total
+    assert cart.total() == 3
+E   assert 2 == 3
+FAILED tests/test_cart.py::test_total - assert 2 == 3
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1
