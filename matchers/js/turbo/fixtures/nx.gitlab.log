@@ -1,0 +1,17 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx nx run-many -t build
+   ✔  nx run ui:build  [existing outputs match the cache, left as is]
+   ✖  nx run web:build
+      > next build
+      Failed to compile.
+
+ NX   Running target build for 3 projects failed
+
+   Failed tasks:
+
+   - web:build
+
+   Hint: run the command with --verbose for more details.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

@@ -3,5 +3,5 @@ id: bundler
 role: tool
 description: Bundler failing to resolve - a missing gem, or a version conflict it prints the tree for.
 tags: [ruby, deps]
-match: {regex: 'Could not find gem|Bundler::(GemNotFound|VersionConflict)'}
-window: {before: 1, after: 6}
+match: {regex: 'Could not find gem|Could not find compatible versions|Bundler::(GemNotFound|VersionConflict)'}
+window: {before: 1, after: 8}

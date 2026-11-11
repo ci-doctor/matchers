@@ -1,0 +1,3 @@
+$ helm upgrade api ./chart --debug
+history.go:56: [debug] getting history for release api
+Error: UPGRADE FAILED: another operation (install/upgrade/rollback) is in progress

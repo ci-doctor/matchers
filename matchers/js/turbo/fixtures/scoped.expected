@@ -1,0 +1,6 @@
+$ npx turbo run lint
+@acme/ui:lint: /builds/team/repo/packages/ui/src/Button.tsx
+@acme/ui:lint:   4:10  error  'useMemo' is defined but never used  no-unused-vars
+@acme/ui:lint: ERROR: command finished with error: command (/builds/team/repo/packages/ui) yarn run lint exited (1)
+@acme/ui#lint: command (/builds/team/repo/packages/ui) yarn run lint exited (1)
+Failed:    @acme/ui#lint

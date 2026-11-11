@@ -1,0 +1,7 @@
+… [3 lines elided] …
+error during build:
+Build failed with 1 error:
+[UNRESOLVED_IMPORT] Error: Could not resolve './util' in src/cart.ts
+   ╭─[ src/cart.ts:1:22 ]
+   │
+ 1 │ import { sum } from './util'

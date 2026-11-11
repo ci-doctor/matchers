@@ -1,0 +1,10 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run helm upgrade --install api ./chart --wait --timeout 5m
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Release "api" does not exist. Installing it now.
+2026-07-24T20:04:05.0000000Z Error: UPGRADE FAILED: resource not ready, name: api, kind: Deployment, status: InProgress
+2026-07-24T20:04:06.0000000Z context deadline exceeded
+2026-07-24T20:04:07.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:08.0000000Z Post job cleanup.
+2026-07-24T20:04:09.0000000Z Cleaning up orphan processes

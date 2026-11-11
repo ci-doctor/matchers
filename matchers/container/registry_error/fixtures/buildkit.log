@@ -1,0 +1,5 @@
+$ docker buildx build -t api .
+#3 [internal] load metadata for ghcr.io/acme/base:3
+#3 ERROR: unexpected status from HEAD request to https://ghcr.io/v2/acme/base/manifests/3: 401 Unauthorized
+------
+ERROR: failed to solve: ghcr.io/acme/base:3: failed to resolve source metadata for ghcr.io/acme/base:3: unexpected status from HEAD request to https://ghcr.io/v2/acme/base/manifests/3: 401 Unauthorized

@@ -1,0 +1,11 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run pre-commit run --all-files && pytest -q
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z check yaml...............................................................Passed
+2026-07-24T20:04:05.0000000Z ruff.....................................................................Passed
+2026-07-24T20:04:06.0000000Z mypy.................................................(no files to check)Skipped
+2026-07-24T20:04:07.0000000Z pytest -q: 1 failed, 40 passed
+2026-07-24T20:04:08.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:09.0000000Z Post job cleanup.
+2026-07-24T20:04:10.0000000Z Cleaning up orphan processes

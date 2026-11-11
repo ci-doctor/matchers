@@ -1,0 +1,13 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx turbo run test
+• Running test in 4 packages
+api:test: FAIL src/orders.test.ts
+api:test:   ● orders › rejects an empty cart
+api:test: Tests:       1 failed, 40 passed, 41 total
+api:test: ERROR: command finished with error: command (/builds/team/repo/apps/api) pnpm run test exited (1)
+
+ Tasks:    3 successful, 4 total
+ ERROR  run failed: command  exited (1)
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

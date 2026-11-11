@@ -1,0 +1,10 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run npm start
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Starting the development server...
+2026-07-24T20:04:05.0000000Z Error: ENOSPC: System limit for number of file watchers reached, watch '/builds/team/web/src'
+2026-07-24T20:04:06.0000000Z     at FSWatcher.<computed> [as _handle] (node:internal/fs/watchers:207:21)
+2026-07-24T20:04:07.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:08.0000000Z Post job cleanup.
+2026-07-24T20:04:09.0000000Z Cleaning up orphan processes

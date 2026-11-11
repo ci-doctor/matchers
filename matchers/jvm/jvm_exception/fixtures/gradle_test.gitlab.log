@@ -1,0 +1,22 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ ./gradlew test
+> Task :app:compileJava
+> Task :app:test FAILED
+
+CartTest > sumsItems() FAILED
+    org.opentest4j.AssertionFailedError: expected: <3> but was: <2>
+        at app//org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:151)
+        at app//com.acme.CartTest.sumsItems(CartTest.java:12)
+
+12 tests completed, 1 failed
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:test'.
+> There were failing tests. See the report at: file:///home/runner/work/app/app/build/reports/tests/test/index.html
+
+* Try:
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

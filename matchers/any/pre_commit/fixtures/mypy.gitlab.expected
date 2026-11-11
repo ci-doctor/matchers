@@ -1,0 +1,6 @@
+… [1 lines elided] …
+mypy.....................................................................Failed
+- hook id: mypy
+- exit code: 1
+src/ledger/models.py:17: error: Incompatible return value type (got "str", expected "int")  [return-value]
+Found 1 error in 1 file (checked 42 source files)

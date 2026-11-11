@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ df -h && pytest -q
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        72G   41G   31G  57% /
+FAILED tests/test_export.py::test_writes_file - PermissionError: [Errno 13] Permission denied: '/data/out.csv'
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

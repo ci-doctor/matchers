@@ -1,0 +1,6 @@
+… [2 lines elided] …
+In file included from /home/runner/work/engine/engine/src/graph.cpp:4:
+/home/runner/work/engine/engine/src/graph.cpp:88:12: error: 'Edge' was not declared in this scope
+   88 |     return Edge{from, to};
+      |            ^~~~
+make[2]: *** [src/CMakeFiles/engine.dir/build.make:118: src/CMakeFiles/engine.dir/graph.cpp.o] Error 1

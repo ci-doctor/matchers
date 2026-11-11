@@ -1,0 +1,7 @@
+… [4 lines elided] …
+error: warnings found and -Werror specified
+src/main/java/com/acme/Legacy.java:14: error: unreachable statement
+        return null;
+        ^
+1 error
+1 warning

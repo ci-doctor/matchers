@@ -1,0 +1,10 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run bundle install --jobs 4
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Fetching gem metadata from https://rubygems.org/.........
+2026-07-24T20:04:05.0000000Z Bundle complete! 42 Gemfile dependencies, 118 gems now installed.
+2026-07-24T20:04:06.0000000Z Use `bundle info [gemname]` to see where a bundled gem is installed.
+2026-07-24T20:04:07.0000000Z ##[error]Process completed with exit code 0.
+2026-07-24T20:04:08.0000000Z Post job cleanup.
+2026-07-24T20:04:09.0000000Z Cleaning up orphan processes

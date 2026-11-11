@@ -1,0 +1,8 @@
+… [3 lines elided] …
+/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8ad41f02:refs/remotes/origin/main
+remote: Repository not found.
+Error: fatal: repository 'https://github.com/acme/billing/' not found
+The process '/usr/bin/git' failed with exit code 128
+##[error]Process completed with exit code 1.
+Post job cleanup.
+… [1 lines elided] …
