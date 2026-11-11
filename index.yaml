@@ -252,12 +252,12 @@ matchers:
     outputs: [task, test]
   helm:
     path: matchers/container/helm/matcher.yaml
-    sha256: 8781ad9a0fdeb7246122d331a5072131cebdeb93dbf56b4dbd51d27db09f05bc
-    description: Helm, the Kubernetes package manager - releases that fail to install, upgrade or roll back.
+    sha256: 4b71f99666341b09e31b37caa0c8c812087f14ad981b492fdabd663046218513
+    description: Helm, the Kubernetes package manager - releases that fail to install, upgrade or roll back, and charts that do not render.
     schema: 1
     tags: [container, deploy]
     ecosystem: container
-    outputs: [release]
+    outputs: [release, template]
   istanbul:
     path: matchers/js/istanbul/matcher.yaml
     sha256: 3c0293edd83a11dbb347acfc9d9024978c42c2300a8e3d4d705afe0093fdd90f
