@@ -1,0 +1,23 @@
+schema: 1
+id: cargo
+description: Cargo, Rust's package manager - dependencies it cannot resolve, a stale Cargo.lock, and build scripts that fail.
+tags: [rust, deps]
+outputs:
+  resolve:
+    description: >-
+      Cargo's resolver refusing - no version matching a requirement, a crate name that does not
+      exist, or two crates linking the same native library.
+    match: {regex: '^error: (failed to select a version for|no matching package named)'}
+    window: {after: 6}
+  lock:
+    description: >-
+      Cargo refusing a stale Cargo.lock under --locked. Running cargo update (or cargo build
+      without --locked) and committing Cargo.lock fixes it.
+    match: {regex: '^error: the lock file \S+ needs to be updated but --locked was passed'}
+    window: {after: 1}
+  build_script:
+    description: >-
+      A crate's build script failing (failed to run custom build command) - usually a missing
+      system library, pkg-config, protoc or C compiler, named in its stderr.
+    match: {regex: '^error: failed to run custom build command for '}
+    window: {after: 12}

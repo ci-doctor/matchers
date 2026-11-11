@@ -1,0 +1,8 @@
+schema: 1
+id: go_mod
+description: >-
+  The go command refusing on modules - go.mod needs tidying, a go.sum entry is missing or does
+  not match (checksum mismatch), a version does not exist, or go.mod needs a newer Go.
+tags: [go, deps]
+match: {regex: '^(go: )?(updates to go\.mod needed|go\.mod requires go >= |errors parsing go\.mod)|missing go\.sum entry for module|^verifying \S+: checksum mismatch|^go: \S+@\S+: (invalid version|unknown revision)'}
+window: {after: 3}

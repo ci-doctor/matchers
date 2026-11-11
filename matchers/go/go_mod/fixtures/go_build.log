@@ -1,0 +1,3 @@
+$ go build ./...
+# github.com/acme/ledger/api
+api/handler.go:42:9: undefined: Validate

@@ -1,0 +1,12 @@
+schema: 1
+id: clippy
+description: >-
+  A Clippy lint denied as an error - error: message, the excerpt, and the clippy:: lint that
+  fired (by -D warnings or a deny attribute). The code compiles; the lint is the failure.
+tags: [rust, lint]
+match:
+  all:
+    - regex: '^error: '
+    - not: {regex: '^error: (could not compile|aborting due to)'}
+    - followed_by: {regex: 'rust-clippy|clippy::', within: 12}
+window: {after: 10}

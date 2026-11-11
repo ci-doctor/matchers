@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ go test ./...
+go: downloading github.com/shopspring/decimal v1.4.0
+go: downloading github.com/go-chi/chi/v5 v5.1.0
+--- FAIL: TestRound (0.00s)
+    money_test.go:14: got 2.67, want 2.68
+FAIL
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

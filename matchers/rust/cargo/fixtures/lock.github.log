@@ -1,0 +1,9 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run cargo test --locked
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z error: the lock file /home/runner/work/ledger/ledger/Cargo.lock needs to be updated but --locked was passed to prevent this
+2026-07-24T20:04:05.0000000Z If you want to try to generate the lock file without accessing the network, remove the --locked flag and use --offline instead.
+2026-07-24T20:04:06.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:07.0000000Z Post job cleanup.
+2026-07-24T20:04:08.0000000Z Cleaning up orphan processes

@@ -1,0 +1,18 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ cargo clippy --all-targets
+error: used `unwrap()` on a `Result` value
+  --> src/import.rs:58:41
+   |
+58 |     let file = File::open(path).unwrap();
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: if this value is an `Err`, it will panic
+note: the lint level is defined here
+  --> src/lib.rs:1:9
+   |
+1  | #![deny(clippy::unwrap_used)]
+
+error: could not compile `ledger` (lib) due to 1 previous error
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1
