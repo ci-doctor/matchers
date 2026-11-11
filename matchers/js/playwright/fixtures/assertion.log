@@ -1,0 +1,18 @@
+$ npx playwright test
+Running 18 tests using 4 workers
+
+  1) [firefox] › tests/login.spec.ts:12:1 › rejects a wrong password ─────────────────
+
+    Error: expect(locator).toBeVisible()
+
+    Locator: getByRole('alert')
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 5000ms
+
+      at tests/login.spec.ts:19:39
+
+  1 failed
+    [firefox] › tests/login.spec.ts:12:1 › rejects a wrong password
+  17 passed (31.4s)

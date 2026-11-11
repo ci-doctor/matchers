@@ -1,0 +1,7 @@
+… [39 lines elided] …
+npm ERR! Lifecycle script `build` failed with error:
+npm ERR! code 2
+npm ERR! path /builds/team/web-dashboard
+npm ERR! workspace web-dashboard@2.3.0
+##[error]Process completed with exit code 2.
+… [6 lines elided] …

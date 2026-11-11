@@ -1,0 +1,5 @@
+$ npx jest --coverage
+PASS src/api/client.test.ts
+Jest: "./src/api/" coverage threshold for statements (90%) not met: 84.5%
+Test Suites: 1 passed, 1 total
+Tests:       12 passed, 12 total

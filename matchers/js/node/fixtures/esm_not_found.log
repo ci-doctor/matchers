@@ -1,0 +1,15 @@
+$ node dist/server.js
+node:internal/modules/esm/resolve:265
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/app/dist/config' imported from /app/dist/server.js
+Did you mean to import "./config.js"?
+    at finalizeResolution (node:internal/modules/esm/resolve:265:11)
+    at moduleResolve (node:internal/modules/esm/resolve:933:10)
+    at defaultResolve (node:internal/modules/esm/resolve:1157:11)
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///app/dist/config'
+}
+
+Node.js v22.11.0

@@ -1,0 +1,7 @@
+$ pnpm build
+> web@1.0.0 build /app/packages/web
+> vite build
+
+error during build:
+[vite]: Rollup failed to resolve import "@acme/ui" from "src/main.ts".
+ ELIFECYCLE  Command failed with exit code 1.

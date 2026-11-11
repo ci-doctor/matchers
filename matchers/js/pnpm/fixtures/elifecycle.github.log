@@ -1,0 +1,13 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run pnpm build
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z > web@1.0.0 build /app/packages/web
+2026-07-24T20:04:05.0000000Z > vite build
+2026-07-24T20:04:06.0000000Z 
+2026-07-24T20:04:07.0000000Z error during build:
+2026-07-24T20:04:08.0000000Z [vite]: Rollup failed to resolve import "@acme/ui" from "src/main.ts".
+2026-07-24T20:04:09.0000000Z  ELIFECYCLE  Command failed with exit code 1.
+2026-07-24T20:04:10.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:11.0000000Z Post job cleanup.
+2026-07-24T20:04:12.0000000Z Cleaning up orphan processes

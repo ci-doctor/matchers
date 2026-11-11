@@ -1,0 +1,13 @@
+$ npx jest
+FAIL src/orders/total.test.ts
+  ● Orders › totals include shipping
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: 3450
+    Received: 3000
+
+      at Object.<anonymous> (src/orders/total.test.ts:22:31)
+
+Test Suites: 1 failed, 6 passed, 7 total
+Tests:       1 failed, 61 passed, 62 total

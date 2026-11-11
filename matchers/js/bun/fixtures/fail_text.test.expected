@@ -1,0 +1,10 @@
+… [5 lines elided] …
+(fail) Cart > applies the loyalty discount before tax [0.31ms]
+  error: expect(received).toBe(expected)
+  Expected: 2700
+  Received: 3000
+      at <anonymous> (/app/src/cart.test.ts:18:23)
+ 1 pass
+ 1 fail
+Ran 2 tests across 1 files. [21.00ms]
+… [1 lines elided] …

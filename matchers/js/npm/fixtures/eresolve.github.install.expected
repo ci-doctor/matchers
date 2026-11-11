@@ -1,0 +1,20 @@
+… [2 lines elided] …
+npm error code ERESOLVE
+npm error ERESOLVE unable to resolve dependency tree
+npm error
+npm error While resolving: web-dashboard@2.3.0
+npm error Found: react@18.3.1
+npm error node_modules/react
+npm error   react@"^18.2.0" from the root project
+npm error
+npm error Could not resolve dependency:
+npm error peer react@"^17.0.0" from react-beautiful-dnd@13.1.1
+npm error node_modules/react-beautiful-dnd
+npm error   react-beautiful-dnd@"^13.1.1" from the root project
+npm error
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
+npm error
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-10T09_14_02_118Z-debug-0.log
+… [3 lines elided] …

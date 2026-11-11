@@ -1,0 +1,6 @@
+$ node scripts/screenshot.mjs
+node:internal/process/promises:394
+browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/firefox-1466/firefox/firefox
+Looks like Playwright was just installed or updated.
+Please run the following command to download new browsers:
+    npx playwright install firefox

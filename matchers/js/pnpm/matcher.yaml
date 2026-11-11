@@ -1,7 +1,21 @@
 schema: 1
 id: pnpm
-role: tool
-description: pnpm's `ERR_PNPM_*` codes - the resolver or lockfile refusing, which is the cause itself.
-tags: [js, deps]
-match: {regex: ERR_PNPM_\w+}
-window: {before: 1, after: 10}
+description: pnpm, the Node.js package manager - install refusals, and scripts that exited non-zero.
+tags: [js, node, deps]
+outputs:
+  install:
+    description: >-
+      pnpm's `ERR_PNPM_*` codes - the resolver or lockfile refusing (an outdated lockfile, a
+      version that does not exist). This is the cause.
+    match:
+      all:
+        - regex: 'ERR_PNPM_[A-Z_]+'
+        - not: {regex: 'ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL'}
+    window: {before: 1, after: 10}
+  run:
+    role: wrapper
+    description: >-
+      pnpm reporting that a script exited non-zero (`ELIFECYCLE`, `ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL`).
+      A wrapper - the script's own output above it is the cause.
+    match: {regex: '^\s*ELIFECYCLE\b|ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL'}
+    window: {before: 1, after: 2}

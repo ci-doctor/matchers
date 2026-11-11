@@ -1,7 +1,27 @@
 schema: 1
 id: bun
-role: tool
-description: A failed `bun test` (the crossed-out test and its assertion), or a `bun install` that found no matching version.
+description: Bun, the JavaScript runtime and toolkit - failing tests, install refusals, and scripts that exited non-zero.
 tags: [js, test, deps]
-match: {regex: 'error: No version matching|^\s*✗ |^\s*\d+ fail\b'}
-window: {before: 2, after: 12}
+outputs:
+  test:
+    description: >-
+      A failed `bun test` - the failing test's name, then the assertion under it with expected
+      against received.
+    window: {after: 7}
+    variants:
+      symbol:
+        match: {regex: '^\s*✗ '}
+      text:
+        match: {regex: '^\(fail\) '}
+  install:
+    description: >-
+      bun install refusing a dependency - no version matching its range, or a package the
+      registry does not have. A typo, an unpublished version, or a private registry.
+    match: {regex: 'error: (No version matching|GET .+ - 404)'}
+    window: {before: 1, after: 2}
+  run:
+    role: wrapper
+    description: >-
+      bun reporting that a package.json script exited non-zero (`error: script "x" exited with
+      code N`). A wrapper - the script's output above it is the cause.
+    match: {regex: 'error: script ".+" exited with code \d+'}

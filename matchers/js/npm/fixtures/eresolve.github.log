@@ -1,0 +1,25 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run npm ci
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z npm error code ERESOLVE
+2026-07-24T20:04:05.0000000Z npm error ERESOLVE unable to resolve dependency tree
+2026-07-24T20:04:06.0000000Z npm error
+2026-07-24T20:04:07.0000000Z npm error While resolving: web-dashboard@2.3.0
+2026-07-24T20:04:08.0000000Z npm error Found: react@18.3.1
+2026-07-24T20:04:09.0000000Z npm error node_modules/react
+2026-07-24T20:04:10.0000000Z npm error   react@"^18.2.0" from the root project
+2026-07-24T20:04:11.0000000Z npm error
+2026-07-24T20:04:12.0000000Z npm error Could not resolve dependency:
+2026-07-24T20:04:13.0000000Z npm error peer react@"^17.0.0" from react-beautiful-dnd@13.1.1
+2026-07-24T20:04:14.0000000Z npm error node_modules/react-beautiful-dnd
+2026-07-24T20:04:15.0000000Z npm error   react-beautiful-dnd@"^13.1.1" from the root project
+2026-07-24T20:04:16.0000000Z npm error
+2026-07-24T20:04:17.0000000Z npm error Fix the upstream dependency conflict, or retry
+2026-07-24T20:04:18.0000000Z npm error this command with --force or --legacy-peer-deps
+2026-07-24T20:04:19.0000000Z npm error to accept an incorrect (and potentially broken) dependency resolution.
+2026-07-24T20:04:20.0000000Z npm error
+2026-07-24T20:04:21.0000000Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-10T09_14_02_118Z-debug-0.log
+2026-07-24T20:04:22.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:23.0000000Z Post job cleanup.
+2026-07-24T20:04:24.0000000Z Cleaning up orphan processes

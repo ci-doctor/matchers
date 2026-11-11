@@ -1,7 +1,0 @@
-schema: 1
-id: js_script_exit
-role: wrapper
-description: 'A JS package manager announcing that a lifecycle script exited non-zero - pnpm''s `ELIFECYCLE`, bun''s `error: script "x" exited with code N`.'
-tags: [js]
-match: {regex: '^\s*ELIFECYCLE\b|error: script ".+" exited with code'}
-window: {before: 1, after: 4}

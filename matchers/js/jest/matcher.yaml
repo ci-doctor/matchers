@@ -1,9 +1,20 @@
 schema: 1
 id: jest
-role: tool
-description: A jest test failure - the bullet header names the test, and the diff below it shows expected against received.
+description: Jest - failing tests, and coverage thresholds that fail a run whose tests all passed.
 tags: [js, test]
-match: {regex: '^\s*●|^FAIL\s+\S+\.(test|spec)\.[jt]sx?\b'}
-window:
-  until: {regex: '^Tests:'}
-  max_lines: 500
+outputs:
+  failures:
+    description: >-
+      A jest test failure - the bullet header names the test, and the diff below it shows
+      expected against received.
+    match: {regex: '^\s*●|^FAIL\s+\S+\.(test|spec)\.[jt]sx?\b'}
+    window:
+      until: {regex: '^Tests:'}
+      max_lines: 500
+  coverage:
+    role: gate
+    description: >-
+      Jest failing the run on coverage - `Jest: "global" coverage threshold for lines (80%) not
+      met` - with every test passing. No test failed; coverage fell below the bar.
+    match: {regex: 'Jest: ".+" coverage threshold for \w+ \(\d+(\.\d+)?%\) not met'}
+    window: {after: 3}

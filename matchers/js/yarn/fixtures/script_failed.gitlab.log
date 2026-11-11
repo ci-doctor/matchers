@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ yarn build
+yarn run v1.22.22
+$ tsc -p .
+src/routes/orders.ts(41,7): error TS2322: Type 'string' is not assignable to type 'number'.
+error Command failed with exit code 2.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

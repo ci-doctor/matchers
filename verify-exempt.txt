@@ -2,7 +2,6 @@
 # Each needs only one positive fixture until backfilled. This list only shrinks.
 bazel
 build_failure_banner
-bun
 bundler
 cc_cpp
 composer
@@ -15,18 +14,12 @@ generic_error
 go_panic
 go_test
 gradle
-jest
-js_script_exit
 make
 maven_gradle
 minitest
-node_runtime
-npm
 oom
 php_fatal
 phpunit
-playwright
-pnpm
 python_traceback
 rspec
 ruby_exception
@@ -35,4 +28,3 @@ rust_panic
 rust_test
 terraform
 tsc
-yarn

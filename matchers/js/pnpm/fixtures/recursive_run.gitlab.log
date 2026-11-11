@@ -1,0 +1,12 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ pnpm -r build
+Scope: 3 of 4 workspace projects
+packages/api build$ tsc -p .
+packages/api build: src/routes/orders.ts(41,7): error TS2322: Type 'string' is not assignable to type 'number'.
+packages/api build: Failed
+/app/packages/api:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @acme/api@1.4.0 build: `tsc -p .`
+Exit status 2
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

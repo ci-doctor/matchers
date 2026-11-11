@@ -1,0 +1,11 @@
+… [2 lines elided] …
+Running 18 tests using 4 workers
+  1) [chromium] › tests/checkout.spec.ts:24:1 › applies a promo code ────────────────
+    Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1148/chrome-linux/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+… [4 lines elided] …

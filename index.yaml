@@ -16,11 +16,12 @@ matchers:
     ecosystem: jvm
   bun:
     path: matchers/js/bun/matcher.yaml
-    sha256: c825bad55f84592b6a096aeea4c47fe53a8bdad49031da4297b0c98ec699c3d5
-    description: A failed `bun test` (the crossed-out test and its assertion), or a `bun install` that found no matching version.
+    sha256: 9f5fde19d0d52ecc3c4ba2796d2b0d10623ddbd7c2aeba5e418693e958bfac75
+    description: Bun, the JavaScript runtime and toolkit - failing tests, install refusals, and scripts that exited non-zero.
     schema: 1
     tags: [js, test, deps]
     ecosystem: js
+    outputs: [test, install, run]
   bundler:
     path: matchers/ruby/bundler/matcher.yaml
     sha256: 318fd2ea6faf91c303f1cf62a2a1426dd2bb83a46289d41ea63c323a81fba5d1
@@ -114,18 +115,12 @@ matchers:
     ecosystem: jvm
   jest:
     path: matchers/js/jest/matcher.yaml
-    sha256: b9c55a3bd08ae07d9d931184f24c7f317cf25c5b088c87af327ea92828349b3e
-    description: A jest test failure - the bullet header names the test, and the diff below it shows expected against received.
+    sha256: de6d2603e64c142fa2df2bc6f092fb7d42342f049df2e689cd54b54bc3b11871
+    description: Jest - failing tests, and coverage thresholds that fail a run whose tests all passed.
     schema: 1
     tags: [js, test]
     ecosystem: js
-  js_script_exit:
-    path: matchers/js/js_script_exit/matcher.yaml
-    sha256: 1f29d6ff2253384a4e54622b503537e97464747efcb31a2449e3c6449cab8f2e
-    description: 'A JS package manager announcing that a lifecycle script exited non-zero - pnpm''s `ELIFECYCLE`, bun''s `error: script "x" exited with code N`.'
-    schema: 1
-    tags: [js]
-    ecosystem: js
+    outputs: [failures, coverage]
   make:
     path: matchers/any/make/matcher.yaml
     sha256: 05933b0e6df9fd72309deec3bfa506fb7ca460f9cc7618843c1d9ea70bf4b5b5
@@ -154,20 +149,22 @@ matchers:
     schema: 1
     tags: [python, lint, types]
     ecosystem: python
-  node_runtime:
-    path: matchers/js/node_runtime/matcher.yaml
-    sha256: 062f94daabc2633745dbe0ad0c6b2c1aa1a44ee2aaeabaa18609c4d707b8139d
-    description: An uncaught Node error. The message above the stack is the cause; an ESM/CJS resolution error means a missing or mis-declared module.
+  node:
+    path: matchers/js/node/matcher.yaml
+    sha256: f34817e320b4291ccdbd43bcdbddb04f87b6cf0694f6c8a97f82cde439dcc025
+    description: Node.js itself - uncaught errors, and the process running out of heap.
     schema: 1
     tags: [js, runtime]
     ecosystem: js
+    outputs: [error, oom]
   npm:
     path: matchers/js/npm/matcher.yaml
-    sha256: 504b808e549b640b2f43d470bb0c93173e6546a5104a60de8d0f05b7452806ba
-    description: '`npm ERR!` lines. A wrapper: npm reports the failure of the script it ran, never the cause.'
+    sha256: ed893fa1a860cc2d3d27e8c54adc93655247ebe516bbeaa3a836ddff8f0e25e4
+    description: npm, the Node.js package manager - install failures, and package.json scripts that exited non-zero.
     schema: 1
-    tags: [js, deps]
+    tags: [js, node, deps]
     ecosystem: js
+    outputs: [install, run]
   oom:
     path: matchers/any/oom/matcher.yaml
     sha256: e694ed19c602dae16597d8dbab459d11f9831d2e6d917a7307f3148a908e3b94
@@ -191,18 +188,20 @@ matchers:
     ecosystem: php
   playwright:
     path: matchers/js/playwright/matcher.yaml
-    sha256: b9916057b825da2dfdf67c2f35d020ffbfadf292c5847ac07e841bd9e78623f6
-    description: A Playwright test failure - the `1) suite > test` header names the test; its trace and diff follow.
+    sha256: 6808edbe0b18ee30eae04211462e855c8ab6a57003a46fced8c656c240b93245
+    description: Playwright end-to-end tests - failing tests, and browsers the job never installed.
     schema: 1
     tags: [js, e2e]
     ecosystem: js
+    outputs: [test, install]
   pnpm:
     path: matchers/js/pnpm/matcher.yaml
-    sha256: e264e47a2b6099b16afd83cd872c8ce32ab5cc6acc585ef3323d6de353cb868c
-    description: pnpm's `ERR_PNPM_*` codes - the resolver or lockfile refusing, which is the cause itself.
+    sha256: cd96018e9d4e965397b9222c89ce9eee9356b982b61244df8e53e7abacfaf466
+    description: pnpm, the Node.js package manager - install refusals, and scripts that exited non-zero.
     schema: 1
-    tags: [js, deps]
+    tags: [js, node, deps]
     ecosystem: js
+    outputs: [install, run]
   pylint:
     path: matchers/python/pylint/matcher.yaml
     sha256: 4624985e3366cb0807ae67054ca7df8c8e5d35849d576b0ce7cf70017e1ffbf0
@@ -284,11 +283,12 @@ matchers:
     ecosystem: js
   yarn:
     path: matchers/js/yarn/matcher.yaml
-    sha256: b222312071d73ca601fa46aa68aca89a444fece542c37048f2327b49db744a91
-    description: Yarn Classic's `error <Capital>` lines and Berry's `YN0000:` diagnostic codes.
+    sha256: 3e304051acee651095a1355c4b76a33e174a1892ec221236a2c77eb2ad31d368
+    description: Yarn, the Node.js package manager - install refusals, and Yarn Classic scripts that exited non-zero.
     schema: 1
-    tags: [js, deps]
+    tags: [js, node, deps]
     ecosystem: js
+    outputs: [install, run]
 bundles:
   all:
     path: bundles/all.yaml
@@ -320,7 +320,7 @@ bundles:
     description: Every matcher in the iac ecosystem.
   js:
     path: bundles/js.yaml
-    sha256: 93f478652308be0b56502eeedd0d78033a9df013b55c6c7668cca2094fd4f32c
+    sha256: 03a581a7a36669f7813018cd8ef2966901e9df08dbf9a7fffca742b056534e04
     description: Every matcher in the js ecosystem.
   jvm:
     path: bundles/jvm.yaml

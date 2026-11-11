@@ -1,0 +1,10 @@
+… [4 lines elided] …
+   Creating an optimized production build ...
+<--- Last few GCs --->
+[2741:0x6b5a5c0]    68129 ms: Mark-Compact 4031.9 (4134.6) -> 4018.2 (4136.1) MB, 1712.53 / 0.00 ms  (average mu = 0.121, current mu = 0.048) allocation failure; scavenge might not succeed
+<--- JS stacktrace --->
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+ 1: 0xb8c4a0 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [node]
+ 2: 0xf0ab10 v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [node]
+… [2 lines elided] …

@@ -1,0 +1,16 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx jest --coverage
+PASS src/cart/discount.test.ts
+PASS src/checkout/session.test.ts
+----------------------|---------|----------|---------|---------|-------------------
+File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+----------------------|---------|----------|---------|---------|-------------------
+All files             |   74.21 |    61.90 |   70.00 |   74.02 |
+----------------------|---------|----------|---------|---------|-------------------
+Jest: "global" coverage threshold for lines (80%) not met: 74.02%
+Jest: "global" coverage threshold for branches (70%) not met: 61.9%
+Test Suites: 2 passed, 2 total
+Tests:       48 passed, 48 total
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

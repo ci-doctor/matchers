@@ -1,0 +1,5 @@
+… [6 lines elided] …
+/app/packages/api:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @acme/api@1.4.0 build: `tsc -p .`
+Exit status 2
+ERROR: Job failed: exit code 1
