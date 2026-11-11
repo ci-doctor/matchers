@@ -1,0 +1,7 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ mkdocs build --strict
+WARNING -  Doc file 'index.md' contains a link 'changelog.md', but the target is not found among documentation files.
+Aborted with 1 warnings in strict mode!
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

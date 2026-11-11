@@ -1,6 +1,6 @@
 schema: 1
 id: uv
-description: uv, the Python package and project manager - requirements it cannot resolve, and a lockfile that is out of date.
+description: uv, the Python package and project manager - requirements it cannot resolve, a lockfile that is out of date, and packages it could not build.
 tags: [python, deps]
 outputs:
   resolve:
@@ -15,3 +15,9 @@ outputs:
       regenerated. Running uv lock and committing uv.lock fixes it.
     match: {regex: 'The lockfile at `uv\.lock` needs to be updated, but `--locked` was provided'}
     window: {before: 1}
+  build:
+    description: >-
+      uv failing to build a package - Failed to build X, with the build backend's error under
+      it. A missing compiler, system library or packaging config, not a version conflict.
+    match: {regex: '× Failed to (build|download and build) `'}
+    window: {after: 8}

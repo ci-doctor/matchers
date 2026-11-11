@@ -1,0 +1,5 @@
+$ pytest -n 2 --max-worker-restart=1
+[gw0] node down: Not properly terminated
+[gw1] node down: Not properly terminated
+maximum crashed workers reached: 2
+INTERNALERROR> RuntimeError: maximum crashed workers reached: 2

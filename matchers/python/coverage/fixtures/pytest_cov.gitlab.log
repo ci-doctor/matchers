@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ pytest --cov --cov-fail-under=85
+TOTAL                     193     51    74%
+
+FAIL Required test coverage of 85% not reached. Total coverage: 73.58%
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

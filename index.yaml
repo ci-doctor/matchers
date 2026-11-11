@@ -8,6 +8,13 @@ matchers:
     tags: [any, build]
     ecosystem: any
     outputs: [build, test]
+  black:
+    path: matchers/python/black/matcher.yaml
+    sha256: 6c20be322193adddd013d99d51c9bf8d50e026df1243dfe63310352e969669fe
+    description: black --check listing the files it would reformat. Formatting only - running black fixes it; no code is wrong.
+    schema: 1
+    tags: [python, lint, format]
+    ecosystem: python
   bun:
     path: matchers/js/bun/matcher.yaml
     sha256: 9f5fde19d0d52ecc3c4ba2796d2b0d10623ddbd7c2aeba5e418693e958bfac75
@@ -37,6 +44,13 @@ matchers:
     schema: 1
     tags: [php, deps]
     ecosystem: php
+  coverage:
+    path: matchers/python/coverage/matcher.yaml
+    sha256: d335183ba6a569af85385a4b1e61aceb5096c7a9508ec37006a5e0fa51dcd0a1
+    description: 'coverage.py failing the job - Coverage failure: total of N is less than fail-under=M. No test failed; coverage fell below the bar.'
+    schema: 1
+    tags: [python, coverage]
+    ecosystem: python
   csc:
     path: matchers/dotnet/csc/matcher.yaml
     sha256: 508d2ea0e384f90618c1f18af1bb5899ad96dd233b59730b8e53f5b565963afd
@@ -51,6 +65,14 @@ matchers:
     schema: 1
     tags: [js, e2e]
     ecosystem: js
+  dbt:
+    path: matchers/python/dbt/matcher.yaml
+    sha256: b3d34d6cac9db069c746e1c02c8be2f8c05bd1cb5a5dfa37f016ed3737adc1ff
+    description: dbt, the SQL transformation tool - models that do not compile, and SQL the warehouse rejected.
+    schema: 1
+    tags: [python, build]
+    ecosystem: python
+    outputs: [compile, run]
   docker_build:
     path: matchers/container/docker_build/matcher.yaml
     sha256: e5aa7404ff234ad169ef44b65260729bccf719055c9eeff7b1532cb0d6a2e910
@@ -219,6 +241,14 @@ matchers:
     tags: [js, node, deps]
     ecosystem: js
     outputs: [install, run]
+  poetry:
+    path: matchers/python/poetry/matcher.yaml
+    sha256: 1b1bedbb87449f695d024296cff91c499aa962bb7004af9efda9aa8a48c7b78f
+    description: Poetry, the Python dependency manager - requirements it cannot resolve, and a stale lock file.
+    schema: 1
+    tags: [python, deps]
+    ecosystem: python
+    outputs: [resolve, lock]
   pylint:
     path: matchers/python/pylint/matcher.yaml
     sha256: 4624985e3366cb0807ae67054ca7df8c8e5d35849d576b0ce7cf70017e1ffbf0
@@ -226,20 +256,34 @@ matchers:
     schema: 1
     tags: [python, lint]
     ecosystem: python
+  pyright:
+    path: matchers/python/pyright/matcher.yaml
+    sha256: 00c8a57817322864d75a2d461430b691eafaadd8b3098636f9c7d20daa17b607
+    description: 'A Pyright type error - file.py:12:5 - error: message (reportRule), from pyright or basedpyright. The rule in brackets says which check fired; warnings alone never fire.'
+    schema: 1
+    tags: [python, lint]
+    ecosystem: python
   pytest:
     path: matchers/python/pytest/matcher.yaml
-    sha256: 238605b06b4fb401940344d33660f84551f6b08307fa4342f0eecfea7eecd38f
-    description: pytest - failing tests, test modules that could not even be collected, and a coverage bar the run did not reach.
+    sha256: b4511627042cefad0d8a2aa8595df91a2a5f55c1d57e20414c4b65b94028bb93
+    description: pytest - failing tests, modules that could not be collected, crashed xdist workers, and a coverage bar the run did not reach.
     schema: 1
     tags: [python, test]
     ecosystem: python
-    outputs: [failures, errors, coverage]
+    outputs: [failures, errors, coverage, workers]
   python_traceback:
     path: matchers/python/python_traceback/matcher.yaml
     sha256: f25da395cb2f4307e02da6040e5c330fe644db79e40b982b02c28d1b5750e309
     description: An uncaught Python exception. The exception type and message are on the traceback's last line; the frames above show where it was raised.
     schema: 1
     tags: [python, runtime]
+    ecosystem: python
+  python_unittest:
+    path: matchers/python/python_unittest/matcher.yaml
+    sha256: 35b2c28db83b51be7ac2c6b05136e0e64613c79fe81fc4ad83070d2cb22339ce
+    description: 'unittest''s FAIL: / ERROR: blocks, from Python''s runner or Django''s test runner, through to FAILED (failures=N). ERROR means the test raised, or its module did not import.'
+    schema: 1
+    tags: [python, test]
     ecosystem: python
   rspec:
     path: matchers/ruby/rspec/matcher.yaml
@@ -284,6 +328,13 @@ matchers:
     schema: 1
     tags: [rust, test]
     ecosystem: rust
+  sphinx:
+    path: matchers/python/sphinx/matcher.yaml
+    sha256: 1ba43713ea109cc21ebd390fa8fcea66de793241cb6b2f2fdfe983eb195e4c86
+    description: A Sphinx docs build failing on warnings under -W / --fail-on-warning - the WARNING lines name the file and line; a broken cross-reference or a missing toctree entry.
+    schema: 1
+    tags: [python, build, docs]
+    ecosystem: python
   terraform:
     path: matchers/iac/terraform/matcher.yaml
     sha256: 0301ef04047f520dc03e6c5b8b427f3616e7140f93435e019508f03e6bfe4643
@@ -291,6 +342,13 @@ matchers:
     schema: 1
     tags: [iac]
     ecosystem: iac
+  tox:
+    path: matchers/python/tox/matcher.yaml
+    sha256: ac55012e1ee37c7fb3647934b45127df41620b1f64e4e50e620794b928a352c0
+    description: 'tox naming the environments that failed (env: FAIL code N). A wrapper - that environment''s own test or lint output above it is the cause.'
+    schema: 1
+    tags: [python, test]
+    ecosystem: python
   tsc:
     path: matchers/js/tsc/matcher.yaml
     sha256: eb41384adec654d19faef908acf6a1898f59e3370d427c5a16a6157905e89491
@@ -298,14 +356,21 @@ matchers:
     schema: 1
     tags: [js, build]
     ecosystem: js
+  ty:
+    path: matchers/python/ty/matcher.yaml
+    sha256: b3cb74e9168b1b34cde38cb40cdd9416c97056b04a3097882b25e055983c550c
+    description: 'A ty type error - error[rule-name]: message, with the --> file.py:line:col excerpt under it. Astral''s type checker; it shares ruff''s renderer but names rules in kebab-case.'
+    schema: 1
+    tags: [python, lint]
+    ecosystem: python
   uv:
     path: matchers/python/uv/matcher.yaml
-    sha256: caa8d2aa2076b1172197ff8811a266e04c1346d082651ce110bbabcf99998986
-    description: uv, the Python package and project manager - requirements it cannot resolve, and a lockfile that is out of date.
+    sha256: 9d3aca992a7fd544adfbcde4979662ecbad1b6252e6dd4041cd7bac5e9efbfc8
+    description: uv, the Python package and project manager - requirements it cannot resolve, a lockfile that is out of date, and packages it could not build.
     schema: 1
     tags: [python, deps]
     ecosystem: python
-    outputs: [resolve, lock]
+    outputs: [resolve, lock, build]
   vstest:
     path: matchers/dotnet/vstest/matcher.yaml
     sha256: ee435f2416c702c4a9fd175aaa68dad3f16a8d43db97834f2a558e38b9f1450a
@@ -364,7 +429,7 @@ bundles:
     description: Every matcher in the php ecosystem.
   python:
     path: bundles/python.yaml
-    sha256: aa462326f4121c2c67a15a81d4bed336409b95565828a728f106edf9f6034381
+    sha256: 1c6d6cfe6ee81710bd379b7067f0751f11b07aba5dd2e83f79f00eb53560cfd6
     description: Every matcher in the python ecosystem.
   ruby:
     path: bundles/ruby.yaml
