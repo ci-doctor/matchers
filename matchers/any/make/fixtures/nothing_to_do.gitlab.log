@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ make all
+make[1]: Entering directory '/builds/team/engine/build'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/builds/team/engine/build'
+test -f build/engine || exit 1
+./scripts/smoke.sh: smoke test 'render' returned 2
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

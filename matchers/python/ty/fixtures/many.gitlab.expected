@@ -1,0 +1,9 @@
+… [1 lines elided] …
+error[unresolved-import]: Cannot resolve imported module `ledger.money`
+ --> etl/transform.py:3:6
+  |
+3 | from ledger.money import Round
+  |      ^^^^^^^^^^^^
+error[unresolved-attribute]: Type `Cart` has no attribute `sum`
+  --> etl/load.py:41:12
+Found 2 diagnostics

@@ -1,0 +1,7 @@
+… [2 lines elided] …
+api/handler.go:42:9: Error return value of `w.Write` is not checked (errcheck)
+	w.Write(body)
+	       ^
+store/db.go:88:2: ineffectual assignment to err (ineffassign)
+	err = rows.Close()
+	^

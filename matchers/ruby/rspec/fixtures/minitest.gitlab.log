@@ -1,0 +1,11 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ bin/rails test
+  1) Failure:
+CartTest#test_total [test/models/cart_test.rb:9]:
+Expected: 3
+  Actual: 2
+
+12 runs, 30 assertions, 1 failures, 0 errors, 0 skips
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

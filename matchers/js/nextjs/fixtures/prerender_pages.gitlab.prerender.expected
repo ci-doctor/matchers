@@ -1,0 +1,6 @@
+… [4 lines elided] …
+Error occurred prerendering page "/blog/[slug]". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: getStaticPaths is required for dynamic SSG pages and is missing for '/blog/[slug]'.
+    at /builds/team/web/node_modules/next/dist/build/utils.js:1012:15
+> Export encountered errors on following paths:
+	/blog/[slug]

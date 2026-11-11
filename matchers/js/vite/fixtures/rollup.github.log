@@ -1,0 +1,16 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run npx vite build
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z vite v6.0.3 building for production...
+2026-07-24T20:04:05.0000000Z transforming...
+2026-07-24T20:04:06.0000000Z ✓ 38 modules transformed.
+2026-07-24T20:04:07.0000000Z x Build failed in 412ms
+2026-07-24T20:04:08.0000000Z error during build:
+2026-07-24T20:04:09.0000000Z [vite]: Rollup failed to resolve import "lodash-es" from "/home/runner/work/web/web/src/cart.ts".
+2026-07-24T20:04:10.0000000Z This is most likely unintended because it can break your application at runtime.
+2026-07-24T20:04:11.0000000Z If you do want to externalize this module explicitly add it to
+2026-07-24T20:04:12.0000000Z `build.rollupOptions.external`
+2026-07-24T20:04:13.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:14.0000000Z Post job cleanup.
+2026-07-24T20:04:15.0000000Z Cleaning up orphan processes

@@ -1,0 +1,3 @@
+… [2 lines elided] …
+[!] (plugin typescript) RollupError: [plugin typescript] src/cart.ts (12:5): @rollup/plugin-typescript TS2322: Type 'string' is not assignable to type 'number'.
+src/cart.ts:12:5

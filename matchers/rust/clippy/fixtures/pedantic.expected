@@ -1,0 +1,8 @@
+… [1 lines elided] …
+error: casting `i64` to `u32` may truncate the value
+  --> src/money.rs:31:17
+   |
+31 |     let cents = amount as u32;
+   |                 ^^^^^^^^^^^^^
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+   = note: `-D clippy::cast-possible-truncation` implied by `-D clippy::pedantic`

@@ -1,0 +1,7 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ yarn install --frozen-lockfile
+$ yarn install --frozen-lockfile
+/bin/sh: 1: yarn: not found
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

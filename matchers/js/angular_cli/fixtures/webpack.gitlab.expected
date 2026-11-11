@@ -1,0 +1,6 @@
+… [1 lines elided] …
+Error: src/app/cart/cart.component.html:12:5 - error NG8002: Can't bind to 'value' since it isn't a known property of 'app-price'.
+12     <app-price [value]="total"></app-price>
+       ~~~~~~~~~~~~~~~~~~~~~~~
+  src/app/cart/cart.component.ts:6:16
+    6   templateUrl: './cart.component.html',

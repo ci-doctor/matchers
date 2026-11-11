@@ -1,0 +1,10 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run java -jar build/libs/ledger.jar
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Exception in thread "main" java.lang.IllegalStateException: no ledger configured for region eu-west-3
+2026-07-24T20:04:05.0000000Z 	at com.acme.ledger.Config.region(Config.java:41)
+2026-07-24T20:04:06.0000000Z 	at com.acme.ledger.Main.main(Main.java:18)
+2026-07-24T20:04:07.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:08.0000000Z Post job cleanup.
+2026-07-24T20:04:09.0000000Z Cleaning up orphan processes

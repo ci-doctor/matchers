@@ -1,0 +1,8 @@
+schema: 1
+id: mocha
+description: >-
+  Mocha's N failing block - numbered entries, each naming the suite and test (or hook) with the
+  assertion or error under it.
+tags: [js, test]
+match: {regex: '^\s*\d+ failing$'}
+window: {after: 20}

@@ -1,0 +1,11 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ apt-get install -y python3.8
+Reading package lists...
+Package python3.8 is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+
+E: Package 'python3.8' has no installation candidate
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

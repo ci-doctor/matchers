@@ -1,0 +1,10 @@
+… [2 lines elided] …
+error: failed to run custom build command for `openssl-sys v0.9.104`
+Caused by:
+  process didn't exit successfully: `/home/runner/work/ledger/ledger/target/debug/build/openssl-sys-3f1c/build-script-main` (exit status: 101)
+  --- stdout
+  cargo:rerun-if-env-changed=OPENSSL_DIR
+  run pkg_config fail: Could not run `PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 pkg-config --libs --cflags openssl`
+  --- stderr
+  thread 'main' panicked at /cargo/registry/src/openssl-sys-0.9.104/build/find_normal.rs:190:5:
+  Could not find directory of OpenSSL installation, and this `-sys` crate cannot proceed without this knowledge.

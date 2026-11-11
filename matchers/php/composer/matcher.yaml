@@ -1,7 +1,7 @@
 schema: 1
 id: composer
 role: tool
-description: Composer's resolver refusing the requirements, with the explanation it prints underneath.
+description: Composer refusing to install - requirements it cannot resolve, or a lock file that does not fit this platform - with the Problem list it prints underneath.
 tags: [php, deps]
-match: {regex: Your requirements could not be resolved}
+match: {regex: Your requirements could not be resolved|Your lock file does not contain a compatible set of packages}
 window: {before: 1, after: 12}

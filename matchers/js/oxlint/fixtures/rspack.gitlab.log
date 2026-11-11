@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx rspack build
+ERROR in ./src/cart.ts
+  × Module not found: Can't resolve 'lodash-es' in '/builds/team/web/src'
+   ╭─[1:20]
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

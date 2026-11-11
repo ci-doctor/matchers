@@ -1,0 +1,6 @@
+… [2 lines elided] …
+     TIMEOUT [  60.002s] ledger-db db::slow_query
+------------
+     Summary [  61.120s] 41 tests run: 40 passed, 1 timed out, 2 skipped
+     TIMEOUT [  60.002s] ledger-db db::slow_query
+error: test run failed

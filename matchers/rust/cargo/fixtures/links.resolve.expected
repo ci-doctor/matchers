@@ -1,0 +1,6 @@
+… [1 lines elided] …
+error: failed to select a version for `openssl-sys`.
+    ... required by package `native-tls v0.2.12`
+versions that meet the requirements `^0.9.55` are: 0.9.104, 0.9.103
+the package `openssl-sys` links to the native library `openssl`, but it conflicts with a previous package which links to `openssl` as well:
+package `openssl-sys v0.9.60`

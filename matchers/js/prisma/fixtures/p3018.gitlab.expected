@@ -1,0 +1,7 @@
+… [2 lines elided] …
+Error: P3018
+A migration failed to apply. New migrations cannot be applied before the error is recovered from. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve
+Migration name: 20261102_invoice_totals
+Database error code: 42701
+Database error:
+ERROR: column "total" of relation "Invoice" already exists

@@ -1,0 +1,4 @@
+… [3 lines elided] …
+src/ledger/api.py          41      9    78%
+TOTAL                     193     51    74%
+Coverage failure: total of 74 is less than fail-under=85

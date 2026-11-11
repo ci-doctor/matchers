@@ -1,0 +1,10 @@
+$ npm ci
+prebuild-install warn install No prebuilt binaries found (target=23.3.0 runtime=node arch=x64 libc= platform=linux)
+gyp info it worked if it ends with ok
+gyp info using node-gyp@10.2.0
+In file included from ../src/better_sqlite3.cpp:4:
+./src/util/macros.lzz:32:52: error: 'class v8::Object' has no member named 'GetPrototype'
+make: *** [better_sqlite3.target.mk:119: Release/obj.target/better_sqlite3/src/better_sqlite3.o] Error 1
+gyp ERR! build error
+gyp ERR! stack Error: `make` failed with exit code: 2
+gyp ERR! not ok

@@ -1,0 +1,10 @@
+… [2 lines elided] …
+WARNING: DATA RACE
+Write at 0x00c0000b4010 by goroutine 8:
+  github.com/acme/ledger/cache.(*Cache).Set()
+      /home/runner/work/ledger/ledger/cache/cache.go:31 +0x84
+Previous read at 0x00c0000b4010 by goroutine 7:
+  github.com/acme/ledger/cache.(*Cache).Get()
+      /home/runner/work/ledger/ledger/cache/cache.go:22 +0x5c
+==================
+… [3 lines elided] …

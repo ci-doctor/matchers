@@ -1,0 +1,6 @@
+… [8 lines elided] …
+FAILURE: Build failed with an exception.
+* What went wrong:
+Execution failed for task ':app:test'.
+> There were failing tests. See the report at: file:///home/runner/work/app/app/build/reports/tests/test/index.html
+* Try:

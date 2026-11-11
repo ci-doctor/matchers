@@ -1,0 +1,6 @@
+$ npx next build && npx lhci autorun
+   ▲ Next.js 15.0.3
+ ✓ Compiled successfully
+ ✓ Generating static pages (12/12)
+Route (app)                              Size     First Load JS
+Error: Lighthouse budget exceeded for /cart

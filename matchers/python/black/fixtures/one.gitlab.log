@@ -1,0 +1,9 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ black --check etl
+would reformat etl/load.py
+
+Oh no! 💥 💔 💥
+1 file would be reformatted, 9 files would be left unchanged.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

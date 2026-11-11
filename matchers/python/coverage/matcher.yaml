@@ -1,0 +1,9 @@
+schema: 1
+id: coverage
+role: gate
+description: >-
+  coverage.py failing the job - Coverage failure: total of N is less than fail-under=M. No
+  test failed; coverage fell below the bar.
+tags: [python, coverage]
+match: {regex: '^Coverage failure: total of \d+(\.\d+)? is less than fail-under=\d+'}
+window: {before: 2}

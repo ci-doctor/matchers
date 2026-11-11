@@ -1,0 +1,10 @@
+schema: 1
+id: vitest
+description: >-
+  A Vitest failure - the FAIL file > suite > test header names the test, and the diff below it
+  shows expected against received. A test file that failed to load prints FAIL file [ file ].
+tags: [js, test]
+match: {regex: '^\s*FAIL\s+\S+\.(test|spec)\.[cm]?[jt]sx?\s+(>|\[)'}
+window:
+  until: {regex: '^\s*Test Files '}
+  max_lines: 300

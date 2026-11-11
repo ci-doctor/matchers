@@ -1,0 +1,5 @@
+$ python -m ledger.migrate
+Traceback (most recent call last):
+  File "/app/ledger/migrate.py", line 12, in <module>
+    db.connect()
+ledger.errors.ConfigError: cannot reach db.internal

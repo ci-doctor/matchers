@@ -1,0 +1,11 @@
+… [3 lines elided] …
+        FAIL [   0.004s] ledger parse::rejects_empty
+--- STDOUT:              ledger parse::rejects_empty ---
+running 1 test
+--- STDERR:              ledger parse::rejects_empty ---
+thread 'parse::rejects_empty' panicked at src/parse.rs:44:9:
+assertion failed: result.is_err()
+------------
+     Summary [   0.312s] 12 tests run: 11 passed, 1 failed, 0 skipped
+        FAIL [   0.004s] ledger parse::rejects_empty
+error: test run failed

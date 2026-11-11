@@ -1,0 +1,7 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ git fetch origin feature/ledger-v2
+$ git fetch origin feature/ledger-v2
+fatal: couldn't find remote ref feature/ledger-v2
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

@@ -1,0 +1,10 @@
+$ go test -race ./workers
+WARNING: DATA RACE
+Write at 0x00c0001a2000 by goroutine 21:
+  runtime.mapassign_faststr()
+==================
+WARNING: DATA RACE
+Read at 0x00c0001a2008 by goroutine 22:
+==================
+--- FAIL: TestWorkers (0.12s)
+    testing.go:1399: race detected during execution of test

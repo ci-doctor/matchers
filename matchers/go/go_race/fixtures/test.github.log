@@ -1,0 +1,20 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run go test -race ./...
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z ==================
+2026-07-24T20:04:05.0000000Z WARNING: DATA RACE
+2026-07-24T20:04:06.0000000Z Write at 0x00c0000b4010 by goroutine 8:
+2026-07-24T20:04:07.0000000Z   github.com/acme/ledger/cache.(*Cache).Set()
+2026-07-24T20:04:08.0000000Z       /home/runner/work/ledger/ledger/cache/cache.go:31 +0x84
+2026-07-24T20:04:09.0000000Z 
+2026-07-24T20:04:10.0000000Z Previous read at 0x00c0000b4010 by goroutine 7:
+2026-07-24T20:04:11.0000000Z   github.com/acme/ledger/cache.(*Cache).Get()
+2026-07-24T20:04:12.0000000Z       /home/runner/work/ledger/ledger/cache/cache.go:22 +0x5c
+2026-07-24T20:04:13.0000000Z ==================
+2026-07-24T20:04:14.0000000Z --- FAIL: TestCacheConcurrent (0.01s)
+2026-07-24T20:04:15.0000000Z     testing.go:1399: race detected during execution of test
+2026-07-24T20:04:16.0000000Z FAIL
+2026-07-24T20:04:17.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:18.0000000Z Post job cleanup.
+2026-07-24T20:04:19.0000000Z Cleaning up orphan processes

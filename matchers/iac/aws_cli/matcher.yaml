@@ -1,0 +1,8 @@
+schema: 1
+id: aws_cli
+description: >-
+  An AWS CLI call refused - An error occurred (AccessDenied) when calling the X operation, with
+  AWS's reason after the colon - or no credentials at all. Permissions or credentials, not code.
+tags: [iac, deploy]
+match: {regex: 'An error occurred \(\w+\) when calling the \w+ operation|^Unable to locate credentials\.'}
+window: {before: 1, after: 1}

@@ -1,0 +1,18 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx biome ci .
+src/api/client.ts format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✖ Formatter would have printed the following content:
+
+     9  9 │   export function parse(raw: unknown) {
+    10    │ - ··return·JSON.parse(raw)
+       10 │ + ··return·JSON.parse(String(raw));
+
+Checked 41 files in 15ms. No fixes applied.
+Found 1 error.
+ci ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✖ Some errors were emitted while running checks.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

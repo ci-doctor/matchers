@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ dbt run --target prod
+Database Error in model revenue (models/marts/revenue.sql)
+  Access Denied: Table acme-prod:raw.payments: User does not have permission to query table acme-prod:raw.payments.
+  compiled code at target/run/shop/models/marts/revenue.sql
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

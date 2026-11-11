@@ -1,0 +1,7 @@
+… [3 lines elided] …
+There was 1 error:
+1) Tests\CartTest::testTotal
+Error: Call to undefined method App\Cart::sum()
+/app/tests/CartTest.php:18
+ERRORS!
+… [1 lines elided] …

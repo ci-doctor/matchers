@@ -1,0 +1,8 @@
+… [3 lines elided] …
+failures:
+---- src/lib.rs - parse (line 10) stdout ----
+error[E0425]: cannot find function `parse_all` in crate `ledger`
+ --> src/lib.rs:12:9
+failures:
+    src/lib.rs - parse (line 10)
+test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out
