@@ -1,0 +1,11 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ dotnet publish -c Release
+  Billing.Web -> /app/src/Billing.Web/bin/Release/net8.0/Billing.Web.dll
+  > npm run build
+  sh: 1: vite: not found
+/app/src/Billing.Web/Billing.Web.csproj(41,5): error MSB3073: The command "npm run build" exited with code 127.
+
+Build FAILED.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

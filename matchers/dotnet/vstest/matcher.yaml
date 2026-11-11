@@ -1,0 +1,10 @@
+schema: 1
+id: vstest
+description: >-
+  A failing .NET test under `dotnet test` (VSTest, for xUnit, NUnit and MSTest alike) - `Failed
+  <test> [N ms]`, its error message and stack trace, through to the run's total.
+tags: [dotnet, test]
+match: {regex: '^\s*Failed\s+\S+\s+\[\d+(\.\d+)?\s*m?s\]'}
+window:
+  until: {regex: '^(Failed|Passed)!\s+-'}
+  max_lines: 200

@@ -2,11 +2,12 @@ schema: 1
 matchers:
   bazel:
     path: matchers/any/bazel/matcher.yaml
-    sha256: 28d073267292f2de8578e91169821c300635b26742544b94f4de7659788bef4b
-    description: Bazel reporting that an action or target failed. A wrapper - the compiler or test output it relays is the cause.
+    sha256: baffd71c161fd10cccf2595134aaf8e1b494b301dea2ca54a5f76c7318b7d971
+    description: Bazel reporting the action or test target that failed. The compiler or test output it relays is the cause.
     schema: 1
     tags: [any, build]
     ecosystem: any
+    outputs: [build, test]
   bun:
     path: matchers/js/bun/matcher.yaml
     sha256: 9f5fde19d0d52ecc3c4ba2796d2b0d10623ddbd7c2aeba5e418693e958bfac75
@@ -22,10 +23,10 @@ matchers:
     schema: 1
     tags: [ruby, deps]
     ecosystem: ruby
-  cc_cpp:
-    path: matchers/c/cc_cpp/matcher.yaml
-    sha256: 91d4d03e7bd6498234dd972ba7c14e13aeb94d9a02dff22f3f5c545190763b2b
-    description: C/C++ builds - CMake configure errors and linker `undefined reference` / `collect2` failures.
+  cmake:
+    path: matchers/c/cmake/matcher.yaml
+    sha256: 4486f822f647d6f5d73fdd0d7565078a630658a7f7bca5a91c3f729ba3a71122
+    description: A CMake configure error - `CMake Error at CMakeLists.txt:12 (find_package):` and the reason under it, usually a missing package or a wrong path. The build never started.
     schema: 1
     tags: [c, build]
     ecosystem: c
@@ -36,6 +37,13 @@ matchers:
     schema: 1
     tags: [php, deps]
     ecosystem: php
+  csc:
+    path: matchers/dotnet/csc/matcher.yaml
+    sha256: 508d2ea0e384f90618c1f18af1bb5899ad96dd233b59730b8e53f5b565963afd
+    description: A C# compile error from Roslyn (`error CS1061`) or an analyzer rule built as an error (`error CA1822`, `IDE0005`), with the file and line it points at. The code is wrong.
+    schema: 1
+    tags: [dotnet, build]
+    ecosystem: dotnet
   cypress:
     path: matchers/js/cypress/matcher.yaml
     sha256: 4c673405afd27c43668ff4a40e4447ac75b9df583440497d35fc852ce8f343a1
@@ -50,20 +58,6 @@ matchers:
     schema: 1
     tags: [container, build]
     ecosystem: container
-  dotnet_build:
-    path: matchers/dotnet/dotnet_build/matcher.yaml
-    sha256: ab0d4531223485eb8d355419685991f9505b98b8bddf13d377bd6758ced44c57
-    description: MSBuild, Roslyn and NuGet error codes - `error CS0103`, `error NU1101`, `error MSB3073`.
-    schema: 1
-    tags: [dotnet, build]
-    ecosystem: dotnet
-  dotnet_test:
-    path: matchers/dotnet/dotnet_test/matcher.yaml
-    sha256: 9455bc6687dd785aa2fc95cbab3e888b7685f3bb617cde3abad2de6c3363b6c3
-    description: '`dotnet test`: xunit/nunit `[FAIL]` markers and the `Failed!` summary line.'
-    schema: 1
-    tags: [dotnet, test]
-    ecosystem: dotnet
   eslint:
     path: matchers/js/eslint/matcher.yaml
     sha256: 7553ad9076e72cc0f5dacf92da90a89b00f757c6f9b2529603e8ac80187eadbf
@@ -114,6 +108,13 @@ matchers:
     tags: [js, test]
     ecosystem: js
     outputs: [failures, coverage]
+  ld:
+    path: matchers/c/ld/matcher.yaml
+    sha256: 4a4d6b4bf5a5a027cad368bb651a139128232c52323de3b8bb2586a7b1886b38
+    description: GNU ld failing to link - an undefined reference (a library or object left out, or a symbol declared but never defined) or a library it cannot find (`cannot find -lssl`).
+    schema: 1
+    tags: [c, build]
+    ecosystem: c
   make:
     path: matchers/any/make/matcher.yaml
     sha256: 05933b0e6df9fd72309deec3bfa506fb7ca460f9cc7618843c1d9ea70bf4b5b5
@@ -136,6 +137,13 @@ matchers:
     schema: 1
     tags: [ruby, test]
     ecosystem: ruby
+  msbuild:
+    path: matchers/dotnet/msbuild/matcher.yaml
+    sha256: 9ca0ef95c8a7f0307e329fb1c883c9249f6049d086cd4c14a2cd88ff6d44f341
+    description: 'An MSBuild error (`error MSB3073`, `MSB4019`, `MSB1009`) - the build script itself: a missing imported project or file, or a command a target ran that exited non-zero.'
+    schema: 1
+    tags: [dotnet, build]
+    ecosystem: dotnet
   mypy:
     path: matchers/python/mypy/matcher.yaml
     sha256: 6daeeccd9f243ea8ad46657efb7f46c9b03ad6458993915b17a6345ad0cadc8e
@@ -159,6 +167,13 @@ matchers:
     tags: [js, node, deps]
     ecosystem: js
     outputs: [install, run]
+  nuget:
+    path: matchers/dotnet/nuget/matcher.yaml
+    sha256: 5b863c140202e5632e6850f1e98b80a0726b0dcafbceebd161d186e119dbce93
+    description: NuGet failing to restore (`error NU1101`, `NU1102`, `NU1605`) - a package or version the feed does not have, or a version downgrade. The dependencies, not the code.
+    schema: 1
+    tags: [dotnet, deps]
+    ecosystem: dotnet
   oom:
     path: matchers/any/oom/matcher.yaml
     sha256: e694ed19c602dae16597d8dbab459d11f9831d2e6d917a7307f3148a908e3b94
@@ -263,8 +278,8 @@ matchers:
     ecosystem: rust
   terraform:
     path: matchers/iac/terraform/matcher.yaml
-    sha256: 33065863b37c805686060d82ae5efb45d55b45b6289729f5dcb9373c79dccd1b
-    description: Terraform's boxed `Error:` and the `on main.tf line 12` it points at.
+    sha256: 0301ef04047f520dc03e6c5b8b427f3616e7140f93435e019508f03e6bfe4643
+    description: Terraform's (or OpenTofu's) boxed `Error:` and the `on main.tf line 12` it points at - a provider refusing a change, or invalid configuration.
     schema: 1
     tags: [iac]
     ecosystem: iac
@@ -275,6 +290,13 @@ matchers:
     schema: 1
     tags: [js, build]
     ecosystem: js
+  vstest:
+    path: matchers/dotnet/vstest/matcher.yaml
+    sha256: ee435f2416c702c4a9fd175aaa68dad3f16a8d43db97834f2a558e38b9f1450a
+    description: A failing .NET test under `dotnet test` (VSTest, for xUnit, NUnit and MSTest alike) - `Failed <test> [N ms]`, its error message and stack trace, through to the run's total.
+    schema: 1
+    tags: [dotnet, test]
+    ecosystem: dotnet
   yarn:
     path: matchers/js/yarn/matcher.yaml
     sha256: 3e304051acee651095a1355c4b76a33e174a1892ec221236a2c77eb2ad31d368
@@ -294,7 +316,7 @@ bundles:
     description: Every matcher in the any ecosystem.
   c:
     path: bundles/c.yaml
-    sha256: 6c3439a1c17d686f85e0a651adead75fd5afefaef6f557784035babd25175dc6
+    sha256: 5609e9fa3d321f97e647b2e148b84b9edd028304e5e3d8ce2340b9183b2fe450
     description: Every matcher in the c ecosystem.
   container:
     path: bundles/container.yaml
@@ -302,7 +324,7 @@ bundles:
     description: Every matcher in the container ecosystem.
   dotnet:
     path: bundles/dotnet.yaml
-    sha256: 2ae48170f57700adecb90d51ca2ace221f3aa963940b2a7f1ef474eb7e2085e8
+    sha256: 6991cd1cb51ed4b6a5124b55a9b04cd49340f2d1e9fab1913cf828547fa9816c
     description: Every matcher in the dotnet ecosystem.
   go:
     path: bundles/go.yaml

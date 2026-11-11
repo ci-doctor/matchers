@@ -1,7 +1,19 @@
 schema: 1
 id: bazel
-role: wrapper
-description: Bazel reporting that an action or target failed. A wrapper - the compiler or test output it relays is the cause.
+description: Bazel reporting the action or test target that failed. The compiler or test output it relays is the cause.
 tags: [any, build]
-match: {regex: '^ERROR: \S+:\d+:\d+: .*(failed|FAILED)|^FAILED: Build did NOT complete|^//\S+\s+FAILED in \d'}
-window: {before: 2, after: 10}
+outputs:
+  build:
+    role: wrapper
+    description: >-
+      Bazel naming the action that failed (`ERROR: BUILD.bazel:12:11: Compiling x failed`). A
+      wrapper - the compiler output under it is the cause.
+    match: {regex: '^ERROR: \S+:\d+:\d+: .* failed'}
+    window: {after: 8}
+  test:
+    role: wrapper
+    description: >-
+      Bazel naming a test target that failed (`//pkg:target FAILED in 0.4s`). A wrapper - the
+      test log it points to holds the cause.
+    match: {regex: '^//\S+\s+FAILED in \d'}
+    window: {after: 1}

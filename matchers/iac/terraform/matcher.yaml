@@ -1,7 +1,8 @@
 schema: 1
 id: terraform
-role: tool
-description: Terraform's boxed `Error:` and the `on main.tf line 12` it points at.
+description: >-
+  Terraform's (or OpenTofu's) boxed `Error:` and the `on main.tf line 12` it points at - a
+  provider refusing a change, or invalid configuration.
 tags: [iac]
-match: {regex: '^\s*│\s*Error: |on .+\.tf line \d+'}
-window: {before: 1, after: 12}
+match: {regex: '^\s*│\s*Error: '}
+window: {after: 12}

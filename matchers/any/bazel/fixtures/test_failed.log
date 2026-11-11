@@ -1,0 +1,7 @@
+$ bazel test //services/...
+INFO: Found 14 test targets...
+FAIL: //services/ledger:posting_test (see /root/.cache/bazel/_bazel_root/0a1b/execroot/_main/bazel-out/k8-fastbuild/testlogs/services/ledger/posting_test/test.log)
+//services/ledger:posting_test                                  FAILED in 2.1s
+  /root/.cache/bazel/_bazel_root/0a1b/execroot/_main/bazel-out/k8-fastbuild/testlogs/services/ledger/posting_test/test.log
+
+Executed 14 out of 14 tests: 13 tests pass and 1 fails locally.

@@ -1,0 +1,13 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ terraform validate
+╷
+│ Error: Unsupported argument
+│ 
+│   on variables.tf line 9, in variable "region":
+│    9:   defalt = "eu-west-1"
+│ 
+│ An argument named "defalt" is not expected here. Did you mean "default"?
+╵
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

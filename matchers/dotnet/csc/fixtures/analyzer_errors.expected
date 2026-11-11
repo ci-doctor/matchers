@@ -1,0 +1,4 @@
+… [1 lines elided] …
+/app/src/Billing/TaxRules.cs(14,21): error CA1822: Member 'Rate' does not access instance data and can be marked as static (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822) [/app/src/Billing/Billing.csproj]
+/app/src/Billing/TaxRules.cs(3,1): error IDE0005: Using directive is unnecessary. [/app/src/Billing/Billing.csproj]
+Build FAILED.

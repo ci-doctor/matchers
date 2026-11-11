@@ -1,0 +1,8 @@
+schema: 1
+id: nuget
+description: >-
+  NuGet failing to restore (`error NU1101`, `NU1102`, `NU1605`) - a package or version the feed
+  does not have, or a version downgrade. The dependencies, not the code.
+tags: [dotnet, deps]
+match: {regex: 'error NU\d{4}:'}
+window: {after: 2}

@@ -1,7 +1,0 @@
-schema: 1
-id: dotnet_test
-role: tool
-description: '`dotnet test`: xunit/nunit `[FAIL]` markers and the `Failed!` summary line.'
-tags: [dotnet, test]
-match: {regex: '\[FAIL\]|^\s*Failed\s+\S+\s+\[\d|^Failed!\s+-\s+Failed:'}
-window: {before: 1, after: 12}

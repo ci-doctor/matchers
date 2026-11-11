@@ -1,7 +1,0 @@
-schema: 1
-id: dotnet_build
-role: tool
-description: MSBuild, Roslyn and NuGet error codes - `error CS0103`, `error NU1101`, `error MSB3073`.
-tags: [dotnet, build]
-match: {regex: error (CS|MSB|NU|AD)\d+}
-window: {before: 1, after: 3}

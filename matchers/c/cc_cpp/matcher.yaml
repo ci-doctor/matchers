@@ -1,7 +1,0 @@
-schema: 1
-id: cc_cpp
-role: tool
-description: C/C++ builds - CMake configure errors and linker `undefined reference` / `collect2` failures.
-tags: [c, build]
-match: {regex: 'CMake Error|undefined reference to|collect2: error'}
-window: {before: 3, after: 8}

@@ -1,0 +1,5 @@
+$ dotnet restore
+/app/src/Billing/Billing.csproj : error NU1605: Warning As Error: Detected package downgrade: Microsoft.Extensions.Logging from 8.0.1 to 8.0.0. Reference the package directly from the project to select a different version.
+/app/src/Billing/Billing.csproj : error NU1605:  Billing -> Acme.Telemetry 2.3.0 -> Microsoft.Extensions.Logging (>= 8.0.1)
+/app/src/Billing/Billing.csproj : error NU1605:  Billing -> Microsoft.Extensions.Logging (>= 8.0.0)
+  Failed to restore /app/src/Billing/Billing.csproj (in 1.4 sec).

@@ -1,0 +1,8 @@
+… [3 lines elided] …
+  Failed RoundsVatPerLine [8 ms]
+  Error Message:
+     Expected: 12000
+  But was:  11999
+  Stack Trace:
+     at Billing.Tests.VatTests.RoundsVatPerLine() in /app/tests/Billing.Tests/VatTests.cs:line 37
+Failed!  - Failed:     1, Passed:    41, Skipped:     0, Total:    42, Duration: 512 ms - Billing.Tests.dll (net8.0)
