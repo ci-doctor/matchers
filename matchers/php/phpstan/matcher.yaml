@@ -1,0 +1,11 @@
+schema: 1
+id: phpstan
+description: >-
+  PHPStan's error table - each file's Line / message rows - and its [ERROR] Found N errors
+  footer. The message and the identifier under it say what PHPStan proved wrong.
+tags: [php, lint]
+match:
+  all:
+    - regex: '^ \[ERROR\] Found \d+ errors?$'
+    - preceded_by: {regex: '^ -+ +-+', within: 300}
+window: {before: 14}

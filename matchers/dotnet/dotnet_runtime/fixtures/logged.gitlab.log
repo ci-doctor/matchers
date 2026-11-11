@@ -1,0 +1,9 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ dotnet run --project src/Api & ./smoke.sh
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://[::]:8080
+warn: Ledger.Retry[0] attempt 1 failed: System.TimeoutException: The operation has timed out.
+Error: smoke test /health returned 503
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1
