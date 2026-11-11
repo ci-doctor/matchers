@@ -7,6 +7,13 @@ matchers:
     schema: 1
     tags: [any, deps]
     ecosystem: any
+  aws_cli:
+    path: matchers/iac/aws_cli/matcher.yaml
+    sha256: b71a5d4b6b375cef7c08758ba15ae60f984962735146a804824d1ee55e4e18a0
+    description: An AWS CLI call refused - An error occurred (AccessDenied) when calling the X operation, with AWS's reason after the colon - or no credentials at all. Permissions or credentials, not code.
+    schema: 1
+    tags: [iac, deploy]
+    ecosystem: iac
   bazel:
     path: matchers/any/bazel/matcher.yaml
     sha256: baffd71c161fd10cccf2595134aaf8e1b494b301dea2ca54a5f76c7318b7d971
@@ -157,6 +164,14 @@ matchers:
     tags: [jvm, build, test]
     ecosystem: jvm
     outputs: [task, test]
+  helm:
+    path: matchers/container/helm/matcher.yaml
+    sha256: 8781ad9a0fdeb7246122d331a5072131cebdeb93dbf56b4dbd51d27db09f05bc
+    description: Helm, the Kubernetes package manager - releases that fail to install, upgrade or roll back.
+    schema: 1
+    tags: [container, deploy]
+    ecosystem: container
+    outputs: [release]
   javac:
     path: matchers/jvm/javac/matcher.yaml
     sha256: 621407deb0264a3147a13660ec39dcb5be11539239c90a6f954f942c6ee2d8cc
@@ -362,6 +377,13 @@ matchers:
     schema: 1
     tags: [python, runtime]
     ecosystem: python
+  registry_error:
+    path: matchers/container/registry_error/matcher.yaml
+    sha256: 7e293323af45b9924cf81362c82e09d1416f3a063266e1e70180b847ed2452b6
+    description: A container registry refusing a pull or push - denied, unauthorized, toomanyrequests (the pull rate limit), manifest unknown. Credentials, permissions or a missing tag, not the build.
+    schema: 1
+    tags: [container, infra]
+    ecosystem: container
   rspec:
     path: matchers/ruby/rspec/matcher.yaml
     sha256: 9bb52a05f7ff60cd5187d5b45fb28c7f22323dd85884b4c5ed581ee6aa4307f3
@@ -486,7 +508,7 @@ bundles:
     description: Every matcher in the c ecosystem.
   container:
     path: bundles/container.yaml
-    sha256: 4fdf2be349624bf4ec255d9339ffaeaa9b1c86d259e17484de24e74ffd1c9362
+    sha256: 35b547c1929a2c0e166952647c50e0683c68e4779be261e74c7687a6670d5170
     description: Every matcher in the container ecosystem.
   dotnet:
     path: bundles/dotnet.yaml
@@ -498,7 +520,7 @@ bundles:
     description: Every matcher in the go ecosystem.
   iac:
     path: bundles/iac.yaml
-    sha256: 1ae2b0ffc3018ddaec61380ba6e7f2de7f066c52f6a8ed9537cacf95eda4aa65
+    sha256: a4218224f6f7cf6661c5783d822e8d933c41b4336f8b46e2eb70da20cce9bef2
     description: Every matcher in the iac ecosystem.
   js:
     path: bundles/js.yaml

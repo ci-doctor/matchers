@@ -1,0 +1,6 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ helm install api ./chart
+Error: INSTALLATION FAILED: cannot re-use a name that is still in use
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

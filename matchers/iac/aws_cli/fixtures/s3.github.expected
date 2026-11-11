@@ -1,0 +1,2 @@
+shell: /usr/bin/bash -e {0}
+upload failed: dist/app.js to s3://acme-web-prod/app.js An error occurred (AccessDenied) when calling the PutObject operation: Access Denied

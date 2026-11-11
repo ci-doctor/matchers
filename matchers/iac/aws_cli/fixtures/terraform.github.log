@@ -1,0 +1,11 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run terraform apply -auto-approve
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Error: creating S3 Bucket (acme-web-prod): operation error S3: CreateBucket, https response error StatusCode: 403, RequestID: 8F2A, api error AccessDenied: Access Denied
+2026-07-24T20:04:05.0000000Z 
+2026-07-24T20:04:06.0000000Z   with aws_s3_bucket.web,
+2026-07-24T20:04:07.0000000Z   on main.tf line 12, in resource "aws_s3_bucket" "web":
+2026-07-24T20:04:08.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:09.0000000Z Post job cleanup.
+2026-07-24T20:04:10.0000000Z Cleaning up orphan processes
