@@ -1,0 +1,10 @@
+… [4 lines elided] …
+==================================== ERRORS ====================================
+_______________________ ERROR at setup of test_insert ________________________
+    @pytest.fixture
+    def db():
+>       conn = psycopg.connect(os.environ["DATABASE_URL"])
+E       KeyError: 'DATABASE_URL'
+tests/conftest.py:9: KeyError
+=========================== short test summary info ============================
+… [2 lines elided] …

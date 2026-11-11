@@ -1,0 +1,13 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ pylint src/ledger
+************* Module ledger.api
+src/ledger/api.py:12:4: W0612: Unused variable 'payload' (unused-variable)
+src/ledger/api.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module ledger.models
+src/ledger/models.py:44:8: E1101: Instance of 'Account' has no 'balnce' member; maybe 'balance'? (no-member)
+
+-----------------------------------
+Your code has been rated at 7.50/10
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

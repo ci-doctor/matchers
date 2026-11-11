@@ -1,7 +1,0 @@
-id: dotnet_build
-role: tool
-classification: [dotnet, build]
-description: MSBuild, Roslyn and NuGet error codes - `error CS0103`, `error NU1101`, `error MSB3073`.
-pattern: error (CS|MSB|NU|AD)\d+
-before: 1
-after: 3

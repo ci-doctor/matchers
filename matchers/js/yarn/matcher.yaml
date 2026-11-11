@@ -1,7 +1,25 @@
+schema: 1
 id: yarn
-role: tool
-classification: [js, deps]
-description: Yarn Classic's `error <Capital>` lines and Berry's `YN0000:` diagnostic codes.
-pattern: ^error [A-Z]|➤ YN\d{4}
-before: 1
-after: 8
+description: Yarn, the Node.js package manager - install refusals, and Yarn Classic scripts that exited non-zero.
+tags: [js, node, deps]
+outputs:
+  install:
+    description: >-
+      Yarn refusing to install - a package or version it cannot find, a lockfile that
+      --frozen-lockfile or --immutable would change, or a checksum mismatch. This is the cause.
+    window: {before: 1, after: 6}
+    variants:
+      classic:
+        match:
+          all:
+            - regex: '^error [A-Z]'
+            - not: {regex: '^error Command failed with exit code'}
+      berry:
+        match: {regex: '➤ YN(0001|0018|0028|0035|0082): '}
+  run:
+    role: wrapper
+    description: >-
+      Yarn Classic reporting that a package.json script exited non-zero (`error Command failed
+      with exit code N.`). A wrapper - the script's output above it is the cause.
+    match: {regex: '^error Command failed with exit code \d+'}
+    window: {before: 1, after: 1}

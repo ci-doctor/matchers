@@ -1,0 +1,8 @@
+… [4 lines elided] …
+│ Error: creating IAM Role (deployer): operation error IAM: CreateRole, https response error StatusCode: 403, api error AccessDenied: User: arn:aws:sts::123456789012:assumed-role/ci/runner is not authorized to perform: iam:CreateRole
+│ 
+│   with aws_iam_role.deployer,
+│   on iam.tf line 1, in resource "aws_iam_role" "deployer":
+│    1: resource "aws_iam_role" "deployer" {
+│ 
+╵

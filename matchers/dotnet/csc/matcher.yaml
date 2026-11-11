@@ -1,0 +1,8 @@
+schema: 1
+id: csc
+description: >-
+  A C# compile error from Roslyn (`error CS1061`) or an analyzer rule built as an error
+  (`error CA1822`, `IDE0005`), with the file and line it points at. The code is wrong.
+tags: [dotnet, build]
+match: {regex: 'error (CS|CA|IDE)\d{4}:'}
+window: {after: 1}

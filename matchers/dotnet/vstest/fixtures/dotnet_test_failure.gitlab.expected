@@ -1,0 +1,9 @@
+… [14 lines elided] …
+  Failed Billing.Tests.InvoiceTests.AppliesVatToNetTotal [12 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 12000
+Actual:   11999
+  Stack Trace:
+     at Billing.Tests.InvoiceTests.AppliesVatToNetTotal() in /builds/team/billing/tests/Billing.Tests/InvoiceTests.cs:line 64
+Failed!  - Failed:     1, Passed:    87, Skipped:     0, Total:    88, Duration: 940 ms

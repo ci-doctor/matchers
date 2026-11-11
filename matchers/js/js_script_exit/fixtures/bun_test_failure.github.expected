@@ -1,8 +1,0 @@
-… [44 lines elided] …
-Ran 3 tests across 1 files. [24.00ms]
-error: script "test" exited with code 1
-##[error]Process completed with exit code 1.
-/usr/bin/git version
-git version 2.54.0
-Artifact upload complete.
-… [2 lines elided] …

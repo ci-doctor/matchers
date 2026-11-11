@@ -1,0 +1,15 @@
+… [6 lines elided] …
+FAILURE: Build completed with 2 failures.
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':core:test'.
+> There were failing tests. See the report at: file:///app/core/build/reports/tests/test/index.html
+* Try:
+… [4 lines elided] …
+* What went wrong:
+Execution failed for task ':api:compileKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+* Try:
+… [2 lines elided] …

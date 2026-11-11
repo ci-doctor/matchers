@@ -1,7 +1,2 @@
-Running with gitlab-runner 16.8.0 (hash)
-Checking cache for default...
-WARNING: file does not exist
-WARNING: Failed to extract cache
 $ ./run.sh
 ERROR: custom tool reported a fatal problem and stopped
-ERROR: Job failed

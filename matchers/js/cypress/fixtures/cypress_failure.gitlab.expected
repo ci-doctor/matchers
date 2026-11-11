@@ -1,4 +1,4 @@
-… [20 lines elided] …
+… [8 lines elided] …
   1 failing
   1) Checkout
        applies a promo code:
@@ -10,9 +10,3 @@
   │ Passing:      1                                │
   │ Failing:      1                                │
   └────────────────────────────────────────────────┘
-Running after_script
-$ echo "cypress failed, keeping videos"
-cypress failed, keeping videos
-Uploading artifacts for failed job
-Uploading artifacts as "archive" to coordinator... 201 Created
-… [1 lines elided] …

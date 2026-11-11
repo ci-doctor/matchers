@@ -1,0 +1,12 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npm ci
+npm ERR! code ETARGET
+npm ERR! notarget No matching version found for lodash@^5.0.0.
+npm ERR! notarget In most cases you or one of your dependencies are requesting
+npm ERR! notarget a package version that doesn't exist.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2026-11-10T09_31_07_402Z-debug-0.log
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

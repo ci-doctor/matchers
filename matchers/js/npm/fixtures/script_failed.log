@@ -1,0 +1,10 @@
+$ npm run build
+> api@1.4.0 build
+> tsc -p .
+
+src/routes/orders.ts(41,7): error TS2322: Type 'string' is not assignable to type 'number'.
+npm error code 2
+npm error path /app
+npm error command failed
+npm error command sh -c tsc -p .
+npm error A complete log of this run can be found in: /root/.npm/_logs/2026-11-10T09_40_12_009Z-debug-0.log

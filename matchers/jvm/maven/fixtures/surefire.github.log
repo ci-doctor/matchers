@@ -1,0 +1,30 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run mvn -B -ntp verify
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z [INFO] -------------------------------------------------------
+2026-07-24T20:04:05.0000000Z [INFO]  T E S T S
+2026-07-24T20:04:06.0000000Z [INFO] -------------------------------------------------------
+2026-07-24T20:04:07.0000000Z [INFO] Running com.acme.ledger.CartTest
+2026-07-24T20:04:08.0000000Z [ERROR] Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.052 s <<< FAILURE! -- in com.acme.ledger.CartTest
+2026-07-24T20:04:09.0000000Z [ERROR] com.acme.ledger.CartTest.totalIncludesTax -- Time elapsed: 0.012 s <<< FAILURE!
+2026-07-24T20:04:10.0000000Z org.opentest4j.AssertionFailedError: expected: <2700> but was: <3000>
+2026-07-24T20:04:11.0000000Z 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:151)
+2026-07-24T20:04:12.0000000Z 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:197)
+2026-07-24T20:04:13.0000000Z 	at com.acme.ledger.CartTest.totalIncludesTax(CartTest.java:42)
+2026-07-24T20:04:14.0000000Z [INFO] 
+2026-07-24T20:04:15.0000000Z [INFO] Results:
+2026-07-24T20:04:16.0000000Z [INFO] 
+2026-07-24T20:04:17.0000000Z [ERROR] Failures: 
+2026-07-24T20:04:18.0000000Z [ERROR]   CartTest.totalIncludesTax:42 expected: <2700> but was: <3000>
+2026-07-24T20:04:19.0000000Z [INFO] 
+2026-07-24T20:04:20.0000000Z [ERROR] Tests run: 41, Failures: 1, Errors: 0, Skipped: 0
+2026-07-24T20:04:21.0000000Z [INFO] ------------------------------------------------------------------------
+2026-07-24T20:04:22.0000000Z [INFO] BUILD FAILURE
+2026-07-24T20:04:23.0000000Z [INFO] ------------------------------------------------------------------------
+2026-07-24T20:04:24.0000000Z [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test) on project ledger: There are test failures.
+2026-07-24T20:04:25.0000000Z [ERROR] 
+2026-07-24T20:04:26.0000000Z [ERROR] Please refer to /app/target/surefire-reports for the individual test results.
+2026-07-24T20:04:27.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:28.0000000Z Post job cleanup.
+2026-07-24T20:04:29.0000000Z Cleaning up orphan processes

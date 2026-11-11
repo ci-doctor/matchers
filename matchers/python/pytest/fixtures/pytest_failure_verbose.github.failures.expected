@@ -1,0 +1,13 @@
+… [11 lines elided] …
+=================================== FAILURES ===================================
+________________________________ test_discount ________________________________
+    def test_discount():
+        cart = Cart(items=[Item("book", 30_00)])
+>       assert cart.total_with_discount(0.10) == 27_00
+E       assert 3000 == 2700
+E        +  where 3000 = <Cart items=[Item(name='book', cents=3000)]>.total_with_discount(0.1)
+tests/test_cart.py:41: AssertionError
+--------------------------- Captured stdout call ---------------------------
+applying discount 0.1 to subtotal 3000
+=========================== short test summary info ============================
+… [2 lines elided] …

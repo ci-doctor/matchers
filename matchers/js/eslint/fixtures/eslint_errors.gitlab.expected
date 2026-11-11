@@ -1,4 +1,4 @@
-… [14 lines elided] …
+… [2 lines elided] …
 $ npx eslint src --max-warnings=0
 /builds/team/web/src/checkout/total.js
    14:9   error    'discount' is assigned a value but never used  no-unused-vars
@@ -8,9 +8,3 @@ $ npx eslint src --max-warnings=0
    31:18  warning  Missing return type on function                @typescript-eslint/explicit-module-boundary-types
 ✖ 4 problems (3 errors, 1 warning)
   2 errors and 0 warnings potentially fixable with the `--fix` option.
-Running after_script
-$ echo "lint failed"
-lint failed
-Uploading artifacts for failed job
-WARNING: eslint-report.json: no matching files. Ensure that the artifact path is relative to the working directory
-… [1 lines elided] …

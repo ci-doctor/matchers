@@ -1,7 +1,0 @@
-id: dotnet_test
-role: tool
-classification: [dotnet, test]
-description: '`dotnet test`: xunit/nunit `[FAIL]` markers and the `Failed!` summary line.'
-pattern: '\[FAIL\]|^\s*Failed\s+\S+\s+\[\d|^Failed!\s+-\s+Failed:'
-before: 1
-after: 12

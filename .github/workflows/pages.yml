@@ -1,6 +1,6 @@
 name: pages
 
-# Publishes matchers.cidoc.dev: the catalogue and playground (built from site/) plus the
+# Publishes matchers.cidoc.dev: the catalogue (built from site/) plus the
 # raw registry (index.yaml, matchers/, bundles/) that `ci-doctor` fetches from the same
 # domain. The site creates no page at those three paths. The custom domain is set in the
 # repo's Pages settings; an Actions deploy ignores a CNAME file.

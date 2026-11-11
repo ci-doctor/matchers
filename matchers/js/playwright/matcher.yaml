@@ -1,6 +1,20 @@
+schema: 1
 id: playwright
-role: tool
-classification: [js, e2e]
-description: A Playwright test failure - the `1) suite > test` header names the test; its trace and diff follow.
-pattern: '^\s*\d+\) .+ › '
-after: 20
+description: Playwright end-to-end tests - failing tests, and browsers the job never installed.
+tags: [js, e2e]
+outputs:
+  test:
+    description: >-
+      A Playwright test failure - the `1) [project] > file:line > test` header names the test;
+      its error, locator and diff follow.
+    match:
+      all:
+        - regex: '^\s*\d+\) .+ › '
+        - not: {followed_by: {template: "Executable doesn't exist at ", within: 3}}
+    window: {after: 20}
+  install:
+    description: >-
+      Playwright's browser missing - `Executable doesn't exist at ...`; the job never ran `npx
+      playwright install`. Setup, not a failing test.
+    match: {template: "Executable doesn't exist at "}
+    window: {before: 2, after: 6}

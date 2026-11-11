@@ -1,7 +1,7 @@
+schema: 1
 id: go_panic
 role: tool
-classification: [go, runtime]
 description: A Go `panic:` or runtime `fatal error:` with the goroutine dump beneath it.
-pattern: '^panic: |^fatal error: '
-before: 2
-after: 20
+tags: [go, runtime]
+match: {regex: '^panic: |^fatal error: '}
+window: {before: 2, after: 20}

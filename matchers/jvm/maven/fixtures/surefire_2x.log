@@ -1,0 +1,15 @@
+$ mvn -B test
+Running com.acme.ledger.PostingServiceTest
+Tests run: 6, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.31 sec <<< FAILURE! - in com.acme.ledger.PostingServiceTest
+postsToClosedAccount(com.acme.ledger.PostingServiceTest)  Time elapsed: 0.04 sec  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.math.BigDecimal.add(java.math.BigDecimal)" because "balance" is null
+	at com.acme.ledger.PostingService.post(PostingService.java:62)
+	at com.acme.ledger.PostingServiceTest.postsToClosedAccount(PostingServiceTest.java:88)
+
+Results :
+
+Tests in error: 
+  PostingServiceTest.postsToClosedAccount:88 » NullPointer Cannot invoke "java.math.BigDecimal.add...
+
+Tests run: 52, Failures: 0, Errors: 1, Skipped: 0
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.2:test (default-test) on project ledger: There are test failures.

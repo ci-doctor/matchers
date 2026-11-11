@@ -1,0 +1,3 @@
+… [4 lines elided] …
+[vite]: Rollup failed to resolve import "@acme/ui" from "src/main.ts".
+ ELIFECYCLE  Command failed with exit code 1.

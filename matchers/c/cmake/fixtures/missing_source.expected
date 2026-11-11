@@ -1,0 +1,8 @@
+… [1 lines elided] …
+CMake Error at src/CMakeLists.txt:7 (add_executable):
+  Cannot find source file:
+    render/pipeline.cpp
+CMake Error at src/CMakeLists.txt:7 (add_executable):
+  No SOURCES given to target: engine
+-- Generating done (0.1s)
+CMake Generate step failed.  Build files cannot be regenerated correctly.

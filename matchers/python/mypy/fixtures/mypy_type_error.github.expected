@@ -1,0 +1,6 @@
+… [6 lines elided] …
+etl/transform.py:88: error: Unsupported operand types for / ("Decimal" and "None")  [operator]
+etl/transform.py:88: note: Right operand is of type "float | None"
+etl/load.py:23: error: Function is missing a return type annotation  [no-untyped-def]
+etl/load.py:23: note: Use "-> None" if function does not return a value
+Found 2 errors in 2 files (checked 14 source files)

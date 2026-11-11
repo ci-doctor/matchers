@@ -1,6 +1,7 @@
+schema: 1
 id: rust_compile
 role: tool
-classification: [rust, build]
 description: rustc refusing to compile (`error[E0308]`). The first error is usually the cause; later ones often follow from it.
-pattern: '^error\[E\d+\]: |^error: (could not compile|aborting due to|linking with)'
-after: 8
+tags: [rust, build]
+match: {regex: '^error\[E\d+\]: |^error: (could not compile|aborting due to|linking with)'}
+window: {after: 8}

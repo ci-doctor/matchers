@@ -1,6 +1,12 @@
+schema: 1
 id: gradle
 role: wrapper
-classification: [jvm, build]
-description: Gradle's `* What went wrong:` block, stopping before the `* Try:` boilerplate advice. A wrapper - it names the failed task, the compiler output above it is the cause.
-start: '^\* What went wrong:'
-end: ^\* (Try|Get more help)
+description: >-
+  Gradle's `* What went wrong:` block, from the `FAILURE:` banner to the `* Try:` advice. A
+  wrapper - it names the failed task; the compiler or test output above it is the cause.
+tags: [jvm, build]
+match: {regex: '^\* What went wrong:'}
+window:
+  from: {regex: '^FAILURE: Build (failed|completed with)', within: 4}
+  until: {regex: '^\* (Try|Get more help)'}
+  max_lines: 500

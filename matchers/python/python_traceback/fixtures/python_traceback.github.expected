@@ -1,4 +1,4 @@
-… [30 lines elided] …
+… [7 lines elided] …
 2026-01-05 09:14:04 INFO  etl.transform: applying fx conversion
 Traceback (most recent call last):
   File "/usr/local/lib/python3.12/runpy.py", line 198, in _run_module_as_main
@@ -13,10 +13,3 @@ Traceback (most recent call last):
     return [r.amount / rate for r in rows]
             ~~~~~~~~~^~~~~~
 ZeroDivisionError: float division by zero
-##[error]Process completed with exit code 1.
-/usr/bin/git version
-git version 2.54.0
-Artifact upload complete.
-##[warning]out/totals.parquet: no matching files. Ensure that the artifact path is relative to the working directory
-Post job cleanup.
-Cleaning up orphan processes

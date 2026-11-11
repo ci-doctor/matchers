@@ -1,0 +1,5 @@
+… [1 lines elided] …
+src/ledger/api.py:41: error: Argument 1 to "post" has incompatible type "str | None"; expected "str"  [arg-type]
+src/ledger/models.py:17:5: error: Incompatible default for argument "tags" (default has type "None", argument has type "list[str]")  [assignment]
+src/ledger/models.py:17:5: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+Found 2 errors in 2 files (checked 31 source files)

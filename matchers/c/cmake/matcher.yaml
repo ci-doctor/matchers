@@ -1,0 +1,8 @@
+schema: 1
+id: cmake
+description: >-
+  A CMake configure error - `CMake Error at CMakeLists.txt:12 (find_package):` and the reason
+  under it, usually a missing package or a wrong path. The build never started.
+tags: [c, build]
+match: {regex: '^CMake Error( at \S+:\d+)?'}
+window: {after: 8}

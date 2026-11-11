@@ -1,0 +1,18 @@
+$ pytest
+============================= test session starts ==============================
+collected 12 items
+
+tests/test_db.py E.........                                              [100%]
+
+==================================== ERRORS ====================================
+_______________________ ERROR at setup of test_insert ________________________
+
+    @pytest.fixture
+    def db():
+>       conn = psycopg.connect(os.environ["DATABASE_URL"])
+E       KeyError: 'DATABASE_URL'
+
+tests/conftest.py:9: KeyError
+=========================== short test summary info ============================
+ERROR tests/test_db.py::test_insert - KeyError: 'DATABASE_URL'
+========================= 11 passed, 1 error in 0.88s =========================

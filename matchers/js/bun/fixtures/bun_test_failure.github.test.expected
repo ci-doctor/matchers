@@ -1,0 +1,10 @@
+… [13 lines elided] …
+✗ Cart > applies the loyalty discount before tax
+  error: expect(received).toBe(expected)
+    Expected: 2700
+    Received: 3000
+      at /builds/team/shop/src/cart.test.ts:18:23
+ 2 pass
+ 1 fail
+ 4 expect() calls
+… [2 lines elided] …

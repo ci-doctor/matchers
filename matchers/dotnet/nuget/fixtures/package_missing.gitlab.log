@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ dotnet restore
+  Determining projects to restore...
+/app/src/Billing/Billing.csproj : error NU1101: Unable to find package Acme.Audit.Client. No packages exist with this id in source(s): nuget.org
+  Failed to restore /app/src/Billing/Billing.csproj (in 2.1 sec).
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

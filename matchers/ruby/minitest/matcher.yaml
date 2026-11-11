@@ -1,6 +1,7 @@
+schema: 1
 id: minitest
 role: tool
-classification: [ruby, test]
 description: Minitest's numbered `1) Failure:` entries and the assertion beneath each one.
-pattern: '^\s*\d+\) (Failure|Error):'
-after: 10
+tags: [ruby, test]
+match: {regex: '^\s*\d+\) (Failure|Error):'}
+window: {after: 10}

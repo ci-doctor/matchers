@@ -1,4 +1,4 @@
-… [27 lines elided] …
+… [4 lines elided] …
 Generating optimized autoload files
 PHP Fatal error:  Uncaught TypeError: App\Pricing\VatCalculator::__construct(): Argument #1 ($rate) must be of type float, string given, called in /builds/team/shop/src/Kernel.php on line 88 and defined in /builds/team/shop/src/Pricing/VatCalculator.php:19
 Stack trace:
@@ -7,6 +7,3 @@ Stack trace:
 #2 /builds/team/shop/bin/console(31): App\Kernel->boot()
 #3 {main}
   thrown in /builds/team/shop/src/Pricing/VatCalculator.php on line 19
-##[error]Process completed with exit code 255.
-/usr/bin/git version
-… [5 lines elided] …

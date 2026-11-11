@@ -1,0 +1,19 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ cmake -S . -B build
+-- The CXX compiler identification is GNU 13.2.0
+-- Detecting CXX compiler ABI info - done
+CMake Error at CMakeLists.txt:18 (find_package):
+  By not providing "FindOpenSSL.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "OpenSSL", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "OpenSSL" with any
+  of the following names:
+
+    OpenSSLConfig.cmake
+    openssl-config.cmake
+
+-- Configuring incomplete, errors occurred!
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

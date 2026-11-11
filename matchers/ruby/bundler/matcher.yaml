@@ -1,7 +1,7 @@
+schema: 1
 id: bundler
 role: tool
-classification: [ruby, deps]
 description: Bundler failing to resolve - a missing gem, or a version conflict it prints the tree for.
-pattern: Could not find gem|Bundler::(GemNotFound|VersionConflict)
-before: 1
-after: 6
+tags: [ruby, deps]
+match: {regex: 'Could not find gem|Bundler::(GemNotFound|VersionConflict)'}
+window: {before: 1, after: 6}

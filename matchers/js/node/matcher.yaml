@@ -1,0 +1,17 @@
+schema: 1
+id: node
+description: Node.js itself - uncaught errors, and the process running out of heap.
+tags: [js, runtime]
+outputs:
+  error:
+    description: >-
+      An uncaught Node error. The message above the stack is the cause; ERR_MODULE_NOT_FOUND or
+      ERR_REQUIRE_ESM means a missing or mis-declared module.
+    match: {regex: '^\s*at .+\(node:internal|^Node\.js v\d+\.|ERR_MODULE_NOT_FOUND|ERR_REQUIRE_ESM|UnhandledPromiseRejection'}
+    window: {before: 12, after: 6}
+  oom:
+    description: >-
+      Node out of heap - `FATAL ERROR: ... JavaScript heap out of memory`. Raise
+      --max-old-space-size or find the leak; the code that was running is a victim.
+    match: {template: 'JavaScript heap out of memory'}
+    window: {before: 4, after: 3}

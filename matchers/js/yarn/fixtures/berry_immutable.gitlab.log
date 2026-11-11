@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ yarn install --immutable
+➤ YN0000: · Yarn 4.5.1
+➤ YN0000: ┌ Resolution step
+➤ YN0028: │ The lockfile would have been modified by this install, which is explicitly forbidden.
+➤ YN0000: └ Completed in 1s 210ms
+➤ YN0000: · Failed with errors in 1s 228ms
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

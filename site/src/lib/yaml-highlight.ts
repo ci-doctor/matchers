@@ -1,6 +1,6 @@
 // A hand-rolled highlighter for matcher YAML (small, flat): keys, strings, numbers,
 // list dashes, comments, and regex values (pattern/start/end/exclude items).
-// Used by the playground editor (in the browser) and the matcher page (at build time).
+// Used by the matcher page, at build time.
 
 import { escapeHtml as esc } from './html.ts';
 

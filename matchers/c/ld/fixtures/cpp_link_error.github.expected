@@ -1,0 +1,7 @@
+… [10 lines elided] …
+[ 71%] Linking CXX executable engine
+/usr/bin/ld: CMakeFiles/engine.dir/src/render.cpp.o: in function `Renderer::submit(Frame const&)':
+render.cpp:(.text+0x2f1): undefined reference to `Pipeline::flush()'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/engine.dir/build.make:142: engine] Error 1
+… [2 lines elided] …

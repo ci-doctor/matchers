@@ -1,0 +1,8 @@
+schema: 1
+id: msbuild
+description: >-
+  An MSBuild error (`error MSB3073`, `MSB4019`, `MSB1009`) - the build script itself: a missing
+  imported project or file, or a command a target ran that exited non-zero.
+tags: [dotnet, build]
+match: {regex: 'error MSB\d{4}:'}
+window: {before: 1, after: 2}

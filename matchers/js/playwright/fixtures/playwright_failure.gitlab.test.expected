@@ -1,0 +1,11 @@
+… [7 lines elided] …
+  1) [chromium] › tests/checkout.spec.ts:24:1 › applies a promo code ═══════════
+    Error: expect(locator).toHaveText(expected)
+    Locator: locator('[data-test=order-total]')
+    Expected string: "$27.00"
+    Received string: "$30.00"
+    Timeout: 5000ms
+      at tests/checkout.spec.ts:31:42
+  1 failed
+    [chromium] › tests/checkout.spec.ts:24:1 › applies a promo code
+  17 passed (23.1s)

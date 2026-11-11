@@ -1,7 +1,0 @@
-id: build_failure_banner
-role: wrapper
-classification: [jvm, build]
-description: 'The `BUILD FAILURE` / `FAILURE: Build failed` banner Maven and Gradle print once the build gave up.'
-pattern: 'FAILURE: Build failed|BUILD FAILURE'
-before: 3
-after: 15

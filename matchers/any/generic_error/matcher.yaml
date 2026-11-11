@@ -1,7 +1,7 @@
+schema: 1
 id: generic_error
 role: fallback
-classification: [any]
 description: A line starting `ERROR` or `FATAL` from a tool with no pack of its own - the weakest signal; read it in context.
-pattern: ^(ERROR|FATAL)\b
-before: 5
-after: 20
+tags: [any]
+match: {regex: ^(ERROR|FATAL)\b}
+window: {before: 5, after: 20}

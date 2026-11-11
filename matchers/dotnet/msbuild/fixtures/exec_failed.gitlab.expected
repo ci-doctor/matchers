@@ -1,0 +1,4 @@
+… [3 lines elided] …
+  sh: 1: vite: not found
+/app/src/Billing.Web/Billing.Web.csproj(41,5): error MSB3073: The command "npm run build" exited with code 127.
+Build FAILED.

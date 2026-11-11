@@ -1,0 +1,3 @@
+$ ruff format --check etl
+Would reformat: etl/load.py
+1 file would be reformatted, 14 files already formatted

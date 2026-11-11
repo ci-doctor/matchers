@@ -1,0 +1,7 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ dotnet test
+Starting test execution, please wait...
+Passed!  - Failed:     0, Passed:    88, Skipped:     0, Total:    88, Duration: 940 ms
+[0Ksection_end:1735689609:step_script[0K
+Job succeeded

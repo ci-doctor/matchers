@@ -1,0 +1,2 @@
+$ helm upgrade --install api ./chart
+Error: UPGRADE FAILED: timed out waiting for the condition

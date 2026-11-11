@@ -1,0 +1,8 @@
+… [2 lines elided] …
+ERROR: /app/services/ledger/BUILD.bazel:4:13: Building services/ledger/libledger.jar (12 source files) failed: (Exit 1): java failed: error executing Javac command (from target //services/ledger:ledger)
+services/ledger/src/main/java/com/acme/ledger/PostingService.java:62: error: cannot find symbol
+    return balance.add(amount);
+           ^
+  symbol:   variable balance
+Target //services/ledger:ledger failed to build
+INFO: Elapsed time: 18.204s, Critical Path: 9.31s

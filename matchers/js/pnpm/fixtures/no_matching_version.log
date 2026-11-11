@@ -1,0 +1,7 @@
+$ pnpm install --frozen-lockfile
+Progress: resolved 412, reused 398, downloaded 0, added 0
+ ERR_PNPM_NO_MATCHING_VERSION  No matching version found for zod@^4.9.0
+
+This error happened while installing a direct dependency of /app/packages/api
+
+The latest release of zod is "3.23.8".

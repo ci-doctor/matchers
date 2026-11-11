@@ -1,0 +1,6 @@
+… [12 lines elided] …
+[ERROR] /builds/team/ledger/src/main/java/com/acme/ledger/PostingService.java:[62,38] incompatible types: java.util.Optional<java.math.BigDecimal> cannot be converted to java.math.BigDecimal
+[ERROR] /builds/team/ledger/src/main/java/com/acme/ledger/PostingService.java:[71,9] cannot find symbol
+[ERROR]   symbol:   method recordAudit(java.lang.String)
+[ERROR]   location: class com.acme.ledger.PostingService
+… [11 lines elided] …

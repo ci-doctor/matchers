@@ -1,0 +1,32 @@
+$ ./gradlew build --continue
+> Task :core:test
+
+LedgerTest > postsBalance() FAILED
+    org.opentest4j.AssertionFailedError at LedgerTest.java:31
+
+> Task :api:compileKotlin FAILED
+e: file:///app/api/src/main/kotlin/Routes.kt:31:18 Unresolved reference: postings
+
+FAILURE: Build completed with 2 failures.
+
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':core:test'.
+> There were failing tests. See the report at: file:///app/core/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights.
+==============================================================================
+
+2: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':api:compileKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 52s

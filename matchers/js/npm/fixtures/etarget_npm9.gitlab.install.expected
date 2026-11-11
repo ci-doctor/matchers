@@ -1,0 +1,7 @@
+… [1 lines elided] …
+npm ERR! code ETARGET
+npm ERR! notarget No matching version found for lodash@^5.0.0.
+npm ERR! notarget In most cases you or one of your dependencies are requesting
+npm ERR! notarget a package version that doesn't exist.
+npm ERR! A complete log of this run can be found in:
+… [1 lines elided] …

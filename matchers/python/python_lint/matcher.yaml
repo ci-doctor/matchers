@@ -1,6 +1,0 @@
-id: python_lint
-role: tool
-classification: [python, lint]
-description: 'A `file.py:12: error` diagnostic from mypy, ruff, flake8 or pylint.'
-pattern: ^\S+\.py:\d+:(\d+:)? (error|[EFWCN]\d+)
-after: 3

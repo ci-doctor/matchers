@@ -15,7 +15,7 @@ body:
     id: ecosystem
     attributes:
       label: Ecosystem
-      description: The first classification tag — reuse an existing one when it fits.
+      description: Its directory under matchers/ — reuse an existing one when it fits.
       placeholder: python
   - type: textarea
     id: log

@@ -1,5 +1,4 @@
-… [31 lines elided] …
-╷
+… [9 lines elided] …
 │ Error: creating S3 Bucket (team-artifacts-prod): BucketAlreadyOwnedByYou: Your previous request to create the named bucket succeeded and you already own it
 │
 │   with aws_s3_bucket.artifacts,
@@ -7,9 +6,3 @@
 │   12: resource "aws_s3_bucket" "artifacts" {
 │
 ╵
-##[error]Process completed with exit code 1.
-/usr/bin/git version
-git version 2.54.0
-Artifact upload complete.
-Post job cleanup.
-Cleaning up orphan processes
