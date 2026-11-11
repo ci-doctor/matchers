@@ -1,0 +1,5 @@
+… [2 lines elided] …
+Verifying lock file contents can be installed on current platform.
+Your lock file does not contain a compatible set of packages. Please run composer update.
+  Problem 1
+    - Root composer.json requires php ^8.3 but your php version (8.1.27) does not satisfy that requirement.

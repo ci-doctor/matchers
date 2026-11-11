@@ -1,0 +1,5 @@
+$ ./deploy.sh production
+Resolving release 2026.11.3
+Uploading bundle (14.2 MiB)
+FATAL: could not acquire deploy lock /var/lib/deploy/lock (held by pid 4121)
+Release aborted; nothing was changed

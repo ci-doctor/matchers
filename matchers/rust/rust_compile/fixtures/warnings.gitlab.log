@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ cargo build --locked
+   Compiling ledger v0.4.0 (/builds/team/ledger)
+warning: unused variable: `rate`
+  --> src/money.rs:12:9
+warning: `ledger` (lib) generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 8.21s
+[0Ksection_end:1735689609:step_script[0K
+Job succeeded
