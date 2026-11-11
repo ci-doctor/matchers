@@ -1,0 +1,9 @@
+$ npx biome check .
+src/money.ts:3:12 parse ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✖ expected `,` but instead found `2`
+
+  > 3 │ const xs = [1 2]
+      │               ^
+
+Found 1 error.

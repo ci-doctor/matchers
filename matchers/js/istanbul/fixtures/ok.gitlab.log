@@ -1,0 +1,7 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx nyc npm test && ./upload-coverage.sh
+All files |   91.40 |    82.10 |   90.00 |   91.40 |
+Error: coverage upload failed (HTTP 502)
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

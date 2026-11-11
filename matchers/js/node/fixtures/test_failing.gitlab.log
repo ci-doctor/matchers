@@ -1,0 +1,13 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ node --test --test-reporter=spec
+✖ failing tests:
+
+test at test/orders.test.js:22:3
+✖ rejects an empty cart (0.9ms)
+  Error: expected EmptyCart to be thrown
+      at TestContext.<anonymous> (file:///builds/team/api/test/orders.test.js:24:11)
+ℹ tests 41
+ℹ fail 1
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

@@ -1,0 +1,21 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run node --test
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z ▶ Cart
+2026-07-24T20:04:05.0000000Z   ✔ starts empty (0.4ms)
+2026-07-24T20:04:06.0000000Z   ✖ sums the items (1.2ms)
+2026-07-24T20:04:07.0000000Z     AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+2026-07-24T20:04:08.0000000Z     
+2026-07-24T20:04:09.0000000Z     2 !== 3
+2026-07-24T20:04:10.0000000Z     
+2026-07-24T20:04:11.0000000Z         at TestContext.<anonymous> (file:///home/runner/work/api/api/test/cart.test.js:12:12)
+2026-07-24T20:04:12.0000000Z ▶ Cart (2.1ms)
+2026-07-24T20:04:13.0000000Z ℹ tests 9
+2026-07-24T20:04:14.0000000Z ℹ suites 2
+2026-07-24T20:04:15.0000000Z ℹ pass 8
+2026-07-24T20:04:16.0000000Z ℹ fail 1
+2026-07-24T20:04:17.0000000Z ℹ duration_ms 41.2
+2026-07-24T20:04:18.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:19.0000000Z Post job cleanup.
+2026-07-24T20:04:20.0000000Z Cleaning up orphan processes

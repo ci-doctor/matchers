@@ -1,0 +1,17 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run npx oxlint
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z   × eslint(no-unused-vars): Variable 'discount' is declared but never used.
+2026-07-24T20:04:05.0000000Z     ╭─[src/checkout/total.js:14:9]
+2026-07-24T20:04:06.0000000Z  13 │ export function total(items) {
+2026-07-24T20:04:07.0000000Z  14 │   const discount = 0.1
+2026-07-24T20:04:08.0000000Z     ·         ────────
+2026-07-24T20:04:09.0000000Z     ╰────
+2026-07-24T20:04:10.0000000Z   help: Consider removing this declaration.
+2026-07-24T20:04:11.0000000Z 
+2026-07-24T20:04:12.0000000Z Found 0 warnings and 1 error.
+2026-07-24T20:04:13.0000000Z Finished in 12ms on 41 files with 98 rules using 4 threads.
+2026-07-24T20:04:14.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:15.0000000Z Post job cleanup.
+2026-07-24T20:04:16.0000000Z Cleaning up orphan processes

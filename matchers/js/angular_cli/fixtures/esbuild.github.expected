@@ -1,0 +1,6 @@
+… [2 lines elided] …
+✘ [ERROR] NG8001: 'app-price' is not a known element:
+1. If 'app-price' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+2. If 'app-price' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message. [plugin angular-compiler]
+    src/app/cart/cart.component.html:12:4:
+      12 │     <app-price [value]="total"></app-price>

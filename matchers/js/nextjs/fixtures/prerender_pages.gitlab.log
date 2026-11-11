@@ -1,0 +1,13 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx next build
+   ▲ Next.js 14.2.18
+ ✓ Compiled successfully
+   Collecting page data  ...
+Error occurred prerendering page "/blog/[slug]". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: getStaticPaths is required for dynamic SSG pages and is missing for '/blog/[slug]'.
+    at /builds/team/web/node_modules/next/dist/build/utils.js:1012:15
+> Export encountered errors on following paths:
+	/blog/[slug]
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

@@ -1,0 +1,15 @@
+$ node --test --test-reporter=tap
+TAP version 13
+# Subtest: sums the items
+not ok 3 - sums the items
+  ---
+  duration_ms: 1.2
+  location: '/work/api/test/cart.test.js:10:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    2 !== 3
+  ...
+1..9
+# fail 1

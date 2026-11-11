@@ -1,0 +1,6 @@
+… [3 lines elided] …
+✖ rejects an empty cart (0.9ms)
+  Error: expected EmptyCart to be thrown
+      at TestContext.<anonymous> (file:///builds/team/api/test/orders.test.js:24:11)
+ℹ tests 41
+ℹ fail 1

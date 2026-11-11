@@ -1,0 +1,5 @@
+$ npx ng build
+✘ [ERROR] NG9: Property 'totl' does not exist on type 'CartComponent'. Did you mean 'total'? [plugin angular-compiler]
+
+    src/app/cart/cart.component.html:4:10:
+      4 │   <span>{{ totl }}</span>

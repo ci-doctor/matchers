@@ -1,0 +1,4 @@
+… [4 lines elided] …
+Error: P3009
+migrate found failed migrations in the target database, new migrations will not be applied. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve
+The `20261101_add_currency` migration started at 2026-11-01 10:04:11 UTC failed

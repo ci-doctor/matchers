@@ -1,0 +1,7 @@
+… [1 lines elided] …
+  × eslint-plugin-react(jsx-key): Missing "key" prop for element in iterator.
+    ╭─[src/components/List.tsx:12:7]
+ 12 │       <Item value={v} />
+    ·       ──────────────────
+    ╰────
+Found 0 warnings and 1 error.

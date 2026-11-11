@@ -1,0 +1,7 @@
+$ npx prisma migrate diff --exit-code
+Drift detected: Your database schema is not in sync with your migration history.
+
+The following is a summary of the differences between the expected database schema given your migrations files, and the actual schema of the database.
+
+[+] Added tables
+  - AuditLog

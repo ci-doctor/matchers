@@ -1,5 +1,12 @@
 schema: 1
 matchers:
+  angular_cli:
+    path: matchers/js/angular_cli/matcher.yaml
+    sha256: 8135e73f43f9367dd929bd7705bc7ad87a7635015fe34ab33c298ad556b71490
+    description: An Angular compiler error - an NG code (NG8001 unknown element, NG8002 unknown binding, NG9 template type error) with the template file and line it points at.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
   apt:
     path: matchers/any/apt/matcher.yaml
     sha256: 3b924f69de88c9e14ca074e3823e682a4b91a4eb9892eb99857b8c64eda2cb1b
@@ -22,6 +29,13 @@ matchers:
     tags: [any, build]
     ecosystem: any
     outputs: [build, test]
+  biome:
+    path: matchers/js/biome/matcher.yaml
+    sha256: 41eadc99c2d9d75d5e441956bc2663fb171555534c2a01b79d149199735958c2
+    description: Biome's file:line:col lint/group/rule, format or parse diagnostics with an error marker and the excerpt - from biome check, lint, format or ci. Warnings alone never fire.
+    schema: 1
+    tags: [js, lint, format]
+    ecosystem: js
   black:
     path: matchers/python/black/matcher.yaml
     sha256: 6c20be322193adddd013d99d51c9bf8d50e026df1243dfe63310352e969669fe
@@ -194,6 +208,13 @@ matchers:
     tags: [container, deploy]
     ecosystem: container
     outputs: [release]
+  istanbul:
+    path: matchers/js/istanbul/matcher.yaml
+    sha256: 3c0293edd83a11dbb347acfc9d9024978c42c2300a8e3d4d705afe0093fdd90f
+    description: 'Coverage below the configured threshold - ERROR: Coverage for lines (79%) does not meet global threshold (80%). Printed by nyc, c8 and Vitest. No test failed; coverage did.'
+    schema: 1
+    tags: [js, coverage]
+    ecosystem: js
   javac:
     path: matchers/jvm/javac/matcher.yaml
     sha256: 621407deb0264a3147a13660ec39dcb5be11539239c90a6f954f942c6ee2d8cc
@@ -252,6 +273,13 @@ matchers:
     schema: 1
     tags: [ruby, test]
     ecosystem: ruby
+  mocha:
+    path: matchers/js/mocha/matcher.yaml
+    sha256: 6a084f9ecb8cd22afc6ecfbaa984fa55893244c5dfa4c63d50e6785bb2659f11
+    description: Mocha's N failing block - numbered entries, each naming the suite and test (or hook) with the assertion or error under it.
+    schema: 1
+    tags: [js, test]
+    ecosystem: js
   msbuild:
     path: matchers/dotnet/msbuild/matcher.yaml
     sha256: 9ca0ef95c8a7f0307e329fb1c883c9249f6049d086cd4c14a2cd88ff6d44f341
@@ -275,20 +303,20 @@ matchers:
     ecosystem: any
   nextjs:
     path: matchers/js/nextjs/matcher.yaml
-    sha256: 534cd46025c570231081fda1c226771836281d03941363be924a7dd0807ffc39
-    description: Next.js - next build failing to compile the app.
+    sha256: ea360dfebb0b3bc581fc21c68a908e58322f3256af6c9a93861c881d1fcd3a35
+    description: Next.js - next build failing to compile the app, or failing to prerender a page.
     schema: 1
     tags: [js, build]
     ecosystem: js
-    outputs: [build]
+    outputs: [build, prerender]
   node:
     path: matchers/js/node/matcher.yaml
-    sha256: f34817e320b4291ccdbd43bcdbddb04f87b6cf0694f6c8a97f82cde439dcc025
-    description: Node.js itself - uncaught errors, and the process running out of heap.
+    sha256: cf052104e3ae34955bd647c2df8a753eee67d48192e96bab9706315f8ebad9b1
+    description: Node.js itself - uncaught errors, the process running out of heap, and failures from its built-in test runner.
     schema: 1
     tags: [js, runtime]
     ecosystem: js
-    outputs: [error, oom]
+    outputs: [error, oom, test]
   node_gyp:
     path: matchers/js/node_gyp/matcher.yaml
     sha256: aa135028975e66a60368c23525da8e4877e7f5d4388214108c4dfb9ffebe4214
@@ -325,6 +353,13 @@ matchers:
     schema: 1
     tags: [any, infra]
     ecosystem: any
+  oxlint:
+    path: matchers/js/oxlint/matcher.yaml
+    sha256: 12bc1fe4385b9a9491c2a0faeb21bca12e3f712d0624cbcea1d8c7fdcb0b57a0
+    description: 'oxlint''s x plugin(rule): message diagnostics, with the file excerpt under each. The rule in brackets says which check fired; warnings alone never fire.'
+    schema: 1
+    tags: [js, lint]
+    ecosystem: js
   php_fatal:
     path: matchers/php/php_fatal/matcher.yaml
     sha256: f33f571bcbd51bac516de59180884fbe8a8028a032c0c53c5a0dda156deb0a26
@@ -385,6 +420,13 @@ matchers:
     schema: 1
     tags: [js, lint, format]
     ecosystem: js
+  prisma:
+    path: matchers/js/prisma/matcher.yaml
+    sha256: 0d994cdd538e39453e4056ecc3cd460aa6dbbb1d94a1059612edf2e84f7124ff
+    description: Prisma Migrate refusing - P3009 (a failed migration blocks new ones), P3018 (a migration failed to apply, with the database error) or schema drift. Not P1001, the database unreachable.
+    schema: 1
+    tags: [js, deps]
+    ecosystem: js
   pylint:
     path: matchers/python/pylint/matcher.yaml
     sha256: 4624985e3366cb0807ae67054ca7df8c8e5d35849d576b0ce7cf70017e1ffbf0
@@ -428,6 +470,13 @@ matchers:
     schema: 1
     tags: [container, infra]
     ecosystem: container
+  rollup:
+    path: matchers/js/rollup/matcher.yaml
+    sha256: 3d0b4a8458bb4edf49cdb486aea7de4330575d11f8ec869dcc0b7525f6c878df
+    description: A standalone Rollup build failing - [!] RollupError, from Rollup or a plugin it names, with the file it was processing. Under Vite, vite.build catches it instead.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
   rspec:
     path: matchers/ruby/rspec/matcher.yaml
     sha256: 9bb52a05f7ff60cd5187d5b45fb28c7f22323dd85884b4c5ed581ee6aa4307f3
@@ -589,7 +638,7 @@ bundles:
     description: Every matcher in the iac ecosystem.
   js:
     path: bundles/js.yaml
-    sha256: faa42ddc906eddd520adbc9ec442c4c24f315a7f1d4aadaae74046359c120b82
+    sha256: b4251dcf85a6b5ce3e68364368c30f6b3e426d59b8aed1342e9e4456b79effdc
     description: Every matcher in the js ecosystem.
   jvm:
     path: bundles/jvm.yaml
