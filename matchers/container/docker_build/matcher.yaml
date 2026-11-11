@@ -1,7 +1,7 @@
+schema: 1
 id: docker_build
 role: wrapper
-classification: [container, build]
 description: 'BuildKit giving up - `failed to solve` / `executor failed running` - around the Dockerfile step that failed. A wrapper: the `RUN` step''s own output is the cause.'
-pattern: failed to solve|executor failed running
-before: 3
-after: 8
+tags: [container, build]
+match: {regex: failed to solve|executor failed running}
+window: {before: 3, after: 8}

@@ -1,7 +1,7 @@
+schema: 1
 id: npm
 role: wrapper
-classification: [js, deps]
 description: '`npm ERR!` lines. A wrapper: npm reports the failure of the script it ran, never the cause.'
-pattern: npm ERR!
-before: 2
-after: 10
+tags: [js, deps]
+match: {regex: npm ERR!}
+window: {before: 2, after: 10}

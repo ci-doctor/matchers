@@ -7,14 +7,11 @@ interface Props {
   title: string;
   description?: string;
   wide?: boolean;
-  /** Off for app-like pages that fill the viewport (the playground). */
-  footer?: boolean;
 }
 const {
   title,
-  description = 'The official ci-doctor matcher registry: browse every matcher and try one against a log.',
+  description = 'The official ci-doctor matcher registry: every matcher, and the fixtures that prove it.',
   wide = false,
-  footer = true,
 } = Astro.props;
 
 const REPO = 'https://github.com/ci-doctor/matchers';
@@ -58,7 +55,6 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : un
           <span>ci-doctor matchers</span>
         </a>
         <a class="navlink" href="/">Catalogue</a>
-        <a class="navlink" href="/playground/">Playground</a>
 
         <span class="nav-spacer"></span>
 
@@ -84,14 +80,12 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : un
       <slot />
     </main>
 
-    {footer && (
-      <footer class="site-footer">
-        <div class="inner">
-          <span>Matchers pick the evidence lines out of a CI log. Everything here runs in your browser.</span>
-          <span><a href="https://docs.cidoc.dev">Docs</a> · <a href={REPO}>GitHub</a></span>
-        </div>
-      </footer>
-    )}
+    <footer class="site-footer">
+      <div class="inner">
+        <span>Matchers pick the evidence lines out of a CI log. Every selection here is ci-doctor's own output.</span>
+        <span><a href="https://docs.cidoc.dev">Docs</a> · <a href={REPO}>GitHub</a></span>
+      </div>
+    </footer>
 
     <script is:inline>
       document.getElementById('theme-toggle')?.addEventListener('click', () => {

@@ -1,7 +1,7 @@
+schema: 1
 id: build_failure_banner
 role: wrapper
-classification: [jvm, build]
 description: 'The `BUILD FAILURE` / `FAILURE: Build failed` banner Maven and Gradle print once the build gave up.'
-pattern: 'FAILURE: Build failed|BUILD FAILURE'
-before: 3
-after: 15
+tags: [jvm, build]
+match: {regex: 'FAILURE: Build failed|BUILD FAILURE'}
+window: {before: 3, after: 15}

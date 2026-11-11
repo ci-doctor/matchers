@@ -1,7 +1,7 @@
+schema: 1
 id: go_test
 role: tool
-classification: [go, test]
 description: '`go test`''s per-test `--- FAIL` marker, plus the assertion output printed under it.'
-pattern: ^--- FAIL
-before: 2
-after: 15
+tags: [go, test]
+match: {regex: ^--- FAIL}
+window: {before: 2, after: 15}

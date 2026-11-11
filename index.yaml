@@ -2,194 +2,270 @@ schema: 1
 matchers:
   bazel:
     path: matchers/any/bazel/matcher.yaml
-    sha256: 47b3f772ac72a4206a7b87f1887cfd3e346afb8c1bb76155b5fdbe00b0ab9cfc
+    sha256: 28d073267292f2de8578e91169821c300635b26742544b94f4de7659788bef4b
     description: Bazel reporting that an action or target failed. A wrapper - the compiler or test output it relays is the cause.
-    classification: [any, build]
+    schema: 1
+    tags: [any, build]
+    ecosystem: any
   build_failure_banner:
     path: matchers/jvm/build_failure_banner/matcher.yaml
-    sha256: 92880340cccb3d7fb95e67fbf4281134ebd9e4263c9fd424488c0feeeb317e86
+    sha256: 65556fc1bb36c931649308811a8edfddb592d0e8dc14b5849283a774b2fb5866
     description: 'The `BUILD FAILURE` / `FAILURE: Build failed` banner Maven and Gradle print once the build gave up.'
-    classification: [jvm, build]
+    schema: 1
+    tags: [jvm, build]
+    ecosystem: jvm
   bun:
     path: matchers/js/bun/matcher.yaml
-    sha256: eafe02bb721ad7d71a9bc1e511a0a7f939d7352c9ca108324702d8c6ed1ba911
+    sha256: c825bad55f84592b6a096aeea4c47fe53a8bdad49031da4297b0c98ec699c3d5
     description: A failed `bun test` (the crossed-out test and its assertion), or a `bun install` that found no matching version.
-    classification: [js, test, deps]
+    schema: 1
+    tags: [js, test, deps]
+    ecosystem: js
   bundler:
     path: matchers/ruby/bundler/matcher.yaml
-    sha256: 6cb85ae45f27dcc14db8b3fe9ef3a1419298162c6a6ee7834dc7da11c9e63c58
+    sha256: 318fd2ea6faf91c303f1cf62a2a1426dd2bb83a46289d41ea63c323a81fba5d1
     description: Bundler failing to resolve - a missing gem, or a version conflict it prints the tree for.
-    classification: [ruby, deps]
+    schema: 1
+    tags: [ruby, deps]
+    ecosystem: ruby
   cc_cpp:
     path: matchers/c/cc_cpp/matcher.yaml
-    sha256: 3cd8cb13c53e806bae24e62698759dbd8f5b6733ba2fde19ac9191e0ab9d74d0
+    sha256: 91d4d03e7bd6498234dd972ba7c14e13aeb94d9a02dff22f3f5c545190763b2b
     description: C/C++ builds - CMake configure errors and linker `undefined reference` / `collect2` failures.
-    classification: [c, build]
+    schema: 1
+    tags: [c, build]
+    ecosystem: c
   composer:
     path: matchers/php/composer/matcher.yaml
-    sha256: 26d606c90008a38e17e423bb63074ec8efeef24fc2ccf4f4fdc84837bc62f7f4
+    sha256: d1115f274b12c7e3ba51d8ed606fcd4d11f157cdaf4cfe9ca235a5eb208c3ee0
     description: Composer's resolver refusing the requirements, with the explanation it prints underneath.
-    classification: [php, deps]
+    schema: 1
+    tags: [php, deps]
+    ecosystem: php
   cypress:
     path: matchers/js/cypress/matcher.yaml
-    sha256: 7d0baed1a484897e7373e766e5d81e32200e6199c4fad82923a86af94782514c
+    sha256: 4c673405afd27c43668ff4a40e4447ac75b9df583440497d35fc852ce8f343a1
     description: A `CypressError` or a retry timeout, with the command log leading up to it.
-    classification: [js, e2e]
+    schema: 1
+    tags: [js, e2e]
+    ecosystem: js
   docker_build:
     path: matchers/container/docker_build/matcher.yaml
-    sha256: 95ba5989563eac96680a06e17ae9d0e09e5fe659a6709aed00f95e8e45f047b6
+    sha256: e5aa7404ff234ad169ef44b65260729bccf719055c9eeff7b1532cb0d6a2e910
     description: 'BuildKit giving up - `failed to solve` / `executor failed running` - around the Dockerfile step that failed. A wrapper: the `RUN` step''s own output is the cause.'
-    classification: [container, build]
+    schema: 1
+    tags: [container, build]
+    ecosystem: container
   dotnet_build:
     path: matchers/dotnet/dotnet_build/matcher.yaml
-    sha256: f347f7ee354cae9f8605d6136c59c8e44b177368fb609baa20c6ea50f9588935
+    sha256: ab0d4531223485eb8d355419685991f9505b98b8bddf13d377bd6758ced44c57
     description: MSBuild, Roslyn and NuGet error codes - `error CS0103`, `error NU1101`, `error MSB3073`.
-    classification: [dotnet, build]
+    schema: 1
+    tags: [dotnet, build]
+    ecosystem: dotnet
   dotnet_test:
     path: matchers/dotnet/dotnet_test/matcher.yaml
-    sha256: 37fcf162e348a10dc26ba23bb8fabe58a014bf3e9643fe860194c24da4192d6c
+    sha256: 9455bc6687dd785aa2fc95cbab3e888b7685f3bb617cde3abad2de6c3363b6c3
     description: '`dotnet test`: xunit/nunit `[FAIL]` markers and the `Failed!` summary line.'
-    classification: [dotnet, test]
+    schema: 1
+    tags: [dotnet, test]
+    ecosystem: dotnet
   eslint:
     path: matchers/js/eslint/matcher.yaml
-    sha256: 0fd1670a0deab1fa35429a2b50b53398b89789e82ba1ace922cc2ff598e54ed2
+    sha256: 7553ad9076e72cc0f5dacf92da90a89b00f757c6f9b2529603e8ac80187eadbf
     description: ESLint's `line:col error rule-name` entries and its `N problems` summary footer.
-    classification: [js, lint]
+    schema: 1
+    tags: [js, lint]
+    ecosystem: js
   generic_error:
     path: matchers/any/generic_error/matcher.yaml
-    sha256: a756205a6e3f39f6db2561dc7fd64963b5987761098d4b6f4290e781a1dfb442
+    sha256: 39ff646ca081eb18b600880b25782c943e5d128185e9cd04bbc032eafb6b79e4
     description: A line starting `ERROR` or `FATAL` from a tool with no pack of its own - the weakest signal; read it in context.
-    classification: [any]
+    schema: 1
+    tags: [any]
+    ecosystem: any
   go_panic:
     path: matchers/go/go_panic/matcher.yaml
-    sha256: 1d0ad496e7e0612a6143399c4b54d9a5ced532aa9765cb2947886a4ec2b5731c
+    sha256: 0c58ea2c55db83a36841ca01a5d59ef3fb01b6ab56f18c87204efcd38d3ea536
     description: A Go `panic:` or runtime `fatal error:` with the goroutine dump beneath it.
-    classification: [go, runtime]
+    schema: 1
+    tags: [go, runtime]
+    ecosystem: go
   go_test:
     path: matchers/go/go_test/matcher.yaml
-    sha256: 6d2662a75a915efe5833d9fd39c8d2f6855015c9586d71254f512d5b989e5fd8
+    sha256: 1378ab85ba3f97dd8dbed74c201a7df14a07ebd8b3c791b54db710fc0641268f
     description: '`go test`''s per-test `--- FAIL` marker, plus the assertion output printed under it.'
-    classification: [go, test]
+    schema: 1
+    tags: [go, test]
+    ecosystem: go
   gradle:
     path: matchers/jvm/gradle/matcher.yaml
-    sha256: 60fae2e0d18a47c4921a5edb49f0d361a9e51df110388f027ebbcfd02e9043b4
+    sha256: b48e1781322f35bcd11803143f26f4825c2e113065008a5cf19cbeb322603595
     description: Gradle's `* What went wrong:` block, stopping before the `* Try:` boilerplate advice. A wrapper - it names the failed task, the compiler output above it is the cause.
-    classification: [jvm, build]
+    schema: 1
+    tags: [jvm, build]
+    ecosystem: jvm
   jest:
     path: matchers/js/jest/matcher.yaml
-    sha256: a36823a27f9ce26149c1c133f4a1b56a8499adf2c15ff2a3fc741dfef2d71192
+    sha256: b9c55a3bd08ae07d9d931184f24c7f317cf25c5b088c87af327ea92828349b3e
     description: A jest test failure - the bullet header names the test, and the diff below it shows expected against received.
-    classification: [js, test]
+    schema: 1
+    tags: [js, test]
+    ecosystem: js
   js_script_exit:
     path: matchers/js/js_script_exit/matcher.yaml
-    sha256: a20867f172455baf566c9abe4b460b67bf7d78f0ea49fbacebcbacd58cb8a6fd
+    sha256: 1f29d6ff2253384a4e54622b503537e97464747efcb31a2449e3c6449cab8f2e
     description: 'A JS package manager announcing that a lifecycle script exited non-zero - pnpm''s `ELIFECYCLE`, bun''s `error: script "x" exited with code N`.'
-    classification: [js]
+    schema: 1
+    tags: [js]
+    ecosystem: js
   make:
     path: matchers/any/make/matcher.yaml
-    sha256: e3ff19f700b6a895692c5270a9bdb235e05d3a7af3b030e706d0480e3337ff88
+    sha256: 05933b0e6df9fd72309deec3bfa506fb7ca460f9cc7618843c1d9ea70bf4b5b5
     description: '`make: ***` - make reporting that a recipe it ran failed. The recipe''s own output above it is the cause.'
-    classification: [any, build]
+    schema: 1
+    tags: [any, build]
+    ecosystem: any
   maven_gradle:
     path: matchers/jvm/maven_gradle/matcher.yaml
-    sha256: f97465dd52e6dc8c1bff261a58699fd63bc3b1c3abef01cd483ba891cfd296b7
+    sha256: 4dc9307876b94a9e7e201098e46c8985d72fbfec66ebdef3c29b5341465cafb4
     description: Maven's `[ERROR]` lines - the compiler and test diagnostics Maven relays.
-    classification: [jvm, build]
+    schema: 1
+    tags: [jvm, build]
+    ecosystem: jvm
   minitest:
     path: matchers/ruby/minitest/matcher.yaml
-    sha256: 3fa6bf0d732344d6b72608c355bdc1e7471a02e8525904c8111fb2f20a45fab2
+    sha256: 116919bfeca765c8669be50372aa84665cc9aa9e72cde373da20ee302fb26bf3
     description: Minitest's numbered `1) Failure:` entries and the assertion beneath each one.
-    classification: [ruby, test]
+    schema: 1
+    tags: [ruby, test]
+    ecosystem: ruby
   node_runtime:
     path: matchers/js/node_runtime/matcher.yaml
-    sha256: aa30fc1405c769ce808afdeef200f0ae62040ec7e57bd8a4f5d775dbf3d7f5e0
+    sha256: 062f94daabc2633745dbe0ad0c6b2c1aa1a44ee2aaeabaa18609c4d707b8139d
     description: An uncaught Node error. The message above the stack is the cause; an ESM/CJS resolution error means a missing or mis-declared module.
-    classification: [js, runtime]
+    schema: 1
+    tags: [js, runtime]
+    ecosystem: js
   npm:
     path: matchers/js/npm/matcher.yaml
-    sha256: b0cf581259a27108c0edda158c2577aa5304f0a6c23c1ac556d404f3d37f88cc
+    sha256: 504b808e549b640b2f43d470bb0c93173e6546a5104a60de8d0f05b7452806ba
     description: '`npm ERR!` lines. A wrapper: npm reports the failure of the script it ran, never the cause.'
-    classification: [js, deps]
+    schema: 1
+    tags: [js, deps]
+    ecosystem: js
   oom:
     path: matchers/any/oom/matcher.yaml
-    sha256: 2ce70d0bd84384355e7c333095962925dcb1ec781999fcba008e0109ccfae7ab
+    sha256: e694ed19c602dae16597d8dbab459d11f9831d2e6d917a7307f3148a908e3b94
     description: The job being killed - exit code 137, `Killed`, `Out of memory`. Nothing else in the log explains a SIGKILL.
-    classification: [any, infra]
+    schema: 1
+    tags: [any, infra]
+    ecosystem: any
   php_fatal:
     path: matchers/php/php_fatal/matcher.yaml
-    sha256: 5f1e02888e79a2b41d1394d104bc26d87ff29dc11a6e1a91dbe1578085857c5b
+    sha256: f33f571bcbd51bac516de59180884fbe8a8028a032c0c53c5a0dda156deb0a26
     description: A PHP fatal or parse error and the stack trace after it.
-    classification: [php, runtime]
+    schema: 1
+    tags: [php, runtime]
+    ecosystem: php
   phpunit:
     path: matchers/php/phpunit/matcher.yaml
-    sha256: 25c6454b93fb3db54979a970caf64d74ebc858b8e749f47d4bfc5208a59ea92a
+    sha256: 306fc21592f14008b2599f8d2a4b1d7d76744b6185fb80185c18a6e8f6796415
     description: PHPUnit's `There were N failures` block through to its `FAILURES`/`ERRORS`/`OK` footer.
-    classification: [php, test]
+    schema: 1
+    tags: [php, test]
+    ecosystem: php
   playwright:
     path: matchers/js/playwright/matcher.yaml
-    sha256: 46271aa9106e544ba48ce3ebcaeebda7e7c66b85b4ed2a9daea8fac0a396e6c6
+    sha256: b9916057b825da2dfdf67c2f35d020ffbfadf292c5847ac07e841bd9e78623f6
     description: A Playwright test failure - the `1) suite > test` header names the test; its trace and diff follow.
-    classification: [js, e2e]
+    schema: 1
+    tags: [js, e2e]
+    ecosystem: js
   pnpm:
     path: matchers/js/pnpm/matcher.yaml
-    sha256: f5d79bb953fa2ba7cca429403050555e7bd2425add7889dd5b0b71a2438423a5
+    sha256: e264e47a2b6099b16afd83cd872c8ce32ab5cc6acc585ef3323d6de353cb868c
     description: pnpm's `ERR_PNPM_*` codes - the resolver or lockfile refusing, which is the cause itself.
-    classification: [js, deps]
+    schema: 1
+    tags: [js, deps]
+    ecosystem: js
   pytest:
     path: matchers/python/pytest/matcher.yaml
-    sha256: a0a6d5bb24b956043840f2267d229a8aa944c5a664fed96a2afb6c8af855e3e7
+    sha256: fc8df8aab95b8d9145007e85d4a9c929de8a134216ad7631d971d3216c54ea3a
     description: pytest's `=== FAILURES ===` block, from the first failing test through to the short summary.
-    classification: [python, test]
+    schema: 1
+    tags: [python, test]
+    ecosystem: python
   python_lint:
     path: matchers/python/python_lint/matcher.yaml
-    sha256: f70906dd602da33ff186e65e5a14373bfa1df7bf219ad88c320bef5f05bea395
+    sha256: 5ae9f4b063478aed9524c97f8d337016df182ab80fc53e6dd9535213df33afd4
     description: 'A `file.py:12: error` diagnostic from mypy, ruff, flake8 or pylint.'
-    classification: [python, lint]
+    schema: 1
+    tags: [python, lint]
+    ecosystem: python
   python_traceback:
     path: matchers/python/python_traceback/matcher.yaml
-    sha256: 15543da1a36eb8dc9c57fcd14e05a7ac3ed076489f4cc491149c2cc86d4e5bb1
+    sha256: f25da395cb2f4307e02da6040e5c330fe644db79e40b982b02c28d1b5750e309
     description: An uncaught Python exception. The exception type and message are on the traceback's last line; the frames above show where it was raised.
-    classification: [python, runtime]
+    schema: 1
+    tags: [python, runtime]
+    ecosystem: python
   rspec:
     path: matchers/ruby/rspec/matcher.yaml
-    sha256: be988f29d1bd8a7637989746fbd3d4f7d0eda26299277819e7d5e39538c18e33
+    sha256: 9bb52a05f7ff60cd5187d5b45fb28c7f22323dd85884b4c5ed581ee6aa4307f3
     description: RSpec's `Failures:` block through to the `N examples, N failures` tally.
-    classification: [ruby, test]
+    schema: 1
+    tags: [ruby, test]
+    ecosystem: ruby
   ruby_exception:
     path: matchers/ruby/ruby_exception/matcher.yaml
-    sha256: 546936b9da0a8d0657590d18a5956dd9a34d02f893173bbad9c0e2f41ce24af1
+    sha256: 07da45c8df00c9e3eb532a9ef7cfa181dd08c75144ab3ed40cb6cb378fbe11b8
     description: An unhandled Ruby exception - a backtrace frame naming the error class.
-    classification: [ruby, runtime]
+    schema: 1
+    tags: [ruby, runtime]
+    ecosystem: ruby
   rust_compile:
     path: matchers/rust/rust_compile/matcher.yaml
-    sha256: 3eaa1cae9b08fccf0823c95d3598b2bb1d5b10b3be38930e2536fe7082350fbe
+    sha256: 5b6cff60d76cc3f959b0f1e73ddade5ecc2c602d2bab723378d1e4ea00807592
     description: rustc refusing to compile (`error[E0308]`). The first error is usually the cause; later ones often follow from it.
-    classification: [rust, build]
+    schema: 1
+    tags: [rust, build]
+    ecosystem: rust
   rust_panic:
     path: matchers/rust/rust_panic/matcher.yaml
-    sha256: af20eab7d3333226abde5052c3eec4264251badbbb30663b09e71ac6a94b7fd9
+    sha256: 34304a59109afa4a4238eb07eb4f0622c9f2e2f174cd2ac0fa78dd32db503f81
     description: A Rust panic, with the message and the frames that follow it.
-    classification: [rust, runtime]
+    schema: 1
+    tags: [rust, runtime]
+    ecosystem: rust
   rust_test:
     path: matchers/rust/rust_test/matcher.yaml
-    sha256: 7b5334c8e965d6f74309f2b666d47c75be733c11e76d7a6320d217bbbe98324a
+    sha256: af7318fcc17e9254d8efc94d1b7fb73cf7503c536cf0b08675b0c1cf9aabe413
     description: '`cargo test`''s `failures:` block through to the `test result:` line.'
-    classification: [rust, test]
+    schema: 1
+    tags: [rust, test]
+    ecosystem: rust
   terraform:
     path: matchers/iac/terraform/matcher.yaml
-    sha256: 588ae413de5eec2b01c34fddb558ef74eb50b32b2177978f96756bcf7e674ab0
+    sha256: 33065863b37c805686060d82ae5efb45d55b45b6289729f5dcb9373c79dccd1b
     description: Terraform's boxed `Error:` and the `on main.tf line 12` it points at.
-    classification: [iac]
+    schema: 1
+    tags: [iac]
+    ecosystem: iac
   tsc:
     path: matchers/js/tsc/matcher.yaml
-    sha256: fedc52a2a14806bead1783bc6d852d6f17c4c243962936e8d59ee56359af510f
+    sha256: eb41384adec654d19faef908acf6a1898f59e3370d427c5a16a6157905e89491
     description: A TypeScript compile error (`error TS2345:`) with the source excerpt around it.
-    classification: [js, build]
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
   yarn:
     path: matchers/js/yarn/matcher.yaml
-    sha256: 60eba70596db6ede9bda617441ddc11c01d01e4aac445609c5b81a0659edc3a4
+    sha256: b222312071d73ca601fa46aa68aca89a444fece542c37048f2327b49db744a91
     description: Yarn Classic's `error <Capital>` lines and Berry's `YN0000:` diagnostic codes.
-    classification: [js, deps]
+    schema: 1
+    tags: [js, deps]
+    ecosystem: js
 bundles:
   all:
     path: bundles/all.yaml
@@ -197,49 +273,49 @@ bundles:
     description: Every official matcher, one bundle per ecosystem.
   any:
     path: bundles/any.yaml
-    sha256: d2657f44c5635afa2523b1d74b824310ed5314f5577f5fc03f5ceed5a853c832
-    description: 'Language-agnostic matchers: generic fatal errors, OOM kills and build banners.'
+    sha256: 9c991a26522f63d035ef54f666e8726c7ca31ff48ba7727137bf4d7518d06bd3
+    description: Every matcher in the any ecosystem.
   c:
     path: bundles/c.yaml
-    sha256: 433d505faa8bdecc49423d0a7201ff0fd2c38c8ff650eaa8cebf174e28cafc43
-    description: C and C++ compile and link errors.
+    sha256: 6c3439a1c17d686f85e0a651adead75fd5afefaef6f557784035babd25175dc6
+    description: Every matcher in the c ecosystem.
   container:
     path: bundles/container.yaml
-    sha256: 8f296240bbed791570c2d8de576ee59e58fe77c770a133c6d4e49ce09c4e3667
-    description: Container image build failures.
+    sha256: 4fdf2be349624bf4ec255d9339ffaeaa9b1c86d259e17484de24e74ffd1c9362
+    description: Every matcher in the container ecosystem.
   dotnet:
     path: bundles/dotnet.yaml
-    sha256: 95c4a57d2510cb77cd91345d36f008221d6744fa80d5f1dac3d2f4337aea76aa
-    description: .NET build errors and test failures.
+    sha256: 2ae48170f57700adecb90d51ca2ace221f3aa963940b2a7f1ef474eb7e2085e8
+    description: Every matcher in the dotnet ecosystem.
   go:
     path: bundles/go.yaml
-    sha256: deb2a72180dc3c95c46a1d929d640a33ccb1f15bf3dfc77145290bcd297bd645
-    description: Go test failures and panics.
+    sha256: a1f10cb85bf3058ddf6987d3fe116bd874591cf6fdd14d078daa98c9b8c14662
+    description: Every matcher in the go ecosystem.
   iac:
     path: bundles/iac.yaml
-    sha256: 649e1120d27ac0763edb0d69c79402c3f21647b5d245cfdf9efb9a8c866a6115
-    description: Infrastructure-as-code apply and plan errors.
+    sha256: 1ae2b0ffc3018ddaec61380ba6e7f2de7f066c52f6a8ed9537cacf95eda4aa65
+    description: Every matcher in the iac ecosystem.
   js:
     path: bundles/js.yaml
-    sha256: 99b11ee0cbd8b6f65079aed215328fa91a087e61d0d54f600abfb42283938785
-    description: JavaScript and TypeScript build, test, package-manager and runtime failures.
+    sha256: 93f478652308be0b56502eeedd0d78033a9df013b55c6c7668cca2094fd4f32c
+    description: Every matcher in the js ecosystem.
   jvm:
     path: bundles/jvm.yaml
-    sha256: c34c43ba834a14e03474c4bf6eec1402275930fbf75afa3eb815a05900527393
-    description: 'JVM build failures: Maven and Gradle.'
+    sha256: f0d8172ad98e6c1823c4ada6961c8c810d902421993e3112a891fb6c2815e7b8
+    description: Every matcher in the jvm ecosystem.
   php:
     path: bundles/php.yaml
-    sha256: 654d5f8b3ff51bbd25a6134501eec9c6fd00ebee8a0e1b06cf368092090ed6d3
-    description: PHP test failures, fatal errors and Composer conflicts.
+    sha256: 23c7f5520d7bf73be212dc2c29e33ff1e8b24c56f8f51587a82a25924446f01f
+    description: Every matcher in the php ecosystem.
   python:
     path: bundles/python.yaml
-    sha256: b2e653b23d9b546aa51d4ad50abaaf3c1f2579b16f5a8211ea08e11630f8447d
-    description: Python test, lint and runtime failures.
+    sha256: 6d38985f842b36968dba260ce5f564b65826487a3d57048325f3aa94e1ecf4c6
+    description: Every matcher in the python ecosystem.
   ruby:
     path: bundles/ruby.yaml
-    sha256: 8b77fa49dbc4ba2515e69bf99cab302352f0d56a7d3bf1236037aefe13dc4cff
-    description: Ruby test failures, exceptions and Bundler errors.
+    sha256: b1e66f2ea433e80186a57beb9f737248b6a452c9019da75c37534dcb8fd143fe
+    description: Every matcher in the ruby ecosystem.
   rust:
     path: bundles/rust.yaml
-    sha256: 46f12c8f652e63563729bc99d90f04386c8642562608ed1e8396134478d1f00f
-    description: Rust compile errors, test failures and panics.
+    sha256: 7c7afaf6053d8b9bc4aa24a8f269524f13f0e065a7c4d04476c788699cfa38d6
+    description: Every matcher in the rust ecosystem.

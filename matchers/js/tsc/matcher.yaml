@@ -1,7 +1,7 @@
+schema: 1
 id: tsc
 role: tool
-classification: [js, build]
 description: A TypeScript compile error (`error TS2345:`) with the source excerpt around it.
-pattern: 'error TS\d+:'
-before: 1
-after: 3
+tags: [js, build]
+match: {regex: 'error TS\d+:'}
+window: {before: 1, after: 3}

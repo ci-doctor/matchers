@@ -1,6 +1,9 @@
+schema: 1
 id: rust_test
 role: tool
-classification: [rust, test]
 description: '`cargo test`''s `failures:` block through to the `test result:` line.'
-start: ^failures:$
-end: '^test result:'
+tags: [rust, test]
+match: {regex: '^failures:$'}
+window:
+  until: {regex: '^test result:'}
+  max_lines: 500

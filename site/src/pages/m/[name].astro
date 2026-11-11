@@ -1,18 +1,13 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Seg from '../../components/Seg.astro';
-import { entries, byName, GITHUB } from '../../lib/registry.ts';
-import { PROVIDERS, PROVIDER_NAME, type Provider } from '../../lib/engine.ts';
+import { entries, byName, GITHUB, FRAMING_NAME } from '../../lib/registry.ts';
 import { highlight } from '../../lib/yaml-highlight.ts';
 import '../../styles/log.css';
 import '../../styles/yaml.css';
 
 export const getStaticPaths = () => entries.map((e) => ({ params: { name: e.name } }));
 const e = byName(Astro.params.name!);
-const pg = (extra = '') => `/playground/?m=${e.name}${extra}`;
-const PROVIDER_LABEL = { github: 'GitHub Actions', gitlab: 'GitLab CI' } as const;
-const lineClass = (v: { hit: Set<number>; anchors: Set<number> }, i: number, structure: boolean) =>
-  ['ln', structure && 'structure', v.hit.has(i) && 'hit', v.anchors.has(i) && 'anchor'].filter(Boolean).join(' ');
+const lines = (text: string) => text.replace(/\n$/, '').split('\n');
 ---
 
 <Base title={e.name} description={e.description}>
@@ -22,15 +17,32 @@ const lineClass = (v: { hit: Set<number>; anchors: Set<number> }, i: number, str
   <p>
     <span class="chip eco">{e.eco}</span>
     {e.tags.map((t) => <span class="chip">{t}</span>)}
-    {e.role && <span class="chip">{e.role}</span>}
     <span class="chip">{e.kind}</span>
   </p>
   <div class="btn-row">
-    <a class="btn primary" href={pg()}>Open in playground</a>
     <a class="btn" href={`${GITHUB}/blob/main/${e.path}`}>File on GitHub</a>
     <a class="btn" href={`${GITHUB}/commits/main/${e.path}`}>History</a>
   </div>
   <p>Install: <code>ci-doctor matchers add official/{e.name}</code></p>
+  {e.kind === 'matcher' && <p>Try it on your log: <code>ci-doctor matchers try official/{e.name} job.log</code></p>}
+
+  {e.outputs.length > 0 && (
+    <>
+      <h2>Outputs</h2>
+      <table>
+        <thead><tr><th>Output</th><th>Role</th><th>What it means</th></tr></thead>
+        <tbody>
+          {e.outputs.map((o) => (
+            <tr>
+              <td><code>{o.id}</code>{o.variants.length > 0 && <span class="legend"> ({o.variants.join(', ')})</span>}</td>
+              <td>{o.role}</td>
+              <td>{o.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  )}
 
   <h2>{e.path}</h2>
   <pre class="src hl" set:html={highlight(e.yaml.trimEnd())} />
@@ -55,57 +67,35 @@ const lineClass = (v: { hit: Set<number>; anchors: Set<number> }, i: number, str
   {e.kind === 'matcher' && (
     <>
       <h2>Fixtures</h2>
-      <p class="legend">
-        Framing stripped per provider. Highlighted lines are what this matcher selects; the marked line is the anchor.
-      </p>
-      {e.fixtures.map((f) => {
-        const has = (p: Provider) => !!f.variants[p];
-        const shown: Provider = has('github') ? 'github' : 'gitlab';
-        return (
-          <section class="fixture">
-            <h3>
-              <code>{f.name}</code>
-              {Object.values(f.variants)[0]!.mustNotFire && <span class="chip warn">must not fire</span>}
-              <a class="legend" href={pg(`&f=${f.name}`)}>Open in playground</a>
-            </h3>
-            <Seg name={`p-${f.name}`} label={`Provider for ${f.name}`} options={PROVIDERS.map((p) => ({
-              value: p, label: PROVIDER_LABEL[p], checked: p === shown, disabled: !has(p),
-              title: has(p) ? undefined : `No ${PROVIDER_NAME[p]} log for this fixture`,
-            }))} />
-            {PROVIDERS.filter(has).map((p) => {
-              const v = f.variants[p]!;
-              return (
-                <div class="log" data-p={p} hidden={p !== shown}>
-                  {v.display.map((l, i) => <div class={lineClass(v, i, l.structure)}><i>{i + 1}</i>{l.text}</div>)}
-                </div>
-              );
-            })}
-          </section>
-        );
-      })}
+      <p class="legend">What each output selects from each log: the committed <code>.expected</code>, ci-doctor's own output.</p>
+      {e.fixtures.map((f) => (
+        <section class="fixture">
+          <h3><code>{f.name}</code> <span class="chip">{FRAMING_NAME[f.framing]}</span></h3>
+          {e.outputs.map((o) => (
+            <>
+              {e.outputs.length > 1 && <h4><code>{o.id}</code></h4>}
+              {f.expected[o.id]
+                ? <div class="log">{lines(f.expected[o.id]).map((l, i) => <div class="ln"><i>{i + 1}</i>{l}</div>)}</div>
+                : <p><span class="chip warn">must not fire</span></p>}
+            </>
+          ))}
+          <details>
+            <summary>The raw log</summary>
+            <div class="log">{lines(f.log).map((l, i) => <div class="ln"><i>{i + 1}</i>{l}</div>)}</div>
+          </details>
+        </section>
+      ))}
     </>
   )}
-  <script is:inline>
-    // Start each log at its first match, not the runner preamble; also when a provider is switched to.
-    const reveal = (log) => {
-      const hit = log.querySelector('.hit');
-      if (hit) log.scrollTop = hit.offsetTop - log.offsetTop - 40;
-    };
-    document.querySelectorAll('.fixture .log:not([hidden])').forEach(reveal);
-    document.querySelectorAll('.fixture .seg input').forEach((r) => r.addEventListener('change', () => {
-      const fx = r.closest('.fixture');
-      fx.querySelectorAll('.log').forEach((l) => (l.hidden = l.dataset.p !== r.value));
-      reveal(fx.querySelector(`.log[data-p="${r.value}"]`));
-    }));
-  </script>
 </Base>
 
 <style>
   .fixture h3 { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
-  .fixture :global(.seg) { margin: 0 0 0.6rem; }
-  /* Looks like the playground's rule editor. */
+  .fixture details { margin: 0.6rem 0 1.5rem; }
   pre.src {
     background: var(--card); color: var(--fg); border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
     padding: 0.85rem; overflow-x: auto; font: 0.82rem/1.55 var(--mono); tab-size: 2;
   }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
 </style>

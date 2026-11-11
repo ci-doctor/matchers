@@ -9,8 +9,8 @@
 ## The matcher
 
 - **Tool, and the output it anchors on:**
-- **Role** (`tool` / `wrapper` / `fallback`), and why:
-- **Ecosystem** (first `classification` tag):
+- **Role** (`issue` / `tool` / `gate` / `wrapper` / `fallback`), and why:
+- **Ecosystem** (its directory):
 
 ## Fixtures
 

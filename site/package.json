@@ -6,12 +6,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "test": "node --test test/*.test.ts"
+    "preview": "astro preview"
   },
   "dependencies": {
     "astro": "^7.4.5",
-    "re2js": "^2.9.1",
     "yaml": "^2.9.1"
   }
 }

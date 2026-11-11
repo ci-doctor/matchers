@@ -1,26 +1,30 @@
-// Build-time read of the registry files one level up. Nothing here ships to the browser.
+// Build-time read of the registry files one level up. Nothing here ships to the browser,
+// and nothing matches: every selection shown is a committed `.expected`, ci-doctor's own output.
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { parse } from 'yaml';
-import { prepare, run, highlighted, PROVIDERS, type DisplayLine, type Matcher, type Provider } from './engine.ts';
 
 const root = resolve(process.cwd(), '..'); // `npm run build` runs in site/
 
 export const GITHUB = 'https://github.com/ci-doctor/matchers';
 
-export interface Variant {
-  display: DisplayLine[];
-  /** Highlighted / anchor lines, as display positions. */
-  hit: Set<number>;
-  anchors: Set<number>;
-  mustNotFire: boolean;
+export type Framing = 'github' | 'gitlab' | 'plain';
+export const FRAMING_NAME: Record<Framing, string> = { github: 'GitHub Actions', gitlab: 'GitLab CI', plain: 'plain' };
+
+export interface Output {
+  /** `ruff.check`, or the matcher's own id when it has one output. */
+  id: string;
+  role: string;
+  description: string;
+  variants: string[];
 }
-/** One case: up to two provider logs. A provider-less `<case>.log` serves both. */
 export interface Fixture {
+  /** The file name without `.log`, e.g. `assert.github`. */
   name: string;
-  /** Raw logs by file tag; `any` is a provider-less log. */
-  logs: Partial<Record<Provider | 'any', string>>;
-  variants: Partial<Record<Provider, Variant>>;
+  framing: Framing;
+  log: string;
+  /** Each output's committed selection, by output id; "" means it must not fire. */
+  expected: Record<string, string>;
 }
 export interface Entry {
   name: string;
@@ -29,7 +33,7 @@ export interface Entry {
   yaml: string;
   eco: string;
   tags: string[];
-  role: string;
+  outputs: Output[];
   description: string;
   /** Matcher names this bundle expands to (empty for a matcher). */
   members: string[];
@@ -38,20 +42,55 @@ export interface Entry {
   fixtures: Fixture[];
 }
 
+interface IndexEntry {
+  path: string;
+  description: string;
+  tags?: string[];
+  ecosystem?: string;
+  outputs?: string[];
+}
+interface Spec {
+  role?: string;
+  description: string;
+  variants?: Record<string, unknown>;
+  outputs?: Record<string, { role?: string; description: string; variants?: Record<string, unknown> }>;
+}
+
 const read = (p: string) => readFileSync(join(root, p), 'utf8');
+
+function outputsOf(name: string, spec: Spec): Output[] {
+  const one = (id: string, o: { role?: string; description: string; variants?: Record<string, unknown> }) => ({
+    id, role: o.role ?? 'tool', description: o.description, variants: Object.keys(o.variants ?? {}),
+  });
+  if (!spec.outputs) return [one(name, spec)];
+  return Object.entries(spec.outputs).map(([k, o]) => one(`${name}.${k}`, o));
+}
+
+function fixturesOf(dir: string, outputs: Output[], name: string): Fixture[] {
+  const fx = join(root, dir, 'fixtures');
+  if (!existsSync(fx)) return [];
+  return readdirSync(fx).filter((f) => f.endsWith('.log')).sort().map((f) => {
+    const stem = f.slice(0, -'.log'.length);
+    const framing = (/\.(github|gitlab)$/.exec(stem)?.[1] ?? 'plain') as Framing;
+    const golden = (id: string) => join(fx, `${stem}${id === name ? '' : id.slice(name.length)}.expected`);
+    const expected = Object.fromEntries(
+      outputs.map((o) => [o.id, existsSync(golden(o.id)) ? readFileSync(golden(o.id), 'utf8') : '']),
+    );
+    return { name: stem, framing, log: readFileSync(join(fx, f), 'utf8'), expected };
+  });
+}
 
 function load(): Entry[] {
   const index = parse(read('index.yaml')) as {
-    matchers: Record<string, { path: string; description: string; classification: string[] }>;
-    bundles: Record<string, { path: string; description: string }>;
+    matchers: Record<string, IndexEntry>;
+    bundles: Record<string, IndexEntry>;
   };
   const isMatcher = (n: string) => Object.hasOwn(index.matchers, n);
-  for (const n of Object.keys(index.bundles)) if (isMatcher(n)) throw new Error(`${n} is both a matcher and a bundle`);
 
   const includes = new Map(
     Object.entries(index.bundles).map(([n, b]) => [n, (parse(read(b.path)) as { include: string[] }).include]),
   );
-  /** Everything a bundle includes, through nested bundles, each once in include order; a cycle stops at the repeat. */
+  /** Everything a bundle includes, through nested bundles, each once; a cycle stops at the repeat. */
   const expand = (n: string, seen = new Set<string>()): Set<string> => {
     for (const x of includes.get(n)!) if (!seen.has(x)) (seen.add(x), includes.has(x) && expand(x, seen));
     return seen;
@@ -60,38 +99,15 @@ function load(): Entry[] {
 
   const entries: Entry[] = Object.entries(index.matchers).map(([name, m]) => {
     const yaml = read(m.path);
-    const spec = parse(yaml) as Matcher;
-    const dir = dirname(m.path);
-    const fx = join(root, dir, 'fixtures');
-    const cases = new Map<string, Fixture>();
-    for (const f of existsSync(fx) ? readdirSync(fx).filter((f) => f.endsWith('.log')).sort() : []) {
-      const tag = /\.(github|gitlab)\.log$/.exec(f)?.[1] as Provider | undefined;
-      const name = f.replace(/\.(github|gitlab)\.log$|\.log$/, '');
-      const c = cases.get(name) ?? { name, logs: {}, variants: {} };
-      cases.set(name, c);
-      const log = readFileSync(join(fx, f), 'utf8');
-      c.logs[tag ?? 'any'] = log;
-      const mustNotFire = readFileSync(join(fx, f.replace(/\.log$/, '.expected')), 'utf8') === '';
-      for (const p of tag ? [tag] : PROVIDERS) {
-        const prep = prepare(log, p);
-        const r = run(prep.lines.map((l) => l.text), spec);
-        c.variants[p] = {
-          display: prep.display,
-          hit: new Set(highlighted(r).map((i) => prep.lines[i].pos)),
-          anchors: new Set(r.anchors.map((i) => prep.lines[i].pos)),
-          mustNotFire,
-        };
-      }
-    }
-    const fixtures = [...cases.values()];
+    const outputs = outputsOf(name, parse(yaml) as Spec);
     return {
-      name, kind: 'matcher', path: m.path, yaml, eco: m.classification[0], tags: m.classification.slice(1),
-      role: spec.role ?? '', description: m.description, members: [], containedIn: [], fixtures,
+      name, kind: 'matcher', path: m.path, yaml, eco: m.ecosystem ?? '', tags: m.tags ?? [], outputs,
+      description: m.description, members: [], containedIn: [], fixtures: fixturesOf(dirname(m.path), outputs, name),
     };
   });
   for (const [name, b] of Object.entries(index.bundles)) {
     entries.push({
-      name, kind: 'bundle', path: b.path, yaml: read(b.path), eco: 'bundle', tags: [], role: '',
+      name, kind: 'bundle', path: b.path, yaml: read(b.path), eco: 'bundle', tags: [], outputs: [],
       description: b.description, members: [...contents.get(name)!].filter(isMatcher), containedIn: [], fixtures: [],
     });
   }

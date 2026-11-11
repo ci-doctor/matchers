@@ -1,6 +1,9 @@
+schema: 1
 id: pytest
 role: tool
-classification: [python, test]
 description: pytest's `=== FAILURES ===` block, from the first failing test through to the short summary.
-start: ^=+ FAILURES =+
-end: ^=+ short test summary
+tags: [python, test]
+match: {regex: ^=+ FAILURES =+}
+window:
+  until: {regex: ^=+ short test summary}
+  max_lines: 500

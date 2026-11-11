@@ -1,6 +1,9 @@
+schema: 1
 id: phpunit
 role: tool
-classification: [php, test]
 description: PHPUnit's `There were N failures` block through to its `FAILURES`/`ERRORS`/`OK` footer.
-start: ^There (was|were) \d+ (failure|error)
-end: ^(FAILURES|ERRORS|OK)
+tags: [php, test]
+match: {regex: ^There (was|were) \d+ (failure|error)}
+window:
+  until: {regex: ^(FAILURES|ERRORS|OK)}
+  max_lines: 500

@@ -1,6 +1,9 @@
+schema: 1
 id: rspec
 role: tool
-classification: [ruby, test]
 description: RSpec's `Failures:` block through to the `N examples, N failures` tally.
-start: ^Failures:$
-end: ^\d+ examples?, \d+ failures?
+tags: [ruby, test]
+match: {regex: '^Failures:$'}
+window:
+  until: {regex: '^\d+ examples?, \d+ failures?'}
+  max_lines: 500

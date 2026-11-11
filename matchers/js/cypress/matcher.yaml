@@ -1,7 +1,7 @@
+schema: 1
 id: cypress
 role: tool
-classification: [js, e2e]
 description: A `CypressError` or a retry timeout, with the command log leading up to it.
-pattern: CypressError|Timed out retrying after \d+ms
-before: 3
-after: 12
+tags: [js, e2e]
+match: {regex: CypressError|Timed out retrying after \d+ms}
+window: {before: 3, after: 12}
