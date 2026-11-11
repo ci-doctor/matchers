@@ -1,0 +1,9 @@
+$ npm ci
+npm ERR! gyp info using node-gyp@9.4.1
+npm ERR! gyp ERR! find Python
+npm ERR! gyp ERR! find Python Python is not set from command line or npm configuration
+npm ERR! gyp ERR! find Python checking if "python3" can be used
+npm ERR! gyp ERR! find Python - "python3" is not in PATH or produced an error
+npm ERR! gyp ERR! configure error
+npm ERR! gyp ERR! stack Error: Could not find any Python installation to use
+npm ERR! gyp ERR! not ok

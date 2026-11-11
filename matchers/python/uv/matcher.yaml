@@ -1,0 +1,17 @@
+schema: 1
+id: uv
+description: uv, the Python package and project manager - requirements it cannot resolve, and a lockfile that is out of date.
+tags: [python, deps]
+outputs:
+  resolve:
+    description: >-
+      uv's resolver refusing - No solution found, with the Because ... chain that explains which
+      requirements conflict. Nothing was installed; a pin or the Python version has to move.
+    match: {regex: '× No solution found when resolving dependencies'}
+    window: {after: 12}
+  lock:
+    description: >-
+      uv refusing a stale lockfile under --locked - pyproject.toml changed and uv.lock was not
+      regenerated. Running uv lock and committing uv.lock fixes it.
+    match: {regex: 'The lockfile at `uv\.lock` needs to be updated, but `--locked` was provided'}
+    window: {before: 1}

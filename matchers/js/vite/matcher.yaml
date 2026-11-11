@@ -1,0 +1,11 @@
+schema: 1
+id: vite
+description: Vite, the JavaScript build tool and dev server - production builds that fail.
+tags: [js, build]
+outputs:
+  build:
+    description: >-
+      vite build failing - error during build: and the Rollup or Rolldown error under it, such as
+      an import it could not resolve or a plugin that threw.
+    match: {regex: '^error during build:$'}
+    window: {after: 6}

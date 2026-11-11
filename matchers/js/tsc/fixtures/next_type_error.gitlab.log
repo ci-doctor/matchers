@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx next build
+   Linting and checking validity of types ...
+Failed to compile.
+
+./app/cart/page.tsx:14:7
+Type error: Type 'string' is not assignable to type 'number'.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

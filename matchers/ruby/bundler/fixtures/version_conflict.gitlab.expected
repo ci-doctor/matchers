@@ -1,0 +1,8 @@
+… [2 lines elided] …
+Resolving dependencies...
+Could not find compatible versions
+Because rails >= 7.1.0 depends on rack >= 2.2.4
+  and Gemfile depends on rack = 2.2.3,
+  rails >= 7.1.0 cannot be used.
+So, because Gemfile depends on rails ~> 7.1,
+  version solving has failed.

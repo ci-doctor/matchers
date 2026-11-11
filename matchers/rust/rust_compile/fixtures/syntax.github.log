@@ -1,0 +1,17 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run cargo build --locked
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z    Compiling ledger v0.4.0 (/home/runner/work/ledger/ledger)
+2026-07-24T20:04:05.0000000Z error: expected one of `.`, `;`, `?`, `}`, or an operator, found `let`
+2026-07-24T20:04:06.0000000Z   --> src/parse.rs:31:5
+2026-07-24T20:04:07.0000000Z    |
+2026-07-24T20:04:08.0000000Z 30 |     let n = fields.len()
+2026-07-24T20:04:09.0000000Z    |                         - expected one of `.`, `;`, `?`, `}`, or an operator
+2026-07-24T20:04:10.0000000Z 31 |     let m = 2;
+2026-07-24T20:04:11.0000000Z    |     ^^^ unexpected token
+2026-07-24T20:04:12.0000000Z 
+2026-07-24T20:04:13.0000000Z error: could not compile `ledger` (lib) due to 1 previous error
+2026-07-24T20:04:14.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:15.0000000Z Post job cleanup.
+2026-07-24T20:04:16.0000000Z Cleaning up orphan processes

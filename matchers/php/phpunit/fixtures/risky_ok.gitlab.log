@@ -1,0 +1,12 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ vendor/bin/phpunit
+There were 2 risky tests:
+
+1) Tests\PriceTest::testRounding
+This test did not perform any assertions
+
+OK, but there were issues!
+Tests: 40, Assertions: 88, Risky: 2.
+[0Ksection_end:1735689609:step_script[0K
+Job succeeded

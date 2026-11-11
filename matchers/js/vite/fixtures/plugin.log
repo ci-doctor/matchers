@@ -1,0 +1,6 @@
+$ npx vite build
+vite v5.4.11 building for production...
+transforming...
+error during build:
+[vite:css] [postcss] /builds/team/web/src/styles/app.css:12:3: Unknown word
+file: /builds/team/web/src/styles/app.css:12:3

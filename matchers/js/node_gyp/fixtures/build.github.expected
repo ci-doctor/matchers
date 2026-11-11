@@ -1,0 +1,13 @@
+shell: /usr/bin/bash -e {0}
+npm error code 1
+npm error path /home/runner/work/api/api/node_modules/bcrypt
+npm error command failed
+npm error command sh -c node-pre-gyp install --fallback-to-build
+npm error make: Entering directory '/home/runner/work/api/api/node_modules/bcrypt/build'
+npm error   CXX(target) Release/obj.target/bcrypt_lib/src/bcrypt_node.o
+npm error ../src/bcrypt_node.cc:1:10: fatal error: nan.h: No such file or directory
+npm error compilation terminated.
+npm error gyp ERR! build error
+npm error gyp ERR! stack Error: `make` failed with exit code: 2
+npm error gyp ERR! System Linux 6.8.0-1017-azure
+… [2 lines elided] …

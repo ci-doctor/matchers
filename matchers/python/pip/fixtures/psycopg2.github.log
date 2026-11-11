@@ -1,0 +1,31 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run pip install -r requirements.txt
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Collecting psycopg2==2.9.10
+2026-07-24T20:04:05.0000000Z   Downloading psycopg2-2.9.10.tar.gz (385 kB)
+2026-07-24T20:04:06.0000000Z   Installing build dependencies: started
+2026-07-24T20:04:07.0000000Z   Installing build dependencies: finished with status 'done'
+2026-07-24T20:04:08.0000000Z Building wheels for collected packages: psycopg2
+2026-07-24T20:04:09.0000000Z   Building wheel for psycopg2 (pyproject.toml): started
+2026-07-24T20:04:10.0000000Z   Building wheel for psycopg2 (pyproject.toml): finished with status 'error'
+2026-07-24T20:04:11.0000000Z   error: subprocess-exited-with-error
+2026-07-24T20:04:12.0000000Z   
+2026-07-24T20:04:13.0000000Z   × Building wheel for psycopg2 (pyproject.toml) did not run successfully.
+2026-07-24T20:04:14.0000000Z   │ exit code: 1
+2026-07-24T20:04:15.0000000Z   ╰─> [21 lines of output]
+2026-07-24T20:04:16.0000000Z       running build_ext
+2026-07-24T20:04:17.0000000Z       Error: pg_config executable not found.
+2026-07-24T20:04:18.0000000Z       
+2026-07-24T20:04:19.0000000Z       pg_config is required to build psycopg2 from source.  Please add the directory
+2026-07-24T20:04:20.0000000Z       containing pg_config to the $PATH or specify the full executable path with the
+2026-07-24T20:04:21.0000000Z       option:
+2026-07-24T20:04:22.0000000Z       [end of output]
+2026-07-24T20:04:23.0000000Z   
+2026-07-24T20:04:24.0000000Z   note: This error originates from a subprocess, and is likely not a problem with pip.
+2026-07-24T20:04:25.0000000Z   ERROR: Failed building wheel for psycopg2
+2026-07-24T20:04:26.0000000Z Failed to build psycopg2
+2026-07-24T20:04:27.0000000Z ERROR: Failed to build installable wheels for some pyproject.toml based projects (psycopg2)
+2026-07-24T20:04:28.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:29.0000000Z Post job cleanup.
+2026-07-24T20:04:30.0000000Z Cleaning up orphan processes

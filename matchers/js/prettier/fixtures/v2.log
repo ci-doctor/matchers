@@ -1,0 +1,5 @@
+$ npx prettier --check 'src/**/*.js'
+Checking formatting...
+[warn] src/index.js
+[warn] src/util/date.js
+[warn] Code style issues found in the above file(s). Forgot to run Prettier?

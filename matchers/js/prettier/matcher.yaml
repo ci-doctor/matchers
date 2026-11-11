@@ -1,0 +1,14 @@
+schema: 1
+id: prettier
+role: gate
+description: >-
+  prettier --check listing the files it would reformat. Formatting only - running prettier
+  --write fixes it; no code is wrong.
+tags: [js, lint, format]
+variants:
+  v3:
+    match: {regex: '^\[warn\] Code style issues found in (\d+ files?|the above file)\. Run Prettier'}
+  v2:
+    match: {regex: '^\[warn\] Code style issues found in the above file\(s\)\. Forgot to run Prettier\?'}
+window:
+  from: {regex: '^Checking formatting\.\.\.$', within: 200}
