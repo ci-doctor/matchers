@@ -1,0 +1,13 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ ./build/tests/cart_test
+-------------------------------------------------------------------------------
+Cart sums the items
+-------------------------------------------------------------------------------
+/work/tests/cart_test.cpp:12: FAILED:
+  REQUIRE( cart.total() == 3 )
+with expansion:
+  2 == 3
+test cases: 12 | 11 passed | 1 failed
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

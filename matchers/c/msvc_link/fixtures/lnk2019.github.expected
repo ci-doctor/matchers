@@ -1,0 +1,3 @@
+… [2 lines elided] …
+render.obj : error LNK2019: unresolved external symbol "public: void __cdecl Pipeline::flush(void)" (?flush@Pipeline@@QEAAXXZ) referenced in function "public: void __cdecl Renderer::submit(class Frame const &)" (?submit@Renderer@@QEAAXAEBVFrame@@@Z) [C:\a\engine\engine\build\engine.vcxproj]
+C:\a\engine\engine\build\Release\engine.exe : fatal error LNK1120: 1 unresolved externals [C:\a\engine\engine\build\engine.vcxproj]

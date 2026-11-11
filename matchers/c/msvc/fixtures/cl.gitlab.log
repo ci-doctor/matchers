@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ cl /nologo /EHsc /W4 /c src\parse.cpp
+cl /nologo /EHsc /W4 /c src\parse.cpp
+parse.cpp
+src\parse.cpp(41): error C2440: 'initializing': cannot convert from 'const char *' to 'std::string_view &'
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

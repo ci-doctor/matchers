@@ -1,0 +1,5 @@
+$ ./gradlew :app:externalNativeBuildRelease
+FAILED: CMakeFiles/native-lib.dir/native-lib.cpp.o
+/opt/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 -c /work/app/src/main/cpp/native-lib.cpp
+/work/app/src/main/cpp/native-lib.cpp:12:10: fatal error: 'openssl/ssl.h' file not found
+ninja: build stopped: subcommand failed.

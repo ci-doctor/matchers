@@ -1,0 +1,5 @@
+… [1 lines elided] …
+ld.lld: error: duplicate symbol: Config::load()
+>>> defined at config.cpp:12 (/work/src/config.cpp:12)
+>>>            config.cpp.o:(Config::load())
+>>> defined at legacy.cpp:30 (/work/src/legacy.cpp:30)

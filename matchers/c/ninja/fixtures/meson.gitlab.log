@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ meson compile -C build
+[12/30] Compiling C object src/libparse.a.p/parse.c.o
+FAILED: src/libparse.a.p/parse.c.o
+cc -Isrc/libparse.a.p -Isrc -fdiagnostics-color=always -Wall -Werror -O2 -c ../src/parse.c
+../src/parse.c:41:9: error: use of undeclared identifier 'buf_len'
+ninja: build stopped: subcommand failed.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

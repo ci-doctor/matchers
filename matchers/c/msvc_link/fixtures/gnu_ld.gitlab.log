@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ cmake --build build
+/usr/bin/ld: CMakeFiles/engine.dir/src/render.cpp.o: in function `Renderer::submit(Frame const&)':
+render.cpp:(.text+0x2f1): undefined reference to `Pipeline::flush()'
+collect2: error: ld returned 1 exit status
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

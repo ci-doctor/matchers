@@ -1,0 +1,8 @@
+schema: 1
+id: lld
+description: >-
+  LLVM's lld refusing to link - ld.lld / rust-lld: error: undefined symbol or duplicate symbol,
+  with the >>> referenced by / defined at lines naming the objects involved.
+tags: [c, build]
+match: {regex: '(^|= note: )(ld\.lld|ld64\.lld|rust-lld|lld-link|wasm-ld): error: '}
+window: {after: 3}

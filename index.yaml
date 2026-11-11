@@ -228,6 +228,13 @@ matchers:
     schema: 1
     tags: [go, lint]
     ecosystem: go
+  googletest:
+    path: matchers/c/googletest/matcher.yaml
+    sha256: cd84cf340013a22b89186042523e5250592a769350344ed7bc812d54cf2d516f
+    description: 'A GoogleTest failure - [ FAILED ] Suite.Test (N ms), with the expectation that failed printed above it (file:line: Failure and the values compared).'
+    schema: 1
+    tags: [c, test]
+    ecosystem: c
   gradle:
     path: matchers/jvm/gradle/matcher.yaml
     sha256: 4d47b9f64be7dec36cbf76fc480932f9b09368cceca2891a0df67d42f1a6db2a
@@ -294,6 +301,13 @@ matchers:
     schema: 1
     tags: [c, build]
     ecosystem: c
+  lld:
+    path: matchers/c/lld/matcher.yaml
+    sha256: 757b674547072ec32ecf31c99df7bbe760d68f3c73dc7fe9d7b79a3a32d71bd8
+    description: 'LLVM''s lld refusing to link - ld.lld / rust-lld: error: undefined symbol or duplicate symbol, with the >>> referenced by / defined at lines naming the objects involved.'
+    schema: 1
+    tags: [c, build]
+    ecosystem: c
   make:
     path: matchers/any/make/matcher.yaml
     sha256: 05933b0e6df9fd72309deec3bfa506fb7ca460f9cc7618843c1d9ea70bf4b5b5
@@ -330,6 +344,20 @@ matchers:
     schema: 1
     tags: [dotnet, build]
     ecosystem: dotnet
+  msvc:
+    path: matchers/c/msvc/matcher.yaml
+    sha256: 455c94f51774fe299267d4e0c32c1ff3cac56f132fbfd653e03fc44528109723
+    description: 'An MSVC compile error - file.cpp(12,5): error C2065: message, from cl.exe directly or under MSBuild. fatal error C1083 is a missing header, usually a missing package or include path.'
+    schema: 1
+    tags: [c, build]
+    ecosystem: c
+  msvc_link:
+    path: matchers/c/msvc_link/matcher.yaml
+    sha256: c1a60b2b3886a5218be8a82a532503846198128dfe8e38cec16cca8576fa6739
+    description: An MSVC link error - LNK2019 unresolved external symbol (and the object that referenced it), LNK1104 a library it cannot open, LNK2005 a symbol defined twice.
+    schema: 1
+    tags: [c, build]
+    ecosystem: c
   mypy:
     path: matchers/python/mypy/matcher.yaml
     sha256: 6daeeccd9f243ea8ad46657efb7f46c9b03ad6458993915b17a6345ad0cadc8e
@@ -359,6 +387,13 @@ matchers:
     tags: [js, build]
     ecosystem: js
     outputs: [build, prerender]
+  ninja:
+    path: matchers/c/ninja/matcher.yaml
+    sha256: 1c704d1c57145578c9aab55d512074e7c1de27c281dc45b72cce729c0fc4ce1e
+    description: 'Ninja''s FAILED: target line, ahead of build stopped: subcommand failed. A wrapper - the compiler or linker output under the FAILED: line is the cause.'
+    schema: 1
+    tags: [c, build]
+    ecosystem: c
   node:
     path: matchers/js/node/matcher.yaml
     sha256: cf052104e3ae34955bd647c2df8a753eee67d48192e96bab9706315f8ebad9b1
@@ -694,7 +729,7 @@ bundles:
     description: Every matcher in the any ecosystem.
   c:
     path: bundles/c.yaml
-    sha256: e6cef2f7561cf3fb34a7902b6bf90645048fd6e0084614041caee315c875fd63
+    sha256: b3ac7a0598d4568c3176519047636d13b05c68f6b73ee36a50637b5cbffccd6c
     description: Every matcher in the c ecosystem.
   container:
     path: bundles/container.yaml
