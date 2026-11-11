@@ -7,13 +7,6 @@ matchers:
     schema: 1
     tags: [any, build]
     ecosystem: any
-  build_failure_banner:
-    path: matchers/jvm/build_failure_banner/matcher.yaml
-    sha256: 65556fc1bb36c931649308811a8edfddb592d0e8dc14b5849283a774b2fb5866
-    description: 'The `BUILD FAILURE` / `FAILURE: Build failed` banner Maven and Gradle print once the build gave up.'
-    schema: 1
-    tags: [jvm, build]
-    ecosystem: jvm
   bun:
     path: matchers/js/bun/matcher.yaml
     sha256: 9f5fde19d0d52ecc3c4ba2796d2b0d10623ddbd7c2aeba5e418693e958bfac75
@@ -108,8 +101,8 @@ matchers:
     ecosystem: go
   gradle:
     path: matchers/jvm/gradle/matcher.yaml
-    sha256: b48e1781322f35bcd11803143f26f4825c2e113065008a5cf19cbeb322603595
-    description: Gradle's `* What went wrong:` block, stopping before the `* Try:` boilerplate advice. A wrapper - it names the failed task, the compiler output above it is the cause.
+    sha256: 43d1b99a594931ef5c8c761063deb84899312846629715f5a7798a82a17da64a
+    description: Gradle's `* What went wrong:` block, from the `FAILURE:` banner to the `* Try:` advice. A wrapper - it names the failed task; the compiler or test output above it is the cause.
     schema: 1
     tags: [jvm, build]
     ecosystem: jvm
@@ -128,13 +121,14 @@ matchers:
     schema: 1
     tags: [any, build]
     ecosystem: any
-  maven_gradle:
-    path: matchers/jvm/maven_gradle/matcher.yaml
-    sha256: 4dc9307876b94a9e7e201098e46c8985d72fbfec66ebdef3c29b5341465cafb4
-    description: Maven's `[ERROR]` lines - the compiler and test diagnostics Maven relays.
+  maven:
+    path: matchers/jvm/maven/matcher.yaml
+    sha256: 8c765850a2639c000e2f0a1028bb1acfa63af61ea7c460e92d4fe92a58dcd030
+    description: Apache Maven - the goal that failed, the compiler errors behind it, and failing Surefire tests.
     schema: 1
-    tags: [jvm, build]
+    tags: [jvm, build, test]
     ecosystem: jvm
+    outputs: [goal, compiler, surefire]
   minitest:
     path: matchers/ruby/minitest/matcher.yaml
     sha256: 116919bfeca765c8669be50372aa84665cc9aa9e72cde373da20ee302fb26bf3
@@ -324,7 +318,7 @@ bundles:
     description: Every matcher in the js ecosystem.
   jvm:
     path: bundles/jvm.yaml
-    sha256: f0d8172ad98e6c1823c4ada6961c8c810d902421993e3112a891fb6c2815e7b8
+    sha256: 5fca612ce4786d2cc82550caf090b731c9216a395b806e9c983986649c7a2964
     description: Every matcher in the jvm ecosystem.
   php:
     path: bundles/php.yaml

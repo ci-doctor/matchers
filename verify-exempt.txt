@@ -1,7 +1,6 @@
 # Migrated from ci-doctor before the 3 positive + 2 negative fixture bar existed.
 # Each needs only one positive fixture until backfilled. This list only shrinks.
 bazel
-build_failure_banner
 bundler
 cc_cpp
 composer
@@ -13,9 +12,7 @@ eslint
 generic_error
 go_panic
 go_test
-gradle
 make
-maven_gradle
 minitest
 oom
 php_fatal

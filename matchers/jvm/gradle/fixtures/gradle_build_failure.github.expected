@@ -1,4 +1,5 @@
-… [35 lines elided] …
+… [34 lines elided] …
+FAILURE: Build failed with an exception.
 * What went wrong:
 Execution failed for task ':app:compileJava'.
 > Compilation failed; see the compiler error output for details.

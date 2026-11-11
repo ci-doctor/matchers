@@ -1,0 +1,10 @@
+… [6 lines elided] …
+[ERROR] Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.052 s <<< FAILURE! -- in com.acme.ledger.CartTest
+[ERROR] com.acme.ledger.CartTest.totalIncludesTax -- Time elapsed: 0.012 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <2700> but was: <3000>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:151)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:197)
+	at com.acme.ledger.CartTest.totalIncludesTax(CartTest.java:42)
+[INFO] 
+[INFO] Results:
+… [12 lines elided] …

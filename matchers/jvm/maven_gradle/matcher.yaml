@@ -1,7 +1,0 @@
-schema: 1
-id: maven_gradle
-role: tool
-description: Maven's `[ERROR]` lines - the compiler and test diagnostics Maven relays.
-tags: [jvm, build]
-match: {regex: '\[ERROR\]'}
-window: {before: 3, after: 15}

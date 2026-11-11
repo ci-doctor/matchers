@@ -1,0 +1,25 @@
+schema: 1
+id: maven
+description: Apache Maven - the goal that failed, the compiler errors behind it, and failing Surefire tests.
+tags: [jvm, build, test]
+define:
+  SRC: '\S+\.(java|kt|scala)'
+outputs:
+  goal:
+    role: wrapper
+    description: >-
+      Maven naming the plugin goal that failed (`Failed to execute goal <plugin>: <reason>`). A
+      wrapper - the compiler or test output above it is the cause.
+    match: {template: '[ERROR] Failed to execute goal '}
+  compiler:
+    description: >-
+      A compile error Maven relays - `[ERROR] /path/File.java:[62,38] <message>`, with javac's
+      symbol and location lines under it. The code does not compile.
+    match: {regex: '^\[ERROR\] %{SRC}:\[\d+,\d+\] '}
+    window: {after: 2}
+  surefire:
+    description: >-
+      A failing JUnit test under Maven Surefire or Failsafe - `<<< FAILURE!` names the test, and
+      the assertion and stack frames under it show the cause.
+    match: {regex: '<<< (FAILURE|ERROR)!'}
+    window: {after: 6}

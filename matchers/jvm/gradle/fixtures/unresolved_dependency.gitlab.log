@@ -1,0 +1,16 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ ./gradlew build
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Could not determine the dependencies of task ':app:compileJava'.
+> Could not resolve all task dependencies for configuration ':app:compileClasspath'.
+   > Could not find com.acme:audit-client:2.1.0.
+
+* Try:
+> Run with --info or --debug option to get more log output.
+
+BUILD FAILED in 6s
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1
