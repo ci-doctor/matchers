@@ -1,0 +1,20 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ pip install pyyaml==5.4.1
+Collecting pyyaml==5.4.1
+  Downloading PyYAML-5.4.1.tar.gz (175 kB)
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  × Getting requirements to build wheel did not run successfully.
+  │ exit code: 1
+  ╰─> [48 lines of output]
+      AttributeError: cython_sources
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: subprocess-exited-with-error
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

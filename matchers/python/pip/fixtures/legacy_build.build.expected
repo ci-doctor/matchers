@@ -1,0 +1,9 @@
+… [3 lines elided] …
+  ERROR: Command errored out with exit status 1:
+   command: /opt/venv/bin/python -u -c 'import sys, setuptools' bdist_wheel -d /tmp/pip-wheel-x1
+       cwd: /tmp/pip-install-9b/mysqlclient/
+  Complete output (12 lines):
+  /bin/sh: 1: mysql_config: not found
+  OSError: mysql_config not found
+  ----------------------------------------
+… [1 lines elided] …
