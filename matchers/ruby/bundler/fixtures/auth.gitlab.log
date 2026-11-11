@@ -1,0 +1,9 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ bundle install
+Fetching source index from https://gems.internal/
+Authentication is required for gems.internal.
+Please supply credentials for this source. You can do this by running:
+`bundle config set --global gems.internal username:password`
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

@@ -1,0 +1,4 @@
+… [1 lines elided] …
+  × No solution found when resolving dependencies:
+  ╰─▶ Because there is no version of ledger-core==4.2.0 and you require ledger-core==4.2.0, we can
+      conclude that your requirements are unsatisfiable.

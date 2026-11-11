@@ -1,0 +1,7 @@
+$ uv lock
+Using CPython 3.9.20
+  × No solution found when resolving dependencies for split (python_full_version == '3.9.*'):
+  ╰─▶ Because the requested Python version (>=3.9) does not satisfy Python>=3.10 and numpy==2.1.0
+      depends on Python>=3.10, we can conclude that numpy==2.1.0 cannot be used.
+      And because your project depends on numpy==2.1.0, we can conclude that your project's
+      requirements are unsatisfiable.

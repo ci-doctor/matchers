@@ -1,6 +1,6 @@
 schema: 1
 id: pytest
-description: pytest - failing tests, and test modules that could not even be collected.
+description: pytest - failing tests, test modules that could not even be collected, and a coverage bar the run did not reach.
 tags: [python, test]
 outputs:
   failures:
@@ -19,3 +19,10 @@ outputs:
     window:
       until: {regex: '^=+ short test summary'}
       max_lines: 500
+  coverage:
+    role: gate
+    description: >-
+      pytest-cov failing the run on coverage - Required test coverage of N% not reached - with
+      every test passing. No test failed; coverage fell below the bar.
+    match: {regex: '^FAIL Required test coverage of \d+(\.\d+)?% not reached'}
+    window: {before: 3}

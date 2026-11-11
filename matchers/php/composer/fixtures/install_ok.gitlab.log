@@ -1,0 +1,9 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ composer install --no-interaction
+Installing dependencies from lock file (including require-dev)
+Package operations: 84 installs, 0 updates, 0 removals
+Generating optimized autoload files
+72 packages you are using are looking for funding.
+[0Ksection_end:1735689609:step_script[0K
+Job succeeded

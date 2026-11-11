@@ -1,0 +1,12 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run go test ./...
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z === RUN   TestIntegration
+2026-07-24T20:04:05.0000000Z     db_test.go:14: no DATABASE_URL, skipping
+2026-07-24T20:04:06.0000000Z --- SKIP: TestIntegration (0.00s)
+2026-07-24T20:04:07.0000000Z --- PASS: TestRound (0.00s)
+2026-07-24T20:04:08.0000000Z ok  	github.com/acme/ledger/money	0.009s
+2026-07-24T20:04:09.0000000Z ##[error]Process completed with exit code 0.
+2026-07-24T20:04:10.0000000Z Post job cleanup.
+2026-07-24T20:04:11.0000000Z Cleaning up orphan processes

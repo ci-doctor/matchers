@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ cargo test --locked
+running 14 tests
+test db::live_roundtrip ... ignored
+test result: ok. 12 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out
+[0Ksection_end:1735689609:step_script[0K
+Job succeeded

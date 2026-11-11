@@ -18,7 +18,7 @@ matchers:
     outputs: [test, install, run]
   bundler:
     path: matchers/ruby/bundler/matcher.yaml
-    sha256: 318fd2ea6faf91c303f1cf62a2a1426dd2bb83a46289d41ea63c323a81fba5d1
+    sha256: 8bd866ea2d69f06b6b5e996fbd9b0b58180f46e024a7d4fbd425bcd1cc492953
     description: Bundler failing to resolve - a missing gem, or a version conflict it prints the tree for.
     schema: 1
     tags: [ruby, deps]
@@ -32,8 +32,8 @@ matchers:
     ecosystem: c
   composer:
     path: matchers/php/composer/matcher.yaml
-    sha256: d1115f274b12c7e3ba51d8ed606fcd4d11f157cdaf4cfe9ca235a5eb208c3ee0
-    description: Composer's resolver refusing the requirements, with the explanation it prints underneath.
+    sha256: 3eba57e429c98efadad0e0ce4adab1c6fc82815cb66555ed1f28e920e8018b04
+    description: Composer refusing to install - requirements it cannot resolve, or a lock file that does not fit this platform - with the Problem list it prints underneath.
     schema: 1
     tags: [php, deps]
     ecosystem: php
@@ -67,8 +67,8 @@ matchers:
     ecosystem: js
   eslint:
     path: matchers/js/eslint/matcher.yaml
-    sha256: 7553ad9076e72cc0f5dacf92da90a89b00f757c6f9b2529603e8ac80187eadbf
-    description: ESLint's `line:col error rule-name` entries and its `N problems` summary footer.
+    sha256: 8db7a5906b8def8cb18e74633ec3c3e08dd3916ea81802c75d5bd407df846546
+    description: ESLint's `line:col error rule-name` entries under each file it reports. Warnings alone never fire.
     schema: 1
     tags: [js, lint]
     ecosystem: js
@@ -205,8 +205,8 @@ matchers:
     ecosystem: js
   oom:
     path: matchers/any/oom/matcher.yaml
-    sha256: e694ed19c602dae16597d8dbab459d11f9831d2e6d917a7307f3148a908e3b94
-    description: The job being killed - exit code 137, `Killed`, `Out of memory`. Nothing else in the log explains a SIGKILL.
+    sha256: cd36b64ee67aa923a4534af670b67fb1a1710b02e72383e0793f4088352bf069
+    description: The job or a process in it killed for memory - exit code 137, the shell's `Killed`, the kernel OOM killer, `OOMKilled`. Nothing else in the log explains a SIGKILL.
     schema: 1
     tags: [any, infra]
     ecosystem: any
@@ -224,6 +224,14 @@ matchers:
     schema: 1
     tags: [php, test]
     ecosystem: php
+  pip:
+    path: matchers/python/pip/matcher.yaml
+    sha256: 09154df89ac2b2cd7ac97b454605e0eb1a383ab14e247972531571abd37306b9
+    description: pip, the Python package installer - requirements it cannot resolve, and packages it could not build from source.
+    schema: 1
+    tags: [python, deps]
+    ecosystem: python
+    outputs: [resolve, build]
   playwright:
     path: matchers/js/playwright/matcher.yaml
     sha256: 6808edbe0b18ee30eae04211462e855c8ab6a57003a46fced8c656c240b93245
@@ -256,12 +264,12 @@ matchers:
     ecosystem: python
   pytest:
     path: matchers/python/pytest/matcher.yaml
-    sha256: b4311880bf6c0bd8a61964107950d45fb4fb14e77d7b1e962be4d4d7c7647cf4
-    description: pytest - failing tests, and test modules that could not even be collected.
+    sha256: 238605b06b4fb401940344d33660f84551f6b08307fa4342f0eecfea7eecd38f
+    description: pytest - failing tests, test modules that could not even be collected, and a coverage bar the run did not reach.
     schema: 1
     tags: [python, test]
     ecosystem: python
-    outputs: [failures, errors]
+    outputs: [failures, errors, coverage]
   python_traceback:
     path: matchers/python/python_traceback/matcher.yaml
     sha256: f25da395cb2f4307e02da6040e5c330fe644db79e40b982b02c28d1b5750e309
@@ -333,6 +341,14 @@ matchers:
     schema: 1
     tags: [js, build]
     ecosystem: js
+  uv:
+    path: matchers/python/uv/matcher.yaml
+    sha256: caa8d2aa2076b1172197ff8811a266e04c1346d082651ce110bbabcf99998986
+    description: uv, the Python package and project manager - requirements it cannot resolve, and a lockfile that is out of date.
+    schema: 1
+    tags: [python, deps]
+    ecosystem: python
+    outputs: [resolve, lock]
   vite:
     path: matchers/js/vite/matcher.yaml
     sha256: 710e8163098691d4a3b3f8bc8df2a45ed93dfc60f9e059751b7b880dab8aaff0
@@ -413,7 +429,7 @@ bundles:
     description: Every matcher in the php ecosystem.
   python:
     path: bundles/python.yaml
-    sha256: d36fa0ae0012f2a201ce468375e639e56bcc07d02ced75efd3b96dadade07108
+    sha256: aa462326f4121c2c67a15a81d4bed336409b95565828a728f106edf9f6034381
     description: Every matcher in the python ecosystem.
   ruby:
     path: bundles/ruby.yaml

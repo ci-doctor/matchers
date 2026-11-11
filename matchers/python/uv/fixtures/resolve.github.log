@@ -1,0 +1,13 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run uv sync
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Using CPython 3.12.7
+2026-07-24T20:04:05.0000000Z   × No solution found when resolving dependencies:
+2026-07-24T20:04:06.0000000Z   ╰─▶ Because fastapi==0.115.0 depends on starlette>=0.37.2,<0.39.0 and your project depends on
+2026-07-24T20:04:07.0000000Z       starlette==0.41.2, we can conclude that your project's requirements are unsatisfiable.
+2026-07-24T20:04:08.0000000Z 
+2026-07-24T20:04:09.0000000Z       hint: Pre-releases are available for `starlette` in the requested range
+2026-07-24T20:04:10.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:11.0000000Z Post job cleanup.
+2026-07-24T20:04:12.0000000Z Cleaning up orphan processes
