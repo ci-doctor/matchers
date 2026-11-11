@@ -1,0 +1,12 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx ng build --configuration production
+Error: src/app/cart/cart.component.html:12:5 - error NG8002: Can't bind to 'value' since it isn't a known property of 'app-price'.
+
+12     <app-price [value]="total"></app-price>
+       ~~~~~~~~~~~~~~~~~~~~~~~
+
+  src/app/cart/cart.component.ts:6:16
+    6   templateUrl: './cart.component.html',
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

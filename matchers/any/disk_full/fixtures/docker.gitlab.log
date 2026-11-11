@@ -1,0 +1,11 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ docker build -t app .
+#11 [build 6/7] RUN npm ci
+#11 ERROR: failed to copy files: copy file range failed: no space left on device
+------
+ > [build 6/7] RUN npm ci:
+------
+ERROR: failed to solve: failed to copy files: copy file range failed: no space left on device
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

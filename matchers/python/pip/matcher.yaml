@@ -1,0 +1,33 @@
+schema: 1
+id: pip
+description: pip, the Python package installer - requirements it cannot resolve, and packages it could not build from source.
+tags: [python, deps]
+outputs:
+  resolve:
+    description: >-
+      pip refusing the requirements - two pins that conflict, or a version or platform that has
+      no distribution. Nothing was installed; a pin has to move.
+    variants:
+      conflict:
+        match: {regex: '^ERROR: Cannot install .+ because these package versions have conflicting dependencies'}
+        window:
+          until: {regex: '^ERROR: ResolutionImpossible'}
+          max_lines: 40
+      missing:
+        match: {regex: '^ERROR: (Could not find a version that satisfies the requirement|No matching distribution found for) '}
+        window: {before: 1, after: 1}
+  build:
+    description: >-
+      pip failing to build a package from source during install - a missing compiler, system
+      library or header, named in the subprocess output it boxes. Not a version conflict.
+    variants:
+      current:
+        match: {regex: '^\s*× .+ did not run successfully\.$'}
+        window:
+          until: {regex: '^\s*\[end of output\]'}
+          max_lines: 120
+      legacy:
+        match: {regex: '^\s*ERROR: Command errored out with exit status \d+:'}
+        window:
+          until: {regex: '^\s*-{20,}$'}
+          max_lines: 120

@@ -1,0 +1,4 @@
+… [2 lines elided] …
+12:01:04  Compilation Error in model revenue (models/marts/revenue.sql)
+  'dollars' is undefined. This can happen when calling a macro that does not exist.
+  > in macro cents_to_dollars (macros/money.sql)

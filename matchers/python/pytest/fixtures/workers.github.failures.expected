@@ -1,0 +1,5 @@
+… [7 lines elided] …
+=================================== FAILURES ===================================
+_________________________ tests/test_export.py::test_big _________________________
+[gw2] linux -- Python 3.12.7 /home/runner/work/ledger/ledger/.venv/bin/python
+worker 'gw2' crashed while running 'tests/test_export.py::test_big'

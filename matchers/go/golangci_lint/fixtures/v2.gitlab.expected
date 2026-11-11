@@ -1,0 +1,8 @@
+… [1 lines elided] …
+api/orders.go:17:6: func `legacyTotal` is unused (unused)
+func legacyTotal(o Order) int {
+     ^
+api/orders.go:61:3: S1009: should omit nil check; len() for nil slices is defined as zero (gosimple)
+		if o.Items != nil && len(o.Items) > 0 {
+		^
+… [3 lines elided] …

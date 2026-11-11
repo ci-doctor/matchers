@@ -1,0 +1,12 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ vendor/bin/phpunit
+There was 1 error:
+
+1) Tests\CartTest::testTotal
+Error: Call to undefined method App\Cart::sum()
+
+ERRORS!
+Tests: 12, Assertions: 30, Errors: 1.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

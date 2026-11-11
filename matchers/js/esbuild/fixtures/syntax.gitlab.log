@@ -1,0 +1,14 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx esbuild src/index.ts --bundle --outfile=dist/index.js
+✘ [ERROR] Expected ";" but found "total"
+
+    src/cart.ts:14:8:
+      14 │   const total = items.reduce((a, b) => a + b, 0)
+         │         ^
+         ╵         ;
+
+1 error
+error: Build failed
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

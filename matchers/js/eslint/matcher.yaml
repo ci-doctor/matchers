@@ -1,7 +1,7 @@
 schema: 1
 id: eslint
 role: tool
-description: ESLint's `line:col error rule-name` entries and its `N problems` summary footer.
+description: ESLint's `line:col error rule-name` entries under each file it reports. Warnings alone never fire.
 tags: [js, lint]
-match: {regex: '^\s*\d+:\d+\s+error\s+|✖ \d+ problems?'}
+match: {regex: '^\s*\d+:\d+\s+error\s+'}
 window: {before: 2, after: 6}

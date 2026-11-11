@@ -1,0 +1,4 @@
+… [2 lines elided] …
+e: file:///home/runner/work/app/app/src/main/kotlin/com/acme/Cart.kt:12:22 Unresolved reference 'sum'.
+e: file:///home/runner/work/app/app/src/main/kotlin/com/acme/Cart.kt:30:9 Argument type mismatch: actual type is 'String', but 'Int' was expected.
+FAILURE: Build failed with an exception.

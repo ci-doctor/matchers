@@ -1,0 +1,20 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run vendor/bin/phpunit
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z PHPUnit 11.4.3 by Sebastian Bergmann and contributors.
+2026-07-24T20:04:05.0000000Z 
+2026-07-24T20:04:06.0000000Z ..E.........                                                      12 / 12 (100%)
+2026-07-24T20:04:07.0000000Z 
+2026-07-24T20:04:08.0000000Z There was 1 error:
+2026-07-24T20:04:09.0000000Z 
+2026-07-24T20:04:10.0000000Z 1) Tests\CartTest::testTotal
+2026-07-24T20:04:11.0000000Z Error: Call to undefined method App\Cart::sum()
+2026-07-24T20:04:12.0000000Z 
+2026-07-24T20:04:13.0000000Z /app/tests/CartTest.php:18
+2026-07-24T20:04:14.0000000Z 
+2026-07-24T20:04:15.0000000Z ERRORS!
+2026-07-24T20:04:16.0000000Z Tests: 12, Assertions: 30, Errors: 1.
+2026-07-24T20:04:17.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:18.0000000Z Post job cleanup.
+2026-07-24T20:04:19.0000000Z Cleaning up orphan processes

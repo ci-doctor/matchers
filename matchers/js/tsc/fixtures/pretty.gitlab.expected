@@ -1,0 +1,5 @@
+$ npx tsc --noEmit --pretty
+src/cart.ts:22:5 - error TS2322: Type 'string' is not assignable to type 'number'.
+22     total = row.amount;
+       ~~~~~
+Found 1 error in src/cart.ts:22

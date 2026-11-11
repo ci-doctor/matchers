@@ -1,0 +1,7 @@
+… [7 lines elided] …
+  × Getting requirements to build wheel did not run successfully.
+  │ exit code: 1
+  ╰─> [48 lines of output]
+      AttributeError: cython_sources
+      [end of output]
+… [2 lines elided] …

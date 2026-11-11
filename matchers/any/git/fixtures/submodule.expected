@@ -1,0 +1,7 @@
+… [2 lines elided] …
+Cloning into '/builds/team/api/proto'...
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+Please make sure you have the correct access rights
+and the repository exists.
+fatal: clone of 'git@github.com:acme/proto.git' into submodule path '/builds/team/api/proto' failed

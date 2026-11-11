@@ -1,0 +1,6 @@
+… [3 lines elided] …
+Failed to compile.
+./app/layout.tsx:3:1
+Module not found: Can't resolve './globals.css'
+  1 | import type { Metadata } from 'next'
+> 3 | import './globals.css'

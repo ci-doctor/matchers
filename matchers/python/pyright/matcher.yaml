@@ -1,0 +1,8 @@
+schema: 1
+id: pyright
+description: >-
+  A Pyright type error - file.py:12:5 - error: message (reportRule), from pyright or
+  basedpyright. The rule in brackets says which check fired; warnings alone never fire.
+tags: [python, lint]
+match: {regex: '^\s+\S+\.pyi?:\d+:\d+ - error: '}
+window: {after: 1}

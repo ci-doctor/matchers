@@ -1,0 +1,4 @@
+$ java -Xmx6g -jar build/indexer.jar --full
+Indexing 4,812,077 documents
+[gc] Pause Full (Allocation Failure) 5980M->5971M(6144M) 4.112s
+/usr/bin/bash: line 142:  4242 Killed                  java -Xmx6g -jar build/indexer.jar --full

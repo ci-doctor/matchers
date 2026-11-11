@@ -1,0 +1,13 @@
+schema: 1
+id: go_build
+description: >-
+  A Go compile or vet error - file.go:12:3: undefined: name, under the # package header it
+  belongs to. The code is wrong at that line.
+tags: [go, build]
+match:
+  all:
+    - regex: '^\S+\.go:\d+:\d+: '
+    - preceded_by: {regex: '^# \S+', within: 30}
+window:
+  from: {regex: '^# [^\[]', within: 30}
+  after: 4

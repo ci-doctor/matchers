@@ -1,5 +1,26 @@
 schema: 1
 matchers:
+  angular_cli:
+    path: matchers/js/angular_cli/matcher.yaml
+    sha256: 8135e73f43f9367dd929bd7705bc7ad87a7635015fe34ab33c298ad556b71490
+    description: An Angular compiler error - an NG code (NG8001 unknown element, NG8002 unknown binding, NG9 template type error) with the template file and line it points at.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
+  apt:
+    path: matchers/any/apt/matcher.yaml
+    sha256: 3b924f69de88c9e14ca074e3823e682a4b91a4eb9892eb99857b8c64eda2cb1b
+    description: apt failing - a package it cannot locate or install, a missing repository, or a mirror caught mid-sync (Hash Sum mismatch, unexpected size), where a retry may pass.
+    schema: 1
+    tags: [any, deps]
+    ecosystem: any
+  aws_cli:
+    path: matchers/iac/aws_cli/matcher.yaml
+    sha256: b71a5d4b6b375cef7c08758ba15ae60f984962735146a804824d1ee55e4e18a0
+    description: An AWS CLI call refused - An error occurred (AccessDenied) when calling the X operation, with AWS's reason after the colon - or no credentials at all. Permissions or credentials, not code.
+    schema: 1
+    tags: [iac, deploy]
+    ecosystem: iac
   bazel:
     path: matchers/any/bazel/matcher.yaml
     sha256: baffd71c161fd10cccf2595134aaf8e1b494b301dea2ca54a5f76c7318b7d971
@@ -8,9 +29,23 @@ matchers:
     tags: [any, build]
     ecosystem: any
     outputs: [build, test]
+  biome:
+    path: matchers/js/biome/matcher.yaml
+    sha256: 41eadc99c2d9d75d5e441956bc2663fb171555534c2a01b79d149199735958c2
+    description: Biome's file:line:col lint/group/rule, format or parse diagnostics with an error marker and the excerpt - from biome check, lint, format or ci. Warnings alone never fire.
+    schema: 1
+    tags: [js, lint, format]
+    ecosystem: js
+  black:
+    path: matchers/python/black/matcher.yaml
+    sha256: 6c20be322193adddd013d99d51c9bf8d50e026df1243dfe63310352e969669fe
+    description: black --check listing the files it would reformat. Formatting only - running black fixes it; no code is wrong.
+    schema: 1
+    tags: [python, lint, format]
+    ecosystem: python
   bun:
     path: matchers/js/bun/matcher.yaml
-    sha256: 9f5fde19d0d52ecc3c4ba2796d2b0d10623ddbd7c2aeba5e418693e958bfac75
+    sha256: 957cbf821670afa9fa261f3f532cfd91dbc017a7d112704eba4c0b829b125f5f
     description: Bun, the JavaScript runtime and toolkit - failing tests, install refusals, and scripts that exited non-zero.
     schema: 1
     tags: [js, test, deps]
@@ -18,7 +53,7 @@ matchers:
     outputs: [test, install, run]
   bundler:
     path: matchers/ruby/bundler/matcher.yaml
-    sha256: 318fd2ea6faf91c303f1cf62a2a1426dd2bb83a46289d41ea63c323a81fba5d1
+    sha256: 8bd866ea2d69f06b6b5e996fbd9b0b58180f46e024a7d4fbd425bcd1cc492953
     description: Bundler failing to resolve - a missing gem, or a version conflict it prints the tree for.
     schema: 1
     tags: [ruby, deps]
@@ -45,13 +80,27 @@ matchers:
     schema: 1
     tags: [c, build]
     ecosystem: c
+  command_not_found:
+    path: matchers/any/command_not_found/matcher.yaml
+    sha256: 6e4e54e84cbd9162d3d6ca72e9a4b807f669c5623ec6c5aa3593743062bc8529
+    description: The shell reporting a command it cannot find (exit code 127) - a tool missing from the image or not on PATH, or a script whose shebang names a missing interpreter.
+    schema: 1
+    tags: [any, infra]
+    ecosystem: any
   composer:
     path: matchers/php/composer/matcher.yaml
-    sha256: d1115f274b12c7e3ba51d8ed606fcd4d11f157cdaf4cfe9ca235a5eb208c3ee0
-    description: Composer's resolver refusing the requirements, with the explanation it prints underneath.
+    sha256: 3eba57e429c98efadad0e0ce4adab1c6fc82815cb66555ed1f28e920e8018b04
+    description: Composer refusing to install - requirements it cannot resolve, or a lock file that does not fit this platform - with the Problem list it prints underneath.
     schema: 1
     tags: [php, deps]
     ecosystem: php
+  coverage:
+    path: matchers/python/coverage/matcher.yaml
+    sha256: d335183ba6a569af85385a4b1e61aceb5096c7a9508ec37006a5e0fa51dcd0a1
+    description: 'coverage.py failing the job - Coverage failure: total of N is less than fail-under=M. No test failed; coverage fell below the bar.'
+    schema: 1
+    tags: [python, coverage]
+    ecosystem: python
   csc:
     path: matchers/dotnet/csc/matcher.yaml
     sha256: 508d2ea0e384f90618c1f18af1bb5899ad96dd233b59730b8e53f5b565963afd
@@ -66,6 +115,21 @@ matchers:
     schema: 1
     tags: [js, e2e]
     ecosystem: js
+  dbt:
+    path: matchers/python/dbt/matcher.yaml
+    sha256: b3d34d6cac9db069c746e1c02c8be2f8c05bd1cb5a5dfa37f016ed3737adc1ff
+    description: dbt, the SQL transformation tool - models that do not compile, and SQL the warehouse rejected.
+    schema: 1
+    tags: [python, build]
+    ecosystem: python
+    outputs: [compile, run]
+  disk_full:
+    path: matchers/any/disk_full/matcher.yaml
+    sha256: f49c1eb0cd6ba1309a51a4f6fb7667dead8de4c95df7e7e9a1452c05cefd1010
+    description: The runner out of disk - No space left on device / ENOSPC. The step that hit it is a victim, not the cause; free space or a bigger runner fixes it. Not the inotify watcher limit.
+    schema: 1
+    tags: [any, infra]
+    ecosystem: any
   docker_build:
     path: matchers/container/docker_build/matcher.yaml
     sha256: e5aa7404ff234ad169ef44b65260729bccf719055c9eeff7b1532cb0d6a2e910
@@ -73,10 +137,17 @@ matchers:
     schema: 1
     tags: [container, build]
     ecosystem: container
+  esbuild:
+    path: matchers/js/esbuild/matcher.yaml
+    sha256: 995ec86fae6f58214bd01529dda1f76efc8121c939ac833760f44f76f07e367f
+    description: esbuild's [ERROR] diagnostics - the message, then the file, line and source excerpt it points at. Printed under tsup, tsx and Vite's optimizer too; wrangler's own API errors are excluded.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
   eslint:
     path: matchers/js/eslint/matcher.yaml
-    sha256: 7553ad9076e72cc0f5dacf92da90a89b00f757c6f9b2529603e8ac80187eadbf
-    description: ESLint's `line:col error rule-name` entries and its `N problems` summary footer.
+    sha256: 8db7a5906b8def8cb18e74633ec3c3e08dd3916ea81802c75d5bd407df846546
+    description: ESLint's `line:col error rule-name` entries under each file it reports. Warnings alone never fire.
     schema: 1
     tags: [js, lint]
     ecosystem: js
@@ -87,6 +158,13 @@ matchers:
     schema: 1
     tags: [python, lint]
     ecosystem: python
+  gcc_clang:
+    path: matchers/c/gcc_clang/matcher.yaml
+    sha256: 555015c56c3c9a94fdbe6261c2dac4474c041d73f0fa36ed9acffe09cc8e3ea5
+    description: 'A C or C++ compile error from GCC or Clang - file.c:12:5: error: or fatal error: header.h: No such file, with the source excerpt. A missing header is usually a missing -dev package.'
+    schema: 1
+    tags: [c, build]
+    ecosystem: c
   generic_error:
     path: matchers/any/generic_error/matcher.yaml
     sha256: 39ff646ca081eb18b600880b25782c943e5d128185e9cd04bbc032eafb6b79e4
@@ -94,6 +172,20 @@ matchers:
     schema: 1
     tags: [any]
     ecosystem: any
+  git:
+    path: matchers/any/git/matcher.yaml
+    sha256: 5ce22dbe00476f197985815c029ee3bfa2a4adfb4de7778f4f81e422b4ff5478
+    description: 'git''s fatal: - credentials refused, a missing repository, ref or submodule, or a shallow-clone limit. The message after fatal: names the cause.'
+    schema: 1
+    tags: [any, infra]
+    ecosystem: any
+  go_build:
+    path: matchers/go/go_build/matcher.yaml
+    sha256: c3ccf31dc4d08f13accbee3a29a97787e362b1f390b0125e961b16c1690e4a15
+    description: 'A Go compile or vet error - file.go:12:3: undefined: name, under the # package header it belongs to. The code is wrong at that line.'
+    schema: 1
+    tags: [go, build]
+    ecosystem: go
   go_mod:
     path: matchers/go/go_mod/matcher.yaml
     sha256: 15d28363f652977a5a18e0f9f78e5f27516581c36b3800417088c9a6f59ffdcf
@@ -122,10 +214,40 @@ matchers:
     schema: 1
     tags: [go, test]
     ecosystem: go
+  golangci_lint:
+    path: matchers/go/golangci_lint/matcher.yaml
+    sha256: 975cb5d260d514999a601a2ad117f131171786c1333bf598b885d516e8a5454d
+    description: 'golangci-lint''s file.go:12:3: message (linter) entries - the linter in brackets says which check fired, and the source line and caret follow.'
+    schema: 1
+    tags: [go, lint]
+    ecosystem: go
   gradle:
     path: matchers/jvm/gradle/matcher.yaml
-    sha256: 43d1b99a594931ef5c8c761063deb84899312846629715f5a7798a82a17da64a
-    description: Gradle's `* What went wrong:` block, from the `FAILURE:` banner to the `* Try:` advice. A wrapper - it names the failed task; the compiler or test output above it is the cause.
+    sha256: 4d47b9f64be7dec36cbf76fc480932f9b09368cceca2891a0df67d42f1a6db2a
+    description: Gradle - the task that failed, and the failing tests it ran.
+    schema: 1
+    tags: [jvm, build, test]
+    ecosystem: jvm
+    outputs: [task, test]
+  helm:
+    path: matchers/container/helm/matcher.yaml
+    sha256: 8781ad9a0fdeb7246122d331a5072131cebdeb93dbf56b4dbd51d27db09f05bc
+    description: Helm, the Kubernetes package manager - releases that fail to install, upgrade or roll back.
+    schema: 1
+    tags: [container, deploy]
+    ecosystem: container
+    outputs: [release]
+  istanbul:
+    path: matchers/js/istanbul/matcher.yaml
+    sha256: 3c0293edd83a11dbb347acfc9d9024978c42c2300a8e3d4d705afe0093fdd90f
+    description: 'Coverage below the configured threshold - ERROR: Coverage for lines (79%) does not meet global threshold (80%). Printed by nyc, c8 and Vitest. No test failed; coverage did.'
+    schema: 1
+    tags: [js, coverage]
+    ecosystem: js
+  javac:
+    path: matchers/jvm/javac/matcher.yaml
+    sha256: 621407deb0264a3147a13660ec39dcb5be11539239c90a6f954f942c6ee2d8cc
+    description: 'A Java compile error from javac, standalone or under Gradle - File.java:12: error: with the source line, caret and symbol detail under it. The code does not compile.'
     schema: 1
     tags: [jvm, build]
     ecosystem: jvm
@@ -137,6 +259,20 @@ matchers:
     tags: [js, test]
     ecosystem: js
     outputs: [failures, coverage]
+  jvm_exception:
+    path: matchers/jvm/jvm_exception/matcher.yaml
+    sha256: 7f78420ee4655c4d97a4f71a444fea1b37779bd2f84000e42cf8b489277f6634
+    description: 'An uncaught JVM exception - Exception in thread and its stack, through every Caused by: in the chain. The last Caused by: is usually the root cause.'
+    schema: 1
+    tags: [jvm, runtime]
+    ecosystem: jvm
+  kotlinc:
+    path: matchers/jvm/kotlinc/matcher.yaml
+    sha256: 797a9488085f605471d9b74af6dfd0709b6b0f16430b59f31fb58b1f7b5d8342
+    description: 'A Kotlin compile error - e: file.kt:12:5 and the message, from the K2 compiler or K1''s (line, col) form. Covers Gradle Kotlin DSL scripts too. The code does not compile.'
+    schema: 1
+    tags: [jvm, build]
+    ecosystem: jvm
   ld:
     path: matchers/c/ld/matcher.yaml
     sha256: 4a4d6b4bf5a5a027cad368bb651a139128232c52323de3b8bb2586a7b1886b38
@@ -166,6 +302,13 @@ matchers:
     schema: 1
     tags: [ruby, test]
     ecosystem: ruby
+  mocha:
+    path: matchers/js/mocha/matcher.yaml
+    sha256: 6a084f9ecb8cd22afc6ecfbaa984fa55893244c5dfa4c63d50e6785bb2659f11
+    description: Mocha's N failing block - numbered entries, each naming the suite and test (or hook) with the assertion or error under it.
+    schema: 1
+    tags: [js, test]
+    ecosystem: js
   msbuild:
     path: matchers/dotnet/msbuild/matcher.yaml
     sha256: 9ca0ef95c8a7f0307e329fb1c883c9249f6049d086cd4c14a2cd88ff6d44f341
@@ -180,6 +323,13 @@ matchers:
     schema: 1
     tags: [python, lint, types]
     ecosystem: python
+  network_error:
+    path: matchers/any/network_error/matcher.yaml
+    sha256: 7ecba79656d604da39bce46226a7a2f734b7699c17eb0d47d8415ddd3897af98
+    description: A transient network failure - a host that did not resolve, a connection reset or timed out. Nothing in the code changed; a retry may pass.
+    schema: 1
+    tags: [any, infra]
+    ecosystem: any
   nextest:
     path: matchers/rust/nextest/matcher.yaml
     sha256: 5a8d3341be4d194f2041051fa0e10529cbc947021f8e0f397a5e19a1e3af252b
@@ -187,14 +337,29 @@ matchers:
     schema: 1
     tags: [rust, test]
     ecosystem: rust
+  nextjs:
+    path: matchers/js/nextjs/matcher.yaml
+    sha256: ea360dfebb0b3bc581fc21c68a908e58322f3256af6c9a93861c881d1fcd3a35
+    description: Next.js - next build failing to compile the app, or failing to prerender a page.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
+    outputs: [build, prerender]
   node:
     path: matchers/js/node/matcher.yaml
-    sha256: f34817e320b4291ccdbd43bcdbddb04f87b6cf0694f6c8a97f82cde439dcc025
-    description: Node.js itself - uncaught errors, and the process running out of heap.
+    sha256: cf052104e3ae34955bd647c2df8a753eee67d48192e96bab9706315f8ebad9b1
+    description: Node.js itself - uncaught errors, the process running out of heap, and failures from its built-in test runner.
     schema: 1
     tags: [js, runtime]
     ecosystem: js
-    outputs: [error, oom]
+    outputs: [error, oom, test]
+  node_gyp:
+    path: matchers/js/node_gyp/matcher.yaml
+    sha256: aa135028975e66a60368c23525da8e4877e7f5d4388214108c4dfb9ffebe4214
+    description: node-gyp failing to build a native addon - usually a Node version with no prebuilt binary, or a missing compiler or Python. The compiler error above gyp ERR! is the cause.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
   npm:
     path: matchers/js/npm/matcher.yaml
     sha256: ed893fa1a860cc2d3d27e8c54adc93655247ebe516bbeaa3a836ddff8f0e25e4
@@ -210,13 +375,27 @@ matchers:
     schema: 1
     tags: [dotnet, deps]
     ecosystem: dotnet
+  nx:
+    path: matchers/js/nx/matcher.yaml
+    sha256: 35d18ac92ea0ed62e76405d9641c08fabdb4560b25905a9a1c29f4e16b9fe71e
+    description: Nx reporting that a target failed, with the failed project:target list. A wrapper - the failed project's output above it is the cause.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
   oom:
     path: matchers/any/oom/matcher.yaml
-    sha256: e694ed19c602dae16597d8dbab459d11f9831d2e6d917a7307f3148a908e3b94
-    description: The job being killed - exit code 137, `Killed`, `Out of memory`. Nothing else in the log explains a SIGKILL.
+    sha256: cd36b64ee67aa923a4534af670b67fb1a1710b02e72383e0793f4088352bf069
+    description: The job or a process in it killed for memory - exit code 137, the shell's `Killed`, the kernel OOM killer, `OOMKilled`. Nothing else in the log explains a SIGKILL.
     schema: 1
     tags: [any, infra]
     ecosystem: any
+  oxlint:
+    path: matchers/js/oxlint/matcher.yaml
+    sha256: 12bc1fe4385b9a9491c2a0faeb21bca12e3f712d0624cbcea1d8c7fdcb0b57a0
+    description: 'oxlint''s x plugin(rule): message diagnostics, with the file excerpt under each. The rule in brackets says which check fired; warnings alone never fire.'
+    schema: 1
+    tags: [js, lint]
+    ecosystem: js
   php_fatal:
     path: matchers/php/php_fatal/matcher.yaml
     sha256: f33f571bcbd51bac516de59180884fbe8a8028a032c0c53c5a0dda156deb0a26
@@ -231,6 +410,14 @@ matchers:
     schema: 1
     tags: [php, test]
     ecosystem: php
+  pip:
+    path: matchers/python/pip/matcher.yaml
+    sha256: 09154df89ac2b2cd7ac97b454605e0eb1a383ab14e247972531571abd37306b9
+    description: pip, the Python package installer - requirements it cannot resolve, and packages it could not build from source.
+    schema: 1
+    tags: [python, deps]
+    ecosystem: python
+    outputs: [resolve, build]
   playwright:
     path: matchers/js/playwright/matcher.yaml
     sha256: 6808edbe0b18ee30eae04211462e855c8ab6a57003a46fced8c656c240b93245
@@ -247,6 +434,35 @@ matchers:
     tags: [js, node, deps]
     ecosystem: js
     outputs: [install, run]
+  poetry:
+    path: matchers/python/poetry/matcher.yaml
+    sha256: 1b1bedbb87449f695d024296cff91c499aa962bb7004af9efda9aa8a48c7b78f
+    description: Poetry, the Python dependency manager - requirements it cannot resolve, and a stale lock file.
+    schema: 1
+    tags: [python, deps]
+    ecosystem: python
+    outputs: [resolve, lock]
+  pre_commit:
+    path: matchers/any/pre_commit/matcher.yaml
+    sha256: c75f33c24aa895faff23b7a616ccda3ce49b90b185854266e5aca7bfee41c5ea
+    description: pre-commit's hook-name....Failed line, with the hook id, its exit code or the files it changed. A wrapper - the hook's own output under it is the cause.
+    schema: 1
+    tags: [any, lint]
+    ecosystem: any
+  prettier:
+    path: matchers/js/prettier/matcher.yaml
+    sha256: 3b7666fccda15ffea6761488a6b94ea38931a1e522b20eb74613a41da4bd43a2
+    description: prettier --check listing the files it would reformat. Formatting only - running prettier --write fixes it; no code is wrong.
+    schema: 1
+    tags: [js, lint, format]
+    ecosystem: js
+  prisma:
+    path: matchers/js/prisma/matcher.yaml
+    sha256: 0d994cdd538e39453e4056ecc3cd460aa6dbbb1d94a1059612edf2e84f7124ff
+    description: Prisma Migrate refusing - P3009 (a failed migration blocks new ones), P3018 (a migration failed to apply, with the database error) or schema drift. Not P1001, the database unreachable.
+    schema: 1
+    tags: [js, deps]
+    ecosystem: js
   pylint:
     path: matchers/python/pylint/matcher.yaml
     sha256: 4624985e3366cb0807ae67054ca7df8c8e5d35849d576b0ce7cf70017e1ffbf0
@@ -254,14 +470,21 @@ matchers:
     schema: 1
     tags: [python, lint]
     ecosystem: python
+  pyright:
+    path: matchers/python/pyright/matcher.yaml
+    sha256: 00c8a57817322864d75a2d461430b691eafaadd8b3098636f9c7d20daa17b607
+    description: 'A Pyright type error - file.py:12:5 - error: message (reportRule), from pyright or basedpyright. The rule in brackets says which check fired; warnings alone never fire.'
+    schema: 1
+    tags: [python, lint]
+    ecosystem: python
   pytest:
     path: matchers/python/pytest/matcher.yaml
-    sha256: b4311880bf6c0bd8a61964107950d45fb4fb14e77d7b1e962be4d4d7c7647cf4
-    description: pytest - failing tests, and test modules that could not even be collected.
+    sha256: b4511627042cefad0d8a2aa8595df91a2a5f55c1d57e20414c4b65b94028bb93
+    description: pytest - failing tests, modules that could not be collected, crashed xdist workers, and a coverage bar the run did not reach.
     schema: 1
     tags: [python, test]
     ecosystem: python
-    outputs: [failures, errors]
+    outputs: [failures, errors, coverage, workers]
   python_traceback:
     path: matchers/python/python_traceback/matcher.yaml
     sha256: f25da395cb2f4307e02da6040e5c330fe644db79e40b982b02c28d1b5750e309
@@ -269,6 +492,27 @@ matchers:
     schema: 1
     tags: [python, runtime]
     ecosystem: python
+  python_unittest:
+    path: matchers/python/python_unittest/matcher.yaml
+    sha256: 35b2c28db83b51be7ac2c6b05136e0e64613c79fe81fc4ad83070d2cb22339ce
+    description: 'unittest''s FAIL: / ERROR: blocks, from Python''s runner or Django''s test runner, through to FAILED (failures=N). ERROR means the test raised, or its module did not import.'
+    schema: 1
+    tags: [python, test]
+    ecosystem: python
+  registry_error:
+    path: matchers/container/registry_error/matcher.yaml
+    sha256: 7e293323af45b9924cf81362c82e09d1416f3a063266e1e70180b847ed2452b6
+    description: A container registry refusing a pull or push - denied, unauthorized, toomanyrequests (the pull rate limit), manifest unknown. Credentials, permissions or a missing tag, not the build.
+    schema: 1
+    tags: [container, infra]
+    ecosystem: container
+  rollup:
+    path: matchers/js/rollup/matcher.yaml
+    sha256: 3d0b4a8458bb4edf49cdb486aea7de4330575d11f8ec869dcc0b7525f6c878df
+    description: A standalone Rollup build failing - [!] RollupError, from Rollup or a plugin it names, with the file it was processing. Under Vite, vite.build catches it instead.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
   rspec:
     path: matchers/ruby/rspec/matcher.yaml
     sha256: 9bb52a05f7ff60cd5187d5b45fb28c7f22323dd85884b4c5ed581ee6aa4307f3
@@ -312,6 +556,13 @@ matchers:
     schema: 1
     tags: [rust, test]
     ecosystem: rust
+  sphinx:
+    path: matchers/python/sphinx/matcher.yaml
+    sha256: 1ba43713ea109cc21ebd390fa8fcea66de793241cb6b2f2fdfe983eb195e4c86
+    description: A Sphinx docs build failing on warnings under -W / --fail-on-warning - the WARNING lines name the file and line; a broken cross-reference or a missing toctree entry.
+    schema: 1
+    tags: [python, build, docs]
+    ecosystem: python
   terraform:
     path: matchers/iac/terraform/matcher.yaml
     sha256: 0301ef04047f520dc03e6c5b8b427f3616e7140f93435e019508f03e6bfe4643
@@ -319,12 +570,56 @@ matchers:
     schema: 1
     tags: [iac]
     ecosystem: iac
+  tox:
+    path: matchers/python/tox/matcher.yaml
+    sha256: ac55012e1ee37c7fb3647934b45127df41620b1f64e4e50e620794b928a352c0
+    description: 'tox naming the environments that failed (env: FAIL code N). A wrapper - that environment''s own test or lint output above it is the cause.'
+    schema: 1
+    tags: [python, test]
+    ecosystem: python
   tsc:
     path: matchers/js/tsc/matcher.yaml
     sha256: eb41384adec654d19faef908acf6a1898f59e3370d427c5a16a6157905e89491
     description: A TypeScript compile error (`error TS2345:`) with the source excerpt around it.
     schema: 1
     tags: [js, build]
+    ecosystem: js
+  turbo:
+    path: matchers/js/turbo/matcher.yaml
+    sha256: 2a5691af6d0e47cf71cfc9782021f9e28145fdfcba70de6d6b7351624aa5b7de
+    description: 'Turborepo reporting a failed task (pkg#task: command exited). A wrapper - that package''s own output, prefixed pkg:task:, is the cause.'
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
+  ty:
+    path: matchers/python/ty/matcher.yaml
+    sha256: b3cb74e9168b1b34cde38cb40cdd9416c97056b04a3097882b25e055983c550c
+    description: 'A ty type error - error[rule-name]: message, with the --> file.py:line:col excerpt under it. Astral''s type checker; it shares ruff''s renderer but names rules in kebab-case.'
+    schema: 1
+    tags: [python, lint]
+    ecosystem: python
+  uv:
+    path: matchers/python/uv/matcher.yaml
+    sha256: 9d3aca992a7fd544adfbcde4979662ecbad1b6252e6dd4041cd7bac5e9efbfc8
+    description: uv, the Python package and project manager - requirements it cannot resolve, a lockfile that is out of date, and packages it could not build.
+    schema: 1
+    tags: [python, deps]
+    ecosystem: python
+    outputs: [resolve, lock, build]
+  vite:
+    path: matchers/js/vite/matcher.yaml
+    sha256: 710e8163098691d4a3b3f8bc8df2a45ed93dfc60f9e059751b7b880dab8aaff0
+    description: Vite, the JavaScript build tool and dev server - production builds that fail.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
+    outputs: [build]
+  vitest:
+    path: matchers/js/vitest/matcher.yaml
+    sha256: 81b4eeeb8998dc9b41873b7d9cd9d5782240063beb953b9cb9ed14d481b0c465
+    description: A Vitest failure - the FAIL file > suite > test header names the test, and the diff below it shows expected against received. A test file that failed to load prints FAIL file [ file ].
+    schema: 1
+    tags: [js, test]
     ecosystem: js
   vstest:
     path: matchers/dotnet/vstest/matcher.yaml
@@ -333,6 +628,13 @@ matchers:
     schema: 1
     tags: [dotnet, test]
     ecosystem: dotnet
+  webpack:
+    path: matchers/js/webpack/matcher.yaml
+    sha256: 3d856f8c878f0caf47bdd61edbd6b50e44fadc87208ae55ad1d5c38707a5c0b3
+    description: webpack's ERROR in ./src/file entries - a module it could not resolve or a loader that failed, with the detail under it. Also printed by rspack.
+    schema: 1
+    tags: [js, build]
+    ecosystem: js
   yarn:
     path: matchers/js/yarn/matcher.yaml
     sha256: 3e304051acee651095a1355c4b76a33e174a1892ec221236a2c77eb2ad31d368
@@ -348,15 +650,15 @@ bundles:
     description: Every official matcher, one bundle per ecosystem.
   any:
     path: bundles/any.yaml
-    sha256: 9c991a26522f63d035ef54f666e8726c7ca31ff48ba7727137bf4d7518d06bd3
+    sha256: 7a85070db307457e8e2643fa702c4d45e01b360b754f7731bf012e6c35e403b1
     description: Every matcher in the any ecosystem.
   c:
     path: bundles/c.yaml
-    sha256: 5609e9fa3d321f97e647b2e148b84b9edd028304e5e3d8ce2340b9183b2fe450
+    sha256: e6cef2f7561cf3fb34a7902b6bf90645048fd6e0084614041caee315c875fd63
     description: Every matcher in the c ecosystem.
   container:
     path: bundles/container.yaml
-    sha256: 4fdf2be349624bf4ec255d9339ffaeaa9b1c86d259e17484de24e74ffd1c9362
+    sha256: 35b547c1929a2c0e166952647c50e0683c68e4779be261e74c7687a6670d5170
     description: Every matcher in the container ecosystem.
   dotnet:
     path: bundles/dotnet.yaml
@@ -364,19 +666,19 @@ bundles:
     description: Every matcher in the dotnet ecosystem.
   go:
     path: bundles/go.yaml
-    sha256: 17f1831da02e43c08ef9d8a2394827ca002b9350495008aebde5a1e3345dc651
+    sha256: a8494752bf9c1f0dc352741a55823c7279617b1fd20bbd753afcd485e06c3d95
     description: Every matcher in the go ecosystem.
   iac:
     path: bundles/iac.yaml
-    sha256: 1ae2b0ffc3018ddaec61380ba6e7f2de7f066c52f6a8ed9537cacf95eda4aa65
+    sha256: a4218224f6f7cf6661c5783d822e8d933c41b4336f8b46e2eb70da20cce9bef2
     description: Every matcher in the iac ecosystem.
   js:
     path: bundles/js.yaml
-    sha256: 03a581a7a36669f7813018cd8ef2966901e9df08dbf9a7fffca742b056534e04
+    sha256: b4251dcf85a6b5ce3e68364368c30f6b3e426d59b8aed1342e9e4456b79effdc
     description: Every matcher in the js ecosystem.
   jvm:
     path: bundles/jvm.yaml
-    sha256: 5fca612ce4786d2cc82550caf090b731c9216a395b806e9c983986649c7a2964
+    sha256: d2e2ea814e4a3422e77bde182ee31ea7716eec9f0424f9fbc3343f79de184770
     description: Every matcher in the jvm ecosystem.
   php:
     path: bundles/php.yaml
@@ -384,7 +686,7 @@ bundles:
     description: Every matcher in the php ecosystem.
   python:
     path: bundles/python.yaml
-    sha256: d36fa0ae0012f2a201ce468375e639e56bcc07d02ced75efd3b96dadade07108
+    sha256: 1c6d6cfe6ee81710bd379b7067f0751f11b07aba5dd2e83f79f00eb53560cfd6
     description: Every matcher in the python ecosystem.
   ruby:
     path: bundles/ruby.yaml

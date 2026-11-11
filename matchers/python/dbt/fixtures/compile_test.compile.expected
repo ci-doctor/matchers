@@ -1,0 +1,3 @@
+… [1 lines elided] …
+Compilation Error in test accepted_values_orders_status (models/marts/schema.yml)
+  Invalid arguments passed to test 'accepted_values': missing 'values'

@@ -1,0 +1,15 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx oxlint --type-aware
+  × typescript-eslint(no-explicit-any): Unexpected any. Specify a different type.
+    ╭─[src/api/client.ts:9:20]
+  9 │ export function parse(raw: any) {
+    ·                            ───
+    ╰────
+
+  ⚠ eslint(no-console): Unexpected console statement.
+    ╭─[src/api/client.ts:22:3]
+
+Found 1 warning and 1 error.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

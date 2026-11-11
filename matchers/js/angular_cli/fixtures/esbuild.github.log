@@ -1,0 +1,15 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run npx ng build
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Application bundle generation failed. [4.122 seconds]
+2026-07-24T20:04:05.0000000Z 
+2026-07-24T20:04:06.0000000Z ✘ [ERROR] NG8001: 'app-price' is not a known element:
+2026-07-24T20:04:07.0000000Z 1. If 'app-price' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+2026-07-24T20:04:08.0000000Z 2. If 'app-price' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message. [plugin angular-compiler]
+2026-07-24T20:04:09.0000000Z 
+2026-07-24T20:04:10.0000000Z     src/app/cart/cart.component.html:12:4:
+2026-07-24T20:04:11.0000000Z       12 │     <app-price [value]="total"></app-price>
+2026-07-24T20:04:12.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:13.0000000Z Post job cleanup.
+2026-07-24T20:04:14.0000000Z Cleaning up orphan processes

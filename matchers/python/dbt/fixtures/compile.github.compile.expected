@@ -1,0 +1,3 @@
+… [3 lines elided] …
+Compilation Error in model orders (models/marts/orders.sql)
+  Model 'model.shop.orders' (models/marts/orders.sql) depends on a node named 'stg_payments' which was not found

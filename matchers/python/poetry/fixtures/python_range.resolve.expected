@@ -1,0 +1,6 @@
+$ poetry lock
+Updating dependencies
+Resolving dependencies...
+The current project's supported Python range (>=3.9,<4.0) is not compatible with some of the required packages Python requirement:
+  - numpy requires Python >=3.10, so it will not be satisfied for Python >=3.9,<3.10
+Because ledger depends on numpy (2.1.0) which requires Python >=3.10, version solving failed.

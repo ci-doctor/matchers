@@ -1,0 +1,3 @@
+… [1 lines elided] …
+aws ecs update-service --cluster prod --service api --force-new-deployment
+An error occurred (ExpiredTokenException) when calling the UpdateService operation: The security token included in the request is expired

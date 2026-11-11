@@ -1,0 +1,3 @@
+$ uv sync --locked
+Resolved 48 packages in 12ms
+error: The lockfile at `uv.lock` needs to be updated, but `--locked` was provided. To update the lockfile, run `uv lock`.

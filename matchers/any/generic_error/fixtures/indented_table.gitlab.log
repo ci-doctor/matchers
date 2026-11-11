@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ ./scripts/lint-summary.sh
+Severity    Count
+    ERROR       0
+    WARN        3
+    INFO       12
+lint-summary: 3 warnings exceed the budget of 0
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

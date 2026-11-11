@@ -1,0 +1,8 @@
+$ npx turbo run test
+• Running test in 4 packages
+api:test: FAIL src/orders.test.ts
+api:test:   ● orders › rejects an empty cart
+api:test: Tests:       1 failed, 40 passed, 41 total
+api:test: ERROR: command finished with error: command (/builds/team/repo/apps/api) pnpm run test exited (1)
+ Tasks:    3 successful, 4 total
+… [1 lines elided] …

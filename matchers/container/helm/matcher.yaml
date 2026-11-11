@@ -1,0 +1,11 @@
+schema: 1
+id: helm
+description: Helm, the Kubernetes package manager - releases that fail to install, upgrade or roll back.
+tags: [container, deploy]
+outputs:
+  release:
+    description: >-
+      Helm failing a release - UPGRADE FAILED or INSTALLATION FAILED, from a rollout that never
+      became ready, a stuck pending release, or a name in use. The cluster, not the chart.
+    match: {regex: '^Error: (UPGRADE|INSTALLATION|ROLLBACK) FAILED: '}
+    window: {before: 2, after: 2}

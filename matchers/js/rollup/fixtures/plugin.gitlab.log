@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx rollup -c
+src/index.ts → dist/index.mjs, dist/index.cjs...
+[!] (plugin typescript) RollupError: [plugin typescript] src/cart.ts (12:5): @rollup/plugin-typescript TS2322: Type 'string' is not assignable to type 'number'.
+src/cart.ts:12:5
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

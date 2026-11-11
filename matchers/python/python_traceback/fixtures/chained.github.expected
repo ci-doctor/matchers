@@ -1,0 +1,12 @@
+shell: /usr/bin/bash -e {0}
+Traceback (most recent call last):
+  File "/app/ledger/db.py", line 41, in connect
+    return psycopg.connect(self.dsn)
+psycopg.OperationalError: connection refused
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/app/ledger/migrate.py", line 12, in <module>
+    db.connect()
+  File "/app/ledger/db.py", line 43, in connect
+    raise ConfigError(f"cannot reach {self.host}")
+ledger.errors.ConfigError: cannot reach db.internal
