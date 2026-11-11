@@ -58,6 +58,21 @@ matchers:
     schema: 1
     tags: [ruby, deps]
     ecosystem: ruby
+  cargo:
+    path: matchers/rust/cargo/matcher.yaml
+    sha256: 81fb42e7198db1e16db39572be62174bb2afb04edc4f684e6b436b4abf5f48fc
+    description: Cargo, Rust's package manager - dependencies it cannot resolve, a stale Cargo.lock, and build scripts that fail.
+    schema: 1
+    tags: [rust, deps]
+    ecosystem: rust
+    outputs: [resolve, lock, build_script]
+  clippy:
+    path: matchers/rust/clippy/matcher.yaml
+    sha256: ae96179351059d8a8e986973ebec3bde8c9e9bf4ef5f46bb9fc7c38ecddcbbbd
+    description: 'A Clippy lint denied as an error - error: message, the excerpt, and the clippy:: lint that fired (by -D warnings or a deny attribute). The code compiles; the lint is the failure.'
+    schema: 1
+    tags: [rust, lint]
+    ecosystem: rust
   cmake:
     path: matchers/c/cmake/matcher.yaml
     sha256: 4486f822f647d6f5d73fdd0d7565078a630658a7f7bca5a91c3f729ba3a71122
@@ -171,12 +186,26 @@ matchers:
     schema: 1
     tags: [go, build]
     ecosystem: go
+  go_mod:
+    path: matchers/go/go_mod/matcher.yaml
+    sha256: 15d28363f652977a5a18e0f9f78e5f27516581c36b3800417088c9a6f59ffdcf
+    description: The go command refusing on modules - go.mod needs tidying, a go.sum entry is missing or does not match (checksum mismatch), a version does not exist, or go.mod needs a newer Go.
+    schema: 1
+    tags: [go, deps]
+    ecosystem: go
   go_panic:
     path: matchers/go/go_panic/matcher.yaml
     sha256: 0c58ea2c55db83a36841ca01a5d59ef3fb01b6ab56f18c87204efcd38d3ea536
     description: A Go `panic:` or runtime `fatal error:` with the goroutine dump beneath it.
     schema: 1
     tags: [go, runtime]
+    ecosystem: go
+  go_race:
+    path: matchers/go/go_race/matcher.yaml
+    sha256: 68554ce6efb65f6228967a7043138e3049a078f45578aa23c2b1da3ba8d49b12
+    description: 'Go''s race detector - WARNING: DATA RACE and the two goroutine stacks that touched the same memory. The test that fails afterwards is a victim; the race is the cause.'
+    schema: 1
+    tags: [go, test]
     ecosystem: go
   go_test:
     path: matchers/go/go_test/matcher.yaml
@@ -301,6 +330,13 @@ matchers:
     schema: 1
     tags: [any, infra]
     ecosystem: any
+  nextest:
+    path: matchers/rust/nextest/matcher.yaml
+    sha256: 5a8d3341be4d194f2041051fa0e10529cbc947021f8e0f397a5e19a1e3af252b
+    description: cargo-nextest's FAIL, TIMEOUT or SIGSEGV [time] crate test lines, with the captured output under each. The Summary repeats them.
+    schema: 1
+    tags: [rust, test]
+    ecosystem: rust
   nextjs:
     path: matchers/js/nextjs/matcher.yaml
     sha256: ea360dfebb0b3bc581fc21c68a908e58322f3256af6c9a93861c881d1fcd3a35
@@ -630,7 +666,7 @@ bundles:
     description: Every matcher in the dotnet ecosystem.
   go:
     path: bundles/go.yaml
-    sha256: ca5f35fd522b2b8b33892828016a2fde5431d7b0d436d23e5b9254e3fed938a8
+    sha256: a8494752bf9c1f0dc352741a55823c7279617b1fd20bbd753afcd485e06c3d95
     description: Every matcher in the go ecosystem.
   iac:
     path: bundles/iac.yaml
@@ -658,5 +694,5 @@ bundles:
     description: Every matcher in the ruby ecosystem.
   rust:
     path: bundles/rust.yaml
-    sha256: 7c7afaf6053d8b9bc4aa24a8f269524f13f0e065a7c4d04476c788699cfa38d6
+    sha256: 3e5021c63e7f7e8125bc2218f19fafa7ad94a9140da43bb2cf21e76ab2cddbae
     description: Every matcher in the rust ecosystem.

@@ -1,0 +1,18 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run cargo build --locked
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z    Compiling openssl-sys v0.9.104
+2026-07-24T20:04:05.0000000Z error: failed to run custom build command for `openssl-sys v0.9.104`
+2026-07-24T20:04:06.0000000Z 
+2026-07-24T20:04:07.0000000Z Caused by:
+2026-07-24T20:04:08.0000000Z   process didn't exit successfully: `/home/runner/work/ledger/ledger/target/debug/build/openssl-sys-3f1c/build-script-main` (exit status: 101)
+2026-07-24T20:04:09.0000000Z   --- stdout
+2026-07-24T20:04:10.0000000Z   cargo:rerun-if-env-changed=OPENSSL_DIR
+2026-07-24T20:04:11.0000000Z   run pkg_config fail: Could not run `PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 pkg-config --libs --cflags openssl`
+2026-07-24T20:04:12.0000000Z   --- stderr
+2026-07-24T20:04:13.0000000Z   thread 'main' panicked at /cargo/registry/src/openssl-sys-0.9.104/build/find_normal.rs:190:5:
+2026-07-24T20:04:14.0000000Z   Could not find directory of OpenSSL installation, and this `-sys` crate cannot proceed without this knowledge.
+2026-07-24T20:04:15.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:16.0000000Z Post job cleanup.
+2026-07-24T20:04:17.0000000Z Cleaning up orphan processes

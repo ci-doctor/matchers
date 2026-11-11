@@ -1,0 +1,7 @@
+… [2 lines elided] …
+WARNING: DATA RACE
+Read at 0x00c000124080 by goroutine 12:
+  main.(*Index).add()
+      /builds/team/ledger/cmd/importer/index.go:58 +0x44
+==================
+… [2 lines elided] …
