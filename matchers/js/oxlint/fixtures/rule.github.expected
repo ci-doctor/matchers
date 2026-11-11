@@ -1,0 +1,8 @@
+… [1 lines elided] …
+  × eslint(no-unused-vars): Variable 'discount' is declared but never used.
+    ╭─[src/checkout/total.js:14:9]
+ 13 │ export function total(items) {
+ 14 │   const discount = 0.1
+    ·         ────────
+    ╰────
+… [3 lines elided] …

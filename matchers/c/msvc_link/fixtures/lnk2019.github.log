@@ -1,0 +1,10 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run cmake --build build --config Release
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z      Creating library C:\a\engine\engine\build\Release\engine.lib and object C:\a\engine\engine\build\Release\engine.exp
+2026-07-24T20:04:05.0000000Z render.obj : error LNK2019: unresolved external symbol "public: void __cdecl Pipeline::flush(void)" (?flush@Pipeline@@QEAAXXZ) referenced in function "public: void __cdecl Renderer::submit(class Frame const &)" (?submit@Renderer@@QEAAXAEBVFrame@@@Z) [C:\a\engine\engine\build\engine.vcxproj]
+2026-07-24T20:04:06.0000000Z C:\a\engine\engine\build\Release\engine.exe : fatal error LNK1120: 1 unresolved externals [C:\a\engine\engine\build\engine.vcxproj]
+2026-07-24T20:04:07.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:08.0000000Z Post job cleanup.
+2026-07-24T20:04:09.0000000Z Cleaning up orphan processes

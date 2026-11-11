@@ -1,0 +1,3 @@
+$ coverage report --precision=2
+TOTAL                     312     48  84.62%
+Coverage failure: total of 84.62 is less than fail-under=85.00

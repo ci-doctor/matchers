@@ -1,0 +1,14 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ golangci-lint run
+api/orders.go:17:6: func `legacyTotal` is unused (unused)
+func legacyTotal(o Order) int {
+     ^
+api/orders.go:61:3: S1009: should omit nil check; len() for nil slices is defined as zero (gosimple)
+		if o.Items != nil && len(o.Items) > 0 {
+		^
+2 issues:
+* gosimple: 1
+* unused: 1
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

@@ -1,0 +1,9 @@
+schema: 1
+id: jacoco
+role: gate
+description: >-
+  JaCoCo's coverage check failing - Rule violated for bundle x: lines covered ratio is 0.7,
+  but expected minimum is 0.8 - under Gradle or Maven. No test failed; coverage did.
+tags: [jvm, coverage]
+match: {regex: 'Rule violated for (bundle|class|package|sourcefile|method) \S+: \w+ covered ratio is [\d.]+, but expected minimum is [\d.]+'}
+window: {before: 1, after: 1}

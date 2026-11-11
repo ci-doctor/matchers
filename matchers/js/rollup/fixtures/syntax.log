@@ -1,0 +1,6 @@
+$ npx rollup -c
+src/main.js → build/bundle.js...
+[!] RollupError: Expression expected (Note that you need plugins to import files that are not JavaScript)
+src/styles.css (1:0)
+1: .cart { color: red }
+   ^

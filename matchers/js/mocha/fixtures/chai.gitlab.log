@@ -1,0 +1,19 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ npx mocha --timeout 2000
+  Checkout
+    1) rejects an empty cart
+    2) charges the card
+
+  40 passing (1s)
+  2 failing
+
+  1) Checkout
+       rejects an empty cart:
+     AssertionError: expected [Function] to throw 'EmptyCart'
+
+  2) Checkout
+       charges the card:
+     Error: Timeout of 2000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

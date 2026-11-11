@@ -1,0 +1,25 @@
+schema: 1
+id: sbt
+description: sbt, the Scala build tool - code that does not compile, and failing tests.
+tags: [jvm, build, test]
+outputs:
+  compile:
+    description: >-
+      A Scala compile error under sbt - [error] File.scala:12:22: message (Scala 2) or -- [E008]
+      Not Found Error: File.scala:12:22 (Scala 3), with the excerpt. The code does not compile.
+    variants:
+      scala2:
+        match: {regex: '^\[error\] \S+\.scala:\d+:\d+: '}
+      scala3:
+        match: {regex: '^\[error\] -- (\[E\d+\] )?[\w ]+Error: \S+\.scala:\d+:\d+'}
+    window: {after: 4}
+  test:
+    description: >-
+      A failing test under sbt - ScalaTest's name *** FAILED *** or MUnit's ==> X Suite.test,
+      with the assertion under it.
+    variants:
+      scalatest:
+        match: {regex: '\*\*\* FAILED \*\*\*$'}
+      munit:
+        match: {regex: '^==> X \S+\.'}
+    window: {after: 4}

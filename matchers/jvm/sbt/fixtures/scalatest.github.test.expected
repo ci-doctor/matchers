@@ -1,0 +1,7 @@
+… [3 lines elided] …
+[info] - sums the items *** FAILED ***
+[info]   2 did not equal 3 (CartSpec.scala:12)
+[info] Run completed in 412 milliseconds.
+[info] Tests: succeeded 11, failed 1, canceled 0, ignored 0, pending 0
+[error] Failed tests:
+… [1 lines elided] …

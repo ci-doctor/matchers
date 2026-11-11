@@ -1,0 +1,6 @@
+… [1 lines elided] …
+[ 12%] Building C object CMakeFiles/tls.dir/src/tls.c.o
+/src/tls.c:3:10: fatal error: openssl/ssl.h: No such file or directory
+    3 | #include <openssl/ssl.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.

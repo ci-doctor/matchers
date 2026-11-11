@@ -1,0 +1,4 @@
+… [3 lines elided] …
+  = note: rust-lld: error: undefined symbol: SSL_CTX_new
+          >>> referenced by ssl.rs:41 (src/ssl.rs:41)
+          >>>               ledger-3f1c.o:(ledger::ssl::Context::new)

@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ nox -s tests
+nox > Running session tests-3.12
+nox > pytest -q
+FAILED tests/test_api.py::test_round - assert 2 == 3
+nox > Command pytest -q failed with exit code 1
+nox > Session tests-3.12 failed.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

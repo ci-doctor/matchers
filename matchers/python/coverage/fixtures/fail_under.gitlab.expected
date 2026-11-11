@@ -1,0 +1,3 @@
+$ coverage report
+TOTAL                    1204    210    83%
+Coverage failure: total of 83 is less than fail-under=90

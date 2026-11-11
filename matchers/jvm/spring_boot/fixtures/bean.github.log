@@ -1,0 +1,21 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run java -jar build/libs/ledger.jar
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z 2026-11-11T10:04:11.412Z ERROR 1 --- [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2026-07-24T20:04:05.0000000Z 
+2026-07-24T20:04:06.0000000Z ***************************
+2026-07-24T20:04:07.0000000Z APPLICATION FAILED TO START
+2026-07-24T20:04:08.0000000Z ***************************
+2026-07-24T20:04:09.0000000Z 
+2026-07-24T20:04:10.0000000Z Description:
+2026-07-24T20:04:11.0000000Z 
+2026-07-24T20:04:12.0000000Z Parameter 0 of constructor in com.acme.ledger.OrderService required a bean of type 'com.acme.ledger.PaymentClient' that could not be found.
+2026-07-24T20:04:13.0000000Z 
+2026-07-24T20:04:14.0000000Z 
+2026-07-24T20:04:15.0000000Z Action:
+2026-07-24T20:04:16.0000000Z 
+2026-07-24T20:04:17.0000000Z Consider defining a bean of type 'com.acme.ledger.PaymentClient' in your configuration.
+2026-07-24T20:04:18.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:19.0000000Z Post job cleanup.
+2026-07-24T20:04:20.0000000Z Cleaning up orphan processes

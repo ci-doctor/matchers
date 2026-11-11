@@ -1,0 +1,8 @@
+schema: 1
+id: oxlint
+description: >-
+  oxlint's x plugin(rule): message diagnostics, with the file excerpt under each. The rule in
+  brackets says which check fired; warnings alone never fire.
+tags: [js, lint]
+match: {regex: '^\s*× [a-z][\w-]*\([\w/-]+\): '}
+window: {after: 5}

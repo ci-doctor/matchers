@@ -1,0 +1,19 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run ctest --output-on-failure
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z [ RUN      ] CartTest.SumsItems
+2026-07-24T20:04:05.0000000Z /home/runner/work/engine/engine/tests/cart_test.cc:12: Failure
+2026-07-24T20:04:06.0000000Z Expected equality of these values:
+2026-07-24T20:04:07.0000000Z   cart.total()
+2026-07-24T20:04:08.0000000Z     Which is: 2
+2026-07-24T20:04:09.0000000Z   3
+2026-07-24T20:04:10.0000000Z [  FAILED  ] CartTest.SumsItems (0 ms)
+2026-07-24T20:04:11.0000000Z [----------] 4 tests from CartTest (1 ms total)
+2026-07-24T20:04:12.0000000Z [==========] 12 tests from 3 test suites ran. (4 ms total)
+2026-07-24T20:04:13.0000000Z [  PASSED  ] 11 tests.
+2026-07-24T20:04:14.0000000Z [  FAILED  ] 1 test, listed below:
+2026-07-24T20:04:15.0000000Z [  FAILED  ] CartTest.SumsItems
+2026-07-24T20:04:16.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:17.0000000Z Post job cleanup.
+2026-07-24T20:04:18.0000000Z Cleaning up orphan processes

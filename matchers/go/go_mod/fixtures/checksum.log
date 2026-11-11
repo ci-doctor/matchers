@@ -1,0 +1,8 @@
+$ go mod download
+go: downloading github.com/shopspring/decimal v1.4.0
+verifying github.com/shopspring/decimal@v1.4.0: checksum mismatch
+	downloaded: h1:Kq0ZKJ1uWdu7zHkLbiA3sKDyfZu9YpgtXyIZiFUVJAQ=
+	go.sum:     h1:bpd8dhD+oG2N2YSHVR6Rw+9uTCRL0X4QqPu4MCnlA+A=
+
+SECURITY ERROR
+This download does NOT match an earlier download recorded in go.sum.

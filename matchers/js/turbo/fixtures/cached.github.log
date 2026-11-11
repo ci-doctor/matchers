@@ -1,0 +1,11 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run npx turbo run build && ./deploy.sh
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z  Tasks:    4 successful, 4 total
+2026-07-24T20:04:05.0000000Z Cached:    4 cached, 4 total
+2026-07-24T20:04:06.0000000Z   Time:    412ms >>> FULL TURBO
+2026-07-24T20:04:07.0000000Z Error: Process completed with exit code 1 in the deploy step
+2026-07-24T20:04:08.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:09.0000000Z Post job cleanup.
+2026-07-24T20:04:10.0000000Z Cleaning up orphan processes

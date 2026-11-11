@@ -1,0 +1,12 @@
+schema: 1
+id: kotlinc
+description: >-
+  A Kotlin compile error - e: file.kt:12:5 and the message, from the K2 compiler or K1's
+  (line, col) form. Covers Gradle Kotlin DSL scripts too. The code does not compile.
+tags: [jvm, build]
+variants:
+  k2:
+    match: {regex: '^e: (file://)?\S+\.kts?:\d+:\d+:? '}
+  k1:
+    match: {regex: '^e: \S+\.kts?: \(\d+, \d+\): '}
+window: {after: 1}

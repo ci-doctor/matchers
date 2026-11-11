@@ -1,0 +1,9 @@
+shell: /usr/bin/bash -e {0}
+importing 3 shards
+fatal error: concurrent map writes
+goroutine 42 [running]:
+main.(*Index).add(...)
+	/home/runner/work/ledger/ledger/cmd/importer/index.go:58
+main.worker(0xc0000a4000, 0x2)
+	/home/runner/work/ledger/ledger/cmd/importer/main.go:91 +0x1a5
+exit status 2

@@ -1,0 +1,10 @@
+… [5 lines elided] …
+Failures:
+  1) Cart#total sums the items
+     Failure/Error: expect(cart.total).to eq(3)
+     # ./spec/cart_spec.rb:12:in 'block (2 levels) in <top (required)>'
+  2) Checkout#submit raises on an empty cart
+     Failure/Error: expect { checkout.submit }.to raise_error(EmptyCart)
+       expected EmptyCart but nothing was raised
+6 examples, 2 failures, 1 pending
+… [3 lines elided] …

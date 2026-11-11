@@ -1,0 +1,18 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run ./gradlew assembleDebug
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z > Task :app:processDebugMainManifest FAILED
+2026-07-24T20:04:05.0000000Z /home/runner/work/app/app/app/src/main/AndroidManifest.xml:7:9-36 Error:
+2026-07-24T20:04:06.0000000Z 	Attribute application@allowBackup value=(false) from AndroidManifest.xml:7:9-36
+2026-07-24T20:04:07.0000000Z 	is also present at [com.acme:sdk:1.2.0] AndroidManifest.xml:12:9-35 value=(true).
+2026-07-24T20:04:08.0000000Z 	Suggestion: add 'tools:replace="android:allowBackup"' to <application> element at AndroidManifest.xml:5:5-20:19 to override.
+2026-07-24T20:04:09.0000000Z 
+2026-07-24T20:04:10.0000000Z FAILURE: Build failed with an exception.
+2026-07-24T20:04:11.0000000Z 
+2026-07-24T20:04:12.0000000Z * What went wrong:
+2026-07-24T20:04:13.0000000Z Execution failed for task ':app:processDebugMainManifest'.
+2026-07-24T20:04:14.0000000Z > Manifest merger failed with multiple errors, see logs
+2026-07-24T20:04:15.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:16.0000000Z Post job cleanup.
+2026-07-24T20:04:17.0000000Z Cleaning up orphan processes

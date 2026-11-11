@@ -1,0 +1,14 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ uv sync --locked
+Resolved 41 packages in 9ms
+  × Failed to build `psycopg2==2.9.10`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `setuptools.build_meta.build_wheel` failed (exit status: 1)
+
+      [stderr]
+      Error: pg_config executable not found.
+
+      hint: This usually indicates a problem with the package or the build environment.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

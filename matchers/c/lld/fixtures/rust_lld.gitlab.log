@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ cargo build --release
+error: linking with `cc` failed: exit status: 1
+  |
+  = note: rust-lld: error: undefined symbol: SSL_CTX_new
+          >>> referenced by ssl.rs:41 (src/ssl.rs:41)
+          >>>               ledger-3f1c.o:(ledger::ssl::Context::new)
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

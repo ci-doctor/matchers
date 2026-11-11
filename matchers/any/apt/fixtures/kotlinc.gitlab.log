@@ -1,0 +1,7 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ ./gradlew assembleDebug
+> Task :app:compileKotlin FAILED
+e: file:///home/runner/work/app/app/src/main/kotlin/Cart.kt:12:5 Unresolved reference 'sum'.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

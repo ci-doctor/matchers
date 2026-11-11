@@ -1,0 +1,9 @@
+… [2 lines elided] …
+/home/runner/work/app/app/app/src/main/AndroidManifest.xml:7:9-36 Error:
+	Attribute application@allowBackup value=(false) from AndroidManifest.xml:7:9-36
+	is also present at [com.acme:sdk:1.2.0] AndroidManifest.xml:12:9-35 value=(true).
+	Suggestion: add 'tools:replace="android:allowBackup"' to <application> element at AndroidManifest.xml:5:5-20:19 to override.
+FAILURE: Build failed with an exception.
+* What went wrong:
+Execution failed for task ':app:processDebugMainManifest'.
+… [1 lines elided] …

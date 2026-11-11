@@ -1,0 +1,6 @@
+… [2 lines elided] …
+    1) submits the order
+  1) Checkout
+       submits the order:
+     AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-cy=submit]`, but never found it.
+      at Context.eval (webpack:///./cypress/e2e/checkout.cy.ts:18:8)

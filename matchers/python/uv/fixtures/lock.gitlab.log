@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ uv sync --locked --all-extras
+Using CPython 3.12.7
+Resolved 48 packages in 12ms
+error: The lockfile at `uv.lock` needs to be updated, but `--locked` was provided. To update the lockfile, run `uv lock`.
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

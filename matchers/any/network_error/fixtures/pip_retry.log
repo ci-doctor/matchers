@@ -1,0 +1,4 @@
+$ pip install requests==2.32.3
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f3a>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/requests/
+ERROR: Could not find a version that satisfies the requirement requests==2.32.3 (from versions: none)
+ERROR: No matching distribution found for requests==2.32.3

@@ -1,0 +1,3 @@
+… [2 lines elided] …
+ERROR: /builds/team/app/app/build/intermediates/dex/release/classes.dex: D8: Cannot fit requested classes in a single dex file (# methods: 70211 > 65536)
+com.android.builder.dexing.DexArchiveMergerException: Error while merging dex archives:

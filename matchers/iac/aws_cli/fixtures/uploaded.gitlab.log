@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ aws s3 sync dist/ s3://acme-web-prod/ && ./invalidate.sh
+upload: dist/app.js to s3://acme-web-prod/app.js
+upload: dist/index.html to s3://acme-web-prod/index.html
+Error: CloudFront invalidation is still in progress after 10 minutes
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

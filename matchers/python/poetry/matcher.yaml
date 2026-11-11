@@ -1,0 +1,24 @@
+schema: 1
+id: poetry
+description: Poetry, the Python dependency manager - requirements it cannot resolve, and a stale lock file.
+tags: [python, deps]
+outputs:
+  resolve:
+    description: >-
+      Poetry's solver refusing - the Because ... chain ending in version solving failed, or a
+      project Python range some package does not support. A pin or the Python range has to move.
+    variants:
+      conflict:
+        match:
+          all:
+            - regex: 'version solving failed\.$'
+            - preceded_by: {regex: '^Updating dependencies$|SolverProblemError', within: 60}
+        window: {before: 8}
+      python:
+        match: {regex: "^The current project's supported Python range .+ is not compatible with some of the required packages"}
+        window: {after: 4}
+  lock:
+    description: >-
+      Poetry refusing a stale lock - pyproject.toml changed significantly since poetry.lock was
+      last generated. Running poetry lock and committing poetry.lock fixes it.
+    match: {regex: 'pyproject\.toml changed significantly since poetry\.lock was last generated'}

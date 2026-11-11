@@ -1,0 +1,12 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ docker buildx build -t app:ci .
+#9 [build 5/6] COPY dist/ /srv/app/
+#9 ERROR: failed to calculate checksum of ref 1x9q: "/dist": not found
+------
+ > [build 5/6] COPY dist/ /srv/app/:
+------
+Dockerfile:14
+ERROR: failed to build: failed to solve: failed to compute cache key: failed to calculate checksum of ref 1x9q: "/dist": not found
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

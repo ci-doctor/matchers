@@ -1,0 +1,7 @@
+$ npx nx test api
+> nx run api:test
+FAIL src/orders.test.ts
+Tests:       1 failed, 40 passed, 41 total
+ NX   Running target test for project api failed
+   Failed tasks:
+   - api:test

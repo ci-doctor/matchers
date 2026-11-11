@@ -1,0 +1,6 @@
+… [1 lines elided] …
+error: failed to run custom build command for `ledger-proto v0.1.0 (/builds/team/ledger/proto)`
+Caused by:
+  process didn't exit successfully: `/builds/team/ledger/target/release/build/ledger-proto-9a/build-script-build` (exit status: 1)
+  --- stderr
+  Error: Custom { kind: NotFound, error: "Could not find `protoc`. If `protoc` is installed, try setting the `PROTOC` environment variable." }

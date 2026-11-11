@@ -1,0 +1,9 @@
+… [1 lines elided] …
+clang -O2 -Wall -Werror -c src/parse.c -o build/parse.o
+src/parse.c:41:9: error: use of undeclared identifier 'buf_len'
+   41 |     if (buf_len > MAX) {
+      |         ^
+src/parse.c:12:7: error: unused variable 'n' [-Werror,-Wunused-variable]
+   12 |   int n = 0;
+      |       ^
+2 errors generated.

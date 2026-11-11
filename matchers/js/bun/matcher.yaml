@@ -10,7 +10,10 @@ outputs:
     window: {after: 7}
     variants:
       symbol:
-        match: {regex: '^\s*✗ '}
+        match:
+          all:
+            - regex: '^\s*✗ '
+            - followed_by: {regex: '^\s*\d+ fail$', within: 300}
       text:
         match: {regex: '^\(fail\) '}
   install:

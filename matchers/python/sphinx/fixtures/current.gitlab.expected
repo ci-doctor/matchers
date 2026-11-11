@@ -1,0 +1,5 @@
+$ sphinx-build --fail-on-warning docs docs/_build/html
+Running Sphinx v8.1.3
+/builds/team/ledger/docs/index.rst:4: WARNING: toctree contains reference to nonexisting document 'changelog' [toc.not_readable]
+/builds/team/ledger/docs/api.rst:30: WARNING: undefined label: 'config' [ref.ref]
+build finished with problems, 2 warnings (with warnings treated as errors).

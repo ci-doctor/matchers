@@ -1,0 +1,8 @@
+schema: 1
+id: angular_cli
+description: >-
+  An Angular compiler error - an NG code (NG8001 unknown element, NG8002 unknown binding, NG9
+  template type error) with the template file and line it points at.
+tags: [js, build]
+match: {regex: '\bNG\d{1,4}: '}
+window: {after: 6}

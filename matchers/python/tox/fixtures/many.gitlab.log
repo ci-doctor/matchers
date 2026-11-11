@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ tox
+  lint: OK (4.10 seconds)
+  py311: FAIL code 1 (12.30=setup[3.10]+cmd[9.20] seconds)
+  py312: FAIL code 1 (11.80=setup[2.90]+cmd[8.90] seconds)
+  type: OK (7.41 seconds)
+  evaluation failed :( (36.02 seconds)
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

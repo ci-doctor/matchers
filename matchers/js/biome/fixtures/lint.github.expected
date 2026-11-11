@@ -1,0 +1,8 @@
+… [1 lines elided] …
+src/cart.ts:14:9 lint/correctness/noUnusedVariables  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ✖ This variable is unused.
+    13 │ export function total(items) {
+  > 14 │   const discount = 0.1
+       │         ^^^^^^^^
+Checked 41 files in 12ms. No fixes applied.
+Found 1 error.

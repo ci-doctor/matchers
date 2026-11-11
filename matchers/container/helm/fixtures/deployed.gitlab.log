@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ helm upgrade --install api ./chart && ./smoke.sh
+Release "api" has been upgraded. Happy Helming!
+NAME: api
+STATUS: deployed
+REVISION: 42
+Error: smoke test /health returned 503
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

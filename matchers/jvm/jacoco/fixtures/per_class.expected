@@ -1,0 +1,3 @@
+$ ./gradlew jacocoTestCoverageVerification
+[ant:jacocoReport] Rule violated for class com.acme.ledger.Export: branches covered ratio is 0.42, but expected minimum is 0.60
+[ant:jacocoReport] Rule violated for class com.acme.ledger.Import: branches covered ratio is 0.55, but expected minimum is 0.60

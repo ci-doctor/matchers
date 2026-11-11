@@ -1,0 +1,11 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ cargo nextest run --profile ci
+    Starting 41 tests across 4 binaries (2 skipped)
+     TIMEOUT [  60.002s] ledger-db db::slow_query
+------------
+     Summary [  61.120s] 41 tests run: 40 passed, 1 timed out, 2 skipped
+     TIMEOUT [  60.002s] ledger-db db::slow_query
+error: test run failed
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

@@ -1,0 +1,6 @@
+… [10 lines elided] …
+src/ledger/export.py       57     22    61%   30-61
+-----------------------------------------------------
+TOTAL                     312     58    81%
+FAIL Required test coverage of 90% not reached. Total coverage: 81.41%
+… [1 lines elided] …
