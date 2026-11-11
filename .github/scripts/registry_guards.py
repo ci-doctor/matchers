@@ -5,7 +5,8 @@
 
 - A name users put in their `matchers.include` must not vanish, or their setup
   exits 1 on the next run. Removal is allowed only once the base already carries
-  the `DEPRECATED:` description (CONTRIBUTING, "Names are permanent").
+  the `DEPRECATED:` description (CONTRIBUTING, "Names are permanent"). The same goes
+  for an output id (`ruff.format`), which users name in `matchers.exclude`.
 - `verify-exempt.txt` only shrinks. Listing a new matcher there would let it skip
   the 3 positive + 2 negative fixture bar.
 
@@ -33,6 +34,19 @@ def removed_names(base_index: str, head_index: str) -> list[str]:
             if name not in kept and not str(entry.get("description", "")).startswith("DEPRECATED:"):
                 out.append(f"{kind[:-1]} {name!r}")
     return out
+
+
+def removed_outputs(base_index: str, head_index: str) -> list[str]:
+    """Output ids a kept, undeprecated matcher dropped since the base."""
+    base = (yaml.safe_load(base_index) or {}).get("matchers") or {}
+    head = (yaml.safe_load(head_index) or {}).get("matchers") or {}
+    return [
+        f"output '{name}.{out}'"
+        for name, entry in base.items()
+        if name in head and not str(entry.get("description", "")).startswith("DEPRECATED:")
+        for out in entry.get("outputs") or []
+        if out not in (head[name].get("outputs") or [])
+    ]
 
 
 def added_exemptions(base_exempt: str, head_exempt: str) -> list[str]:
@@ -66,7 +80,7 @@ def main(base_ref: str) -> int:
         errors += [
             f"{name} was removed. Names are permanent: deprecate it first "
             '(description: "DEPRECATED: use X") and remove it in a later PR.'
-            for name in removed_names(base_index, _read(INDEX))
+            for name in removed_names(base_index, _read(INDEX)) + removed_outputs(base_index, _read(INDEX))
         ]
     # The bootstrap PR creates the file, so there is nothing to compare against yet.
     if (base_exempt := _at(base_ref, EXEMPT)) is not None:

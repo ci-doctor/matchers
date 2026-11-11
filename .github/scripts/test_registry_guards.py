@@ -1,4 +1,4 @@
-from registry_guards import added_exemptions, main, removed_names
+from registry_guards import added_exemptions, main, removed_names, removed_outputs
 
 BASE = """
 schema: 1
@@ -28,3 +28,10 @@ def test_exemptions_only_shrink():
 def test_a_bad_base_ref_fails_closed(capsys):
     assert main("origin/does-not-exist") == 1
     assert "is not a commit" in capsys.readouterr().out
+
+
+def test_a_removed_output_is_reported():
+    """Users name outputs in `matchers.exclude`, so they are permanent too."""
+    base = "matchers:\n  ruff: {description: d, outputs: [check, format]}\n"
+    assert removed_outputs(base, "matchers:\n  ruff: {description: d, outputs: [check]}\n") == ["output 'ruff.format'"]
+    assert removed_outputs(base, base) == []

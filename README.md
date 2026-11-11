@@ -6,7 +6,7 @@ pytest `FAILURES` block, the `tsc` error, the Go panic. This repo holds them, ea
 proven against real job logs, and publishes them at
 **[matchers.cidoc.dev](https://matchers.cidoc.dev)**.
 
-Browse every matcher and try one against your own log in the [catalogue and playground](https://matchers.cidoc.dev).
+Browse every matcher, its outputs and the fixtures that prove it in the [catalogue](https://matchers.cidoc.dev). Try one on your own log with `ci-doctor matchers examine official/<name> job.log`.
 
 ## Use it
 
@@ -33,10 +33,10 @@ For an air-gapped setup, `git clone` this repo and register the path instead.
 |---|---|
 | `matchers/<ecosystem>/<id>/matcher.yaml` | one matcher |
 | `matchers/<ecosystem>/<id>/fixtures/` | the logs that prove it, each with the exact lines it must extract |
-| `bundles/<id>.yaml` | a named set of matchers, e.g. `python` |
+| `bundles/<id>.yaml` | a named set of matchers: one generated per ecosystem folder, plus curated ones like `all` |
 | `index.yaml` | generated; what ci-doctor reads first |
 
 ## Contribute
 
 Adding or fixing a matcher: [CONTRIBUTING.md](CONTRIBUTING.md).
-Hosting your own registry (disk, git, a web server, S3): [REGISTRY.md](REGISTRY.md).
+Hosting your own registry: [docs.cidoc.dev/reference/registry](https://docs.cidoc.dev/reference/registry/).

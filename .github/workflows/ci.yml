@@ -27,8 +27,9 @@ jobs:
       - run: echo "CI_DOCTOR=git+https://github.com/ci-doctor/ci-doctor@$(gh release view --repo ci-doctor/ci-doctor --json tagName -q .tagName)" >> "$GITHUB_ENV"
         env:
           GH_TOKEN: ${{ github.token }}
-      # Golden fixtures, fixture counts, and every §1b rule on every file.
-      - run: uvx --from "$CI_DOCTOR" ci-doctor matchers verify .
+      # The official bar: 3 positive and 2 negative fixtures per output, and an exemption list
+      # that only shrinks. Every other check verify runs is correctness, not policy.
+      - run: uvx --from "$CI_DOCTOR" ci-doctor matchers verify . --min-positive 3 --min-negative 2 --exempt verify-exempt.txt
       - run: uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check
 
   # Rules that need the base branch, which `verify` cannot see.
@@ -46,6 +47,15 @@ jobs:
           BASE_REF: ${{ github.base_ref }}   # via env, never interpolated into the script
         run: uv run --no-project --with pyyaml python .github/scripts/registry_guards.py "origin/$BASE_REF"
 
+  # Fixtures are real job logs; a token pasted in with one must not ship.
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - run: docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.24.3 dir /repo/matchers --redact --no-banner
+
   actions:
     name: workflow audit
     runs-on: ubuntu-latest
@@ -57,7 +67,7 @@ jobs:
       - run: uvx zizmor --config .github/zizmor.yml .github/workflows
 
   site:
-    name: site build + parity
+    name: site build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -72,13 +82,10 @@ jobs:
         working-directory: site
       - run: npm run build
         working-directory: site
-      # The playground engine must select exactly what ci-doctor's `.expected` files say.
-      - run: npm test
-        working-directory: site
 
   all-green:
     if: always()
-    needs: [verify, guards, actions, site]
+    needs: [verify, guards, secrets, actions, site]
     runs-on: ubuntu-latest
     steps:
       - name: Every job succeeded
