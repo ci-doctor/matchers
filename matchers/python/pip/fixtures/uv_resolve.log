@@ -1,0 +1,7 @@
+$ uv sync --locked
+Using CPython 3.12.7
+  × No solution found when resolving dependencies:
+  ╰─▶ Because fastapi==0.115.0 depends on starlette>=0.37.2,<0.39.0 and your project depends on
+      starlette==0.41.2, we can conclude that your project's requirements are unsatisfiable.
+
+      hint: Pre-releases are available for `starlette` in the requested range

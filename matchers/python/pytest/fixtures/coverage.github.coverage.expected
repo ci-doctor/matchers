@@ -1,0 +1,6 @@
+… [7 lines elided] …
+src/ledger/report.py       64     31    52%
+-------------------------------------------
+TOTAL                     193     51    74%
+FAIL Required test coverage of 85% not reached. Total coverage: 73.58%
+… [1 lines elided] …

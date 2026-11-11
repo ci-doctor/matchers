@@ -1,0 +1,21 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run pip install -r requirements.txt
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Collecting fastapi==0.115.0
+2026-07-24T20:04:05.0000000Z Collecting starlette<0.39.0,>=0.37.2 (from fastapi==0.115.0)
+2026-07-24T20:04:06.0000000Z INFO: pip is looking at multiple versions of fastapi to determine which version is compatible with other requirements.
+2026-07-24T20:04:07.0000000Z ERROR: Cannot install -r requirements.txt (line 3) and starlette==0.41.2 because these package versions have conflicting dependencies.
+2026-07-24T20:04:08.0000000Z 
+2026-07-24T20:04:09.0000000Z The conflict is caused by:
+2026-07-24T20:04:10.0000000Z     The user requested starlette==0.41.2
+2026-07-24T20:04:11.0000000Z     fastapi 0.115.0 depends on starlette<0.39.0 and >=0.37.2
+2026-07-24T20:04:12.0000000Z 
+2026-07-24T20:04:13.0000000Z To fix this you could try to:
+2026-07-24T20:04:14.0000000Z 1. loosen the range of package versions you've specified
+2026-07-24T20:04:15.0000000Z 2. remove package versions to allow pip to attempt to solve the dependency conflict
+2026-07-24T20:04:16.0000000Z 
+2026-07-24T20:04:17.0000000Z ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts
+2026-07-24T20:04:18.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:19.0000000Z Post job cleanup.
+2026-07-24T20:04:20.0000000Z Cleaning up orphan processes

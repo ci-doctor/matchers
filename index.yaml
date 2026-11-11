@@ -195,6 +195,14 @@ matchers:
     schema: 1
     tags: [php, test]
     ecosystem: php
+  pip:
+    path: matchers/python/pip/matcher.yaml
+    sha256: 09154df89ac2b2cd7ac97b454605e0eb1a383ab14e247972531571abd37306b9
+    description: pip, the Python package installer - requirements it cannot resolve, and packages it could not build from source.
+    schema: 1
+    tags: [python, deps]
+    ecosystem: python
+    outputs: [resolve, build]
   playwright:
     path: matchers/js/playwright/matcher.yaml
     sha256: 6808edbe0b18ee30eae04211462e855c8ab6a57003a46fced8c656c240b93245
@@ -220,12 +228,12 @@ matchers:
     ecosystem: python
   pytest:
     path: matchers/python/pytest/matcher.yaml
-    sha256: b4311880bf6c0bd8a61964107950d45fb4fb14e77d7b1e962be4d4d7c7647cf4
-    description: pytest - failing tests, and test modules that could not even be collected.
+    sha256: 238605b06b4fb401940344d33660f84551f6b08307fa4342f0eecfea7eecd38f
+    description: pytest - failing tests, test modules that could not even be collected, and a coverage bar the run did not reach.
     schema: 1
     tags: [python, test]
     ecosystem: python
-    outputs: [failures, errors]
+    outputs: [failures, errors, coverage]
   python_traceback:
     path: matchers/python/python_traceback/matcher.yaml
     sha256: f25da395cb2f4307e02da6040e5c330fe644db79e40b982b02c28d1b5750e309
@@ -290,6 +298,14 @@ matchers:
     schema: 1
     tags: [js, build]
     ecosystem: js
+  uv:
+    path: matchers/python/uv/matcher.yaml
+    sha256: caa8d2aa2076b1172197ff8811a266e04c1346d082651ce110bbabcf99998986
+    description: uv, the Python package and project manager - requirements it cannot resolve, and a lockfile that is out of date.
+    schema: 1
+    tags: [python, deps]
+    ecosystem: python
+    outputs: [resolve, lock]
   vstest:
     path: matchers/dotnet/vstest/matcher.yaml
     sha256: ee435f2416c702c4a9fd175aaa68dad3f16a8d43db97834f2a558e38b9f1450a
@@ -348,7 +364,7 @@ bundles:
     description: Every matcher in the php ecosystem.
   python:
     path: bundles/python.yaml
-    sha256: d36fa0ae0012f2a201ce468375e639e56bcc07d02ced75efd3b96dadade07108
+    sha256: aa462326f4121c2c67a15a81d4bed336409b95565828a728f106edf9f6034381
     description: Every matcher in the python ecosystem.
   ruby:
     path: bundles/ruby.yaml
