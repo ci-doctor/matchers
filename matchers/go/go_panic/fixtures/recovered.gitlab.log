@@ -1,0 +1,8 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ go test ./server
+time=2026-11-02T10:04:11Z level=error msg="recovered from panic: nil map" path=/v1/orders
+--- PASS: TestRecoverMiddleware (0.01s)
+ok  	github.com/acme/ledger/server	0.042s
+[0Ksection_end:1735689609:step_script[0K
+Job succeeded

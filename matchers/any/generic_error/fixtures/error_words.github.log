@@ -1,0 +1,12 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run ./scripts/check-config.sh
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z Loaded 14 settings
+2026-07-24T20:04:05.0000000Z   ERROR_LEVEL=3
+2026-07-24T20:04:06.0000000Z   LOG_ERRORS=true
+2026-07-24T20:04:07.0000000Z Errors: 0, warnings: 2
+2026-07-24T20:04:08.0000000Z config: invalid value for 'timeout': expected seconds, got '30m'
+2026-07-24T20:04:09.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:10.0000000Z Post job cleanup.
+2026-07-24T20:04:11.0000000Z Cleaning up orphan processes

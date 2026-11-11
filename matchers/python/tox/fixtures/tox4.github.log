@@ -1,0 +1,13 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run tox -e py312
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z py312: commands[0]> pytest -q
+2026-07-24T20:04:05.0000000Z FAILED tests/test_api.py::test_round - assert 2 == 3
+2026-07-24T20:04:06.0000000Z 1 failed, 40 passed in 2.31s
+2026-07-24T20:04:07.0000000Z py312: exit 1 (2.90 seconds) /home/runner/work/ledger/ledger> pytest -q pid=2411
+2026-07-24T20:04:08.0000000Z   py312: FAIL code 1 (9.41=setup[6.51]+cmd[2.90] seconds)
+2026-07-24T20:04:09.0000000Z   evaluation failed :( (9.52 seconds)
+2026-07-24T20:04:10.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:11.0000000Z Post job cleanup.
+2026-07-24T20:04:12.0000000Z Cleaning up orphan processes

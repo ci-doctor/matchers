@@ -1,0 +1,7 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ mypy src
+src/ledger/models.py:17: error: Incompatible return value type (got "str", expected "int")  [return-value]
+Found 1 error in 1 file (checked 42 source files)
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

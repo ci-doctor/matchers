@@ -1,0 +1,4 @@
+$ ./gradlew :core:build
+> Task :core:compileKotlin FAILED
+e: /work/core/src/main/kotlin/com/acme/Money.kt: (22, 18): Type mismatch: inferred type is String but Int was expected
+e: /work/core/src/main/kotlin/com/acme/Money.kt: (40, 5): Unresolved reference: roundHalfEven

@@ -13,4 +13,4 @@
 133.0 c++: fatal error: Killed signal terminated program cc1plus
 ------
 Dockerfile:19
-… [1 lines elided] …
+ERROR: failed to solve: process "/bin/sh -c cmake --build build --parallel 16" did not complete successfully: exit code: 137

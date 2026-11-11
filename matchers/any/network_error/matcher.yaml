@@ -1,0 +1,12 @@
+schema: 1
+id: network_error
+role: issue
+description: >-
+  A transient network failure - a host that did not resolve, a connection reset or timed out.
+  Nothing in the code changed; a retry may pass.
+tags: [any, infra]
+match:
+  all:
+    - regex: 'Could not resolve host|Temporary failure in name resolution|getaddrinfo (ENOTFOUND|EAI_AGAIN)|\bECONNRESET\b|\bETIMEDOUT\b|Connection reset by peer|Connection timed out|Network is unreachable|TLS handshake timeout|i/o timeout'
+    - not: {regex: '^\s*(✓|√|PASS\b)'}
+window: {before: 2, after: 3}

@@ -1,0 +1,10 @@
+$ javac -Werror -Xlint:all -d out src/main/java/com/acme/*.java
+src/main/java/com/acme/Legacy.java:9: warning: [deprecation] Date(String) in Date has been deprecated
+        Date d = new Date(raw);
+                 ^
+error: warnings found and -Werror specified
+src/main/java/com/acme/Legacy.java:14: error: unreachable statement
+        return null;
+        ^
+1 error
+1 warning

@@ -1,0 +1,19 @@
+schema: 1
+id: dbt
+description: dbt, the SQL transformation tool - models that do not compile, and SQL the warehouse rejected.
+tags: [python, build]
+define:
+  NODE: '(model|test|seed|snapshot|analysis)'
+outputs:
+  compile:
+    description: >-
+      dbt failing to compile - Compilation Error in model x: a bad ref, an undefined macro or
+      variable, or invalid YAML, caught before any SQL runs.
+    match: {regex: '^(\d\d:\d\d:\d\d\s+)?\s*Compilation Error in %{NODE} '}
+    window: {after: 3}
+  run:
+    description: >-
+      The warehouse rejecting dbt's SQL - Database Error in model x, with the database's own
+      message under it: a missing column, a permission, a type that does not fit.
+    match: {regex: '^(\d\d:\d\d:\d\d\s+)?\s*Database Error in %{NODE} '}
+    window: {after: 4}

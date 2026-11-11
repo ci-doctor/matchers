@@ -1,0 +1,4 @@
+… [1 lines elided] …
+The push refers to repository [ghcr.io/acme/api]
+5f70bf18a086: Preparing
+denied: permission_denied: write_package

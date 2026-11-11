@@ -1,0 +1,10 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ cargo run --release -- import data/
+    Finished `release` profile [optimized] target(s) in 0.21s
+     Running `target/release/ledger import data/`
+thread 'main' panicked at src/import.rs:58:41:
+called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

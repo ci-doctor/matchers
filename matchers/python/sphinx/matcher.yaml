@@ -1,0 +1,13 @@
+schema: 1
+id: sphinx
+description: >-
+  A Sphinx docs build failing on warnings under -W / --fail-on-warning - the WARNING lines name
+  the file and line; a broken cross-reference or a missing toctree entry.
+tags: [python, build, docs]
+variants:
+  legacy:
+    match: {regex: '^Warning, treated as error:$'}
+    window: {after: 2}
+  current:
+    match: {regex: '^build finished with problems, \d+ warnings? \(with warnings treated as errors\)\.$'}
+    window: {before: 6}

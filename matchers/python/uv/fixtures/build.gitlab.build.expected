@@ -1,0 +1,7 @@
+… [2 lines elided] …
+  × Failed to build `psycopg2==2.9.10`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `setuptools.build_meta.build_wheel` failed (exit status: 1)
+      [stderr]
+      Error: pg_config executable not found.
+      hint: This usually indicates a problem with the package or the build environment.

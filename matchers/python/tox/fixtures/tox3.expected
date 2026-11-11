@@ -1,0 +1,5 @@
+… [3 lines elided] …
+ERROR: InvocationError for command /work/.tox/py38/bin/pytest -q (exited with code 1)
+___________________________________ summary ____________________________________
+ERROR:   py38: commands failed
+  lint: commands succeeded

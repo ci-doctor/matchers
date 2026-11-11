@@ -1,0 +1,8 @@
+$ apt-get update
+Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [612 kB]
+Err:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages
+  File has unexpected size (612418 != 612207). Mirror sync in progress? [IP: 52.147.219.192 80]
+  Hashes of expected file:
+   - Filesize:612207 [weak]
+E: Failed to fetch http://azure.archive.ubuntu.com/ubuntu/dists/noble-updates/main/binary-amd64/by-hash/SHA256/9f1c  File has unexpected size (612418 != 612207). Mirror sync in progress? [IP: 52.147.219.192 80]
+E: Some index files failed to download. They have been ignored, or old ones used instead.

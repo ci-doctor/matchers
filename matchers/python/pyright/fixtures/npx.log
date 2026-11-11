@@ -1,0 +1,5 @@
+$ npx pyright etl
+No configuration file found.
+/work/etl/transform.py
+  /work/etl/transform.py:9:12 - error: "batch" is possibly unbound (reportPossiblyUnbound)
+1 error, 0 warnings, 0 informations

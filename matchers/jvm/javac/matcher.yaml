@@ -1,0 +1,8 @@
+schema: 1
+id: javac
+description: >-
+  A Java compile error from javac, standalone or under Gradle - File.java:12: error: with the
+  source line, caret and symbol detail under it. The code does not compile.
+tags: [jvm, build]
+match: {regex: '^\S+\.java:\d+: error: |^error: warnings found and -Werror specified$'}
+window: {after: 4}

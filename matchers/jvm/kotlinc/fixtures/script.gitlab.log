@@ -1,0 +1,11 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ ./gradlew build
+e: file:///builds/team/app/app/build.gradle.kts:14:5: Unresolved reference: kapt
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file '/builds/team/app/app/build.gradle.kts' line: 14
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1

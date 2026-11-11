@@ -1,0 +1,6 @@
+… [5 lines elided] …
+12:01:14    Database Error in model orders (models/marts/orders.sql)
+  column "amount_usd" does not exist
+  LINE 12:     sum(amount_usd) as revenue
+                   ^
+  compiled code at target/run/shop/models/marts/orders.sql

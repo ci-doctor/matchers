@@ -1,0 +1,5 @@
+shell: /usr/bin/bash -e {0}
+Updating dependencies
+Resolving dependencies...
+Because ledger depends on fastapi (0.115.0) which depends on starlette (>=0.37.2,<0.39.0), starlette is required.
+So, because ledger depends on starlette (0.41.2), version solving failed.
