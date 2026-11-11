@@ -1,0 +1,9 @@
+schema: 1
+id: istanbul
+role: gate
+description: >-
+  Coverage below the configured threshold - ERROR: Coverage for lines (79%) does not meet
+  global threshold (80%). Printed by nyc, c8 and Vitest. No test failed; coverage did.
+tags: [js, coverage]
+match: {regex: '^ERROR: Coverage for \w+ \(\d+(\.\d+)?%\) does not meet (global )?threshold'}
+window: {before: 1, after: 1}

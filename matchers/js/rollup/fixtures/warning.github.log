@@ -1,0 +1,13 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run npx rollup -c && npm publish
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z src/index.ts → dist/index.js...
+2026-07-24T20:04:05.0000000Z (!) Unresolved dependencies
+2026-07-24T20:04:06.0000000Z https://rollupjs.org/troubleshooting/#warning-treating-module-as-external-dependency
+2026-07-24T20:04:07.0000000Z lodash-es (imported by "src/cart.ts")
+2026-07-24T20:04:08.0000000Z created dist/index.js in 412ms
+2026-07-24T20:04:09.0000000Z Error: npm publish failed: 403 Forbidden
+2026-07-24T20:04:10.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:11.0000000Z Post job cleanup.
+2026-07-24T20:04:12.0000000Z Cleaning up orphan processes

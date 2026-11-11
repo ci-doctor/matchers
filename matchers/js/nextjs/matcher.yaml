@@ -1,6 +1,6 @@
 schema: 1
 id: nextjs
-description: Next.js - next build failing to compile the app.
+description: Next.js - next build failing to compile the app, or failing to prerender a page.
 tags: [js, build]
 outputs:
   build:
@@ -12,3 +12,9 @@ outputs:
         - regex: '^Failed to compile\.$'
         - preceded_by: {regex: '▲ Next\.js \d', within: 200}
     window: {after: 10}
+  prerender:
+    description: >-
+      Next.js failing to prerender a page at build time - Error occurred prerendering page
+      "/route", with the runtime error under it. That route's code threw; it compiled fine.
+    match: {regex: '^Error occurred prerendering page "[^"]+"'}
+    window: {after: 4}

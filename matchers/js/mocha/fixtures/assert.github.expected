@@ -1,0 +1,10 @@
+… [5 lines elided] …
+  1 failing
+  1) Cart
+       sums the items:
+      AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+2 !== 3
+      + expected - actual
+      -2
+      +3
+      at Context.<anonymous> (test/cart.test.js:12:12)

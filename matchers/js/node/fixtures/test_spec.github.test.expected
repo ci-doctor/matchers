@@ -1,0 +1,8 @@
+… [3 lines elided] …
+  ✖ sums the items (1.2ms)
+    AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+    2 !== 3
+        at TestContext.<anonymous> (file:///home/runner/work/api/api/test/cart.test.js:12:12)
+▶ Cart (2.1ms)
+ℹ tests 9
+… [4 lines elided] …

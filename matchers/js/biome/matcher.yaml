@@ -1,0 +1,11 @@
+schema: 1
+id: biome
+description: >-
+  Biome's file:line:col lint/group/rule, format or parse diagnostics with an error marker and
+  the excerpt - from biome check, lint, format or ci. Warnings alone never fire.
+tags: [js, lint, format]
+match:
+  all:
+    - regex: '^\S+(:\d+:\d+)? (lint/\S+|format|parse|assist/\S+|organizeImports)\b.*━{3,}'
+    - followed_by: {regex: '^\s*✖ ', within: 3}
+window: {after: 7}

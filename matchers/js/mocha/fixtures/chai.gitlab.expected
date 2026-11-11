@@ -1,0 +1,8 @@
+… [5 lines elided] …
+  2 failing
+  1) Checkout
+       rejects an empty cart:
+     AssertionError: expected [Function] to throw 'EmptyCart'
+  2) Checkout
+       charges the card:
+     Error: Timeout of 2000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves.

@@ -1,0 +1,13 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run npx mocha && ./upload-coverage.sh
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z   Cart
+2026-07-24T20:04:05.0000000Z     ✔ starts empty
+2026-07-24T20:04:06.0000000Z     ✔ sums the items
+2026-07-24T20:04:07.0000000Z 
+2026-07-24T20:04:08.0000000Z   12 passing (40ms)
+2026-07-24T20:04:09.0000000Z Error: coverage upload failed (HTTP 502)
+2026-07-24T20:04:10.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:11.0000000Z Post job cleanup.
+2026-07-24T20:04:12.0000000Z Cleaning up orphan processes

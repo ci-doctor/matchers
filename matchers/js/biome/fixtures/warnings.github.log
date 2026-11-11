@@ -1,0 +1,14 @@
+2026-07-24T20:04:00.0000000Z Current runner version: '2.336.0'
+2026-07-24T20:04:01.0000000Z ##[group]Run npx biome ci . && npm run e2e
+2026-07-24T20:04:02.0000000Z shell: /usr/bin/bash -e {0}
+2026-07-24T20:04:03.0000000Z ##[endgroup]
+2026-07-24T20:04:04.0000000Z src/cart.ts:31:3 lint/suspicious/noConsole ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-07-24T20:04:05.0000000Z 
+2026-07-24T20:04:06.0000000Z   ⚠ Don't use console.
+2026-07-24T20:04:07.0000000Z 
+2026-07-24T20:04:08.0000000Z Checked 41 files in 12ms. No fixes applied.
+2026-07-24T20:04:09.0000000Z Found 1 warning.
+2026-07-24T20:04:10.0000000Z Error: playwright smoke test failed
+2026-07-24T20:04:11.0000000Z ##[error]Process completed with exit code 1.
+2026-07-24T20:04:12.0000000Z Post job cleanup.
+2026-07-24T20:04:13.0000000Z Cleaning up orphan processes

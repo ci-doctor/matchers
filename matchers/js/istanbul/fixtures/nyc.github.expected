@@ -1,0 +1,4 @@
+… [4 lines elided] …
+----------|---------|----------|---------|---------|-------------------
+ERROR: Coverage for lines (79.12%) does not meet global threshold (80%)
+ERROR: Coverage for branches (61.2%) does not meet global threshold (70%)

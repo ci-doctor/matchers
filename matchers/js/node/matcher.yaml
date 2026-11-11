@@ -1,6 +1,6 @@
 schema: 1
 id: node
-description: Node.js itself - uncaught errors, and the process running out of heap.
+description: Node.js itself - uncaught errors, the process running out of heap, and failures from its built-in test runner.
 tags: [js, runtime]
 outputs:
   error:
@@ -15,3 +15,20 @@ outputs:
       --max-old-space-size or find the leak; the code that was running is a victim.
     match: {template: 'JavaScript heap out of memory'}
     window: {before: 4, after: 3}
+  test:
+    description: >-
+      node --test reporting a failed test - the failing test's name with its assertion, from the
+      spec reporter or TAP. The assertion names the cause.
+    variants:
+      spec:
+        match:
+          all:
+            - regex: '^\s*✖ .+ \(\d+(\.\d+)?ms\)$'
+            - followed_by: {regex: '^ℹ fail [1-9]', within: 300}
+        window: {after: 5}
+      tap:
+        match:
+          all:
+            - regex: '^\s*not ok \d+ - '
+            - followed_by: {regex: "failureType: '", within: 6}
+        window: {after: 9}
