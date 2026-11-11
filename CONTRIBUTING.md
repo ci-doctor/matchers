@@ -104,9 +104,8 @@ with several outputs each has `<case>.<output>.expected`.
 - A log that contains two tools (`npm run build` running `tsc`) can be a fixture of both,
   each with its own `.expected`.
 
-`verify-exempt.txt` lists the matchers migrated from ci-doctor before this bar existed;
-they need one positive fixture until backfilled. The list only shrinks — CI rejects a PR
-that adds to it.
+`verify-exempt.txt` is empty: every official matcher meets the bar. CI rejects a PR that
+adds a name to it.
 
 ## 5. Names are permanent
 

@@ -1,0 +1,7 @@
+… [3 lines elided] …
+  1) Error:
+CartTest#test_total:
+NoMethodError: undefined method 'sum' for nil
+    app/models/cart.rb:14:in 'Cart#total'
+    test/models/cart_test.rb:9:in 'block in <class:CartTest>'
+12 runs, 30 assertions, 0 failures, 1 errors, 0 skips

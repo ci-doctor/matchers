@@ -1,0 +1,9 @@
+Running with gitlab-runner 16.11.0 (a1b2c3d4)
+[0Ksection_start:1735689600:step_script[0K
+$ pytest -q tests/alloc
+tests/alloc/test_pool.py::test_out_of_memory_is_reported PASSED
+tests/alloc/test_pool.py::test_killed_worker_is_restarted PASSED
+tests/alloc/test_pool.py::test_pool_resize FAILED
+FAILED tests/alloc/test_pool.py::test_pool_resize - assert 8 == 16
+[0Ksection_end:1735689609:step_script[0K
+ERROR: Job failed: exit code 1
