@@ -1,12 +1,14 @@
 name: pages
 
 # Publishes matchers.cidoc.dev: the catalogue (built from site/) plus the
-# raw registry (index.yaml, matchers/, bundles/) that `ci-doctor` fetches from the same
-# domain. The site creates no page at those three paths. The custom domain is set in the
+# raw registry (index.yaml, its signature index.yaml.sig, matchers/, bundles/) that
+# `ci-doctor` fetches from the same domain. The site creates no page at those three paths. The custom domain is set in the
 # repo's Pages settings; an Actions deploy ignores a CNAME file.
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "17 3 * * 1"   # re-sign weekly: a signature is accepted for 30 days
   workflow_dispatch:
 
 permissions:
@@ -45,6 +47,12 @@ jobs:
       # Only the registry joins the site: index, matchers (fixtures included) and
       # bundles. Repo plumbing stays out of the published tree.
       - run: cp -r index.yaml matchers bundles site/dist/
+      # Sign the index being deployed, so ci-doctor can tell it is the official one.
+      # The key id must be one ci-doctor ships (ci_doctor/matchers/signing.py).
+      - run: uv run --no-project --with pynacl python .github/scripts/sign_index.py site/dist
+        env:
+          INDEX_SIGNING_KEY: ${{ secrets.INDEX_SIGNING_KEY }}
+          INDEX_SIGNING_KEY_ID: official-1
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site/dist
