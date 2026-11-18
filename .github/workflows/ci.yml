@@ -30,7 +30,7 @@ jobs:
       # The official bar: 3 positive and 2 negative fixtures per output, and an exemption list
       # that only shrinks. Every other check verify runs is correctness, not policy.
       - run: uvx --from "$CI_DOCTOR" ci-doctor matchers verify . --min-positive 3 --min-negative 2 --exempt verify-exempt.txt
-      - run: uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check
+      - run: uvx --from "$CI_DOCTOR" ci-doctor registry index . --check
 
   # Rules that need the base branch, which `verify` cannot see.
   guards:

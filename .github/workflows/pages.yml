@@ -32,7 +32,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
       - run: uvx --from "$CI_DOCTOR" ci-doctor matchers verify . --min-positive 3 --min-negative 2 --exempt verify-exempt.txt
-      - run: uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check
+      - run: uvx --from "$CI_DOCTOR" ci-doctor registry index . --check
       - uses: actions/setup-node@v7
         with:
           node-version: 24
