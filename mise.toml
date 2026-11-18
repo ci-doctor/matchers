@@ -6,7 +6,7 @@ node = "lts"    # builds and serves the site
 gh = "latest"   # looks up the ci-doctor release to run
 
 [env]
-# The ci-doctor that provides `matchers verify` / `index`: its latest release tag, as in CI.
+# The ci-doctor that provides `matchers verify` / `registry index`: its latest release tag, as in CI.
 CI_DOCTOR = "git+https://github.com/ci-doctor/ci-doctor@{{ exec(command='gh release view --repo ci-doctor/ci-doctor --json tagName -q .tagName') }}"
 
 [tasks.verify]
@@ -19,7 +19,7 @@ run = 'uvx --from "$CI_DOCTOR" ci-doctor matchers verify --update .'
 
 [tasks.index]
 description = "Regenerate index.yaml and the ecosystem bundles"
-run = 'uvx --from "$CI_DOCTOR" ci-doctor matchers index .'
+run = 'uvx --from "$CI_DOCTOR" ci-doctor registry index .'
 
 [tasks.guards]
 description = "The base-branch guards: names and output ids are permanent, verify-exempt.txt only shrinks"
@@ -27,7 +27,7 @@ run = "uv run --no-project --with pyyaml python .github/scripts/registry_guards.
 
 [tasks.check]
 description = "Everything CI runs"
-run = 'uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check'
+run = 'uvx --from "$CI_DOCTOR" ci-doctor registry index . --check'
 depends = ["verify", "guards"]
 
 [tasks.docs]

@@ -742,53 +742,53 @@ bundles:
     description: Every official matcher, one bundle per ecosystem.
   android:
     path: bundles/android.yaml
-    sha256: 51a8dc80c0e298e9611a9786fba38c9ad285093361af8296ad9b4cecbf4365d2
+    sha256: 4b83f2850d66654745046bfe66972fce2abc8c9ca020e2efffc46de63f1e7de7
     description: Every matcher in the android ecosystem.
   any:
     path: bundles/any.yaml
-    sha256: 7a85070db307457e8e2643fa702c4d45e01b360b754f7731bf012e6c35e403b1
+    sha256: b3d34a62efa44a7df7cf86aa0980c974583f380bcd163b45c98cbabf274f2c96
     description: Every matcher in the any ecosystem.
   c:
     path: bundles/c.yaml
-    sha256: b3ac7a0598d4568c3176519047636d13b05c68f6b73ee36a50637b5cbffccd6c
+    sha256: 1e7d62973007be8afb2b478befc7254dded55734858a996a89a688cb3335f576
     description: Every matcher in the c ecosystem.
   container:
     path: bundles/container.yaml
-    sha256: 35b547c1929a2c0e166952647c50e0683c68e4779be261e74c7687a6670d5170
+    sha256: b0fde37796361714b28a93ad0586cc27deb1079dfa33df1b15a83b39d1ee89ac
     description: Every matcher in the container ecosystem.
   dotnet:
     path: bundles/dotnet.yaml
-    sha256: e6d1481124860a8f06794eb05f69527498734aaeaea3a12716d6cede135fa0f3
+    sha256: 3521ec341122176514e79eff1d8161a5c4d76af680a332fd84960b71f9b8fb96
     description: Every matcher in the dotnet ecosystem.
   go:
     path: bundles/go.yaml
-    sha256: a8494752bf9c1f0dc352741a55823c7279617b1fd20bbd753afcd485e06c3d95
+    sha256: ef25d35ea11ad276212d42f1aaeab03b1a7b240ec4fe63e4437c9e0369068f29
     description: Every matcher in the go ecosystem.
   iac:
     path: bundles/iac.yaml
-    sha256: a4218224f6f7cf6661c5783d822e8d933c41b4336f8b46e2eb70da20cce9bef2
+    sha256: d1a5b411b37b24a568515da41db903c95cd10b3529302fd451354d73851ccb87
     description: Every matcher in the iac ecosystem.
   js:
     path: bundles/js.yaml
-    sha256: b4251dcf85a6b5ce3e68364368c30f6b3e426d59b8aed1342e9e4456b79effdc
+    sha256: 3c3dc6a71fe7a2e81195eabeaa887f34886824ef41f4d1b6c187077bc983fa36
     description: Every matcher in the js ecosystem.
   jvm:
     path: bundles/jvm.yaml
-    sha256: 75b151542e07f220cba75d073ffc1f3b03bf47530f5ee3711788ea23f737747b
+    sha256: 8f10b0fed581776773f76070aeb4f630865b304401ed31c3035f836bea23bb6d
     description: Every matcher in the jvm ecosystem.
   php:
     path: bundles/php.yaml
-    sha256: ff4afa3e8d622aebe3012805a0d621e3414c0fbf43e9059d0656f328a670cbc4
+    sha256: 807a0fc650ae99d6da6fee3aa145fc2ac45b1ee19878d4c730e480e55fd89ca7
     description: Every matcher in the php ecosystem.
   python:
     path: bundles/python.yaml
-    sha256: 1c6d6cfe6ee81710bd379b7067f0751f11b07aba5dd2e83f79f00eb53560cfd6
+    sha256: 5304135e3ef236e278cec81a547eb4bef1b036d56d51b4df2df4101835a6b9cb
     description: Every matcher in the python ecosystem.
   ruby:
     path: bundles/ruby.yaml
-    sha256: 7066ebbf7a2511c2c1051e6074659fe29c25af11621a8b43ecff1e8e4f2e3fff
+    sha256: 59c9b2aad7095b6c387e81742c819725039774473f3b685722899f5ce82e3807
     description: Every matcher in the ruby ecosystem.
   rust:
     path: bundles/rust.yaml
-    sha256: 3e5021c63e7f7e8125bc2218f19fafa7ad94a9140da43bb2cf21e76ab2cddbae
+    sha256: ffe929c401470506b8d2958959c776870097e18f453e914058b4809a880274bd
     description: Every matcher in the rust ecosystem.

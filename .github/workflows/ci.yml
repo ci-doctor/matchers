@@ -30,7 +30,7 @@ jobs:
       # The official bar: 3 positive and 2 negative fixtures per output, and an exemption list
       # that only shrinks. Every other check verify runs is correctness, not policy.
       - run: uvx --from "$CI_DOCTOR" ci-doctor matchers verify . --min-positive 3 --min-negative 2 --exempt verify-exempt.txt
-      - run: uvx --from "$CI_DOCTOR" ci-doctor matchers index . --check
+      - run: uvx --from "$CI_DOCTOR" ci-doctor registry index . --check
 
   # Rules that need the base branch, which `verify` cannot see.
   guards:
@@ -42,7 +42,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - uses: astral-sh/setup-uv@v10.3.3
-      - run: uv run --no-project --with pyyaml --with pytest --with pynacl pytest -q -p no:cacheprovider .github/scripts
+      - run: uv run --no-project --with pyyaml --with pytest pytest -q -p no:cacheprovider .github/scripts
       - env:
           BASE_REF: ${{ github.base_ref }}   # via env, never interpolated into the script
           ENFORCE_NAMES: "0"                 # alpha: names may change; "1" from the first stable release
