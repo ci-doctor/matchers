@@ -26,8 +26,10 @@ outputs:
         window:
           until: {regex: '^\s*\[end of output\]'}
           max_lines: 120
+          condense: {regex: '(?i)error|not found|^\s*× |exit code: '}
       legacy:
         match: {regex: '^\s*ERROR: Command errored out with exit status \d+:'}
         window:
           until: {regex: '^\s*-{20,}$'}
           max_lines: 120
+          condense: {regex: '(?i)error|not found|^\s*× |exit code: '}

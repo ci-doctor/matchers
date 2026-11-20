@@ -11,6 +11,7 @@ outputs:
     window:
       until: {regex: '^=+ short test summary'}
       max_lines: 500
+      condense: {regex: '^(E |>|_{3,} |\S+:\d+: )'}
   errors:
     description: >-
       pytest's `=== ERRORS ===` block - a test module that failed to import, or a fixture that
@@ -18,6 +19,15 @@ outputs:
     match: {regex: '^=+ ERRORS =+'}
     window:
       until: {regex: '^=+ short test summary'}
+      max_lines: 500
+      condense: {regex: '^(E |>|_{3,} |\S+:\d+: )'}
+  summary:
+    description: >-
+      pytest's short test summary - one FAILED or ERROR line per test with its exception, then
+      the final count. The complete list of what failed, even when the tracebacks above are cut.
+    match: {regex: '^=+ short test summary info =+'}
+    window:
+      until: {regex: '^=+ .*\bin [\d.]+s\b'}
       max_lines: 500
   coverage:
     role: gate

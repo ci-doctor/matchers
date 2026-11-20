@@ -8,3 +8,4 @@ match: {regex: '^(FAIL|ERROR): \S+ \(.+\)$'}
 window:
   until: {regex: '^FAILED \((failures|errors)='}
   max_lines: 300
+  condense: {regex: '^((FAIL|ERROR): |\s+File ".*", line \d+|[\w.]+(Error|Exception)\b|Ran \d+ tests?|FAILED \()'}

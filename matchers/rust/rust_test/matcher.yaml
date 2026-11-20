@@ -7,3 +7,4 @@ match: {regex: '^failures:$'}
 window:
   until: {regex: '^test result:'}
   max_lines: 500
+  condense: {regex: '^(---- .* ----$|thread .* panicked at |\s*(left|right):|assertion |called |test result:)|^ {4}(\S+::\S+|\S+ - .*\(line \d+\))$|^error(\[E\d+\])?: |^\s*--> \S+:\d+:\d+'}
