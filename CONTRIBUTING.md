@@ -117,9 +117,9 @@ adds a name to it.
 
 Users write names into their configs (`include`, and output ids in `exclude`), so
 renaming or deleting one breaks their setup on the next run. To retire a matcher: remove it from every bundle, set
-`description: "DEPRECATED: use X"`, and delete it in a later PR. Once the registry leaves
-alpha, CI rejects removing a name that was not deprecated first; until then names may
-change.
+`description: "DEPRECATED: use X"`, and delete it in a later PR. From ci-doctor's first
+stable release, CI rejects removing a name that was not deprecated first; until then
+(alpha and beta) names may change.
 
 ## 6. Bundles
 

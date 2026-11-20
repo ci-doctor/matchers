@@ -12,7 +12,7 @@
 
 Usage: python registry_guards.py <base-ref>   (e.g. origin/main)
 
-While the registry is in alpha (ENFORCE_NAMES unset or "0"), names and outputs may be
+Until the first stable release (ENFORCE_NAMES unset or "0"), names and outputs may be
 renamed or removed freely; set ENFORCE_NAMES=1 at the first stable release.
 """
 
