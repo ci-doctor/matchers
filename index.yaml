@@ -281,7 +281,7 @@ matchers:
     ecosystem: jvm
   jest:
     path: matchers/js/jest/matcher.yaml
-    sha256: de6d2603e64c142fa2df2bc6f092fb7d42342f049df2e689cd54b54bc3b11871
+    sha256: c6fa3c37652e7c8ee3806694af400959a61d3d814769324a29b4e1dba65de560
     description: Jest - failing tests, and coverage thresholds that fail a run whose tests all passed.
     schema: 1
     tags: [js, test]
@@ -468,14 +468,14 @@ matchers:
     ecosystem: php
   phpunit:
     path: matchers/php/phpunit/matcher.yaml
-    sha256: 306fc21592f14008b2599f8d2a4b1d7d76744b6185fb80185c18a6e8f6796415
+    sha256: 6fa1e2a069b341edde07ac5217c4381f8644e6f8652622e087b9e080969aee90
     description: PHPUnit's `There were N failures` block through to its `FAILURES`/`ERRORS`/`OK` footer.
     schema: 1
     tags: [php, test]
     ecosystem: php
   pip:
     path: matchers/python/pip/matcher.yaml
-    sha256: 09154df89ac2b2cd7ac97b454605e0eb1a383ab14e247972531571abd37306b9
+    sha256: 1543a19d04cbf40fe8435e0ad1d4c579bfa7c12a0c2099dfd4ed3c611a5ecc27
     description: pip, the Python package installer - requirements it cannot resolve, and packages it could not build from source.
     schema: 1
     tags: [python, deps]
@@ -542,12 +542,12 @@ matchers:
     ecosystem: python
   pytest:
     path: matchers/python/pytest/matcher.yaml
-    sha256: b4511627042cefad0d8a2aa8595df91a2a5f55c1d57e20414c4b65b94028bb93
+    sha256: 9fee365bdfd50b5831a68db017a38cccee8a636c5e25a2307e1424eb679f6337
     description: pytest - failing tests, modules that could not be collected, crashed xdist workers, and a coverage bar the run did not reach.
     schema: 1
     tags: [python, test]
     ecosystem: python
-    outputs: [failures, errors, coverage, workers]
+    outputs: [failures, errors, summary, coverage, workers]
   python_traceback:
     path: matchers/python/python_traceback/matcher.yaml
     sha256: f25da395cb2f4307e02da6040e5c330fe644db79e40b982b02c28d1b5750e309
@@ -557,7 +557,7 @@ matchers:
     ecosystem: python
   python_unittest:
     path: matchers/python/python_unittest/matcher.yaml
-    sha256: 35b2c28db83b51be7ac2c6b05136e0e64613c79fe81fc4ad83070d2cb22339ce
+    sha256: c108e5d3d9723f113ad4df6cffe9f5b3f656525ac450a90414d8133470452c67
     description: 'unittest''s FAIL: / ERROR: blocks, from Python''s runner or Django''s test runner, through to FAILED (failures=N). ERROR means the test raised, or its module did not import.'
     schema: 1
     tags: [python, test]
@@ -585,7 +585,7 @@ matchers:
     ecosystem: js
   rspec:
     path: matchers/ruby/rspec/matcher.yaml
-    sha256: 9bb52a05f7ff60cd5187d5b45fb28c7f22323dd85884b4c5ed581ee6aa4307f3
+    sha256: b991e1a28120fab94564d5a9f7839f481700de1068d94c1a5350c4756b7ff8c4
     description: RSpec's `Failures:` block through to the `N examples, N failures` tally.
     schema: 1
     tags: [ruby, test]
@@ -628,7 +628,7 @@ matchers:
     ecosystem: rust
   rust_test:
     path: matchers/rust/rust_test/matcher.yaml
-    sha256: af7318fcc17e9254d8efc94d1b7fb73cf7503c536cf0b08675b0c1cf9aabe413
+    sha256: 895922cabaa60912bfb7b9dfac3b5f32f51d3c687e6e993d67c9a677c30a1c4f
     description: '`cargo test`''s `failures:` block through to the `test result:` line.'
     schema: 1
     tags: [rust, test]
@@ -708,14 +708,14 @@ matchers:
     outputs: [build]
   vitest:
     path: matchers/js/vitest/matcher.yaml
-    sha256: 81b4eeeb8998dc9b41873b7d9cd9d5782240063beb953b9cb9ed14d481b0c465
+    sha256: 44afd8145dca3bdc171967f20ad0e7b0922478a31f02bfbfb76875ef4a3d849c
     description: A Vitest failure - the FAIL file > suite > test header names the test, and the diff below it shows expected against received. A test file that failed to load prints FAIL file [ file ].
     schema: 1
     tags: [js, test]
     ecosystem: js
   vstest:
     path: matchers/dotnet/vstest/matcher.yaml
-    sha256: ee435f2416c702c4a9fd175aaa68dad3f16a8d43db97834f2a558e38b9f1450a
+    sha256: c5e7d02edf3ef45dee5c528123c75a97eff549fa7175d92c2c1017b979b12a0a
     description: A failing .NET test under `dotnet test` (VSTest, for xUnit, NUnit and MSTest alike) - `Failed <test> [N ms]`, its error message and stack trace, through to the run's total.
     schema: 1
     tags: [dotnet, test]

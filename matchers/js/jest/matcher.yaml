@@ -11,6 +11,7 @@ outputs:
     window:
       until: {regex: '^Tests:'}
       max_lines: 500
+      condense: {regex: '^\s*(● |Expected|Received|> +\d+ \||at .*:\d+:\d+\)?$|[\w.]*(Error|Exception):)|^(FAIL |Tests:|Test Suites:)'}
   coverage:
     role: gate
     description: >-

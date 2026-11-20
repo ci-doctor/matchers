@@ -8,3 +8,4 @@ match: {regex: '^\s*FAIL\s+\S+\.(test|spec)\.[cm]?[jt]sx?\s+(>|\[)'}
 window:
   until: {regex: '^\s*Test Files '}
   max_lines: 300
+  condense: {regex: '^\s*(FAIL |[\w.]*(Error|Exception):|❯ \S+:\d+:\d+|Test Files |Tests )'}

@@ -1,0 +1,4 @@
+… [20 lines elided] …
+=========================== short test summary info ============================
+FAILED tests/test_cart.py::test_discount - assert 3000 == 2700
+1 failed, 42 passed in 3.18s

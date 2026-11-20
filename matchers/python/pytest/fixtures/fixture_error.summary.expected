@@ -1,0 +1,4 @@
+… [11 lines elided] …
+=========================== short test summary info ============================
+ERROR tests/test_db.py::test_insert - KeyError: 'DATABASE_URL'
+========================= 11 passed, 1 error in 0.88s =========================

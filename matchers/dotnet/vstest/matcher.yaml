@@ -8,3 +8,4 @@ match: {regex: '^\s*Failed\s+\S+\s+\[\d+(\.\d+)?\s*m?s\]'}
 window:
   until: {regex: '^(Failed|Passed)!\s+-'}
   max_lines: 200
+  condense: {regex: '^\s*(Failed |Error Message:|Expected|Actual|But was|Assert\.|[\w.]+Exception\b|at .* in .*:line \d+$)|^(Failed|Passed)!'}

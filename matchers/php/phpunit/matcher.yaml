@@ -7,3 +7,4 @@ match: {regex: ^There (was|were) \d+ (failure|error)}
 window:
   until: {regex: ^(FAILURES|ERRORS|OK)}
   max_lines: 500
+  condense: {regex: '^(\d+\) |Failed asserting|/\S+\.php:\d+$|There (was|were) |FAILURES!|ERRORS!|Tests: )|[\w\\]*(Error|Exception):'}

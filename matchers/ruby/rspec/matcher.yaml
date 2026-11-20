@@ -7,3 +7,4 @@ match: {regex: '^Failures:$'}
 window:
   until: {regex: '^\d+ examples?, \d+ failures?'}
   max_lines: 500
+  condense: {regex: '^\s*(\d+\) |Failure/Error:|expected|got:|# \./|[\w:]*(Error|Exception):?$)|^\d+ examples?, '}

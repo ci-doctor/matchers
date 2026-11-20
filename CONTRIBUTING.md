@@ -68,6 +68,12 @@ Everything runs through `ci-doctor matchers …` (pulled by `uvx`, no install ne
   with its own positive fixture.
 - **Prefer `window.until`** over a large `after`, and `not` over negative logic in a
   regex.
+- **Give a long window `condense`.** A test runner's block mixes the few lines that
+  name a failure (the test, the assertion, `file:line`, the counts) with echoed source,
+  captured output and stack frames. `condense` marks the first kind; only when the
+  evidence is over budget is the rest cut, each cut marked. Under budget the window goes
+  in whole, so match what names the failure, not everything that might help. Goldens
+  don't change: `verify` selects with no budget.
 - **`description` is prompt text.** The model knows jest, not an in-house deploy CLI, so
   say what the tool is and what its failure *means* (`E-LOCK: another deploy holds the
   lock, not a code bug`), not only which lines the window keeps.
