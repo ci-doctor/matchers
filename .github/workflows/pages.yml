@@ -26,7 +26,7 @@ jobs:
       # ci.yml's checks again, so a push that breaks them never deploys. Here rather than
       # a workflow_run of ci: that trigger runs main's copy of this file in a privileged
       # context, and the checks are cheap. test_workflows.py keeps the commands in step.
-      - uses: astral-sh/setup-uv@v10.3.3
+      - uses: astral-sh/setup-uv@v10.4.0
       # ci-doctor at its latest release tag, looked up on every run.
       - run: echo "CI_DOCTOR=git+https://github.com/ci-doctor/ci-doctor@$(gh release view --repo ci-doctor/ci-doctor --json tagName -q .tagName)" >> "$GITHUB_ENV"
         env:
